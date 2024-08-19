@@ -1,0 +1,31 @@
+=================
+TODOLIST for VKFW
+=================
+
+Also look at TODOLISTs in the project subdirectories.
+
+Legend:
+  - [x] Work-in-progress (please document where)
+  - [!] High priority task
+  - [ ] Normal priority task
+  - ( ) Low priority task
+
+API
+==========
+
+  - [ ] Mouse grabbing and relative pointer movement
+  - ( ) Display enumeration
+  - ( ) Full screen
+
+Backends
+==========
+
+  - [!] Implement Win32 backend (I will probably work on this from my school
+        computer lmao)
+  - ( ) Implement Wayland backend (this is presumably more painful than the
+        Win32 API, which is why it is low priority)
+
+Examples
+==========
+
+  - ( ) Look for supported formats at runtime instead of assuming B8G8R8A8_SRGB

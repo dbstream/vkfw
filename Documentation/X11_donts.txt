@@ -1,0 +1,5 @@
+=======================================================
+List of things that should not be done by an X11 client
+=======================================================
+
+- Setting the ResizeRedirect bit in the event mask of an application window.

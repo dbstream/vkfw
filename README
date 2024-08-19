@@ -1,0 +1,45 @@
+==========
+VKFW
+==========
+
+VKFW is a framework for window creation, event handling, and Vulkan graphics
+that I'm working on (because I find it fun for some reason).
+
+Current state of the project
+============================
+
+VKFW is very early in development and currently only has backends for Linux/X11
+that are partially implemented. See TODOLIST and xcb/TODOLIST for more details.
+
+Don't expect any rapid progress on this project -- this is a hobbyist project of
+mine.
+
+Documentation
+=============
+
+Despite there being a folder named `Documentation/` in this repository, there is
+not much documentation other than the VKFW header itself.
+
+> Use the source, Luke!
+
+Versioning
+==========
+
+VKFW uses the same major.minor.patch versioning scheme as Vulkan 1.x. VKFW also
+bundles the header version it was compiled against to make the full version.
+This means that both the VKFW library version and the Vulkan version need to be
+checked for support for new features.
+
+If an application calls `vkfwInit()`, as it should, the runtime VKFW version
+will be automatically checked against what the application was compiled against.
+
+Code guidelines
+===============
+
+- Write readable and efficient code.
+
+- Handle errors nicely.
+
+- Write extensible code.
+
+- Ensure backwards-compatibility.
