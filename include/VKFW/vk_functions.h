@@ -9,1720 +9,2400 @@
 /* VKFW_GEN_PROTOTYPES_H */
 #if defined(VK_VERSION_1_0)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkAllocateCommandBuffers (VkDevice   device, const  VkCommandBufferAllocateInfo *  pAllocateInfo, VkCommandBuffer *  pCommandBuffers);
+vkfw_vkAllocateCommandBuffers (VkDevice   device, const  VkCommandBufferAllocateInfo *  pAllocateInfo, VkCommandBuffer *  pCommandBuffers);
+#define vkAllocateCommandBuffers vkfw_vkAllocateCommandBuffers
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkAllocateDescriptorSets (VkDevice   device, const  VkDescriptorSetAllocateInfo *  pAllocateInfo, VkDescriptorSet *  pDescriptorSets);
+vkfw_vkAllocateDescriptorSets (VkDevice   device, const  VkDescriptorSetAllocateInfo *  pAllocateInfo, VkDescriptorSet *  pDescriptorSets);
+#define vkAllocateDescriptorSets vkfw_vkAllocateDescriptorSets
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkAllocateMemory (VkDevice   device, const  VkMemoryAllocateInfo *  pAllocateInfo, const  VkAllocationCallbacks *  pAllocator, VkDeviceMemory *  pMemory);
+vkfw_vkAllocateMemory (VkDevice   device, const  VkMemoryAllocateInfo *  pAllocateInfo, const  VkAllocationCallbacks *  pAllocator, VkDeviceMemory *  pMemory);
+#define vkAllocateMemory vkfw_vkAllocateMemory
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkBeginCommandBuffer (VkCommandBuffer   commandBuffer, const  VkCommandBufferBeginInfo *  pBeginInfo);
+vkfw_vkBeginCommandBuffer (VkCommandBuffer   commandBuffer, const  VkCommandBufferBeginInfo *  pBeginInfo);
+#define vkBeginCommandBuffer vkfw_vkBeginCommandBuffer
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkBindBufferMemory (VkDevice   device, VkBuffer   buffer, VkDeviceMemory   memory, VkDeviceSize   memoryOffset);
+vkfw_vkBindBufferMemory (VkDevice   device, VkBuffer   buffer, VkDeviceMemory   memory, VkDeviceSize   memoryOffset);
+#define vkBindBufferMemory vkfw_vkBindBufferMemory
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkBindImageMemory (VkDevice   device, VkImage   image, VkDeviceMemory   memory, VkDeviceSize   memoryOffset);
+vkfw_vkBindImageMemory (VkDevice   device, VkImage   image, VkDeviceMemory   memory, VkDeviceSize   memoryOffset);
+#define vkBindImageMemory vkfw_vkBindImageMemory
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBeginQuery (VkCommandBuffer   commandBuffer, VkQueryPool   queryPool, uint32_t   query, VkQueryControlFlags   flags);
+vkfw_vkCmdBeginQuery (VkCommandBuffer   commandBuffer, VkQueryPool   queryPool, uint32_t   query, VkQueryControlFlags   flags);
+#define vkCmdBeginQuery vkfw_vkCmdBeginQuery
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBeginRenderPass (VkCommandBuffer   commandBuffer, const  VkRenderPassBeginInfo *  pRenderPassBegin, VkSubpassContents   contents);
+vkfw_vkCmdBeginRenderPass (VkCommandBuffer   commandBuffer, const  VkRenderPassBeginInfo *  pRenderPassBegin, VkSubpassContents   contents);
+#define vkCmdBeginRenderPass vkfw_vkCmdBeginRenderPass
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBindDescriptorSets (VkCommandBuffer   commandBuffer, VkPipelineBindPoint   pipelineBindPoint, VkPipelineLayout   layout, uint32_t   firstSet, uint32_t   descriptorSetCount, const  VkDescriptorSet *  pDescriptorSets, uint32_t   dynamicOffsetCount, const  uint32_t *  pDynamicOffsets);
+vkfw_vkCmdBindDescriptorSets (VkCommandBuffer   commandBuffer, VkPipelineBindPoint   pipelineBindPoint, VkPipelineLayout   layout, uint32_t   firstSet, uint32_t   descriptorSetCount, const  VkDescriptorSet *  pDescriptorSets, uint32_t   dynamicOffsetCount, const  uint32_t *  pDynamicOffsets);
+#define vkCmdBindDescriptorSets vkfw_vkCmdBindDescriptorSets
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBindIndexBuffer (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, VkIndexType   indexType);
+vkfw_vkCmdBindIndexBuffer (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, VkIndexType   indexType);
+#define vkCmdBindIndexBuffer vkfw_vkCmdBindIndexBuffer
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBindPipeline (VkCommandBuffer   commandBuffer, VkPipelineBindPoint   pipelineBindPoint, VkPipeline   pipeline);
+vkfw_vkCmdBindPipeline (VkCommandBuffer   commandBuffer, VkPipelineBindPoint   pipelineBindPoint, VkPipeline   pipeline);
+#define vkCmdBindPipeline vkfw_vkCmdBindPipeline
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBindVertexBuffers (VkCommandBuffer   commandBuffer, uint32_t   firstBinding, uint32_t   bindingCount, const  VkBuffer *  pBuffers, const  VkDeviceSize *  pOffsets);
+vkfw_vkCmdBindVertexBuffers (VkCommandBuffer   commandBuffer, uint32_t   firstBinding, uint32_t   bindingCount, const  VkBuffer *  pBuffers, const  VkDeviceSize *  pOffsets);
+#define vkCmdBindVertexBuffers vkfw_vkCmdBindVertexBuffers
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBlitImage (VkCommandBuffer   commandBuffer, VkImage   srcImage, VkImageLayout   srcImageLayout, VkImage   dstImage, VkImageLayout   dstImageLayout, uint32_t   regionCount, const  VkImageBlit *  pRegions, VkFilter   filter);
+vkfw_vkCmdBlitImage (VkCommandBuffer   commandBuffer, VkImage   srcImage, VkImageLayout   srcImageLayout, VkImage   dstImage, VkImageLayout   dstImageLayout, uint32_t   regionCount, const  VkImageBlit *  pRegions, VkFilter   filter);
+#define vkCmdBlitImage vkfw_vkCmdBlitImage
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdClearAttachments (VkCommandBuffer   commandBuffer, uint32_t   attachmentCount, const  VkClearAttachment *  pAttachments, uint32_t   rectCount, const  VkClearRect *  pRects);
+vkfw_vkCmdClearAttachments (VkCommandBuffer   commandBuffer, uint32_t   attachmentCount, const  VkClearAttachment *  pAttachments, uint32_t   rectCount, const  VkClearRect *  pRects);
+#define vkCmdClearAttachments vkfw_vkCmdClearAttachments
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdClearColorImage (VkCommandBuffer   commandBuffer, VkImage   image, VkImageLayout   imageLayout, const  VkClearColorValue *  pColor, uint32_t   rangeCount, const  VkImageSubresourceRange *  pRanges);
+vkfw_vkCmdClearColorImage (VkCommandBuffer   commandBuffer, VkImage   image, VkImageLayout   imageLayout, const  VkClearColorValue *  pColor, uint32_t   rangeCount, const  VkImageSubresourceRange *  pRanges);
+#define vkCmdClearColorImage vkfw_vkCmdClearColorImage
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdClearDepthStencilImage (VkCommandBuffer   commandBuffer, VkImage   image, VkImageLayout   imageLayout, const  VkClearDepthStencilValue *  pDepthStencil, uint32_t   rangeCount, const  VkImageSubresourceRange *  pRanges);
+vkfw_vkCmdClearDepthStencilImage (VkCommandBuffer   commandBuffer, VkImage   image, VkImageLayout   imageLayout, const  VkClearDepthStencilValue *  pDepthStencil, uint32_t   rangeCount, const  VkImageSubresourceRange *  pRanges);
+#define vkCmdClearDepthStencilImage vkfw_vkCmdClearDepthStencilImage
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdCopyBuffer (VkCommandBuffer   commandBuffer, VkBuffer   srcBuffer, VkBuffer   dstBuffer, uint32_t   regionCount, const  VkBufferCopy *  pRegions);
+vkfw_vkCmdCopyBuffer (VkCommandBuffer   commandBuffer, VkBuffer   srcBuffer, VkBuffer   dstBuffer, uint32_t   regionCount, const  VkBufferCopy *  pRegions);
+#define vkCmdCopyBuffer vkfw_vkCmdCopyBuffer
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdCopyBufferToImage (VkCommandBuffer   commandBuffer, VkBuffer   srcBuffer, VkImage   dstImage, VkImageLayout   dstImageLayout, uint32_t   regionCount, const  VkBufferImageCopy *  pRegions);
+vkfw_vkCmdCopyBufferToImage (VkCommandBuffer   commandBuffer, VkBuffer   srcBuffer, VkImage   dstImage, VkImageLayout   dstImageLayout, uint32_t   regionCount, const  VkBufferImageCopy *  pRegions);
+#define vkCmdCopyBufferToImage vkfw_vkCmdCopyBufferToImage
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdCopyImage (VkCommandBuffer   commandBuffer, VkImage   srcImage, VkImageLayout   srcImageLayout, VkImage   dstImage, VkImageLayout   dstImageLayout, uint32_t   regionCount, const  VkImageCopy *  pRegions);
+vkfw_vkCmdCopyImage (VkCommandBuffer   commandBuffer, VkImage   srcImage, VkImageLayout   srcImageLayout, VkImage   dstImage, VkImageLayout   dstImageLayout, uint32_t   regionCount, const  VkImageCopy *  pRegions);
+#define vkCmdCopyImage vkfw_vkCmdCopyImage
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdCopyImageToBuffer (VkCommandBuffer   commandBuffer, VkImage   srcImage, VkImageLayout   srcImageLayout, VkBuffer   dstBuffer, uint32_t   regionCount, const  VkBufferImageCopy *  pRegions);
+vkfw_vkCmdCopyImageToBuffer (VkCommandBuffer   commandBuffer, VkImage   srcImage, VkImageLayout   srcImageLayout, VkBuffer   dstBuffer, uint32_t   regionCount, const  VkBufferImageCopy *  pRegions);
+#define vkCmdCopyImageToBuffer vkfw_vkCmdCopyImageToBuffer
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdCopyQueryPoolResults (VkCommandBuffer   commandBuffer, VkQueryPool   queryPool, uint32_t   firstQuery, uint32_t   queryCount, VkBuffer   dstBuffer, VkDeviceSize   dstOffset, VkDeviceSize   stride, VkQueryResultFlags   flags);
+vkfw_vkCmdCopyQueryPoolResults (VkCommandBuffer   commandBuffer, VkQueryPool   queryPool, uint32_t   firstQuery, uint32_t   queryCount, VkBuffer   dstBuffer, VkDeviceSize   dstOffset, VkDeviceSize   stride, VkQueryResultFlags   flags);
+#define vkCmdCopyQueryPoolResults vkfw_vkCmdCopyQueryPoolResults
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDispatch (VkCommandBuffer   commandBuffer, uint32_t   groupCountX, uint32_t   groupCountY, uint32_t   groupCountZ);
+vkfw_vkCmdDispatch (VkCommandBuffer   commandBuffer, uint32_t   groupCountX, uint32_t   groupCountY, uint32_t   groupCountZ);
+#define vkCmdDispatch vkfw_vkCmdDispatch
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDispatchIndirect (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset);
+vkfw_vkCmdDispatchIndirect (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset);
+#define vkCmdDispatchIndirect vkfw_vkCmdDispatchIndirect
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDraw (VkCommandBuffer   commandBuffer, uint32_t   vertexCount, uint32_t   instanceCount, uint32_t   firstVertex, uint32_t   firstInstance);
+vkfw_vkCmdDraw (VkCommandBuffer   commandBuffer, uint32_t   vertexCount, uint32_t   instanceCount, uint32_t   firstVertex, uint32_t   firstInstance);
+#define vkCmdDraw vkfw_vkCmdDraw
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDrawIndexed (VkCommandBuffer   commandBuffer, uint32_t   indexCount, uint32_t   instanceCount, uint32_t   firstIndex, int32_t   vertexOffset, uint32_t   firstInstance);
+vkfw_vkCmdDrawIndexed (VkCommandBuffer   commandBuffer, uint32_t   indexCount, uint32_t   instanceCount, uint32_t   firstIndex, int32_t   vertexOffset, uint32_t   firstInstance);
+#define vkCmdDrawIndexed vkfw_vkCmdDrawIndexed
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDrawIndexedIndirect (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, uint32_t   drawCount, uint32_t   stride);
+vkfw_vkCmdDrawIndexedIndirect (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, uint32_t   drawCount, uint32_t   stride);
+#define vkCmdDrawIndexedIndirect vkfw_vkCmdDrawIndexedIndirect
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDrawIndirect (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, uint32_t   drawCount, uint32_t   stride);
+vkfw_vkCmdDrawIndirect (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, uint32_t   drawCount, uint32_t   stride);
+#define vkCmdDrawIndirect vkfw_vkCmdDrawIndirect
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdEndQuery (VkCommandBuffer   commandBuffer, VkQueryPool   queryPool, uint32_t   query);
+vkfw_vkCmdEndQuery (VkCommandBuffer   commandBuffer, VkQueryPool   queryPool, uint32_t   query);
+#define vkCmdEndQuery vkfw_vkCmdEndQuery
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdEndRenderPass (VkCommandBuffer   commandBuffer);
+vkfw_vkCmdEndRenderPass (VkCommandBuffer   commandBuffer);
+#define vkCmdEndRenderPass vkfw_vkCmdEndRenderPass
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdExecuteCommands (VkCommandBuffer   commandBuffer, uint32_t   commandBufferCount, const  VkCommandBuffer *  pCommandBuffers);
+vkfw_vkCmdExecuteCommands (VkCommandBuffer   commandBuffer, uint32_t   commandBufferCount, const  VkCommandBuffer *  pCommandBuffers);
+#define vkCmdExecuteCommands vkfw_vkCmdExecuteCommands
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdFillBuffer (VkCommandBuffer   commandBuffer, VkBuffer   dstBuffer, VkDeviceSize   dstOffset, VkDeviceSize   size, uint32_t   data);
+vkfw_vkCmdFillBuffer (VkCommandBuffer   commandBuffer, VkBuffer   dstBuffer, VkDeviceSize   dstOffset, VkDeviceSize   size, uint32_t   data);
+#define vkCmdFillBuffer vkfw_vkCmdFillBuffer
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdNextSubpass (VkCommandBuffer   commandBuffer, VkSubpassContents   contents);
+vkfw_vkCmdNextSubpass (VkCommandBuffer   commandBuffer, VkSubpassContents   contents);
+#define vkCmdNextSubpass vkfw_vkCmdNextSubpass
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdPipelineBarrier (VkCommandBuffer   commandBuffer, VkPipelineStageFlags   srcStageMask, VkPipelineStageFlags   dstStageMask, VkDependencyFlags   dependencyFlags, uint32_t   memoryBarrierCount, const  VkMemoryBarrier *  pMemoryBarriers, uint32_t   bufferMemoryBarrierCount, const  VkBufferMemoryBarrier *  pBufferMemoryBarriers, uint32_t   imageMemoryBarrierCount, const  VkImageMemoryBarrier *  pImageMemoryBarriers);
+vkfw_vkCmdPipelineBarrier (VkCommandBuffer   commandBuffer, VkPipelineStageFlags   srcStageMask, VkPipelineStageFlags   dstStageMask, VkDependencyFlags   dependencyFlags, uint32_t   memoryBarrierCount, const  VkMemoryBarrier *  pMemoryBarriers, uint32_t   bufferMemoryBarrierCount, const  VkBufferMemoryBarrier *  pBufferMemoryBarriers, uint32_t   imageMemoryBarrierCount, const  VkImageMemoryBarrier *  pImageMemoryBarriers);
+#define vkCmdPipelineBarrier vkfw_vkCmdPipelineBarrier
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdPushConstants (VkCommandBuffer   commandBuffer, VkPipelineLayout   layout, VkShaderStageFlags   stageFlags, uint32_t   offset, uint32_t   size, const  void *  pValues);
+vkfw_vkCmdPushConstants (VkCommandBuffer   commandBuffer, VkPipelineLayout   layout, VkShaderStageFlags   stageFlags, uint32_t   offset, uint32_t   size, const  void *  pValues);
+#define vkCmdPushConstants vkfw_vkCmdPushConstants
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdResetEvent (VkCommandBuffer   commandBuffer, VkEvent   event, VkPipelineStageFlags   stageMask);
+vkfw_vkCmdResetEvent (VkCommandBuffer   commandBuffer, VkEvent   event, VkPipelineStageFlags   stageMask);
+#define vkCmdResetEvent vkfw_vkCmdResetEvent
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdResetQueryPool (VkCommandBuffer   commandBuffer, VkQueryPool   queryPool, uint32_t   firstQuery, uint32_t   queryCount);
+vkfw_vkCmdResetQueryPool (VkCommandBuffer   commandBuffer, VkQueryPool   queryPool, uint32_t   firstQuery, uint32_t   queryCount);
+#define vkCmdResetQueryPool vkfw_vkCmdResetQueryPool
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdResolveImage (VkCommandBuffer   commandBuffer, VkImage   srcImage, VkImageLayout   srcImageLayout, VkImage   dstImage, VkImageLayout   dstImageLayout, uint32_t   regionCount, const  VkImageResolve *  pRegions);
+vkfw_vkCmdResolveImage (VkCommandBuffer   commandBuffer, VkImage   srcImage, VkImageLayout   srcImageLayout, VkImage   dstImage, VkImageLayout   dstImageLayout, uint32_t   regionCount, const  VkImageResolve *  pRegions);
+#define vkCmdResolveImage vkfw_vkCmdResolveImage
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetBlendConstants (VkCommandBuffer   commandBuffer, const  float   blendConstants [4]);
+vkfw_vkCmdSetBlendConstants (VkCommandBuffer   commandBuffer, const  float   blendConstants [4]);
+#define vkCmdSetBlendConstants vkfw_vkCmdSetBlendConstants
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetDepthBias (VkCommandBuffer   commandBuffer, float   depthBiasConstantFactor, float   depthBiasClamp, float   depthBiasSlopeFactor);
+vkfw_vkCmdSetDepthBias (VkCommandBuffer   commandBuffer, float   depthBiasConstantFactor, float   depthBiasClamp, float   depthBiasSlopeFactor);
+#define vkCmdSetDepthBias vkfw_vkCmdSetDepthBias
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetDepthBounds (VkCommandBuffer   commandBuffer, float   minDepthBounds, float   maxDepthBounds);
+vkfw_vkCmdSetDepthBounds (VkCommandBuffer   commandBuffer, float   minDepthBounds, float   maxDepthBounds);
+#define vkCmdSetDepthBounds vkfw_vkCmdSetDepthBounds
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetEvent (VkCommandBuffer   commandBuffer, VkEvent   event, VkPipelineStageFlags   stageMask);
+vkfw_vkCmdSetEvent (VkCommandBuffer   commandBuffer, VkEvent   event, VkPipelineStageFlags   stageMask);
+#define vkCmdSetEvent vkfw_vkCmdSetEvent
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetLineWidth (VkCommandBuffer   commandBuffer, float   lineWidth);
+vkfw_vkCmdSetLineWidth (VkCommandBuffer   commandBuffer, float   lineWidth);
+#define vkCmdSetLineWidth vkfw_vkCmdSetLineWidth
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetScissor (VkCommandBuffer   commandBuffer, uint32_t   firstScissor, uint32_t   scissorCount, const  VkRect2D *  pScissors);
+vkfw_vkCmdSetScissor (VkCommandBuffer   commandBuffer, uint32_t   firstScissor, uint32_t   scissorCount, const  VkRect2D *  pScissors);
+#define vkCmdSetScissor vkfw_vkCmdSetScissor
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetStencilCompareMask (VkCommandBuffer   commandBuffer, VkStencilFaceFlags   faceMask, uint32_t   compareMask);
+vkfw_vkCmdSetStencilCompareMask (VkCommandBuffer   commandBuffer, VkStencilFaceFlags   faceMask, uint32_t   compareMask);
+#define vkCmdSetStencilCompareMask vkfw_vkCmdSetStencilCompareMask
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetStencilReference (VkCommandBuffer   commandBuffer, VkStencilFaceFlags   faceMask, uint32_t   reference);
+vkfw_vkCmdSetStencilReference (VkCommandBuffer   commandBuffer, VkStencilFaceFlags   faceMask, uint32_t   reference);
+#define vkCmdSetStencilReference vkfw_vkCmdSetStencilReference
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetStencilWriteMask (VkCommandBuffer   commandBuffer, VkStencilFaceFlags   faceMask, uint32_t   writeMask);
+vkfw_vkCmdSetStencilWriteMask (VkCommandBuffer   commandBuffer, VkStencilFaceFlags   faceMask, uint32_t   writeMask);
+#define vkCmdSetStencilWriteMask vkfw_vkCmdSetStencilWriteMask
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetViewport (VkCommandBuffer   commandBuffer, uint32_t   firstViewport, uint32_t   viewportCount, const  VkViewport *  pViewports);
+vkfw_vkCmdSetViewport (VkCommandBuffer   commandBuffer, uint32_t   firstViewport, uint32_t   viewportCount, const  VkViewport *  pViewports);
+#define vkCmdSetViewport vkfw_vkCmdSetViewport
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdUpdateBuffer (VkCommandBuffer   commandBuffer, VkBuffer   dstBuffer, VkDeviceSize   dstOffset, VkDeviceSize   dataSize, const  void *  pData);
+vkfw_vkCmdUpdateBuffer (VkCommandBuffer   commandBuffer, VkBuffer   dstBuffer, VkDeviceSize   dstOffset, VkDeviceSize   dataSize, const  void *  pData);
+#define vkCmdUpdateBuffer vkfw_vkCmdUpdateBuffer
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdWaitEvents (VkCommandBuffer   commandBuffer, uint32_t   eventCount, const  VkEvent *  pEvents, VkPipelineStageFlags   srcStageMask, VkPipelineStageFlags   dstStageMask, uint32_t   memoryBarrierCount, const  VkMemoryBarrier *  pMemoryBarriers, uint32_t   bufferMemoryBarrierCount, const  VkBufferMemoryBarrier *  pBufferMemoryBarriers, uint32_t   imageMemoryBarrierCount, const  VkImageMemoryBarrier *  pImageMemoryBarriers);
+vkfw_vkCmdWaitEvents (VkCommandBuffer   commandBuffer, uint32_t   eventCount, const  VkEvent *  pEvents, VkPipelineStageFlags   srcStageMask, VkPipelineStageFlags   dstStageMask, uint32_t   memoryBarrierCount, const  VkMemoryBarrier *  pMemoryBarriers, uint32_t   bufferMemoryBarrierCount, const  VkBufferMemoryBarrier *  pBufferMemoryBarriers, uint32_t   imageMemoryBarrierCount, const  VkImageMemoryBarrier *  pImageMemoryBarriers);
+#define vkCmdWaitEvents vkfw_vkCmdWaitEvents
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdWriteTimestamp (VkCommandBuffer   commandBuffer, VkPipelineStageFlagBits   pipelineStage, VkQueryPool   queryPool, uint32_t   query);
+vkfw_vkCmdWriteTimestamp (VkCommandBuffer   commandBuffer, VkPipelineStageFlagBits   pipelineStage, VkQueryPool   queryPool, uint32_t   query);
+#define vkCmdWriteTimestamp vkfw_vkCmdWriteTimestamp
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateBuffer (VkDevice   device, const  VkBufferCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkBuffer *  pBuffer);
+vkfw_vkCreateBuffer (VkDevice   device, const  VkBufferCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkBuffer *  pBuffer);
+#define vkCreateBuffer vkfw_vkCreateBuffer
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateBufferView (VkDevice   device, const  VkBufferViewCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkBufferView *  pView);
+vkfw_vkCreateBufferView (VkDevice   device, const  VkBufferViewCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkBufferView *  pView);
+#define vkCreateBufferView vkfw_vkCreateBufferView
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateCommandPool (VkDevice   device, const  VkCommandPoolCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkCommandPool *  pCommandPool);
+vkfw_vkCreateCommandPool (VkDevice   device, const  VkCommandPoolCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkCommandPool *  pCommandPool);
+#define vkCreateCommandPool vkfw_vkCreateCommandPool
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateComputePipelines (VkDevice   device, VkPipelineCache   pipelineCache, uint32_t   createInfoCount, const  VkComputePipelineCreateInfo *  pCreateInfos, const  VkAllocationCallbacks *  pAllocator, VkPipeline *  pPipelines);
+vkfw_vkCreateComputePipelines (VkDevice   device, VkPipelineCache   pipelineCache, uint32_t   createInfoCount, const  VkComputePipelineCreateInfo *  pCreateInfos, const  VkAllocationCallbacks *  pAllocator, VkPipeline *  pPipelines);
+#define vkCreateComputePipelines vkfw_vkCreateComputePipelines
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateDescriptorPool (VkDevice   device, const  VkDescriptorPoolCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkDescriptorPool *  pDescriptorPool);
+vkfw_vkCreateDescriptorPool (VkDevice   device, const  VkDescriptorPoolCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkDescriptorPool *  pDescriptorPool);
+#define vkCreateDescriptorPool vkfw_vkCreateDescriptorPool
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateDescriptorSetLayout (VkDevice   device, const  VkDescriptorSetLayoutCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkDescriptorSetLayout *  pSetLayout);
+vkfw_vkCreateDescriptorSetLayout (VkDevice   device, const  VkDescriptorSetLayoutCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkDescriptorSetLayout *  pSetLayout);
+#define vkCreateDescriptorSetLayout vkfw_vkCreateDescriptorSetLayout
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateDevice (VkPhysicalDevice   physicalDevice, const  VkDeviceCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkDevice *  pDevice);
+vkfw_vkCreateDevice (VkPhysicalDevice   physicalDevice, const  VkDeviceCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkDevice *  pDevice);
+#define vkCreateDevice vkfw_vkCreateDevice
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateEvent (VkDevice   device, const  VkEventCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkEvent *  pEvent);
+vkfw_vkCreateEvent (VkDevice   device, const  VkEventCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkEvent *  pEvent);
+#define vkCreateEvent vkfw_vkCreateEvent
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateFence (VkDevice   device, const  VkFenceCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkFence *  pFence);
+vkfw_vkCreateFence (VkDevice   device, const  VkFenceCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkFence *  pFence);
+#define vkCreateFence vkfw_vkCreateFence
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateFramebuffer (VkDevice   device, const  VkFramebufferCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkFramebuffer *  pFramebuffer);
+vkfw_vkCreateFramebuffer (VkDevice   device, const  VkFramebufferCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkFramebuffer *  pFramebuffer);
+#define vkCreateFramebuffer vkfw_vkCreateFramebuffer
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateGraphicsPipelines (VkDevice   device, VkPipelineCache   pipelineCache, uint32_t   createInfoCount, const  VkGraphicsPipelineCreateInfo *  pCreateInfos, const  VkAllocationCallbacks *  pAllocator, VkPipeline *  pPipelines);
+vkfw_vkCreateGraphicsPipelines (VkDevice   device, VkPipelineCache   pipelineCache, uint32_t   createInfoCount, const  VkGraphicsPipelineCreateInfo *  pCreateInfos, const  VkAllocationCallbacks *  pAllocator, VkPipeline *  pPipelines);
+#define vkCreateGraphicsPipelines vkfw_vkCreateGraphicsPipelines
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateImage (VkDevice   device, const  VkImageCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkImage *  pImage);
+vkfw_vkCreateImage (VkDevice   device, const  VkImageCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkImage *  pImage);
+#define vkCreateImage vkfw_vkCreateImage
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateImageView (VkDevice   device, const  VkImageViewCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkImageView *  pView);
+vkfw_vkCreateImageView (VkDevice   device, const  VkImageViewCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkImageView *  pView);
+#define vkCreateImageView vkfw_vkCreateImageView
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateInstance (const  VkInstanceCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkInstance *  pInstance);
+vkfw_vkCreateInstance (const  VkInstanceCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkInstance *  pInstance);
+#define vkCreateInstance vkfw_vkCreateInstance
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreatePipelineCache (VkDevice   device, const  VkPipelineCacheCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkPipelineCache *  pPipelineCache);
+vkfw_vkCreatePipelineCache (VkDevice   device, const  VkPipelineCacheCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkPipelineCache *  pPipelineCache);
+#define vkCreatePipelineCache vkfw_vkCreatePipelineCache
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreatePipelineLayout (VkDevice   device, const  VkPipelineLayoutCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkPipelineLayout *  pPipelineLayout);
+vkfw_vkCreatePipelineLayout (VkDevice   device, const  VkPipelineLayoutCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkPipelineLayout *  pPipelineLayout);
+#define vkCreatePipelineLayout vkfw_vkCreatePipelineLayout
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateQueryPool (VkDevice   device, const  VkQueryPoolCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkQueryPool *  pQueryPool);
+vkfw_vkCreateQueryPool (VkDevice   device, const  VkQueryPoolCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkQueryPool *  pQueryPool);
+#define vkCreateQueryPool vkfw_vkCreateQueryPool
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateRenderPass (VkDevice   device, const  VkRenderPassCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkRenderPass *  pRenderPass);
+vkfw_vkCreateRenderPass (VkDevice   device, const  VkRenderPassCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkRenderPass *  pRenderPass);
+#define vkCreateRenderPass vkfw_vkCreateRenderPass
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateSampler (VkDevice   device, const  VkSamplerCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSampler *  pSampler);
+vkfw_vkCreateSampler (VkDevice   device, const  VkSamplerCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSampler *  pSampler);
+#define vkCreateSampler vkfw_vkCreateSampler
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateSemaphore (VkDevice   device, const  VkSemaphoreCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSemaphore *  pSemaphore);
+vkfw_vkCreateSemaphore (VkDevice   device, const  VkSemaphoreCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSemaphore *  pSemaphore);
+#define vkCreateSemaphore vkfw_vkCreateSemaphore
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateShaderModule (VkDevice   device, const  VkShaderModuleCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkShaderModule *  pShaderModule);
+vkfw_vkCreateShaderModule (VkDevice   device, const  VkShaderModuleCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkShaderModule *  pShaderModule);
+#define vkCreateShaderModule vkfw_vkCreateShaderModule
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyBuffer (VkDevice   device, VkBuffer   buffer, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyBuffer (VkDevice   device, VkBuffer   buffer, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyBuffer vkfw_vkDestroyBuffer
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyBufferView (VkDevice   device, VkBufferView   bufferView, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyBufferView (VkDevice   device, VkBufferView   bufferView, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyBufferView vkfw_vkDestroyBufferView
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyCommandPool (VkDevice   device, VkCommandPool   commandPool, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyCommandPool (VkDevice   device, VkCommandPool   commandPool, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyCommandPool vkfw_vkDestroyCommandPool
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyDescriptorPool (VkDevice   device, VkDescriptorPool   descriptorPool, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyDescriptorPool (VkDevice   device, VkDescriptorPool   descriptorPool, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyDescriptorPool vkfw_vkDestroyDescriptorPool
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyDescriptorSetLayout (VkDevice   device, VkDescriptorSetLayout   descriptorSetLayout, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyDescriptorSetLayout (VkDevice   device, VkDescriptorSetLayout   descriptorSetLayout, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyDescriptorSetLayout vkfw_vkDestroyDescriptorSetLayout
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyDevice (VkDevice   device, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyDevice (VkDevice   device, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyDevice vkfw_vkDestroyDevice
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyEvent (VkDevice   device, VkEvent   event, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyEvent (VkDevice   device, VkEvent   event, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyEvent vkfw_vkDestroyEvent
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyFence (VkDevice   device, VkFence   fence, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyFence (VkDevice   device, VkFence   fence, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyFence vkfw_vkDestroyFence
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyFramebuffer (VkDevice   device, VkFramebuffer   framebuffer, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyFramebuffer (VkDevice   device, VkFramebuffer   framebuffer, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyFramebuffer vkfw_vkDestroyFramebuffer
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyImage (VkDevice   device, VkImage   image, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyImage (VkDevice   device, VkImage   image, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyImage vkfw_vkDestroyImage
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyImageView (VkDevice   device, VkImageView   imageView, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyImageView (VkDevice   device, VkImageView   imageView, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyImageView vkfw_vkDestroyImageView
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyInstance (VkInstance   instance, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyInstance (VkInstance   instance, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyInstance vkfw_vkDestroyInstance
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyPipeline (VkDevice   device, VkPipeline   pipeline, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyPipeline (VkDevice   device, VkPipeline   pipeline, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyPipeline vkfw_vkDestroyPipeline
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyPipelineCache (VkDevice   device, VkPipelineCache   pipelineCache, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyPipelineCache (VkDevice   device, VkPipelineCache   pipelineCache, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyPipelineCache vkfw_vkDestroyPipelineCache
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyPipelineLayout (VkDevice   device, VkPipelineLayout   pipelineLayout, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyPipelineLayout (VkDevice   device, VkPipelineLayout   pipelineLayout, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyPipelineLayout vkfw_vkDestroyPipelineLayout
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyQueryPool (VkDevice   device, VkQueryPool   queryPool, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyQueryPool (VkDevice   device, VkQueryPool   queryPool, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyQueryPool vkfw_vkDestroyQueryPool
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyRenderPass (VkDevice   device, VkRenderPass   renderPass, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyRenderPass (VkDevice   device, VkRenderPass   renderPass, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyRenderPass vkfw_vkDestroyRenderPass
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroySampler (VkDevice   device, VkSampler   sampler, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroySampler (VkDevice   device, VkSampler   sampler, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroySampler vkfw_vkDestroySampler
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroySemaphore (VkDevice   device, VkSemaphore   semaphore, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroySemaphore (VkDevice   device, VkSemaphore   semaphore, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroySemaphore vkfw_vkDestroySemaphore
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyShaderModule (VkDevice   device, VkShaderModule   shaderModule, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyShaderModule (VkDevice   device, VkShaderModule   shaderModule, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyShaderModule vkfw_vkDestroyShaderModule
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkDeviceWaitIdle (VkDevice   device);
+vkfw_vkDeviceWaitIdle (VkDevice   device);
+#define vkDeviceWaitIdle vkfw_vkDeviceWaitIdle
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkEndCommandBuffer (VkCommandBuffer   commandBuffer);
+vkfw_vkEndCommandBuffer (VkCommandBuffer   commandBuffer);
+#define vkEndCommandBuffer vkfw_vkEndCommandBuffer
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkEnumerateDeviceExtensionProperties (VkPhysicalDevice   physicalDevice, const  char *  pLayerName, uint32_t *  pPropertyCount, VkExtensionProperties *  pProperties);
+vkfw_vkEnumerateDeviceExtensionProperties (VkPhysicalDevice   physicalDevice, const  char *  pLayerName, uint32_t *  pPropertyCount, VkExtensionProperties *  pProperties);
+#define vkEnumerateDeviceExtensionProperties vkfw_vkEnumerateDeviceExtensionProperties
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkEnumerateDeviceLayerProperties (VkPhysicalDevice   physicalDevice, uint32_t *  pPropertyCount, VkLayerProperties *  pProperties);
+vkfw_vkEnumerateDeviceLayerProperties (VkPhysicalDevice   physicalDevice, uint32_t *  pPropertyCount, VkLayerProperties *  pProperties);
+#define vkEnumerateDeviceLayerProperties vkfw_vkEnumerateDeviceLayerProperties
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkEnumerateInstanceExtensionProperties (const  char *  pLayerName, uint32_t *  pPropertyCount, VkExtensionProperties *  pProperties);
+vkfw_vkEnumerateInstanceExtensionProperties (const  char *  pLayerName, uint32_t *  pPropertyCount, VkExtensionProperties *  pProperties);
+#define vkEnumerateInstanceExtensionProperties vkfw_vkEnumerateInstanceExtensionProperties
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkEnumerateInstanceLayerProperties (uint32_t *  pPropertyCount, VkLayerProperties *  pProperties);
+vkfw_vkEnumerateInstanceLayerProperties (uint32_t *  pPropertyCount, VkLayerProperties *  pProperties);
+#define vkEnumerateInstanceLayerProperties vkfw_vkEnumerateInstanceLayerProperties
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkEnumeratePhysicalDevices (VkInstance   instance, uint32_t *  pPhysicalDeviceCount, VkPhysicalDevice *  pPhysicalDevices);
+vkfw_vkEnumeratePhysicalDevices (VkInstance   instance, uint32_t *  pPhysicalDeviceCount, VkPhysicalDevice *  pPhysicalDevices);
+#define vkEnumeratePhysicalDevices vkfw_vkEnumeratePhysicalDevices
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkFlushMappedMemoryRanges (VkDevice   device, uint32_t   memoryRangeCount, const  VkMappedMemoryRange *  pMemoryRanges);
+vkfw_vkFlushMappedMemoryRanges (VkDevice   device, uint32_t   memoryRangeCount, const  VkMappedMemoryRange *  pMemoryRanges);
+#define vkFlushMappedMemoryRanges vkfw_vkFlushMappedMemoryRanges
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkFreeCommandBuffers (VkDevice   device, VkCommandPool   commandPool, uint32_t   commandBufferCount, const  VkCommandBuffer *  pCommandBuffers);
+vkfw_vkFreeCommandBuffers (VkDevice   device, VkCommandPool   commandPool, uint32_t   commandBufferCount, const  VkCommandBuffer *  pCommandBuffers);
+#define vkFreeCommandBuffers vkfw_vkFreeCommandBuffers
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkFreeDescriptorSets (VkDevice   device, VkDescriptorPool   descriptorPool, uint32_t   descriptorSetCount, const  VkDescriptorSet *  pDescriptorSets);
+vkfw_vkFreeDescriptorSets (VkDevice   device, VkDescriptorPool   descriptorPool, uint32_t   descriptorSetCount, const  VkDescriptorSet *  pDescriptorSets);
+#define vkFreeDescriptorSets vkfw_vkFreeDescriptorSets
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkFreeMemory (VkDevice   device, VkDeviceMemory   memory, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkFreeMemory (VkDevice   device, VkDeviceMemory   memory, const  VkAllocationCallbacks *  pAllocator);
+#define vkFreeMemory vkfw_vkFreeMemory
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetBufferMemoryRequirements (VkDevice   device, VkBuffer   buffer, VkMemoryRequirements *  pMemoryRequirements);
+vkfw_vkGetBufferMemoryRequirements (VkDevice   device, VkBuffer   buffer, VkMemoryRequirements *  pMemoryRequirements);
+#define vkGetBufferMemoryRequirements vkfw_vkGetBufferMemoryRequirements
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetDeviceMemoryCommitment (VkDevice   device, VkDeviceMemory   memory, VkDeviceSize *  pCommittedMemoryInBytes);
+vkfw_vkGetDeviceMemoryCommitment (VkDevice   device, VkDeviceMemory   memory, VkDeviceSize *  pCommittedMemoryInBytes);
+#define vkGetDeviceMemoryCommitment vkfw_vkGetDeviceMemoryCommitment
 VKFWAPI VKAPI_ATTR PFN_vkVoidFunction VKAPI_CALL
-vkGetDeviceProcAddr (VkDevice   device, const  char *  pName);
+vkfw_vkGetDeviceProcAddr (VkDevice   device, const  char *  pName);
+#define vkGetDeviceProcAddr vkfw_vkGetDeviceProcAddr
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetDeviceQueue (VkDevice   device, uint32_t   queueFamilyIndex, uint32_t   queueIndex, VkQueue *  pQueue);
+vkfw_vkGetDeviceQueue (VkDevice   device, uint32_t   queueFamilyIndex, uint32_t   queueIndex, VkQueue *  pQueue);
+#define vkGetDeviceQueue vkfw_vkGetDeviceQueue
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetEventStatus (VkDevice   device, VkEvent   event);
+vkfw_vkGetEventStatus (VkDevice   device, VkEvent   event);
+#define vkGetEventStatus vkfw_vkGetEventStatus
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetFenceStatus (VkDevice   device, VkFence   fence);
+vkfw_vkGetFenceStatus (VkDevice   device, VkFence   fence);
+#define vkGetFenceStatus vkfw_vkGetFenceStatus
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetImageMemoryRequirements (VkDevice   device, VkImage   image, VkMemoryRequirements *  pMemoryRequirements);
+vkfw_vkGetImageMemoryRequirements (VkDevice   device, VkImage   image, VkMemoryRequirements *  pMemoryRequirements);
+#define vkGetImageMemoryRequirements vkfw_vkGetImageMemoryRequirements
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetImageSparseMemoryRequirements (VkDevice   device, VkImage   image, uint32_t *  pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements *  pSparseMemoryRequirements);
+vkfw_vkGetImageSparseMemoryRequirements (VkDevice   device, VkImage   image, uint32_t *  pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements *  pSparseMemoryRequirements);
+#define vkGetImageSparseMemoryRequirements vkfw_vkGetImageSparseMemoryRequirements
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetImageSubresourceLayout (VkDevice   device, VkImage   image, const  VkImageSubresource *  pSubresource, VkSubresourceLayout *  pLayout);
+vkfw_vkGetImageSubresourceLayout (VkDevice   device, VkImage   image, const  VkImageSubresource *  pSubresource, VkSubresourceLayout *  pLayout);
+#define vkGetImageSubresourceLayout vkfw_vkGetImageSubresourceLayout
 VKFWAPI VKAPI_ATTR PFN_vkVoidFunction VKAPI_CALL
-vkGetInstanceProcAddr (VkInstance   instance, const  char *  pName);
+vkfw_vkGetInstanceProcAddr (VkInstance   instance, const  char *  pName);
+#define vkGetInstanceProcAddr vkfw_vkGetInstanceProcAddr
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPhysicalDeviceFeatures (VkPhysicalDevice   physicalDevice, VkPhysicalDeviceFeatures *  pFeatures);
+vkfw_vkGetPhysicalDeviceFeatures (VkPhysicalDevice   physicalDevice, VkPhysicalDeviceFeatures *  pFeatures);
+#define vkGetPhysicalDeviceFeatures vkfw_vkGetPhysicalDeviceFeatures
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPhysicalDeviceFormatProperties (VkPhysicalDevice   physicalDevice, VkFormat   format, VkFormatProperties *  pFormatProperties);
+vkfw_vkGetPhysicalDeviceFormatProperties (VkPhysicalDevice   physicalDevice, VkFormat   format, VkFormatProperties *  pFormatProperties);
+#define vkGetPhysicalDeviceFormatProperties vkfw_vkGetPhysicalDeviceFormatProperties
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceImageFormatProperties (VkPhysicalDevice   physicalDevice, VkFormat   format, VkImageType   type, VkImageTiling   tiling, VkImageUsageFlags   usage, VkImageCreateFlags   flags, VkImageFormatProperties *  pImageFormatProperties);
+vkfw_vkGetPhysicalDeviceImageFormatProperties (VkPhysicalDevice   physicalDevice, VkFormat   format, VkImageType   type, VkImageTiling   tiling, VkImageUsageFlags   usage, VkImageCreateFlags   flags, VkImageFormatProperties *  pImageFormatProperties);
+#define vkGetPhysicalDeviceImageFormatProperties vkfw_vkGetPhysicalDeviceImageFormatProperties
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPhysicalDeviceMemoryProperties (VkPhysicalDevice   physicalDevice, VkPhysicalDeviceMemoryProperties *  pMemoryProperties);
+vkfw_vkGetPhysicalDeviceMemoryProperties (VkPhysicalDevice   physicalDevice, VkPhysicalDeviceMemoryProperties *  pMemoryProperties);
+#define vkGetPhysicalDeviceMemoryProperties vkfw_vkGetPhysicalDeviceMemoryProperties
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPhysicalDeviceProperties (VkPhysicalDevice   physicalDevice, VkPhysicalDeviceProperties *  pProperties);
+vkfw_vkGetPhysicalDeviceProperties (VkPhysicalDevice   physicalDevice, VkPhysicalDeviceProperties *  pProperties);
+#define vkGetPhysicalDeviceProperties vkfw_vkGetPhysicalDeviceProperties
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPhysicalDeviceQueueFamilyProperties (VkPhysicalDevice   physicalDevice, uint32_t *  pQueueFamilyPropertyCount, VkQueueFamilyProperties *  pQueueFamilyProperties);
+vkfw_vkGetPhysicalDeviceQueueFamilyProperties (VkPhysicalDevice   physicalDevice, uint32_t *  pQueueFamilyPropertyCount, VkQueueFamilyProperties *  pQueueFamilyProperties);
+#define vkGetPhysicalDeviceQueueFamilyProperties vkfw_vkGetPhysicalDeviceQueueFamilyProperties
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPhysicalDeviceSparseImageFormatProperties (VkPhysicalDevice   physicalDevice, VkFormat   format, VkImageType   type, VkSampleCountFlagBits   samples, VkImageUsageFlags   usage, VkImageTiling   tiling, uint32_t *  pPropertyCount, VkSparseImageFormatProperties *  pProperties);
+vkfw_vkGetPhysicalDeviceSparseImageFormatProperties (VkPhysicalDevice   physicalDevice, VkFormat   format, VkImageType   type, VkSampleCountFlagBits   samples, VkImageUsageFlags   usage, VkImageTiling   tiling, uint32_t *  pPropertyCount, VkSparseImageFormatProperties *  pProperties);
+#define vkGetPhysicalDeviceSparseImageFormatProperties vkfw_vkGetPhysicalDeviceSparseImageFormatProperties
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPipelineCacheData (VkDevice   device, VkPipelineCache   pipelineCache, size_t *  pDataSize, void *  pData);
+vkfw_vkGetPipelineCacheData (VkDevice   device, VkPipelineCache   pipelineCache, size_t *  pDataSize, void *  pData);
+#define vkGetPipelineCacheData vkfw_vkGetPipelineCacheData
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetQueryPoolResults (VkDevice   device, VkQueryPool   queryPool, uint32_t   firstQuery, uint32_t   queryCount, size_t   dataSize, void *  pData, VkDeviceSize   stride, VkQueryResultFlags   flags);
+vkfw_vkGetQueryPoolResults (VkDevice   device, VkQueryPool   queryPool, uint32_t   firstQuery, uint32_t   queryCount, size_t   dataSize, void *  pData, VkDeviceSize   stride, VkQueryResultFlags   flags);
+#define vkGetQueryPoolResults vkfw_vkGetQueryPoolResults
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetRenderAreaGranularity (VkDevice   device, VkRenderPass   renderPass, VkExtent2D *  pGranularity);
+vkfw_vkGetRenderAreaGranularity (VkDevice   device, VkRenderPass   renderPass, VkExtent2D *  pGranularity);
+#define vkGetRenderAreaGranularity vkfw_vkGetRenderAreaGranularity
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkInvalidateMappedMemoryRanges (VkDevice   device, uint32_t   memoryRangeCount, const  VkMappedMemoryRange *  pMemoryRanges);
+vkfw_vkInvalidateMappedMemoryRanges (VkDevice   device, uint32_t   memoryRangeCount, const  VkMappedMemoryRange *  pMemoryRanges);
+#define vkInvalidateMappedMemoryRanges vkfw_vkInvalidateMappedMemoryRanges
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkMapMemory (VkDevice   device, VkDeviceMemory   memory, VkDeviceSize   offset, VkDeviceSize   size, VkMemoryMapFlags   flags, void **  ppData);
+vkfw_vkMapMemory (VkDevice   device, VkDeviceMemory   memory, VkDeviceSize   offset, VkDeviceSize   size, VkMemoryMapFlags   flags, void **  ppData);
+#define vkMapMemory vkfw_vkMapMemory
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkMergePipelineCaches (VkDevice   device, VkPipelineCache   dstCache, uint32_t   srcCacheCount, const  VkPipelineCache *  pSrcCaches);
+vkfw_vkMergePipelineCaches (VkDevice   device, VkPipelineCache   dstCache, uint32_t   srcCacheCount, const  VkPipelineCache *  pSrcCaches);
+#define vkMergePipelineCaches vkfw_vkMergePipelineCaches
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkQueueBindSparse (VkQueue   queue, uint32_t   bindInfoCount, const  VkBindSparseInfo *  pBindInfo, VkFence   fence);
+vkfw_vkQueueBindSparse (VkQueue   queue, uint32_t   bindInfoCount, const  VkBindSparseInfo *  pBindInfo, VkFence   fence);
+#define vkQueueBindSparse vkfw_vkQueueBindSparse
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkQueueSubmit (VkQueue   queue, uint32_t   submitCount, const  VkSubmitInfo *  pSubmits, VkFence   fence);
+vkfw_vkQueueSubmit (VkQueue   queue, uint32_t   submitCount, const  VkSubmitInfo *  pSubmits, VkFence   fence);
+#define vkQueueSubmit vkfw_vkQueueSubmit
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkQueueWaitIdle (VkQueue   queue);
+vkfw_vkQueueWaitIdle (VkQueue   queue);
+#define vkQueueWaitIdle vkfw_vkQueueWaitIdle
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkResetCommandBuffer (VkCommandBuffer   commandBuffer, VkCommandBufferResetFlags   flags);
+vkfw_vkResetCommandBuffer (VkCommandBuffer   commandBuffer, VkCommandBufferResetFlags   flags);
+#define vkResetCommandBuffer vkfw_vkResetCommandBuffer
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkResetCommandPool (VkDevice   device, VkCommandPool   commandPool, VkCommandPoolResetFlags   flags);
+vkfw_vkResetCommandPool (VkDevice   device, VkCommandPool   commandPool, VkCommandPoolResetFlags   flags);
+#define vkResetCommandPool vkfw_vkResetCommandPool
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkResetDescriptorPool (VkDevice   device, VkDescriptorPool   descriptorPool, VkDescriptorPoolResetFlags   flags);
+vkfw_vkResetDescriptorPool (VkDevice   device, VkDescriptorPool   descriptorPool, VkDescriptorPoolResetFlags   flags);
+#define vkResetDescriptorPool vkfw_vkResetDescriptorPool
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkResetEvent (VkDevice   device, VkEvent   event);
+vkfw_vkResetEvent (VkDevice   device, VkEvent   event);
+#define vkResetEvent vkfw_vkResetEvent
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkResetFences (VkDevice   device, uint32_t   fenceCount, const  VkFence *  pFences);
+vkfw_vkResetFences (VkDevice   device, uint32_t   fenceCount, const  VkFence *  pFences);
+#define vkResetFences vkfw_vkResetFences
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkSetEvent (VkDevice   device, VkEvent   event);
+vkfw_vkSetEvent (VkDevice   device, VkEvent   event);
+#define vkSetEvent vkfw_vkSetEvent
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkUnmapMemory (VkDevice   device, VkDeviceMemory   memory);
+vkfw_vkUnmapMemory (VkDevice   device, VkDeviceMemory   memory);
+#define vkUnmapMemory vkfw_vkUnmapMemory
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkUpdateDescriptorSets (VkDevice   device, uint32_t   descriptorWriteCount, const  VkWriteDescriptorSet *  pDescriptorWrites, uint32_t   descriptorCopyCount, const  VkCopyDescriptorSet *  pDescriptorCopies);
+vkfw_vkUpdateDescriptorSets (VkDevice   device, uint32_t   descriptorWriteCount, const  VkWriteDescriptorSet *  pDescriptorWrites, uint32_t   descriptorCopyCount, const  VkCopyDescriptorSet *  pDescriptorCopies);
+#define vkUpdateDescriptorSets vkfw_vkUpdateDescriptorSets
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkWaitForFences (VkDevice   device, uint32_t   fenceCount, const  VkFence *  pFences, VkBool32   waitAll, uint64_t   timeout);
+vkfw_vkWaitForFences (VkDevice   device, uint32_t   fenceCount, const  VkFence *  pFences, VkBool32   waitAll, uint64_t   timeout);
+#define vkWaitForFences vkfw_vkWaitForFences
 #endif /* defined(VK_VERSION_1_0) */
 #if defined(VK_VERSION_1_1)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkBindBufferMemory2 (VkDevice   device, uint32_t   bindInfoCount, const  VkBindBufferMemoryInfo *  pBindInfos);
+vkfw_vkBindBufferMemory2 (VkDevice   device, uint32_t   bindInfoCount, const  VkBindBufferMemoryInfo *  pBindInfos);
+#define vkBindBufferMemory2 vkfw_vkBindBufferMemory2
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkBindImageMemory2 (VkDevice   device, uint32_t   bindInfoCount, const  VkBindImageMemoryInfo *  pBindInfos);
+vkfw_vkBindImageMemory2 (VkDevice   device, uint32_t   bindInfoCount, const  VkBindImageMemoryInfo *  pBindInfos);
+#define vkBindImageMemory2 vkfw_vkBindImageMemory2
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDispatchBase (VkCommandBuffer   commandBuffer, uint32_t   baseGroupX, uint32_t   baseGroupY, uint32_t   baseGroupZ, uint32_t   groupCountX, uint32_t   groupCountY, uint32_t   groupCountZ);
+vkfw_vkCmdDispatchBase (VkCommandBuffer   commandBuffer, uint32_t   baseGroupX, uint32_t   baseGroupY, uint32_t   baseGroupZ, uint32_t   groupCountX, uint32_t   groupCountY, uint32_t   groupCountZ);
+#define vkCmdDispatchBase vkfw_vkCmdDispatchBase
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetDeviceMask (VkCommandBuffer   commandBuffer, uint32_t   deviceMask);
+vkfw_vkCmdSetDeviceMask (VkCommandBuffer   commandBuffer, uint32_t   deviceMask);
+#define vkCmdSetDeviceMask vkfw_vkCmdSetDeviceMask
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateDescriptorUpdateTemplate (VkDevice   device, const  VkDescriptorUpdateTemplateCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkDescriptorUpdateTemplate *  pDescriptorUpdateTemplate);
+vkfw_vkCreateDescriptorUpdateTemplate (VkDevice   device, const  VkDescriptorUpdateTemplateCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkDescriptorUpdateTemplate *  pDescriptorUpdateTemplate);
+#define vkCreateDescriptorUpdateTemplate vkfw_vkCreateDescriptorUpdateTemplate
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateSamplerYcbcrConversion (VkDevice   device, const  VkSamplerYcbcrConversionCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSamplerYcbcrConversion *  pYcbcrConversion);
+vkfw_vkCreateSamplerYcbcrConversion (VkDevice   device, const  VkSamplerYcbcrConversionCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSamplerYcbcrConversion *  pYcbcrConversion);
+#define vkCreateSamplerYcbcrConversion vkfw_vkCreateSamplerYcbcrConversion
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyDescriptorUpdateTemplate (VkDevice   device, VkDescriptorUpdateTemplate   descriptorUpdateTemplate, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyDescriptorUpdateTemplate (VkDevice   device, VkDescriptorUpdateTemplate   descriptorUpdateTemplate, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyDescriptorUpdateTemplate vkfw_vkDestroyDescriptorUpdateTemplate
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroySamplerYcbcrConversion (VkDevice   device, VkSamplerYcbcrConversion   ycbcrConversion, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroySamplerYcbcrConversion (VkDevice   device, VkSamplerYcbcrConversion   ycbcrConversion, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroySamplerYcbcrConversion vkfw_vkDestroySamplerYcbcrConversion
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkEnumerateInstanceVersion (uint32_t *  pApiVersion);
+vkfw_vkEnumerateInstanceVersion (uint32_t *  pApiVersion);
+#define vkEnumerateInstanceVersion vkfw_vkEnumerateInstanceVersion
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkEnumeratePhysicalDeviceGroups (VkInstance   instance, uint32_t *  pPhysicalDeviceGroupCount, VkPhysicalDeviceGroupProperties *  pPhysicalDeviceGroupProperties);
+vkfw_vkEnumeratePhysicalDeviceGroups (VkInstance   instance, uint32_t *  pPhysicalDeviceGroupCount, VkPhysicalDeviceGroupProperties *  pPhysicalDeviceGroupProperties);
+#define vkEnumeratePhysicalDeviceGroups vkfw_vkEnumeratePhysicalDeviceGroups
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetBufferMemoryRequirements2 (VkDevice   device, const  VkBufferMemoryRequirementsInfo2 *  pInfo, VkMemoryRequirements2 *  pMemoryRequirements);
+vkfw_vkGetBufferMemoryRequirements2 (VkDevice   device, const  VkBufferMemoryRequirementsInfo2 *  pInfo, VkMemoryRequirements2 *  pMemoryRequirements);
+#define vkGetBufferMemoryRequirements2 vkfw_vkGetBufferMemoryRequirements2
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetDescriptorSetLayoutSupport (VkDevice   device, const  VkDescriptorSetLayoutCreateInfo *  pCreateInfo, VkDescriptorSetLayoutSupport *  pSupport);
+vkfw_vkGetDescriptorSetLayoutSupport (VkDevice   device, const  VkDescriptorSetLayoutCreateInfo *  pCreateInfo, VkDescriptorSetLayoutSupport *  pSupport);
+#define vkGetDescriptorSetLayoutSupport vkfw_vkGetDescriptorSetLayoutSupport
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetDeviceGroupPeerMemoryFeatures (VkDevice   device, uint32_t   heapIndex, uint32_t   localDeviceIndex, uint32_t   remoteDeviceIndex, VkPeerMemoryFeatureFlags *  pPeerMemoryFeatures);
+vkfw_vkGetDeviceGroupPeerMemoryFeatures (VkDevice   device, uint32_t   heapIndex, uint32_t   localDeviceIndex, uint32_t   remoteDeviceIndex, VkPeerMemoryFeatureFlags *  pPeerMemoryFeatures);
+#define vkGetDeviceGroupPeerMemoryFeatures vkfw_vkGetDeviceGroupPeerMemoryFeatures
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetDeviceQueue2 (VkDevice   device, const  VkDeviceQueueInfo2 *  pQueueInfo, VkQueue *  pQueue);
+vkfw_vkGetDeviceQueue2 (VkDevice   device, const  VkDeviceQueueInfo2 *  pQueueInfo, VkQueue *  pQueue);
+#define vkGetDeviceQueue2 vkfw_vkGetDeviceQueue2
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetImageMemoryRequirements2 (VkDevice   device, const  VkImageMemoryRequirementsInfo2 *  pInfo, VkMemoryRequirements2 *  pMemoryRequirements);
+vkfw_vkGetImageMemoryRequirements2 (VkDevice   device, const  VkImageMemoryRequirementsInfo2 *  pInfo, VkMemoryRequirements2 *  pMemoryRequirements);
+#define vkGetImageMemoryRequirements2 vkfw_vkGetImageMemoryRequirements2
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetImageSparseMemoryRequirements2 (VkDevice   device, const  VkImageSparseMemoryRequirementsInfo2 *  pInfo, uint32_t *  pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements2 *  pSparseMemoryRequirements);
+vkfw_vkGetImageSparseMemoryRequirements2 (VkDevice   device, const  VkImageSparseMemoryRequirementsInfo2 *  pInfo, uint32_t *  pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements2 *  pSparseMemoryRequirements);
+#define vkGetImageSparseMemoryRequirements2 vkfw_vkGetImageSparseMemoryRequirements2
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPhysicalDeviceExternalBufferProperties (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceExternalBufferInfo *  pExternalBufferInfo, VkExternalBufferProperties *  pExternalBufferProperties);
+vkfw_vkGetPhysicalDeviceExternalBufferProperties (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceExternalBufferInfo *  pExternalBufferInfo, VkExternalBufferProperties *  pExternalBufferProperties);
+#define vkGetPhysicalDeviceExternalBufferProperties vkfw_vkGetPhysicalDeviceExternalBufferProperties
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPhysicalDeviceExternalFenceProperties (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceExternalFenceInfo *  pExternalFenceInfo, VkExternalFenceProperties *  pExternalFenceProperties);
+vkfw_vkGetPhysicalDeviceExternalFenceProperties (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceExternalFenceInfo *  pExternalFenceInfo, VkExternalFenceProperties *  pExternalFenceProperties);
+#define vkGetPhysicalDeviceExternalFenceProperties vkfw_vkGetPhysicalDeviceExternalFenceProperties
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPhysicalDeviceExternalSemaphoreProperties (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceExternalSemaphoreInfo *  pExternalSemaphoreInfo, VkExternalSemaphoreProperties *  pExternalSemaphoreProperties);
+vkfw_vkGetPhysicalDeviceExternalSemaphoreProperties (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceExternalSemaphoreInfo *  pExternalSemaphoreInfo, VkExternalSemaphoreProperties *  pExternalSemaphoreProperties);
+#define vkGetPhysicalDeviceExternalSemaphoreProperties vkfw_vkGetPhysicalDeviceExternalSemaphoreProperties
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPhysicalDeviceFeatures2 (VkPhysicalDevice   physicalDevice, VkPhysicalDeviceFeatures2 *  pFeatures);
+vkfw_vkGetPhysicalDeviceFeatures2 (VkPhysicalDevice   physicalDevice, VkPhysicalDeviceFeatures2 *  pFeatures);
+#define vkGetPhysicalDeviceFeatures2 vkfw_vkGetPhysicalDeviceFeatures2
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPhysicalDeviceFormatProperties2 (VkPhysicalDevice   physicalDevice, VkFormat   format, VkFormatProperties2 *  pFormatProperties);
+vkfw_vkGetPhysicalDeviceFormatProperties2 (VkPhysicalDevice   physicalDevice, VkFormat   format, VkFormatProperties2 *  pFormatProperties);
+#define vkGetPhysicalDeviceFormatProperties2 vkfw_vkGetPhysicalDeviceFormatProperties2
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceImageFormatProperties2 (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceImageFormatInfo2 *  pImageFormatInfo, VkImageFormatProperties2 *  pImageFormatProperties);
+vkfw_vkGetPhysicalDeviceImageFormatProperties2 (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceImageFormatInfo2 *  pImageFormatInfo, VkImageFormatProperties2 *  pImageFormatProperties);
+#define vkGetPhysicalDeviceImageFormatProperties2 vkfw_vkGetPhysicalDeviceImageFormatProperties2
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPhysicalDeviceMemoryProperties2 (VkPhysicalDevice   physicalDevice, VkPhysicalDeviceMemoryProperties2 *  pMemoryProperties);
+vkfw_vkGetPhysicalDeviceMemoryProperties2 (VkPhysicalDevice   physicalDevice, VkPhysicalDeviceMemoryProperties2 *  pMemoryProperties);
+#define vkGetPhysicalDeviceMemoryProperties2 vkfw_vkGetPhysicalDeviceMemoryProperties2
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPhysicalDeviceProperties2 (VkPhysicalDevice   physicalDevice, VkPhysicalDeviceProperties2 *  pProperties);
+vkfw_vkGetPhysicalDeviceProperties2 (VkPhysicalDevice   physicalDevice, VkPhysicalDeviceProperties2 *  pProperties);
+#define vkGetPhysicalDeviceProperties2 vkfw_vkGetPhysicalDeviceProperties2
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPhysicalDeviceQueueFamilyProperties2 (VkPhysicalDevice   physicalDevice, uint32_t *  pQueueFamilyPropertyCount, VkQueueFamilyProperties2 *  pQueueFamilyProperties);
+vkfw_vkGetPhysicalDeviceQueueFamilyProperties2 (VkPhysicalDevice   physicalDevice, uint32_t *  pQueueFamilyPropertyCount, VkQueueFamilyProperties2 *  pQueueFamilyProperties);
+#define vkGetPhysicalDeviceQueueFamilyProperties2 vkfw_vkGetPhysicalDeviceQueueFamilyProperties2
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPhysicalDeviceSparseImageFormatProperties2 (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceSparseImageFormatInfo2 *  pFormatInfo, uint32_t *  pPropertyCount, VkSparseImageFormatProperties2 *  pProperties);
+vkfw_vkGetPhysicalDeviceSparseImageFormatProperties2 (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceSparseImageFormatInfo2 *  pFormatInfo, uint32_t *  pPropertyCount, VkSparseImageFormatProperties2 *  pProperties);
+#define vkGetPhysicalDeviceSparseImageFormatProperties2 vkfw_vkGetPhysicalDeviceSparseImageFormatProperties2
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkTrimCommandPool (VkDevice   device, VkCommandPool   commandPool, VkCommandPoolTrimFlags   flags);
+vkfw_vkTrimCommandPool (VkDevice   device, VkCommandPool   commandPool, VkCommandPoolTrimFlags   flags);
+#define vkTrimCommandPool vkfw_vkTrimCommandPool
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkUpdateDescriptorSetWithTemplate (VkDevice   device, VkDescriptorSet   descriptorSet, VkDescriptorUpdateTemplate   descriptorUpdateTemplate, const  void *  pData);
+vkfw_vkUpdateDescriptorSetWithTemplate (VkDevice   device, VkDescriptorSet   descriptorSet, VkDescriptorUpdateTemplate   descriptorUpdateTemplate, const  void *  pData);
+#define vkUpdateDescriptorSetWithTemplate vkfw_vkUpdateDescriptorSetWithTemplate
 #endif /* defined(VK_VERSION_1_1) */
 #if defined(VK_VERSION_1_2)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBeginRenderPass2 (VkCommandBuffer   commandBuffer, const  VkRenderPassBeginInfo *       pRenderPassBegin, const  VkSubpassBeginInfo *       pSubpassBeginInfo);
+vkfw_vkCmdBeginRenderPass2 (VkCommandBuffer   commandBuffer, const  VkRenderPassBeginInfo *       pRenderPassBegin, const  VkSubpassBeginInfo *       pSubpassBeginInfo);
+#define vkCmdBeginRenderPass2 vkfw_vkCmdBeginRenderPass2
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDrawIndexedIndirectCount (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, VkBuffer   countBuffer, VkDeviceSize   countBufferOffset, uint32_t   maxDrawCount, uint32_t   stride);
+vkfw_vkCmdDrawIndexedIndirectCount (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, VkBuffer   countBuffer, VkDeviceSize   countBufferOffset, uint32_t   maxDrawCount, uint32_t   stride);
+#define vkCmdDrawIndexedIndirectCount vkfw_vkCmdDrawIndexedIndirectCount
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDrawIndirectCount (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, VkBuffer   countBuffer, VkDeviceSize   countBufferOffset, uint32_t   maxDrawCount, uint32_t   stride);
+vkfw_vkCmdDrawIndirectCount (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, VkBuffer   countBuffer, VkDeviceSize   countBufferOffset, uint32_t   maxDrawCount, uint32_t   stride);
+#define vkCmdDrawIndirectCount vkfw_vkCmdDrawIndirectCount
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdEndRenderPass2 (VkCommandBuffer   commandBuffer, const  VkSubpassEndInfo *         pSubpassEndInfo);
+vkfw_vkCmdEndRenderPass2 (VkCommandBuffer   commandBuffer, const  VkSubpassEndInfo *         pSubpassEndInfo);
+#define vkCmdEndRenderPass2 vkfw_vkCmdEndRenderPass2
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdNextSubpass2 (VkCommandBuffer   commandBuffer, const  VkSubpassBeginInfo *       pSubpassBeginInfo, const  VkSubpassEndInfo *         pSubpassEndInfo);
+vkfw_vkCmdNextSubpass2 (VkCommandBuffer   commandBuffer, const  VkSubpassBeginInfo *       pSubpassBeginInfo, const  VkSubpassEndInfo *         pSubpassEndInfo);
+#define vkCmdNextSubpass2 vkfw_vkCmdNextSubpass2
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateRenderPass2 (VkDevice   device, const  VkRenderPassCreateInfo2 *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkRenderPass *  pRenderPass);
+vkfw_vkCreateRenderPass2 (VkDevice   device, const  VkRenderPassCreateInfo2 *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkRenderPass *  pRenderPass);
+#define vkCreateRenderPass2 vkfw_vkCreateRenderPass2
 VKFWAPI VKAPI_ATTR VkDeviceAddress VKAPI_CALL
-vkGetBufferDeviceAddress (VkDevice   device, const  VkBufferDeviceAddressInfo *  pInfo);
+vkfw_vkGetBufferDeviceAddress (VkDevice   device, const  VkBufferDeviceAddressInfo *  pInfo);
+#define vkGetBufferDeviceAddress vkfw_vkGetBufferDeviceAddress
 VKFWAPI VKAPI_ATTR uint64_t VKAPI_CALL
-vkGetBufferOpaqueCaptureAddress (VkDevice   device, const  VkBufferDeviceAddressInfo *  pInfo);
+vkfw_vkGetBufferOpaqueCaptureAddress (VkDevice   device, const  VkBufferDeviceAddressInfo *  pInfo);
+#define vkGetBufferOpaqueCaptureAddress vkfw_vkGetBufferOpaqueCaptureAddress
 VKFWAPI VKAPI_ATTR uint64_t VKAPI_CALL
-vkGetDeviceMemoryOpaqueCaptureAddress (VkDevice   device, const  VkDeviceMemoryOpaqueCaptureAddressInfo *  pInfo);
+vkfw_vkGetDeviceMemoryOpaqueCaptureAddress (VkDevice   device, const  VkDeviceMemoryOpaqueCaptureAddressInfo *  pInfo);
+#define vkGetDeviceMemoryOpaqueCaptureAddress vkfw_vkGetDeviceMemoryOpaqueCaptureAddress
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetSemaphoreCounterValue (VkDevice   device, VkSemaphore   semaphore, uint64_t *  pValue);
+vkfw_vkGetSemaphoreCounterValue (VkDevice   device, VkSemaphore   semaphore, uint64_t *  pValue);
+#define vkGetSemaphoreCounterValue vkfw_vkGetSemaphoreCounterValue
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkResetQueryPool (VkDevice   device, VkQueryPool   queryPool, uint32_t   firstQuery, uint32_t   queryCount);
+vkfw_vkResetQueryPool (VkDevice   device, VkQueryPool   queryPool, uint32_t   firstQuery, uint32_t   queryCount);
+#define vkResetQueryPool vkfw_vkResetQueryPool
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkSignalSemaphore (VkDevice   device, const  VkSemaphoreSignalInfo *  pSignalInfo);
+vkfw_vkSignalSemaphore (VkDevice   device, const  VkSemaphoreSignalInfo *  pSignalInfo);
+#define vkSignalSemaphore vkfw_vkSignalSemaphore
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkWaitSemaphores (VkDevice   device, const  VkSemaphoreWaitInfo *  pWaitInfo, uint64_t   timeout);
+vkfw_vkWaitSemaphores (VkDevice   device, const  VkSemaphoreWaitInfo *  pWaitInfo, uint64_t   timeout);
+#define vkWaitSemaphores vkfw_vkWaitSemaphores
 #endif /* defined(VK_VERSION_1_2) */
 #if defined(VK_VERSION_1_3)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBeginRendering (VkCommandBuffer                     commandBuffer, const  VkRenderingInfo *                               pRenderingInfo);
+vkfw_vkCmdBeginRendering (VkCommandBuffer                     commandBuffer, const  VkRenderingInfo *                               pRenderingInfo);
+#define vkCmdBeginRendering vkfw_vkCmdBeginRendering
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBindVertexBuffers2 (VkCommandBuffer   commandBuffer, uint32_t   firstBinding, uint32_t   bindingCount, const  VkBuffer *  pBuffers, const  VkDeviceSize *  pOffsets, const  VkDeviceSize *  pSizes, const  VkDeviceSize *  pStrides);
+vkfw_vkCmdBindVertexBuffers2 (VkCommandBuffer   commandBuffer, uint32_t   firstBinding, uint32_t   bindingCount, const  VkBuffer *  pBuffers, const  VkDeviceSize *  pOffsets, const  VkDeviceSize *  pSizes, const  VkDeviceSize *  pStrides);
+#define vkCmdBindVertexBuffers2 vkfw_vkCmdBindVertexBuffers2
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBlitImage2 (VkCommandBuffer   commandBuffer, const  VkBlitImageInfo2 *  pBlitImageInfo);
+vkfw_vkCmdBlitImage2 (VkCommandBuffer   commandBuffer, const  VkBlitImageInfo2 *  pBlitImageInfo);
+#define vkCmdBlitImage2 vkfw_vkCmdBlitImage2
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdCopyBuffer2 (VkCommandBuffer   commandBuffer, const  VkCopyBufferInfo2 *  pCopyBufferInfo);
+vkfw_vkCmdCopyBuffer2 (VkCommandBuffer   commandBuffer, const  VkCopyBufferInfo2 *  pCopyBufferInfo);
+#define vkCmdCopyBuffer2 vkfw_vkCmdCopyBuffer2
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdCopyBufferToImage2 (VkCommandBuffer   commandBuffer, const  VkCopyBufferToImageInfo2 *  pCopyBufferToImageInfo);
+vkfw_vkCmdCopyBufferToImage2 (VkCommandBuffer   commandBuffer, const  VkCopyBufferToImageInfo2 *  pCopyBufferToImageInfo);
+#define vkCmdCopyBufferToImage2 vkfw_vkCmdCopyBufferToImage2
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdCopyImage2 (VkCommandBuffer   commandBuffer, const  VkCopyImageInfo2 *  pCopyImageInfo);
+vkfw_vkCmdCopyImage2 (VkCommandBuffer   commandBuffer, const  VkCopyImageInfo2 *  pCopyImageInfo);
+#define vkCmdCopyImage2 vkfw_vkCmdCopyImage2
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdCopyImageToBuffer2 (VkCommandBuffer   commandBuffer, const  VkCopyImageToBufferInfo2 *  pCopyImageToBufferInfo);
+vkfw_vkCmdCopyImageToBuffer2 (VkCommandBuffer   commandBuffer, const  VkCopyImageToBufferInfo2 *  pCopyImageToBufferInfo);
+#define vkCmdCopyImageToBuffer2 vkfw_vkCmdCopyImageToBuffer2
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdEndRendering (VkCommandBuffer                     commandBuffer);
+vkfw_vkCmdEndRendering (VkCommandBuffer                     commandBuffer);
+#define vkCmdEndRendering vkfw_vkCmdEndRendering
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdPipelineBarrier2 (VkCommandBuffer                     commandBuffer, const  VkDependencyInfo *                              pDependencyInfo);
+vkfw_vkCmdPipelineBarrier2 (VkCommandBuffer                     commandBuffer, const  VkDependencyInfo *                              pDependencyInfo);
+#define vkCmdPipelineBarrier2 vkfw_vkCmdPipelineBarrier2
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdResetEvent2 (VkCommandBuffer                     commandBuffer, VkEvent                                               event, VkPipelineStageFlags2                 stageMask);
+vkfw_vkCmdResetEvent2 (VkCommandBuffer                     commandBuffer, VkEvent                                               event, VkPipelineStageFlags2                 stageMask);
+#define vkCmdResetEvent2 vkfw_vkCmdResetEvent2
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdResolveImage2 (VkCommandBuffer   commandBuffer, const  VkResolveImageInfo2 *  pResolveImageInfo);
+vkfw_vkCmdResolveImage2 (VkCommandBuffer   commandBuffer, const  VkResolveImageInfo2 *  pResolveImageInfo);
+#define vkCmdResolveImage2 vkfw_vkCmdResolveImage2
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetCullMode (VkCommandBuffer   commandBuffer, VkCullModeFlags   cullMode);
+vkfw_vkCmdSetCullMode (VkCommandBuffer   commandBuffer, VkCullModeFlags   cullMode);
+#define vkCmdSetCullMode vkfw_vkCmdSetCullMode
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetDepthBiasEnable (VkCommandBuffer   commandBuffer, VkBool32   depthBiasEnable);
+vkfw_vkCmdSetDepthBiasEnable (VkCommandBuffer   commandBuffer, VkBool32   depthBiasEnable);
+#define vkCmdSetDepthBiasEnable vkfw_vkCmdSetDepthBiasEnable
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetDepthBoundsTestEnable (VkCommandBuffer   commandBuffer, VkBool32   depthBoundsTestEnable);
+vkfw_vkCmdSetDepthBoundsTestEnable (VkCommandBuffer   commandBuffer, VkBool32   depthBoundsTestEnable);
+#define vkCmdSetDepthBoundsTestEnable vkfw_vkCmdSetDepthBoundsTestEnable
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetDepthCompareOp (VkCommandBuffer   commandBuffer, VkCompareOp   depthCompareOp);
+vkfw_vkCmdSetDepthCompareOp (VkCommandBuffer   commandBuffer, VkCompareOp   depthCompareOp);
+#define vkCmdSetDepthCompareOp vkfw_vkCmdSetDepthCompareOp
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetDepthTestEnable (VkCommandBuffer   commandBuffer, VkBool32   depthTestEnable);
+vkfw_vkCmdSetDepthTestEnable (VkCommandBuffer   commandBuffer, VkBool32   depthTestEnable);
+#define vkCmdSetDepthTestEnable vkfw_vkCmdSetDepthTestEnable
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetDepthWriteEnable (VkCommandBuffer   commandBuffer, VkBool32   depthWriteEnable);
+vkfw_vkCmdSetDepthWriteEnable (VkCommandBuffer   commandBuffer, VkBool32   depthWriteEnable);
+#define vkCmdSetDepthWriteEnable vkfw_vkCmdSetDepthWriteEnable
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetEvent2 (VkCommandBuffer                     commandBuffer, VkEvent                                               event, const  VkDependencyInfo *                              pDependencyInfo);
+vkfw_vkCmdSetEvent2 (VkCommandBuffer                     commandBuffer, VkEvent                                               event, const  VkDependencyInfo *                              pDependencyInfo);
+#define vkCmdSetEvent2 vkfw_vkCmdSetEvent2
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetFrontFace (VkCommandBuffer   commandBuffer, VkFrontFace   frontFace);
+vkfw_vkCmdSetFrontFace (VkCommandBuffer   commandBuffer, VkFrontFace   frontFace);
+#define vkCmdSetFrontFace vkfw_vkCmdSetFrontFace
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetPrimitiveRestartEnable (VkCommandBuffer   commandBuffer, VkBool32   primitiveRestartEnable);
+vkfw_vkCmdSetPrimitiveRestartEnable (VkCommandBuffer   commandBuffer, VkBool32   primitiveRestartEnable);
+#define vkCmdSetPrimitiveRestartEnable vkfw_vkCmdSetPrimitiveRestartEnable
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetPrimitiveTopology (VkCommandBuffer   commandBuffer, VkPrimitiveTopology   primitiveTopology);
+vkfw_vkCmdSetPrimitiveTopology (VkCommandBuffer   commandBuffer, VkPrimitiveTopology   primitiveTopology);
+#define vkCmdSetPrimitiveTopology vkfw_vkCmdSetPrimitiveTopology
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetRasterizerDiscardEnable (VkCommandBuffer   commandBuffer, VkBool32   rasterizerDiscardEnable);
+vkfw_vkCmdSetRasterizerDiscardEnable (VkCommandBuffer   commandBuffer, VkBool32   rasterizerDiscardEnable);
+#define vkCmdSetRasterizerDiscardEnable vkfw_vkCmdSetRasterizerDiscardEnable
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetScissorWithCount (VkCommandBuffer   commandBuffer, uint32_t   scissorCount, const  VkRect2D *  pScissors);
+vkfw_vkCmdSetScissorWithCount (VkCommandBuffer   commandBuffer, uint32_t   scissorCount, const  VkRect2D *  pScissors);
+#define vkCmdSetScissorWithCount vkfw_vkCmdSetScissorWithCount
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetStencilOp (VkCommandBuffer   commandBuffer, VkStencilFaceFlags   faceMask, VkStencilOp   failOp, VkStencilOp   passOp, VkStencilOp   depthFailOp, VkCompareOp   compareOp);
+vkfw_vkCmdSetStencilOp (VkCommandBuffer   commandBuffer, VkStencilFaceFlags   faceMask, VkStencilOp   failOp, VkStencilOp   passOp, VkStencilOp   depthFailOp, VkCompareOp   compareOp);
+#define vkCmdSetStencilOp vkfw_vkCmdSetStencilOp
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetStencilTestEnable (VkCommandBuffer   commandBuffer, VkBool32   stencilTestEnable);
+vkfw_vkCmdSetStencilTestEnable (VkCommandBuffer   commandBuffer, VkBool32   stencilTestEnable);
+#define vkCmdSetStencilTestEnable vkfw_vkCmdSetStencilTestEnable
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetViewportWithCount (VkCommandBuffer   commandBuffer, uint32_t   viewportCount, const  VkViewport *  pViewports);
+vkfw_vkCmdSetViewportWithCount (VkCommandBuffer   commandBuffer, uint32_t   viewportCount, const  VkViewport *  pViewports);
+#define vkCmdSetViewportWithCount vkfw_vkCmdSetViewportWithCount
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdWaitEvents2 (VkCommandBuffer                     commandBuffer, uint32_t                                              eventCount, const  VkEvent *                      pEvents, const  VkDependencyInfo *             pDependencyInfos);
+vkfw_vkCmdWaitEvents2 (VkCommandBuffer                     commandBuffer, uint32_t                                              eventCount, const  VkEvent *                      pEvents, const  VkDependencyInfo *             pDependencyInfos);
+#define vkCmdWaitEvents2 vkfw_vkCmdWaitEvents2
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdWriteTimestamp2 (VkCommandBuffer                     commandBuffer, VkPipelineStageFlags2                 stage, VkQueryPool                                           queryPool, uint32_t                                              query);
+vkfw_vkCmdWriteTimestamp2 (VkCommandBuffer                     commandBuffer, VkPipelineStageFlags2                 stage, VkQueryPool                                           queryPool, uint32_t                                              query);
+#define vkCmdWriteTimestamp2 vkfw_vkCmdWriteTimestamp2
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreatePrivateDataSlot (VkDevice   device, const  VkPrivateDataSlotCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkPrivateDataSlot *  pPrivateDataSlot);
+vkfw_vkCreatePrivateDataSlot (VkDevice   device, const  VkPrivateDataSlotCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkPrivateDataSlot *  pPrivateDataSlot);
+#define vkCreatePrivateDataSlot vkfw_vkCreatePrivateDataSlot
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyPrivateDataSlot (VkDevice   device, VkPrivateDataSlot   privateDataSlot, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyPrivateDataSlot (VkDevice   device, VkPrivateDataSlot   privateDataSlot, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyPrivateDataSlot vkfw_vkDestroyPrivateDataSlot
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetDeviceBufferMemoryRequirements (VkDevice   device, const  VkDeviceBufferMemoryRequirements *  pInfo, VkMemoryRequirements2 *  pMemoryRequirements);
+vkfw_vkGetDeviceBufferMemoryRequirements (VkDevice   device, const  VkDeviceBufferMemoryRequirements *  pInfo, VkMemoryRequirements2 *  pMemoryRequirements);
+#define vkGetDeviceBufferMemoryRequirements vkfw_vkGetDeviceBufferMemoryRequirements
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetDeviceImageMemoryRequirements (VkDevice   device, const  VkDeviceImageMemoryRequirements *  pInfo, VkMemoryRequirements2 *  pMemoryRequirements);
+vkfw_vkGetDeviceImageMemoryRequirements (VkDevice   device, const  VkDeviceImageMemoryRequirements *  pInfo, VkMemoryRequirements2 *  pMemoryRequirements);
+#define vkGetDeviceImageMemoryRequirements vkfw_vkGetDeviceImageMemoryRequirements
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetDeviceImageSparseMemoryRequirements (VkDevice   device, const  VkDeviceImageMemoryRequirements *  pInfo, uint32_t *  pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements2 *  pSparseMemoryRequirements);
+vkfw_vkGetDeviceImageSparseMemoryRequirements (VkDevice   device, const  VkDeviceImageMemoryRequirements *  pInfo, uint32_t *  pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements2 *  pSparseMemoryRequirements);
+#define vkGetDeviceImageSparseMemoryRequirements vkfw_vkGetDeviceImageSparseMemoryRequirements
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceToolProperties (VkPhysicalDevice   physicalDevice, uint32_t *  pToolCount, VkPhysicalDeviceToolProperties *  pToolProperties);
+vkfw_vkGetPhysicalDeviceToolProperties (VkPhysicalDevice   physicalDevice, uint32_t *  pToolCount, VkPhysicalDeviceToolProperties *  pToolProperties);
+#define vkGetPhysicalDeviceToolProperties vkfw_vkGetPhysicalDeviceToolProperties
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPrivateData (VkDevice   device, VkObjectType   objectType, uint64_t   objectHandle, VkPrivateDataSlot   privateDataSlot, uint64_t *  pData);
+vkfw_vkGetPrivateData (VkDevice   device, VkObjectType   objectType, uint64_t   objectHandle, VkPrivateDataSlot   privateDataSlot, uint64_t *  pData);
+#define vkGetPrivateData vkfw_vkGetPrivateData
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkQueueSubmit2 (VkQueue                             queue, uint32_t                              submitCount, const  VkSubmitInfo2 *               pSubmits, VkFence             fence);
+vkfw_vkQueueSubmit2 (VkQueue                             queue, uint32_t                              submitCount, const  VkSubmitInfo2 *               pSubmits, VkFence             fence);
+#define vkQueueSubmit2 vkfw_vkQueueSubmit2
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkSetPrivateData (VkDevice   device, VkObjectType   objectType, uint64_t   objectHandle, VkPrivateDataSlot   privateDataSlot, uint64_t   data);
+vkfw_vkSetPrivateData (VkDevice   device, VkObjectType   objectType, uint64_t   objectHandle, VkPrivateDataSlot   privateDataSlot, uint64_t   data);
+#define vkSetPrivateData vkfw_vkSetPrivateData
 #endif /* defined(VK_VERSION_1_3) */
 #if defined(VK_AMDX_shader_enqueue)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDispatchGraphAMDX (VkCommandBuffer                                   commandBuffer, VkDeviceAddress                                   scratch, const  VkDispatchGraphCountInfoAMDX *               pCountInfo);
+vkfw_vkCmdDispatchGraphAMDX (VkCommandBuffer                                   commandBuffer, VkDeviceAddress                                   scratch, const  VkDispatchGraphCountInfoAMDX *               pCountInfo);
+#define vkCmdDispatchGraphAMDX vkfw_vkCmdDispatchGraphAMDX
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDispatchGraphIndirectAMDX (VkCommandBuffer                                   commandBuffer, VkDeviceAddress                                   scratch, const  VkDispatchGraphCountInfoAMDX *               pCountInfo);
+vkfw_vkCmdDispatchGraphIndirectAMDX (VkCommandBuffer                                   commandBuffer, VkDeviceAddress                                   scratch, const  VkDispatchGraphCountInfoAMDX *               pCountInfo);
+#define vkCmdDispatchGraphIndirectAMDX vkfw_vkCmdDispatchGraphIndirectAMDX
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDispatchGraphIndirectCountAMDX (VkCommandBuffer                                   commandBuffer, VkDeviceAddress                                   scratch, VkDeviceAddress                                   countInfo);
+vkfw_vkCmdDispatchGraphIndirectCountAMDX (VkCommandBuffer                                   commandBuffer, VkDeviceAddress                                   scratch, VkDeviceAddress                                   countInfo);
+#define vkCmdDispatchGraphIndirectCountAMDX vkfw_vkCmdDispatchGraphIndirectCountAMDX
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdInitializeGraphScratchMemoryAMDX (VkCommandBuffer                                   commandBuffer, VkDeviceAddress                                   scratch);
+vkfw_vkCmdInitializeGraphScratchMemoryAMDX (VkCommandBuffer                                   commandBuffer, VkDeviceAddress                                   scratch);
+#define vkCmdInitializeGraphScratchMemoryAMDX vkfw_vkCmdInitializeGraphScratchMemoryAMDX
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateExecutionGraphPipelinesAMDX (VkDevice                                          device, VkPipelineCache                   pipelineCache, uint32_t                                          createInfoCount, const  VkExecutionGraphPipelineCreateInfoAMDX *  pCreateInfos, const  VkAllocationCallbacks *     pAllocator, VkPipeline *                pPipelines);
+vkfw_vkCreateExecutionGraphPipelinesAMDX (VkDevice                                          device, VkPipelineCache                   pipelineCache, uint32_t                                          createInfoCount, const  VkExecutionGraphPipelineCreateInfoAMDX *  pCreateInfos, const  VkAllocationCallbacks *     pAllocator, VkPipeline *                pPipelines);
+#define vkCreateExecutionGraphPipelinesAMDX vkfw_vkCreateExecutionGraphPipelinesAMDX
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetExecutionGraphPipelineNodeIndexAMDX (VkDevice                                          device, VkPipeline                                        executionGraph, const  VkPipelineShaderStageNodeCreateInfoAMDX *    pNodeInfo, uint32_t *                                        pNodeIndex);
+vkfw_vkGetExecutionGraphPipelineNodeIndexAMDX (VkDevice                                          device, VkPipeline                                        executionGraph, const  VkPipelineShaderStageNodeCreateInfoAMDX *    pNodeInfo, uint32_t *                                        pNodeIndex);
+#define vkGetExecutionGraphPipelineNodeIndexAMDX vkfw_vkGetExecutionGraphPipelineNodeIndexAMDX
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetExecutionGraphPipelineScratchSizeAMDX (VkDevice                                          device, VkPipeline                                        executionGraph, VkExecutionGraphPipelineScratchSizeAMDX *          pSizeInfo);
+vkfw_vkGetExecutionGraphPipelineScratchSizeAMDX (VkDevice                                          device, VkPipeline                                        executionGraph, VkExecutionGraphPipelineScratchSizeAMDX *          pSizeInfo);
+#define vkGetExecutionGraphPipelineScratchSizeAMDX vkfw_vkGetExecutionGraphPipelineScratchSizeAMDX
 #endif /* defined(VK_AMDX_shader_enqueue) */
 #if defined(VK_AMD_buffer_marker)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdWriteBufferMarkerAMD (VkCommandBuffer   commandBuffer, VkPipelineStageFlagBits   pipelineStage, VkBuffer   dstBuffer, VkDeviceSize   dstOffset, uint32_t   marker);
+vkfw_vkCmdWriteBufferMarkerAMD (VkCommandBuffer   commandBuffer, VkPipelineStageFlagBits   pipelineStage, VkBuffer   dstBuffer, VkDeviceSize   dstOffset, uint32_t   marker);
+#define vkCmdWriteBufferMarkerAMD vkfw_vkCmdWriteBufferMarkerAMD
 #endif /* defined(VK_AMD_buffer_marker) */
 #if defined(VK_AMD_display_native_hdr)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkSetLocalDimmingAMD (VkDevice   device, VkSwapchainKHR   swapChain, VkBool32   localDimmingEnable);
+vkfw_vkSetLocalDimmingAMD (VkDevice   device, VkSwapchainKHR   swapChain, VkBool32   localDimmingEnable);
+#define vkSetLocalDimmingAMD vkfw_vkSetLocalDimmingAMD
 #endif /* defined(VK_AMD_display_native_hdr) */
 #if defined(VK_AMD_draw_indirect_count)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDrawIndexedIndirectCountAMD (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, VkBuffer   countBuffer, VkDeviceSize   countBufferOffset, uint32_t   maxDrawCount, uint32_t   stride);
+vkfw_vkCmdDrawIndexedIndirectCountAMD (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, VkBuffer   countBuffer, VkDeviceSize   countBufferOffset, uint32_t   maxDrawCount, uint32_t   stride);
+#define vkCmdDrawIndexedIndirectCountAMD vkfw_vkCmdDrawIndexedIndirectCountAMD
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDrawIndirectCountAMD (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, VkBuffer   countBuffer, VkDeviceSize   countBufferOffset, uint32_t   maxDrawCount, uint32_t   stride);
+vkfw_vkCmdDrawIndirectCountAMD (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, VkBuffer   countBuffer, VkDeviceSize   countBufferOffset, uint32_t   maxDrawCount, uint32_t   stride);
+#define vkCmdDrawIndirectCountAMD vkfw_vkCmdDrawIndirectCountAMD
 #endif /* defined(VK_AMD_draw_indirect_count) */
 #if defined(VK_AMD_shader_info)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetShaderInfoAMD (VkDevice   device, VkPipeline   pipeline, VkShaderStageFlagBits   shaderStage, VkShaderInfoTypeAMD   infoType, size_t *  pInfoSize, void *  pInfo);
+vkfw_vkGetShaderInfoAMD (VkDevice   device, VkPipeline   pipeline, VkShaderStageFlagBits   shaderStage, VkShaderInfoTypeAMD   infoType, size_t *  pInfoSize, void *  pInfo);
+#define vkGetShaderInfoAMD vkfw_vkGetShaderInfoAMD
 #endif /* defined(VK_AMD_shader_info) */
 #if defined(VK_ANDROID_external_memory_android_hardware_buffer)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetAndroidHardwareBufferPropertiesANDROID (VkDevice   device, const struct  AHardwareBuffer *  buffer, VkAndroidHardwareBufferPropertiesANDROID *  pProperties);
+vkfw_vkGetAndroidHardwareBufferPropertiesANDROID (VkDevice   device, const struct  AHardwareBuffer *  buffer, VkAndroidHardwareBufferPropertiesANDROID *  pProperties);
+#define vkGetAndroidHardwareBufferPropertiesANDROID vkfw_vkGetAndroidHardwareBufferPropertiesANDROID
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetMemoryAndroidHardwareBufferANDROID (VkDevice   device, const  VkMemoryGetAndroidHardwareBufferInfoANDROID *  pInfo, struct  AHardwareBuffer **  pBuffer);
+vkfw_vkGetMemoryAndroidHardwareBufferANDROID (VkDevice   device, const  VkMemoryGetAndroidHardwareBufferInfoANDROID *  pInfo, struct  AHardwareBuffer **  pBuffer);
+#define vkGetMemoryAndroidHardwareBufferANDROID vkfw_vkGetMemoryAndroidHardwareBufferANDROID
 #endif /* defined(VK_ANDROID_external_memory_android_hardware_buffer) */
 #if defined(VK_EXT_acquire_drm_display)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkAcquireDrmDisplayEXT (VkPhysicalDevice   physicalDevice, int32_t   drmFd, VkDisplayKHR   display);
+vkfw_vkAcquireDrmDisplayEXT (VkPhysicalDevice   physicalDevice, int32_t   drmFd, VkDisplayKHR   display);
+#define vkAcquireDrmDisplayEXT vkfw_vkAcquireDrmDisplayEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetDrmDisplayEXT (VkPhysicalDevice   physicalDevice, int32_t   drmFd, uint32_t   connectorId, VkDisplayKHR *  display);
+vkfw_vkGetDrmDisplayEXT (VkPhysicalDevice   physicalDevice, int32_t   drmFd, uint32_t   connectorId, VkDisplayKHR *  display);
+#define vkGetDrmDisplayEXT vkfw_vkGetDrmDisplayEXT
 #endif /* defined(VK_EXT_acquire_drm_display) */
 #if defined(VK_EXT_acquire_xlib_display)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkAcquireXlibDisplayEXT (VkPhysicalDevice   physicalDevice, Display *  dpy, VkDisplayKHR   display);
+vkfw_vkAcquireXlibDisplayEXT (VkPhysicalDevice   physicalDevice, Display *  dpy, VkDisplayKHR   display);
+#define vkAcquireXlibDisplayEXT vkfw_vkAcquireXlibDisplayEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetRandROutputDisplayEXT (VkPhysicalDevice   physicalDevice, Display *  dpy, RROutput   rrOutput, VkDisplayKHR *  pDisplay);
+vkfw_vkGetRandROutputDisplayEXT (VkPhysicalDevice   physicalDevice, Display *  dpy, RROutput   rrOutput, VkDisplayKHR *  pDisplay);
+#define vkGetRandROutputDisplayEXT vkfw_vkGetRandROutputDisplayEXT
 #endif /* defined(VK_EXT_acquire_xlib_display) */
 #if defined(VK_EXT_attachment_feedback_loop_dynamic_state)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetAttachmentFeedbackLoopEnableEXT (VkCommandBuffer   commandBuffer, VkImageAspectFlags   aspectMask);
+vkfw_vkCmdSetAttachmentFeedbackLoopEnableEXT (VkCommandBuffer   commandBuffer, VkImageAspectFlags   aspectMask);
+#define vkCmdSetAttachmentFeedbackLoopEnableEXT vkfw_vkCmdSetAttachmentFeedbackLoopEnableEXT
 #endif /* defined(VK_EXT_attachment_feedback_loop_dynamic_state) */
 #if defined(VK_EXT_buffer_device_address)
 VKFWAPI VKAPI_ATTR VkDeviceAddress VKAPI_CALL
-vkGetBufferDeviceAddressEXT (VkDevice   device, const  VkBufferDeviceAddressInfo *  pInfo);
+vkfw_vkGetBufferDeviceAddressEXT (VkDevice   device, const  VkBufferDeviceAddressInfo *  pInfo);
+#define vkGetBufferDeviceAddressEXT vkfw_vkGetBufferDeviceAddressEXT
 #endif /* defined(VK_EXT_buffer_device_address) */
 #if defined(VK_EXT_calibrated_timestamps)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetCalibratedTimestampsEXT (VkDevice   device, uint32_t   timestampCount, const  VkCalibratedTimestampInfoKHR *  pTimestampInfos, uint64_t *  pTimestamps, uint64_t *  pMaxDeviation);
+vkfw_vkGetCalibratedTimestampsEXT (VkDevice   device, uint32_t   timestampCount, const  VkCalibratedTimestampInfoKHR *  pTimestampInfos, uint64_t *  pTimestamps, uint64_t *  pMaxDeviation);
+#define vkGetCalibratedTimestampsEXT vkfw_vkGetCalibratedTimestampsEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceCalibrateableTimeDomainsEXT (VkPhysicalDevice   physicalDevice, uint32_t *  pTimeDomainCount, VkTimeDomainKHR *  pTimeDomains);
+vkfw_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT (VkPhysicalDevice   physicalDevice, uint32_t *  pTimeDomainCount, VkTimeDomainKHR *  pTimeDomains);
+#define vkGetPhysicalDeviceCalibrateableTimeDomainsEXT vkfw_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT
 #endif /* defined(VK_EXT_calibrated_timestamps) */
 #if defined(VK_EXT_color_write_enable)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetColorWriteEnableEXT (VkCommandBuffer         commandBuffer, uint32_t                                  attachmentCount, const  VkBool32 *    pColorWriteEnables);
+vkfw_vkCmdSetColorWriteEnableEXT (VkCommandBuffer         commandBuffer, uint32_t                                  attachmentCount, const  VkBool32 *    pColorWriteEnables);
+#define vkCmdSetColorWriteEnableEXT vkfw_vkCmdSetColorWriteEnableEXT
 #endif /* defined(VK_EXT_color_write_enable) */
 #if defined(VK_EXT_conditional_rendering)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBeginConditionalRenderingEXT (VkCommandBuffer   commandBuffer, const  VkConditionalRenderingBeginInfoEXT *  pConditionalRenderingBegin);
+vkfw_vkCmdBeginConditionalRenderingEXT (VkCommandBuffer   commandBuffer, const  VkConditionalRenderingBeginInfoEXT *  pConditionalRenderingBegin);
+#define vkCmdBeginConditionalRenderingEXT vkfw_vkCmdBeginConditionalRenderingEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdEndConditionalRenderingEXT (VkCommandBuffer   commandBuffer);
+vkfw_vkCmdEndConditionalRenderingEXT (VkCommandBuffer   commandBuffer);
+#define vkCmdEndConditionalRenderingEXT vkfw_vkCmdEndConditionalRenderingEXT
 #endif /* defined(VK_EXT_conditional_rendering) */
 #if defined(VK_EXT_debug_marker)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDebugMarkerBeginEXT (VkCommandBuffer   commandBuffer, const  VkDebugMarkerMarkerInfoEXT *  pMarkerInfo);
+vkfw_vkCmdDebugMarkerBeginEXT (VkCommandBuffer   commandBuffer, const  VkDebugMarkerMarkerInfoEXT *  pMarkerInfo);
+#define vkCmdDebugMarkerBeginEXT vkfw_vkCmdDebugMarkerBeginEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDebugMarkerEndEXT (VkCommandBuffer   commandBuffer);
+vkfw_vkCmdDebugMarkerEndEXT (VkCommandBuffer   commandBuffer);
+#define vkCmdDebugMarkerEndEXT vkfw_vkCmdDebugMarkerEndEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDebugMarkerInsertEXT (VkCommandBuffer   commandBuffer, const  VkDebugMarkerMarkerInfoEXT *  pMarkerInfo);
+vkfw_vkCmdDebugMarkerInsertEXT (VkCommandBuffer   commandBuffer, const  VkDebugMarkerMarkerInfoEXT *  pMarkerInfo);
+#define vkCmdDebugMarkerInsertEXT vkfw_vkCmdDebugMarkerInsertEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkDebugMarkerSetObjectNameEXT (VkDevice   device, const  VkDebugMarkerObjectNameInfoEXT *  pNameInfo);
+vkfw_vkDebugMarkerSetObjectNameEXT (VkDevice   device, const  VkDebugMarkerObjectNameInfoEXT *  pNameInfo);
+#define vkDebugMarkerSetObjectNameEXT vkfw_vkDebugMarkerSetObjectNameEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkDebugMarkerSetObjectTagEXT (VkDevice   device, const  VkDebugMarkerObjectTagInfoEXT *  pTagInfo);
+vkfw_vkDebugMarkerSetObjectTagEXT (VkDevice   device, const  VkDebugMarkerObjectTagInfoEXT *  pTagInfo);
+#define vkDebugMarkerSetObjectTagEXT vkfw_vkDebugMarkerSetObjectTagEXT
 #endif /* defined(VK_EXT_debug_marker) */
 #if defined(VK_EXT_debug_report)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateDebugReportCallbackEXT (VkInstance   instance, const  VkDebugReportCallbackCreateInfoEXT *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkDebugReportCallbackEXT *  pCallback);
+vkfw_vkCreateDebugReportCallbackEXT (VkInstance   instance, const  VkDebugReportCallbackCreateInfoEXT *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkDebugReportCallbackEXT *  pCallback);
+#define vkCreateDebugReportCallbackEXT vkfw_vkCreateDebugReportCallbackEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDebugReportMessageEXT (VkInstance   instance, VkDebugReportFlagsEXT   flags, VkDebugReportObjectTypeEXT   objectType, uint64_t   object, size_t   location, int32_t   messageCode, const  char *  pLayerPrefix, const  char *  pMessage);
+vkfw_vkDebugReportMessageEXT (VkInstance   instance, VkDebugReportFlagsEXT   flags, VkDebugReportObjectTypeEXT   objectType, uint64_t   object, size_t   location, int32_t   messageCode, const  char *  pLayerPrefix, const  char *  pMessage);
+#define vkDebugReportMessageEXT vkfw_vkDebugReportMessageEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyDebugReportCallbackEXT (VkInstance   instance, VkDebugReportCallbackEXT   callback, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyDebugReportCallbackEXT (VkInstance   instance, VkDebugReportCallbackEXT   callback, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyDebugReportCallbackEXT vkfw_vkDestroyDebugReportCallbackEXT
 #endif /* defined(VK_EXT_debug_report) */
 #if defined(VK_EXT_debug_utils)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBeginDebugUtilsLabelEXT (VkCommandBuffer   commandBuffer, const  VkDebugUtilsLabelEXT *  pLabelInfo);
+vkfw_vkCmdBeginDebugUtilsLabelEXT (VkCommandBuffer   commandBuffer, const  VkDebugUtilsLabelEXT *  pLabelInfo);
+#define vkCmdBeginDebugUtilsLabelEXT vkfw_vkCmdBeginDebugUtilsLabelEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdEndDebugUtilsLabelEXT (VkCommandBuffer   commandBuffer);
+vkfw_vkCmdEndDebugUtilsLabelEXT (VkCommandBuffer   commandBuffer);
+#define vkCmdEndDebugUtilsLabelEXT vkfw_vkCmdEndDebugUtilsLabelEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdInsertDebugUtilsLabelEXT (VkCommandBuffer   commandBuffer, const  VkDebugUtilsLabelEXT *  pLabelInfo);
+vkfw_vkCmdInsertDebugUtilsLabelEXT (VkCommandBuffer   commandBuffer, const  VkDebugUtilsLabelEXT *  pLabelInfo);
+#define vkCmdInsertDebugUtilsLabelEXT vkfw_vkCmdInsertDebugUtilsLabelEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateDebugUtilsMessengerEXT (VkInstance   instance, const  VkDebugUtilsMessengerCreateInfoEXT *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkDebugUtilsMessengerEXT *  pMessenger);
+vkfw_vkCreateDebugUtilsMessengerEXT (VkInstance   instance, const  VkDebugUtilsMessengerCreateInfoEXT *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkDebugUtilsMessengerEXT *  pMessenger);
+#define vkCreateDebugUtilsMessengerEXT vkfw_vkCreateDebugUtilsMessengerEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyDebugUtilsMessengerEXT (VkInstance   instance, VkDebugUtilsMessengerEXT   messenger, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyDebugUtilsMessengerEXT (VkInstance   instance, VkDebugUtilsMessengerEXT   messenger, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyDebugUtilsMessengerEXT vkfw_vkDestroyDebugUtilsMessengerEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkQueueBeginDebugUtilsLabelEXT (VkQueue   queue, const  VkDebugUtilsLabelEXT *  pLabelInfo);
+vkfw_vkQueueBeginDebugUtilsLabelEXT (VkQueue   queue, const  VkDebugUtilsLabelEXT *  pLabelInfo);
+#define vkQueueBeginDebugUtilsLabelEXT vkfw_vkQueueBeginDebugUtilsLabelEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkQueueEndDebugUtilsLabelEXT (VkQueue   queue);
+vkfw_vkQueueEndDebugUtilsLabelEXT (VkQueue   queue);
+#define vkQueueEndDebugUtilsLabelEXT vkfw_vkQueueEndDebugUtilsLabelEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkQueueInsertDebugUtilsLabelEXT (VkQueue   queue, const  VkDebugUtilsLabelEXT *  pLabelInfo);
+vkfw_vkQueueInsertDebugUtilsLabelEXT (VkQueue   queue, const  VkDebugUtilsLabelEXT *  pLabelInfo);
+#define vkQueueInsertDebugUtilsLabelEXT vkfw_vkQueueInsertDebugUtilsLabelEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkSetDebugUtilsObjectNameEXT (VkDevice   device, const  VkDebugUtilsObjectNameInfoEXT *  pNameInfo);
+vkfw_vkSetDebugUtilsObjectNameEXT (VkDevice   device, const  VkDebugUtilsObjectNameInfoEXT *  pNameInfo);
+#define vkSetDebugUtilsObjectNameEXT vkfw_vkSetDebugUtilsObjectNameEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkSetDebugUtilsObjectTagEXT (VkDevice   device, const  VkDebugUtilsObjectTagInfoEXT *  pTagInfo);
+vkfw_vkSetDebugUtilsObjectTagEXT (VkDevice   device, const  VkDebugUtilsObjectTagInfoEXT *  pTagInfo);
+#define vkSetDebugUtilsObjectTagEXT vkfw_vkSetDebugUtilsObjectTagEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkSubmitDebugUtilsMessageEXT (VkInstance   instance, VkDebugUtilsMessageSeverityFlagBitsEXT   messageSeverity, VkDebugUtilsMessageTypeFlagsEXT   messageTypes, const  VkDebugUtilsMessengerCallbackDataEXT *  pCallbackData);
+vkfw_vkSubmitDebugUtilsMessageEXT (VkInstance   instance, VkDebugUtilsMessageSeverityFlagBitsEXT   messageSeverity, VkDebugUtilsMessageTypeFlagsEXT   messageTypes, const  VkDebugUtilsMessengerCallbackDataEXT *  pCallbackData);
+#define vkSubmitDebugUtilsMessageEXT vkfw_vkSubmitDebugUtilsMessageEXT
 #endif /* defined(VK_EXT_debug_utils) */
 #if defined(VK_EXT_depth_bias_control)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetDepthBias2EXT (VkCommandBuffer   commandBuffer, const  VkDepthBiasInfoEXT *          pDepthBiasInfo);
+vkfw_vkCmdSetDepthBias2EXT (VkCommandBuffer   commandBuffer, const  VkDepthBiasInfoEXT *          pDepthBiasInfo);
+#define vkCmdSetDepthBias2EXT vkfw_vkCmdSetDepthBias2EXT
 #endif /* defined(VK_EXT_depth_bias_control) */
 #if defined(VK_EXT_descriptor_buffer)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBindDescriptorBufferEmbeddedSamplersEXT (VkCommandBuffer   commandBuffer, VkPipelineBindPoint   pipelineBindPoint, VkPipelineLayout   layout, uint32_t   set);
+vkfw_vkCmdBindDescriptorBufferEmbeddedSamplersEXT (VkCommandBuffer   commandBuffer, VkPipelineBindPoint   pipelineBindPoint, VkPipelineLayout   layout, uint32_t   set);
+#define vkCmdBindDescriptorBufferEmbeddedSamplersEXT vkfw_vkCmdBindDescriptorBufferEmbeddedSamplersEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBindDescriptorBuffersEXT (VkCommandBuffer   commandBuffer, uint32_t   bufferCount, const  VkDescriptorBufferBindingInfoEXT *  pBindingInfos);
+vkfw_vkCmdBindDescriptorBuffersEXT (VkCommandBuffer   commandBuffer, uint32_t   bufferCount, const  VkDescriptorBufferBindingInfoEXT *  pBindingInfos);
+#define vkCmdBindDescriptorBuffersEXT vkfw_vkCmdBindDescriptorBuffersEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetDescriptorBufferOffsetsEXT (VkCommandBuffer   commandBuffer, VkPipelineBindPoint   pipelineBindPoint, VkPipelineLayout   layout, uint32_t   firstSet, uint32_t   setCount, const  uint32_t *  pBufferIndices, const  VkDeviceSize *  pOffsets);
+vkfw_vkCmdSetDescriptorBufferOffsetsEXT (VkCommandBuffer   commandBuffer, VkPipelineBindPoint   pipelineBindPoint, VkPipelineLayout   layout, uint32_t   firstSet, uint32_t   setCount, const  uint32_t *  pBufferIndices, const  VkDeviceSize *  pOffsets);
+#define vkCmdSetDescriptorBufferOffsetsEXT vkfw_vkCmdSetDescriptorBufferOffsetsEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetBufferOpaqueCaptureDescriptorDataEXT (VkDevice   device, const  VkBufferCaptureDescriptorDataInfoEXT *  pInfo, void *  pData);
+vkfw_vkGetBufferOpaqueCaptureDescriptorDataEXT (VkDevice   device, const  VkBufferCaptureDescriptorDataInfoEXT *  pInfo, void *  pData);
+#define vkGetBufferOpaqueCaptureDescriptorDataEXT vkfw_vkGetBufferOpaqueCaptureDescriptorDataEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetDescriptorEXT (VkDevice   device, const  VkDescriptorGetInfoEXT *  pDescriptorInfo, size_t   dataSize, void *  pDescriptor);
+vkfw_vkGetDescriptorEXT (VkDevice   device, const  VkDescriptorGetInfoEXT *  pDescriptorInfo, size_t   dataSize, void *  pDescriptor);
+#define vkGetDescriptorEXT vkfw_vkGetDescriptorEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetDescriptorSetLayoutBindingOffsetEXT (VkDevice   device, VkDescriptorSetLayout   layout, uint32_t   binding, VkDeviceSize *  pOffset);
+vkfw_vkGetDescriptorSetLayoutBindingOffsetEXT (VkDevice   device, VkDescriptorSetLayout   layout, uint32_t   binding, VkDeviceSize *  pOffset);
+#define vkGetDescriptorSetLayoutBindingOffsetEXT vkfw_vkGetDescriptorSetLayoutBindingOffsetEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetDescriptorSetLayoutSizeEXT (VkDevice   device, VkDescriptorSetLayout   layout, VkDeviceSize *  pLayoutSizeInBytes);
+vkfw_vkGetDescriptorSetLayoutSizeEXT (VkDevice   device, VkDescriptorSetLayout   layout, VkDeviceSize *  pLayoutSizeInBytes);
+#define vkGetDescriptorSetLayoutSizeEXT vkfw_vkGetDescriptorSetLayoutSizeEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetImageOpaqueCaptureDescriptorDataEXT (VkDevice   device, const  VkImageCaptureDescriptorDataInfoEXT *  pInfo, void *  pData);
+vkfw_vkGetImageOpaqueCaptureDescriptorDataEXT (VkDevice   device, const  VkImageCaptureDescriptorDataInfoEXT *  pInfo, void *  pData);
+#define vkGetImageOpaqueCaptureDescriptorDataEXT vkfw_vkGetImageOpaqueCaptureDescriptorDataEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetImageViewOpaqueCaptureDescriptorDataEXT (VkDevice   device, const  VkImageViewCaptureDescriptorDataInfoEXT *  pInfo, void *  pData);
+vkfw_vkGetImageViewOpaqueCaptureDescriptorDataEXT (VkDevice   device, const  VkImageViewCaptureDescriptorDataInfoEXT *  pInfo, void *  pData);
+#define vkGetImageViewOpaqueCaptureDescriptorDataEXT vkfw_vkGetImageViewOpaqueCaptureDescriptorDataEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetSamplerOpaqueCaptureDescriptorDataEXT (VkDevice   device, const  VkSamplerCaptureDescriptorDataInfoEXT *  pInfo, void *  pData);
+vkfw_vkGetSamplerOpaqueCaptureDescriptorDataEXT (VkDevice   device, const  VkSamplerCaptureDescriptorDataInfoEXT *  pInfo, void *  pData);
+#define vkGetSamplerOpaqueCaptureDescriptorDataEXT vkfw_vkGetSamplerOpaqueCaptureDescriptorDataEXT
 #endif /* defined(VK_EXT_descriptor_buffer) */
 #if defined(VK_EXT_descriptor_buffer) && (defined(VK_KHR_acceleration_structure) || defined(VK_NV_ray_tracing))
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT (VkDevice   device, const  VkAccelerationStructureCaptureDescriptorDataInfoEXT *  pInfo, void *  pData);
+vkfw_vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT (VkDevice   device, const  VkAccelerationStructureCaptureDescriptorDataInfoEXT *  pInfo, void *  pData);
+#define vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT vkfw_vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT
 #endif /* defined(VK_EXT_descriptor_buffer) && (defined(VK_KHR_acceleration_structure) || defined(VK_NV_ray_tracing)) */
 #if defined(VK_EXT_device_fault)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetDeviceFaultInfoEXT (VkDevice   device, VkDeviceFaultCountsEXT *  pFaultCounts, VkDeviceFaultInfoEXT *  pFaultInfo);
+vkfw_vkGetDeviceFaultInfoEXT (VkDevice   device, VkDeviceFaultCountsEXT *  pFaultCounts, VkDeviceFaultInfoEXT *  pFaultInfo);
+#define vkGetDeviceFaultInfoEXT vkfw_vkGetDeviceFaultInfoEXT
 #endif /* defined(VK_EXT_device_fault) */
 #if defined(VK_EXT_direct_mode_display)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkReleaseDisplayEXT (VkPhysicalDevice   physicalDevice, VkDisplayKHR   display);
+vkfw_vkReleaseDisplayEXT (VkPhysicalDevice   physicalDevice, VkDisplayKHR   display);
+#define vkReleaseDisplayEXT vkfw_vkReleaseDisplayEXT
 #endif /* defined(VK_EXT_direct_mode_display) */
 #if defined(VK_EXT_directfb_surface)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateDirectFBSurfaceEXT (VkInstance   instance, const  VkDirectFBSurfaceCreateInfoEXT *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+vkfw_vkCreateDirectFBSurfaceEXT (VkInstance   instance, const  VkDirectFBSurfaceCreateInfoEXT *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+#define vkCreateDirectFBSurfaceEXT vkfw_vkCreateDirectFBSurfaceEXT
 VKFWAPI VKAPI_ATTR VkBool32 VKAPI_CALL
-vkGetPhysicalDeviceDirectFBPresentationSupportEXT (VkPhysicalDevice   physicalDevice, uint32_t   queueFamilyIndex, IDirectFB *  dfb);
+vkfw_vkGetPhysicalDeviceDirectFBPresentationSupportEXT (VkPhysicalDevice   physicalDevice, uint32_t   queueFamilyIndex, IDirectFB *  dfb);
+#define vkGetPhysicalDeviceDirectFBPresentationSupportEXT vkfw_vkGetPhysicalDeviceDirectFBPresentationSupportEXT
 #endif /* defined(VK_EXT_directfb_surface) */
 #if defined(VK_EXT_discard_rectangles)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetDiscardRectangleEXT (VkCommandBuffer   commandBuffer, uint32_t   firstDiscardRectangle, uint32_t   discardRectangleCount, const  VkRect2D *  pDiscardRectangles);
+vkfw_vkCmdSetDiscardRectangleEXT (VkCommandBuffer   commandBuffer, uint32_t   firstDiscardRectangle, uint32_t   discardRectangleCount, const  VkRect2D *  pDiscardRectangles);
+#define vkCmdSetDiscardRectangleEXT vkfw_vkCmdSetDiscardRectangleEXT
 #endif /* defined(VK_EXT_discard_rectangles) */
 #if defined(VK_EXT_discard_rectangles) && VK_EXT_DISCARD_RECTANGLES_SPEC_VERSION >= 2
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetDiscardRectangleEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   discardRectangleEnable);
+vkfw_vkCmdSetDiscardRectangleEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   discardRectangleEnable);
+#define vkCmdSetDiscardRectangleEnableEXT vkfw_vkCmdSetDiscardRectangleEnableEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetDiscardRectangleModeEXT (VkCommandBuffer   commandBuffer, VkDiscardRectangleModeEXT   discardRectangleMode);
+vkfw_vkCmdSetDiscardRectangleModeEXT (VkCommandBuffer   commandBuffer, VkDiscardRectangleModeEXT   discardRectangleMode);
+#define vkCmdSetDiscardRectangleModeEXT vkfw_vkCmdSetDiscardRectangleModeEXT
 #endif /* defined(VK_EXT_discard_rectangles) && VK_EXT_DISCARD_RECTANGLES_SPEC_VERSION >= 2 */
 #if defined(VK_EXT_display_control)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkDisplayPowerControlEXT (VkDevice   device, VkDisplayKHR   display, const  VkDisplayPowerInfoEXT *  pDisplayPowerInfo);
+vkfw_vkDisplayPowerControlEXT (VkDevice   device, VkDisplayKHR   display, const  VkDisplayPowerInfoEXT *  pDisplayPowerInfo);
+#define vkDisplayPowerControlEXT vkfw_vkDisplayPowerControlEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetSwapchainCounterEXT (VkDevice   device, VkSwapchainKHR   swapchain, VkSurfaceCounterFlagBitsEXT   counter, uint64_t *  pCounterValue);
+vkfw_vkGetSwapchainCounterEXT (VkDevice   device, VkSwapchainKHR   swapchain, VkSurfaceCounterFlagBitsEXT   counter, uint64_t *  pCounterValue);
+#define vkGetSwapchainCounterEXT vkfw_vkGetSwapchainCounterEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkRegisterDeviceEventEXT (VkDevice   device, const  VkDeviceEventInfoEXT *  pDeviceEventInfo, const  VkAllocationCallbacks *  pAllocator, VkFence *  pFence);
+vkfw_vkRegisterDeviceEventEXT (VkDevice   device, const  VkDeviceEventInfoEXT *  pDeviceEventInfo, const  VkAllocationCallbacks *  pAllocator, VkFence *  pFence);
+#define vkRegisterDeviceEventEXT vkfw_vkRegisterDeviceEventEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkRegisterDisplayEventEXT (VkDevice   device, VkDisplayKHR   display, const  VkDisplayEventInfoEXT *  pDisplayEventInfo, const  VkAllocationCallbacks *  pAllocator, VkFence *  pFence);
+vkfw_vkRegisterDisplayEventEXT (VkDevice   device, VkDisplayKHR   display, const  VkDisplayEventInfoEXT *  pDisplayEventInfo, const  VkAllocationCallbacks *  pAllocator, VkFence *  pFence);
+#define vkRegisterDisplayEventEXT vkfw_vkRegisterDisplayEventEXT
 #endif /* defined(VK_EXT_display_control) */
 #if defined(VK_EXT_display_surface_counter)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceSurfaceCapabilities2EXT (VkPhysicalDevice   physicalDevice, VkSurfaceKHR   surface, VkSurfaceCapabilities2EXT *  pSurfaceCapabilities);
+vkfw_vkGetPhysicalDeviceSurfaceCapabilities2EXT (VkPhysicalDevice   physicalDevice, VkSurfaceKHR   surface, VkSurfaceCapabilities2EXT *  pSurfaceCapabilities);
+#define vkGetPhysicalDeviceSurfaceCapabilities2EXT vkfw_vkGetPhysicalDeviceSurfaceCapabilities2EXT
 #endif /* defined(VK_EXT_display_surface_counter) */
 #if defined(VK_EXT_external_memory_host)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetMemoryHostPointerPropertiesEXT (VkDevice   device, VkExternalMemoryHandleTypeFlagBits   handleType, const  void *  pHostPointer, VkMemoryHostPointerPropertiesEXT *  pMemoryHostPointerProperties);
+vkfw_vkGetMemoryHostPointerPropertiesEXT (VkDevice   device, VkExternalMemoryHandleTypeFlagBits   handleType, const  void *  pHostPointer, VkMemoryHostPointerPropertiesEXT *  pMemoryHostPointerProperties);
+#define vkGetMemoryHostPointerPropertiesEXT vkfw_vkGetMemoryHostPointerPropertiesEXT
 #endif /* defined(VK_EXT_external_memory_host) */
 #if defined(VK_EXT_full_screen_exclusive)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkAcquireFullScreenExclusiveModeEXT (VkDevice   device, VkSwapchainKHR   swapchain);
+vkfw_vkAcquireFullScreenExclusiveModeEXT (VkDevice   device, VkSwapchainKHR   swapchain);
+#define vkAcquireFullScreenExclusiveModeEXT vkfw_vkAcquireFullScreenExclusiveModeEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceSurfacePresentModes2EXT (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceSurfaceInfo2KHR *  pSurfaceInfo, uint32_t *  pPresentModeCount, VkPresentModeKHR *  pPresentModes);
+vkfw_vkGetPhysicalDeviceSurfacePresentModes2EXT (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceSurfaceInfo2KHR *  pSurfaceInfo, uint32_t *  pPresentModeCount, VkPresentModeKHR *  pPresentModes);
+#define vkGetPhysicalDeviceSurfacePresentModes2EXT vkfw_vkGetPhysicalDeviceSurfacePresentModes2EXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkReleaseFullScreenExclusiveModeEXT (VkDevice   device, VkSwapchainKHR   swapchain);
+vkfw_vkReleaseFullScreenExclusiveModeEXT (VkDevice   device, VkSwapchainKHR   swapchain);
+#define vkReleaseFullScreenExclusiveModeEXT vkfw_vkReleaseFullScreenExclusiveModeEXT
 #endif /* defined(VK_EXT_full_screen_exclusive) */
 #if defined(VK_EXT_hdr_metadata)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkSetHdrMetadataEXT (VkDevice   device, uint32_t   swapchainCount, const  VkSwapchainKHR *  pSwapchains, const  VkHdrMetadataEXT *  pMetadata);
+vkfw_vkSetHdrMetadataEXT (VkDevice   device, uint32_t   swapchainCount, const  VkSwapchainKHR *  pSwapchains, const  VkHdrMetadataEXT *  pMetadata);
+#define vkSetHdrMetadataEXT vkfw_vkSetHdrMetadataEXT
 #endif /* defined(VK_EXT_hdr_metadata) */
 #if defined(VK_EXT_headless_surface)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateHeadlessSurfaceEXT (VkInstance   instance, const  VkHeadlessSurfaceCreateInfoEXT *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+vkfw_vkCreateHeadlessSurfaceEXT (VkInstance   instance, const  VkHeadlessSurfaceCreateInfoEXT *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+#define vkCreateHeadlessSurfaceEXT vkfw_vkCreateHeadlessSurfaceEXT
 #endif /* defined(VK_EXT_headless_surface) */
 #if defined(VK_EXT_host_image_copy)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCopyImageToImageEXT (VkDevice   device, const  VkCopyImageToImageInfoEXT *  pCopyImageToImageInfo);
+vkfw_vkCopyImageToImageEXT (VkDevice   device, const  VkCopyImageToImageInfoEXT *  pCopyImageToImageInfo);
+#define vkCopyImageToImageEXT vkfw_vkCopyImageToImageEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCopyImageToMemoryEXT (VkDevice   device, const  VkCopyImageToMemoryInfoEXT *  pCopyImageToMemoryInfo);
+vkfw_vkCopyImageToMemoryEXT (VkDevice   device, const  VkCopyImageToMemoryInfoEXT *  pCopyImageToMemoryInfo);
+#define vkCopyImageToMemoryEXT vkfw_vkCopyImageToMemoryEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCopyMemoryToImageEXT (VkDevice   device, const  VkCopyMemoryToImageInfoEXT *  pCopyMemoryToImageInfo);
+vkfw_vkCopyMemoryToImageEXT (VkDevice   device, const  VkCopyMemoryToImageInfoEXT *  pCopyMemoryToImageInfo);
+#define vkCopyMemoryToImageEXT vkfw_vkCopyMemoryToImageEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkTransitionImageLayoutEXT (VkDevice   device, uint32_t   transitionCount, const  VkHostImageLayoutTransitionInfoEXT *  pTransitions);
+vkfw_vkTransitionImageLayoutEXT (VkDevice   device, uint32_t   transitionCount, const  VkHostImageLayoutTransitionInfoEXT *  pTransitions);
+#define vkTransitionImageLayoutEXT vkfw_vkTransitionImageLayoutEXT
 #endif /* defined(VK_EXT_host_image_copy) */
 #if defined(VK_EXT_host_query_reset)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkResetQueryPoolEXT (VkDevice   device, VkQueryPool   queryPool, uint32_t   firstQuery, uint32_t   queryCount);
+vkfw_vkResetQueryPoolEXT (VkDevice   device, VkQueryPool   queryPool, uint32_t   firstQuery, uint32_t   queryCount);
+#define vkResetQueryPoolEXT vkfw_vkResetQueryPoolEXT
 #endif /* defined(VK_EXT_host_query_reset) */
 #if defined(VK_EXT_image_drm_format_modifier)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetImageDrmFormatModifierPropertiesEXT (VkDevice   device, VkImage   image, VkImageDrmFormatModifierPropertiesEXT *  pProperties);
+vkfw_vkGetImageDrmFormatModifierPropertiesEXT (VkDevice   device, VkImage   image, VkImageDrmFormatModifierPropertiesEXT *  pProperties);
+#define vkGetImageDrmFormatModifierPropertiesEXT vkfw_vkGetImageDrmFormatModifierPropertiesEXT
 #endif /* defined(VK_EXT_image_drm_format_modifier) */
 #if defined(VK_EXT_line_rasterization)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetLineStippleEXT (VkCommandBuffer   commandBuffer, uint32_t   lineStippleFactor, uint16_t   lineStipplePattern);
+vkfw_vkCmdSetLineStippleEXT (VkCommandBuffer   commandBuffer, uint32_t   lineStippleFactor, uint16_t   lineStipplePattern);
+#define vkCmdSetLineStippleEXT vkfw_vkCmdSetLineStippleEXT
 #endif /* defined(VK_EXT_line_rasterization) */
 #if defined(VK_EXT_mesh_shader)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDrawMeshTasksEXT (VkCommandBuffer   commandBuffer, uint32_t   groupCountX, uint32_t   groupCountY, uint32_t   groupCountZ);
+vkfw_vkCmdDrawMeshTasksEXT (VkCommandBuffer   commandBuffer, uint32_t   groupCountX, uint32_t   groupCountY, uint32_t   groupCountZ);
+#define vkCmdDrawMeshTasksEXT vkfw_vkCmdDrawMeshTasksEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDrawMeshTasksIndirectCountEXT (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, VkBuffer   countBuffer, VkDeviceSize   countBufferOffset, uint32_t   maxDrawCount, uint32_t   stride);
+vkfw_vkCmdDrawMeshTasksIndirectCountEXT (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, VkBuffer   countBuffer, VkDeviceSize   countBufferOffset, uint32_t   maxDrawCount, uint32_t   stride);
+#define vkCmdDrawMeshTasksIndirectCountEXT vkfw_vkCmdDrawMeshTasksIndirectCountEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDrawMeshTasksIndirectEXT (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, uint32_t   drawCount, uint32_t   stride);
+vkfw_vkCmdDrawMeshTasksIndirectEXT (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, uint32_t   drawCount, uint32_t   stride);
+#define vkCmdDrawMeshTasksIndirectEXT vkfw_vkCmdDrawMeshTasksIndirectEXT
 #endif /* defined(VK_EXT_mesh_shader) */
 #if defined(VK_EXT_metal_objects)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkExportMetalObjectsEXT (VkDevice   device, VkExportMetalObjectsInfoEXT *  pMetalObjectsInfo);
+vkfw_vkExportMetalObjectsEXT (VkDevice   device, VkExportMetalObjectsInfoEXT *  pMetalObjectsInfo);
+#define vkExportMetalObjectsEXT vkfw_vkExportMetalObjectsEXT
 #endif /* defined(VK_EXT_metal_objects) */
 #if defined(VK_EXT_metal_surface)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateMetalSurfaceEXT (VkInstance   instance, const  VkMetalSurfaceCreateInfoEXT *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+vkfw_vkCreateMetalSurfaceEXT (VkInstance   instance, const  VkMetalSurfaceCreateInfoEXT *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+#define vkCreateMetalSurfaceEXT vkfw_vkCreateMetalSurfaceEXT
 #endif /* defined(VK_EXT_metal_surface) */
 #if defined(VK_EXT_multi_draw)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDrawMultiEXT (VkCommandBuffer   commandBuffer, uint32_t   drawCount, const  VkMultiDrawInfoEXT *  pVertexInfo, uint32_t   instanceCount, uint32_t   firstInstance, uint32_t   stride);
+vkfw_vkCmdDrawMultiEXT (VkCommandBuffer   commandBuffer, uint32_t   drawCount, const  VkMultiDrawInfoEXT *  pVertexInfo, uint32_t   instanceCount, uint32_t   firstInstance, uint32_t   stride);
+#define vkCmdDrawMultiEXT vkfw_vkCmdDrawMultiEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDrawMultiIndexedEXT (VkCommandBuffer   commandBuffer, uint32_t   drawCount, const  VkMultiDrawIndexedInfoEXT *  pIndexInfo, uint32_t   instanceCount, uint32_t   firstInstance, uint32_t   stride, const  int32_t *  pVertexOffset);
+vkfw_vkCmdDrawMultiIndexedEXT (VkCommandBuffer   commandBuffer, uint32_t   drawCount, const  VkMultiDrawIndexedInfoEXT *  pIndexInfo, uint32_t   instanceCount, uint32_t   firstInstance, uint32_t   stride, const  int32_t *  pVertexOffset);
+#define vkCmdDrawMultiIndexedEXT vkfw_vkCmdDrawMultiIndexedEXT
 #endif /* defined(VK_EXT_multi_draw) */
 #if defined(VK_EXT_opacity_micromap)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkBuildMicromapsEXT (VkDevice                                             device, VkDeferredOperationKHR   deferredOperation, uint32_t   infoCount, const  VkMicromapBuildInfoEXT *  pInfos);
+vkfw_vkBuildMicromapsEXT (VkDevice                                             device, VkDeferredOperationKHR   deferredOperation, uint32_t   infoCount, const  VkMicromapBuildInfoEXT *  pInfos);
+#define vkBuildMicromapsEXT vkfw_vkBuildMicromapsEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBuildMicromapsEXT (VkCommandBuffer                                      commandBuffer, uint32_t   infoCount, const  VkMicromapBuildInfoEXT *  pInfos);
+vkfw_vkCmdBuildMicromapsEXT (VkCommandBuffer                                      commandBuffer, uint32_t   infoCount, const  VkMicromapBuildInfoEXT *  pInfos);
+#define vkCmdBuildMicromapsEXT vkfw_vkCmdBuildMicromapsEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdCopyMemoryToMicromapEXT (VkCommandBuffer   commandBuffer, const  VkCopyMemoryToMicromapInfoEXT *  pInfo);
+vkfw_vkCmdCopyMemoryToMicromapEXT (VkCommandBuffer   commandBuffer, const  VkCopyMemoryToMicromapInfoEXT *  pInfo);
+#define vkCmdCopyMemoryToMicromapEXT vkfw_vkCmdCopyMemoryToMicromapEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdCopyMicromapEXT (VkCommandBuffer   commandBuffer, const  VkCopyMicromapInfoEXT *  pInfo);
+vkfw_vkCmdCopyMicromapEXT (VkCommandBuffer   commandBuffer, const  VkCopyMicromapInfoEXT *  pInfo);
+#define vkCmdCopyMicromapEXT vkfw_vkCmdCopyMicromapEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdCopyMicromapToMemoryEXT (VkCommandBuffer   commandBuffer, const  VkCopyMicromapToMemoryInfoEXT *  pInfo);
+vkfw_vkCmdCopyMicromapToMemoryEXT (VkCommandBuffer   commandBuffer, const  VkCopyMicromapToMemoryInfoEXT *  pInfo);
+#define vkCmdCopyMicromapToMemoryEXT vkfw_vkCmdCopyMicromapToMemoryEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdWriteMicromapsPropertiesEXT (VkCommandBuffer   commandBuffer, uint32_t   micromapCount, const  VkMicromapEXT *  pMicromaps, VkQueryType   queryType, VkQueryPool   queryPool, uint32_t   firstQuery);
+vkfw_vkCmdWriteMicromapsPropertiesEXT (VkCommandBuffer   commandBuffer, uint32_t   micromapCount, const  VkMicromapEXT *  pMicromaps, VkQueryType   queryType, VkQueryPool   queryPool, uint32_t   firstQuery);
+#define vkCmdWriteMicromapsPropertiesEXT vkfw_vkCmdWriteMicromapsPropertiesEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCopyMemoryToMicromapEXT (VkDevice   device, VkDeferredOperationKHR   deferredOperation, const  VkCopyMemoryToMicromapInfoEXT *  pInfo);
+vkfw_vkCopyMemoryToMicromapEXT (VkDevice   device, VkDeferredOperationKHR   deferredOperation, const  VkCopyMemoryToMicromapInfoEXT *  pInfo);
+#define vkCopyMemoryToMicromapEXT vkfw_vkCopyMemoryToMicromapEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCopyMicromapEXT (VkDevice   device, VkDeferredOperationKHR   deferredOperation, const  VkCopyMicromapInfoEXT *  pInfo);
+vkfw_vkCopyMicromapEXT (VkDevice   device, VkDeferredOperationKHR   deferredOperation, const  VkCopyMicromapInfoEXT *  pInfo);
+#define vkCopyMicromapEXT vkfw_vkCopyMicromapEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCopyMicromapToMemoryEXT (VkDevice   device, VkDeferredOperationKHR   deferredOperation, const  VkCopyMicromapToMemoryInfoEXT *  pInfo);
+vkfw_vkCopyMicromapToMemoryEXT (VkDevice   device, VkDeferredOperationKHR   deferredOperation, const  VkCopyMicromapToMemoryInfoEXT *  pInfo);
+#define vkCopyMicromapToMemoryEXT vkfw_vkCopyMicromapToMemoryEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateMicromapEXT (VkDevice                                             device, const  VkMicromapCreateInfoEXT *         pCreateInfo, const  VkAllocationCallbacks *        pAllocator, VkMicromapEXT *                         pMicromap);
+vkfw_vkCreateMicromapEXT (VkDevice                                             device, const  VkMicromapCreateInfoEXT *         pCreateInfo, const  VkAllocationCallbacks *        pAllocator, VkMicromapEXT *                         pMicromap);
+#define vkCreateMicromapEXT vkfw_vkCreateMicromapEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyMicromapEXT (VkDevice   device, VkMicromapEXT   micromap, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyMicromapEXT (VkDevice   device, VkMicromapEXT   micromap, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyMicromapEXT vkfw_vkDestroyMicromapEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetDeviceMicromapCompatibilityEXT (VkDevice   device, const  VkMicromapVersionInfoEXT *  pVersionInfo, VkAccelerationStructureCompatibilityKHR *  pCompatibility);
+vkfw_vkGetDeviceMicromapCompatibilityEXT (VkDevice   device, const  VkMicromapVersionInfoEXT *  pVersionInfo, VkAccelerationStructureCompatibilityKHR *  pCompatibility);
+#define vkGetDeviceMicromapCompatibilityEXT vkfw_vkGetDeviceMicromapCompatibilityEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetMicromapBuildSizesEXT (VkDevice                                              device, VkAccelerationStructureBuildTypeKHR                   buildType, const  VkMicromapBuildInfoEXT *   pBuildInfo, VkMicromapBuildSizesInfoEXT *            pSizeInfo);
+vkfw_vkGetMicromapBuildSizesEXT (VkDevice                                              device, VkAccelerationStructureBuildTypeKHR                   buildType, const  VkMicromapBuildInfoEXT *   pBuildInfo, VkMicromapBuildSizesInfoEXT *            pSizeInfo);
+#define vkGetMicromapBuildSizesEXT vkfw_vkGetMicromapBuildSizesEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkWriteMicromapsPropertiesEXT (VkDevice   device, uint32_t   micromapCount, const  VkMicromapEXT *  pMicromaps, VkQueryType    queryType, size_t         dataSize, void *  pData, size_t   stride);
+vkfw_vkWriteMicromapsPropertiesEXT (VkDevice   device, uint32_t   micromapCount, const  VkMicromapEXT *  pMicromaps, VkQueryType    queryType, size_t         dataSize, void *  pData, size_t   stride);
+#define vkWriteMicromapsPropertiesEXT vkfw_vkWriteMicromapsPropertiesEXT
 #endif /* defined(VK_EXT_opacity_micromap) */
 #if defined(VK_EXT_pageable_device_local_memory)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkSetDeviceMemoryPriorityEXT (VkDevice         device, VkDeviceMemory   memory, float            priority);
+vkfw_vkSetDeviceMemoryPriorityEXT (VkDevice         device, VkDeviceMemory   memory, float            priority);
+#define vkSetDeviceMemoryPriorityEXT vkfw_vkSetDeviceMemoryPriorityEXT
 #endif /* defined(VK_EXT_pageable_device_local_memory) */
 #if defined(VK_EXT_pipeline_properties)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPipelinePropertiesEXT (VkDevice   device, const  VkPipelineInfoEXT *  pPipelineInfo, VkBaseOutStructure *  pPipelineProperties);
+vkfw_vkGetPipelinePropertiesEXT (VkDevice   device, const  VkPipelineInfoEXT *  pPipelineInfo, VkBaseOutStructure *  pPipelineProperties);
+#define vkGetPipelinePropertiesEXT vkfw_vkGetPipelinePropertiesEXT
 #endif /* defined(VK_EXT_pipeline_properties) */
 #if defined(VK_EXT_private_data)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreatePrivateDataSlotEXT (VkDevice   device, const  VkPrivateDataSlotCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkPrivateDataSlot *  pPrivateDataSlot);
+vkfw_vkCreatePrivateDataSlotEXT (VkDevice   device, const  VkPrivateDataSlotCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkPrivateDataSlot *  pPrivateDataSlot);
+#define vkCreatePrivateDataSlotEXT vkfw_vkCreatePrivateDataSlotEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyPrivateDataSlotEXT (VkDevice   device, VkPrivateDataSlot   privateDataSlot, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyPrivateDataSlotEXT (VkDevice   device, VkPrivateDataSlot   privateDataSlot, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyPrivateDataSlotEXT vkfw_vkDestroyPrivateDataSlotEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPrivateDataEXT (VkDevice   device, VkObjectType   objectType, uint64_t   objectHandle, VkPrivateDataSlot   privateDataSlot, uint64_t *  pData);
+vkfw_vkGetPrivateDataEXT (VkDevice   device, VkObjectType   objectType, uint64_t   objectHandle, VkPrivateDataSlot   privateDataSlot, uint64_t *  pData);
+#define vkGetPrivateDataEXT vkfw_vkGetPrivateDataEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkSetPrivateDataEXT (VkDevice   device, VkObjectType   objectType, uint64_t   objectHandle, VkPrivateDataSlot   privateDataSlot, uint64_t   data);
+vkfw_vkSetPrivateDataEXT (VkDevice   device, VkObjectType   objectType, uint64_t   objectHandle, VkPrivateDataSlot   privateDataSlot, uint64_t   data);
+#define vkSetPrivateDataEXT vkfw_vkSetPrivateDataEXT
 #endif /* defined(VK_EXT_private_data) */
 #if defined(VK_EXT_sample_locations)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetSampleLocationsEXT (VkCommandBuffer   commandBuffer, const  VkSampleLocationsInfoEXT *  pSampleLocationsInfo);
+vkfw_vkCmdSetSampleLocationsEXT (VkCommandBuffer   commandBuffer, const  VkSampleLocationsInfoEXT *  pSampleLocationsInfo);
+#define vkCmdSetSampleLocationsEXT vkfw_vkCmdSetSampleLocationsEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPhysicalDeviceMultisamplePropertiesEXT (VkPhysicalDevice   physicalDevice, VkSampleCountFlagBits   samples, VkMultisamplePropertiesEXT *  pMultisampleProperties);
+vkfw_vkGetPhysicalDeviceMultisamplePropertiesEXT (VkPhysicalDevice   physicalDevice, VkSampleCountFlagBits   samples, VkMultisamplePropertiesEXT *  pMultisampleProperties);
+#define vkGetPhysicalDeviceMultisamplePropertiesEXT vkfw_vkGetPhysicalDeviceMultisamplePropertiesEXT
 #endif /* defined(VK_EXT_sample_locations) */
 #if defined(VK_EXT_shader_module_identifier)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetShaderModuleCreateInfoIdentifierEXT (VkDevice   device, const  VkShaderModuleCreateInfo *  pCreateInfo, VkShaderModuleIdentifierEXT *  pIdentifier);
+vkfw_vkGetShaderModuleCreateInfoIdentifierEXT (VkDevice   device, const  VkShaderModuleCreateInfo *  pCreateInfo, VkShaderModuleIdentifierEXT *  pIdentifier);
+#define vkGetShaderModuleCreateInfoIdentifierEXT vkfw_vkGetShaderModuleCreateInfoIdentifierEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetShaderModuleIdentifierEXT (VkDevice   device, VkShaderModule   shaderModule, VkShaderModuleIdentifierEXT *  pIdentifier);
+vkfw_vkGetShaderModuleIdentifierEXT (VkDevice   device, VkShaderModule   shaderModule, VkShaderModuleIdentifierEXT *  pIdentifier);
+#define vkGetShaderModuleIdentifierEXT vkfw_vkGetShaderModuleIdentifierEXT
 #endif /* defined(VK_EXT_shader_module_identifier) */
 #if defined(VK_EXT_shader_object)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBindShadersEXT (VkCommandBuffer   commandBuffer, uint32_t   stageCount, const  VkShaderStageFlagBits *  pStages, const  VkShaderEXT *  pShaders);
+vkfw_vkCmdBindShadersEXT (VkCommandBuffer   commandBuffer, uint32_t   stageCount, const  VkShaderStageFlagBits *  pStages, const  VkShaderEXT *  pShaders);
+#define vkCmdBindShadersEXT vkfw_vkCmdBindShadersEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateShadersEXT (VkDevice   device, uint32_t   createInfoCount, const  VkShaderCreateInfoEXT *  pCreateInfos, const  VkAllocationCallbacks *  pAllocator, VkShaderEXT *  pShaders);
+vkfw_vkCreateShadersEXT (VkDevice   device, uint32_t   createInfoCount, const  VkShaderCreateInfoEXT *  pCreateInfos, const  VkAllocationCallbacks *  pAllocator, VkShaderEXT *  pShaders);
+#define vkCreateShadersEXT vkfw_vkCreateShadersEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyShaderEXT (VkDevice   device, VkShaderEXT   shader, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyShaderEXT (VkDevice   device, VkShaderEXT   shader, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyShaderEXT vkfw_vkDestroyShaderEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetShaderBinaryDataEXT (VkDevice   device, VkShaderEXT   shader, size_t *  pDataSize, void *  pData);
+vkfw_vkGetShaderBinaryDataEXT (VkDevice   device, VkShaderEXT   shader, size_t *  pDataSize, void *  pData);
+#define vkGetShaderBinaryDataEXT vkfw_vkGetShaderBinaryDataEXT
 #endif /* defined(VK_EXT_shader_object) */
 #if defined(VK_EXT_swapchain_maintenance1)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkReleaseSwapchainImagesEXT (VkDevice   device, const  VkReleaseSwapchainImagesInfoEXT *  pReleaseInfo);
+vkfw_vkReleaseSwapchainImagesEXT (VkDevice   device, const  VkReleaseSwapchainImagesInfoEXT *  pReleaseInfo);
+#define vkReleaseSwapchainImagesEXT vkfw_vkReleaseSwapchainImagesEXT
 #endif /* defined(VK_EXT_swapchain_maintenance1) */
 #if defined(VK_EXT_tooling_info)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceToolPropertiesEXT (VkPhysicalDevice   physicalDevice, uint32_t *  pToolCount, VkPhysicalDeviceToolProperties *  pToolProperties);
+vkfw_vkGetPhysicalDeviceToolPropertiesEXT (VkPhysicalDevice   physicalDevice, uint32_t *  pToolCount, VkPhysicalDeviceToolProperties *  pToolProperties);
+#define vkGetPhysicalDeviceToolPropertiesEXT vkfw_vkGetPhysicalDeviceToolPropertiesEXT
 #endif /* defined(VK_EXT_tooling_info) */
 #if defined(VK_EXT_transform_feedback)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBeginQueryIndexedEXT (VkCommandBuffer   commandBuffer, VkQueryPool   queryPool, uint32_t   query, VkQueryControlFlags   flags, uint32_t   index);
+vkfw_vkCmdBeginQueryIndexedEXT (VkCommandBuffer   commandBuffer, VkQueryPool   queryPool, uint32_t   query, VkQueryControlFlags   flags, uint32_t   index);
+#define vkCmdBeginQueryIndexedEXT vkfw_vkCmdBeginQueryIndexedEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBeginTransformFeedbackEXT (VkCommandBuffer   commandBuffer, uint32_t   firstCounterBuffer, uint32_t   counterBufferCount, const  VkBuffer *  pCounterBuffers, const  VkDeviceSize *  pCounterBufferOffsets);
+vkfw_vkCmdBeginTransformFeedbackEXT (VkCommandBuffer   commandBuffer, uint32_t   firstCounterBuffer, uint32_t   counterBufferCount, const  VkBuffer *  pCounterBuffers, const  VkDeviceSize *  pCounterBufferOffsets);
+#define vkCmdBeginTransformFeedbackEXT vkfw_vkCmdBeginTransformFeedbackEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBindTransformFeedbackBuffersEXT (VkCommandBuffer   commandBuffer, uint32_t   firstBinding, uint32_t   bindingCount, const  VkBuffer *  pBuffers, const  VkDeviceSize *  pOffsets, const  VkDeviceSize *  pSizes);
+vkfw_vkCmdBindTransformFeedbackBuffersEXT (VkCommandBuffer   commandBuffer, uint32_t   firstBinding, uint32_t   bindingCount, const  VkBuffer *  pBuffers, const  VkDeviceSize *  pOffsets, const  VkDeviceSize *  pSizes);
+#define vkCmdBindTransformFeedbackBuffersEXT vkfw_vkCmdBindTransformFeedbackBuffersEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDrawIndirectByteCountEXT (VkCommandBuffer   commandBuffer, uint32_t   instanceCount, uint32_t   firstInstance, VkBuffer   counterBuffer, VkDeviceSize   counterBufferOffset, uint32_t   counterOffset, uint32_t   vertexStride);
+vkfw_vkCmdDrawIndirectByteCountEXT (VkCommandBuffer   commandBuffer, uint32_t   instanceCount, uint32_t   firstInstance, VkBuffer   counterBuffer, VkDeviceSize   counterBufferOffset, uint32_t   counterOffset, uint32_t   vertexStride);
+#define vkCmdDrawIndirectByteCountEXT vkfw_vkCmdDrawIndirectByteCountEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdEndQueryIndexedEXT (VkCommandBuffer   commandBuffer, VkQueryPool   queryPool, uint32_t   query, uint32_t   index);
+vkfw_vkCmdEndQueryIndexedEXT (VkCommandBuffer   commandBuffer, VkQueryPool   queryPool, uint32_t   query, uint32_t   index);
+#define vkCmdEndQueryIndexedEXT vkfw_vkCmdEndQueryIndexedEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdEndTransformFeedbackEXT (VkCommandBuffer   commandBuffer, uint32_t   firstCounterBuffer, uint32_t   counterBufferCount, const  VkBuffer *  pCounterBuffers, const  VkDeviceSize *  pCounterBufferOffsets);
+vkfw_vkCmdEndTransformFeedbackEXT (VkCommandBuffer   commandBuffer, uint32_t   firstCounterBuffer, uint32_t   counterBufferCount, const  VkBuffer *  pCounterBuffers, const  VkDeviceSize *  pCounterBufferOffsets);
+#define vkCmdEndTransformFeedbackEXT vkfw_vkCmdEndTransformFeedbackEXT
 #endif /* defined(VK_EXT_transform_feedback) */
 #if defined(VK_EXT_validation_cache)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateValidationCacheEXT (VkDevice   device, const  VkValidationCacheCreateInfoEXT *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkValidationCacheEXT *  pValidationCache);
+vkfw_vkCreateValidationCacheEXT (VkDevice   device, const  VkValidationCacheCreateInfoEXT *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkValidationCacheEXT *  pValidationCache);
+#define vkCreateValidationCacheEXT vkfw_vkCreateValidationCacheEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyValidationCacheEXT (VkDevice   device, VkValidationCacheEXT   validationCache, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyValidationCacheEXT (VkDevice   device, VkValidationCacheEXT   validationCache, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyValidationCacheEXT vkfw_vkDestroyValidationCacheEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetValidationCacheDataEXT (VkDevice   device, VkValidationCacheEXT   validationCache, size_t *  pDataSize, void *  pData);
+vkfw_vkGetValidationCacheDataEXT (VkDevice   device, VkValidationCacheEXT   validationCache, size_t *  pDataSize, void *  pData);
+#define vkGetValidationCacheDataEXT vkfw_vkGetValidationCacheDataEXT
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkMergeValidationCachesEXT (VkDevice   device, VkValidationCacheEXT   dstCache, uint32_t   srcCacheCount, const  VkValidationCacheEXT *  pSrcCaches);
+vkfw_vkMergeValidationCachesEXT (VkDevice   device, VkValidationCacheEXT   dstCache, uint32_t   srcCacheCount, const  VkValidationCacheEXT *  pSrcCaches);
+#define vkMergeValidationCachesEXT vkfw_vkMergeValidationCachesEXT
 #endif /* defined(VK_EXT_validation_cache) */
 #if defined(VK_FUCHSIA_buffer_collection)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateBufferCollectionFUCHSIA (VkDevice   device, const  VkBufferCollectionCreateInfoFUCHSIA *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkBufferCollectionFUCHSIA *  pCollection);
+vkfw_vkCreateBufferCollectionFUCHSIA (VkDevice   device, const  VkBufferCollectionCreateInfoFUCHSIA *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkBufferCollectionFUCHSIA *  pCollection);
+#define vkCreateBufferCollectionFUCHSIA vkfw_vkCreateBufferCollectionFUCHSIA
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyBufferCollectionFUCHSIA (VkDevice   device, VkBufferCollectionFUCHSIA   collection, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyBufferCollectionFUCHSIA (VkDevice   device, VkBufferCollectionFUCHSIA   collection, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyBufferCollectionFUCHSIA vkfw_vkDestroyBufferCollectionFUCHSIA
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetBufferCollectionPropertiesFUCHSIA (VkDevice   device, VkBufferCollectionFUCHSIA   collection, VkBufferCollectionPropertiesFUCHSIA *  pProperties);
+vkfw_vkGetBufferCollectionPropertiesFUCHSIA (VkDevice   device, VkBufferCollectionFUCHSIA   collection, VkBufferCollectionPropertiesFUCHSIA *  pProperties);
+#define vkGetBufferCollectionPropertiesFUCHSIA vkfw_vkGetBufferCollectionPropertiesFUCHSIA
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkSetBufferCollectionBufferConstraintsFUCHSIA (VkDevice   device, VkBufferCollectionFUCHSIA   collection, const  VkBufferConstraintsInfoFUCHSIA *  pBufferConstraintsInfo);
+vkfw_vkSetBufferCollectionBufferConstraintsFUCHSIA (VkDevice   device, VkBufferCollectionFUCHSIA   collection, const  VkBufferConstraintsInfoFUCHSIA *  pBufferConstraintsInfo);
+#define vkSetBufferCollectionBufferConstraintsFUCHSIA vkfw_vkSetBufferCollectionBufferConstraintsFUCHSIA
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkSetBufferCollectionImageConstraintsFUCHSIA (VkDevice   device, VkBufferCollectionFUCHSIA   collection, const  VkImageConstraintsInfoFUCHSIA *  pImageConstraintsInfo);
+vkfw_vkSetBufferCollectionImageConstraintsFUCHSIA (VkDevice   device, VkBufferCollectionFUCHSIA   collection, const  VkImageConstraintsInfoFUCHSIA *  pImageConstraintsInfo);
+#define vkSetBufferCollectionImageConstraintsFUCHSIA vkfw_vkSetBufferCollectionImageConstraintsFUCHSIA
 #endif /* defined(VK_FUCHSIA_buffer_collection) */
 #if defined(VK_FUCHSIA_external_memory)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetMemoryZirconHandleFUCHSIA (VkDevice   device, const  VkMemoryGetZirconHandleInfoFUCHSIA *  pGetZirconHandleInfo, zx_handle_t *  pZirconHandle);
+vkfw_vkGetMemoryZirconHandleFUCHSIA (VkDevice   device, const  VkMemoryGetZirconHandleInfoFUCHSIA *  pGetZirconHandleInfo, zx_handle_t *  pZirconHandle);
+#define vkGetMemoryZirconHandleFUCHSIA vkfw_vkGetMemoryZirconHandleFUCHSIA
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetMemoryZirconHandlePropertiesFUCHSIA (VkDevice   device, VkExternalMemoryHandleTypeFlagBits   handleType, zx_handle_t   zirconHandle, VkMemoryZirconHandlePropertiesFUCHSIA *  pMemoryZirconHandleProperties);
+vkfw_vkGetMemoryZirconHandlePropertiesFUCHSIA (VkDevice   device, VkExternalMemoryHandleTypeFlagBits   handleType, zx_handle_t   zirconHandle, VkMemoryZirconHandlePropertiesFUCHSIA *  pMemoryZirconHandleProperties);
+#define vkGetMemoryZirconHandlePropertiesFUCHSIA vkfw_vkGetMemoryZirconHandlePropertiesFUCHSIA
 #endif /* defined(VK_FUCHSIA_external_memory) */
 #if defined(VK_FUCHSIA_external_semaphore)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetSemaphoreZirconHandleFUCHSIA (VkDevice   device, const  VkSemaphoreGetZirconHandleInfoFUCHSIA *  pGetZirconHandleInfo, zx_handle_t *  pZirconHandle);
+vkfw_vkGetSemaphoreZirconHandleFUCHSIA (VkDevice   device, const  VkSemaphoreGetZirconHandleInfoFUCHSIA *  pGetZirconHandleInfo, zx_handle_t *  pZirconHandle);
+#define vkGetSemaphoreZirconHandleFUCHSIA vkfw_vkGetSemaphoreZirconHandleFUCHSIA
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkImportSemaphoreZirconHandleFUCHSIA (VkDevice   device, const  VkImportSemaphoreZirconHandleInfoFUCHSIA *  pImportSemaphoreZirconHandleInfo);
+vkfw_vkImportSemaphoreZirconHandleFUCHSIA (VkDevice   device, const  VkImportSemaphoreZirconHandleInfoFUCHSIA *  pImportSemaphoreZirconHandleInfo);
+#define vkImportSemaphoreZirconHandleFUCHSIA vkfw_vkImportSemaphoreZirconHandleFUCHSIA
 #endif /* defined(VK_FUCHSIA_external_semaphore) */
 #if defined(VK_FUCHSIA_imagepipe_surface)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateImagePipeSurfaceFUCHSIA (VkInstance   instance, const  VkImagePipeSurfaceCreateInfoFUCHSIA *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+vkfw_vkCreateImagePipeSurfaceFUCHSIA (VkInstance   instance, const  VkImagePipeSurfaceCreateInfoFUCHSIA *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+#define vkCreateImagePipeSurfaceFUCHSIA vkfw_vkCreateImagePipeSurfaceFUCHSIA
 #endif /* defined(VK_FUCHSIA_imagepipe_surface) */
 #if defined(VK_GGP_stream_descriptor_surface)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateStreamDescriptorSurfaceGGP (VkInstance   instance, const  VkStreamDescriptorSurfaceCreateInfoGGP *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+vkfw_vkCreateStreamDescriptorSurfaceGGP (VkInstance   instance, const  VkStreamDescriptorSurfaceCreateInfoGGP *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+#define vkCreateStreamDescriptorSurfaceGGP vkfw_vkCreateStreamDescriptorSurfaceGGP
 #endif /* defined(VK_GGP_stream_descriptor_surface) */
 #if defined(VK_GOOGLE_display_timing)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPastPresentationTimingGOOGLE (VkDevice   device, VkSwapchainKHR   swapchain, uint32_t *  pPresentationTimingCount, VkPastPresentationTimingGOOGLE *  pPresentationTimings);
+vkfw_vkGetPastPresentationTimingGOOGLE (VkDevice   device, VkSwapchainKHR   swapchain, uint32_t *  pPresentationTimingCount, VkPastPresentationTimingGOOGLE *  pPresentationTimings);
+#define vkGetPastPresentationTimingGOOGLE vkfw_vkGetPastPresentationTimingGOOGLE
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetRefreshCycleDurationGOOGLE (VkDevice   device, VkSwapchainKHR   swapchain, VkRefreshCycleDurationGOOGLE *  pDisplayTimingProperties);
+vkfw_vkGetRefreshCycleDurationGOOGLE (VkDevice   device, VkSwapchainKHR   swapchain, VkRefreshCycleDurationGOOGLE *  pDisplayTimingProperties);
+#define vkGetRefreshCycleDurationGOOGLE vkfw_vkGetRefreshCycleDurationGOOGLE
 #endif /* defined(VK_GOOGLE_display_timing) */
 #if defined(VK_HUAWEI_cluster_culling_shader)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDrawClusterHUAWEI (VkCommandBuffer   commandBuffer, uint32_t   groupCountX, uint32_t   groupCountY, uint32_t   groupCountZ);
+vkfw_vkCmdDrawClusterHUAWEI (VkCommandBuffer   commandBuffer, uint32_t   groupCountX, uint32_t   groupCountY, uint32_t   groupCountZ);
+#define vkCmdDrawClusterHUAWEI vkfw_vkCmdDrawClusterHUAWEI
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDrawClusterIndirectHUAWEI (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset);
+vkfw_vkCmdDrawClusterIndirectHUAWEI (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset);
+#define vkCmdDrawClusterIndirectHUAWEI vkfw_vkCmdDrawClusterIndirectHUAWEI
 #endif /* defined(VK_HUAWEI_cluster_culling_shader) */
 #if defined(VK_HUAWEI_invocation_mask)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBindInvocationMaskHUAWEI (VkCommandBuffer   commandBuffer, VkImageView   imageView, VkImageLayout   imageLayout);
+vkfw_vkCmdBindInvocationMaskHUAWEI (VkCommandBuffer   commandBuffer, VkImageView   imageView, VkImageLayout   imageLayout);
+#define vkCmdBindInvocationMaskHUAWEI vkfw_vkCmdBindInvocationMaskHUAWEI
 #endif /* defined(VK_HUAWEI_invocation_mask) */
 #if defined(VK_HUAWEI_subpass_shading)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSubpassShadingHUAWEI (VkCommandBuffer   commandBuffer);
+vkfw_vkCmdSubpassShadingHUAWEI (VkCommandBuffer   commandBuffer);
+#define vkCmdSubpassShadingHUAWEI vkfw_vkCmdSubpassShadingHUAWEI
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI (VkDevice   device, VkRenderPass   renderpass, VkExtent2D *  pMaxWorkgroupSize);
+vkfw_vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI (VkDevice   device, VkRenderPass   renderpass, VkExtent2D *  pMaxWorkgroupSize);
+#define vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI vkfw_vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI
 #endif /* defined(VK_HUAWEI_subpass_shading) */
 #if defined(VK_INTEL_performance_query)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkAcquirePerformanceConfigurationINTEL (VkDevice   device, const  VkPerformanceConfigurationAcquireInfoINTEL *  pAcquireInfo, VkPerformanceConfigurationINTEL *  pConfiguration);
+vkfw_vkAcquirePerformanceConfigurationINTEL (VkDevice   device, const  VkPerformanceConfigurationAcquireInfoINTEL *  pAcquireInfo, VkPerformanceConfigurationINTEL *  pConfiguration);
+#define vkAcquirePerformanceConfigurationINTEL vkfw_vkAcquirePerformanceConfigurationINTEL
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCmdSetPerformanceMarkerINTEL (VkCommandBuffer   commandBuffer, const  VkPerformanceMarkerInfoINTEL *  pMarkerInfo);
+vkfw_vkCmdSetPerformanceMarkerINTEL (VkCommandBuffer   commandBuffer, const  VkPerformanceMarkerInfoINTEL *  pMarkerInfo);
+#define vkCmdSetPerformanceMarkerINTEL vkfw_vkCmdSetPerformanceMarkerINTEL
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCmdSetPerformanceOverrideINTEL (VkCommandBuffer   commandBuffer, const  VkPerformanceOverrideInfoINTEL *  pOverrideInfo);
+vkfw_vkCmdSetPerformanceOverrideINTEL (VkCommandBuffer   commandBuffer, const  VkPerformanceOverrideInfoINTEL *  pOverrideInfo);
+#define vkCmdSetPerformanceOverrideINTEL vkfw_vkCmdSetPerformanceOverrideINTEL
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCmdSetPerformanceStreamMarkerINTEL (VkCommandBuffer   commandBuffer, const  VkPerformanceStreamMarkerInfoINTEL *  pMarkerInfo);
+vkfw_vkCmdSetPerformanceStreamMarkerINTEL (VkCommandBuffer   commandBuffer, const  VkPerformanceStreamMarkerInfoINTEL *  pMarkerInfo);
+#define vkCmdSetPerformanceStreamMarkerINTEL vkfw_vkCmdSetPerformanceStreamMarkerINTEL
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPerformanceParameterINTEL (VkDevice   device, VkPerformanceParameterTypeINTEL   parameter, VkPerformanceValueINTEL *  pValue);
+vkfw_vkGetPerformanceParameterINTEL (VkDevice   device, VkPerformanceParameterTypeINTEL   parameter, VkPerformanceValueINTEL *  pValue);
+#define vkGetPerformanceParameterINTEL vkfw_vkGetPerformanceParameterINTEL
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkInitializePerformanceApiINTEL (VkDevice   device, const  VkInitializePerformanceApiInfoINTEL *  pInitializeInfo);
+vkfw_vkInitializePerformanceApiINTEL (VkDevice   device, const  VkInitializePerformanceApiInfoINTEL *  pInitializeInfo);
+#define vkInitializePerformanceApiINTEL vkfw_vkInitializePerformanceApiINTEL
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkQueueSetPerformanceConfigurationINTEL (VkQueue   queue, VkPerformanceConfigurationINTEL   configuration);
+vkfw_vkQueueSetPerformanceConfigurationINTEL (VkQueue   queue, VkPerformanceConfigurationINTEL   configuration);
+#define vkQueueSetPerformanceConfigurationINTEL vkfw_vkQueueSetPerformanceConfigurationINTEL
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkReleasePerformanceConfigurationINTEL (VkDevice   device, VkPerformanceConfigurationINTEL   configuration);
+vkfw_vkReleasePerformanceConfigurationINTEL (VkDevice   device, VkPerformanceConfigurationINTEL   configuration);
+#define vkReleasePerformanceConfigurationINTEL vkfw_vkReleasePerformanceConfigurationINTEL
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkUninitializePerformanceApiINTEL (VkDevice   device);
+vkfw_vkUninitializePerformanceApiINTEL (VkDevice   device);
+#define vkUninitializePerformanceApiINTEL vkfw_vkUninitializePerformanceApiINTEL
 #endif /* defined(VK_INTEL_performance_query) */
 #if defined(VK_KHR_acceleration_structure)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkBuildAccelerationStructuresKHR (VkDevice                                             device, VkDeferredOperationKHR   deferredOperation, uint32_t   infoCount, const  VkAccelerationStructureBuildGeometryInfoKHR *  pInfos, const  VkAccelerationStructureBuildRangeInfoKHR * const*  ppBuildRangeInfos);
+vkfw_vkBuildAccelerationStructuresKHR (VkDevice                                             device, VkDeferredOperationKHR   deferredOperation, uint32_t   infoCount, const  VkAccelerationStructureBuildGeometryInfoKHR *  pInfos, const  VkAccelerationStructureBuildRangeInfoKHR * const*  ppBuildRangeInfos);
+#define vkBuildAccelerationStructuresKHR vkfw_vkBuildAccelerationStructuresKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBuildAccelerationStructuresIndirectKHR (VkCommandBuffer                    commandBuffer, uint32_t                                             infoCount, const  VkAccelerationStructureBuildGeometryInfoKHR *  pInfos, const  VkDeviceAddress *              pIndirectDeviceAddresses, const  uint32_t *                     pIndirectStrides, const  uint32_t * const*              ppMaxPrimitiveCounts);
+vkfw_vkCmdBuildAccelerationStructuresIndirectKHR (VkCommandBuffer                    commandBuffer, uint32_t                                             infoCount, const  VkAccelerationStructureBuildGeometryInfoKHR *  pInfos, const  VkDeviceAddress *              pIndirectDeviceAddresses, const  uint32_t *                     pIndirectStrides, const  uint32_t * const*              ppMaxPrimitiveCounts);
+#define vkCmdBuildAccelerationStructuresIndirectKHR vkfw_vkCmdBuildAccelerationStructuresIndirectKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBuildAccelerationStructuresKHR (VkCommandBuffer                                      commandBuffer, uint32_t   infoCount, const  VkAccelerationStructureBuildGeometryInfoKHR *  pInfos, const  VkAccelerationStructureBuildRangeInfoKHR * const*  ppBuildRangeInfos);
+vkfw_vkCmdBuildAccelerationStructuresKHR (VkCommandBuffer                                      commandBuffer, uint32_t   infoCount, const  VkAccelerationStructureBuildGeometryInfoKHR *  pInfos, const  VkAccelerationStructureBuildRangeInfoKHR * const*  ppBuildRangeInfos);
+#define vkCmdBuildAccelerationStructuresKHR vkfw_vkCmdBuildAccelerationStructuresKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdCopyAccelerationStructureKHR (VkCommandBuffer   commandBuffer, const  VkCopyAccelerationStructureInfoKHR *  pInfo);
+vkfw_vkCmdCopyAccelerationStructureKHR (VkCommandBuffer   commandBuffer, const  VkCopyAccelerationStructureInfoKHR *  pInfo);
+#define vkCmdCopyAccelerationStructureKHR vkfw_vkCmdCopyAccelerationStructureKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdCopyAccelerationStructureToMemoryKHR (VkCommandBuffer   commandBuffer, const  VkCopyAccelerationStructureToMemoryInfoKHR *  pInfo);
+vkfw_vkCmdCopyAccelerationStructureToMemoryKHR (VkCommandBuffer   commandBuffer, const  VkCopyAccelerationStructureToMemoryInfoKHR *  pInfo);
+#define vkCmdCopyAccelerationStructureToMemoryKHR vkfw_vkCmdCopyAccelerationStructureToMemoryKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdCopyMemoryToAccelerationStructureKHR (VkCommandBuffer   commandBuffer, const  VkCopyMemoryToAccelerationStructureInfoKHR *  pInfo);
+vkfw_vkCmdCopyMemoryToAccelerationStructureKHR (VkCommandBuffer   commandBuffer, const  VkCopyMemoryToAccelerationStructureInfoKHR *  pInfo);
+#define vkCmdCopyMemoryToAccelerationStructureKHR vkfw_vkCmdCopyMemoryToAccelerationStructureKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdWriteAccelerationStructuresPropertiesKHR (VkCommandBuffer   commandBuffer, uint32_t   accelerationStructureCount, const  VkAccelerationStructureKHR *  pAccelerationStructures, VkQueryType   queryType, VkQueryPool   queryPool, uint32_t   firstQuery);
+vkfw_vkCmdWriteAccelerationStructuresPropertiesKHR (VkCommandBuffer   commandBuffer, uint32_t   accelerationStructureCount, const  VkAccelerationStructureKHR *  pAccelerationStructures, VkQueryType   queryType, VkQueryPool   queryPool, uint32_t   firstQuery);
+#define vkCmdWriteAccelerationStructuresPropertiesKHR vkfw_vkCmdWriteAccelerationStructuresPropertiesKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCopyAccelerationStructureKHR (VkDevice   device, VkDeferredOperationKHR   deferredOperation, const  VkCopyAccelerationStructureInfoKHR *  pInfo);
+vkfw_vkCopyAccelerationStructureKHR (VkDevice   device, VkDeferredOperationKHR   deferredOperation, const  VkCopyAccelerationStructureInfoKHR *  pInfo);
+#define vkCopyAccelerationStructureKHR vkfw_vkCopyAccelerationStructureKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCopyAccelerationStructureToMemoryKHR (VkDevice   device, VkDeferredOperationKHR   deferredOperation, const  VkCopyAccelerationStructureToMemoryInfoKHR *  pInfo);
+vkfw_vkCopyAccelerationStructureToMemoryKHR (VkDevice   device, VkDeferredOperationKHR   deferredOperation, const  VkCopyAccelerationStructureToMemoryInfoKHR *  pInfo);
+#define vkCopyAccelerationStructureToMemoryKHR vkfw_vkCopyAccelerationStructureToMemoryKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCopyMemoryToAccelerationStructureKHR (VkDevice   device, VkDeferredOperationKHR   deferredOperation, const  VkCopyMemoryToAccelerationStructureInfoKHR *  pInfo);
+vkfw_vkCopyMemoryToAccelerationStructureKHR (VkDevice   device, VkDeferredOperationKHR   deferredOperation, const  VkCopyMemoryToAccelerationStructureInfoKHR *  pInfo);
+#define vkCopyMemoryToAccelerationStructureKHR vkfw_vkCopyMemoryToAccelerationStructureKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateAccelerationStructureKHR (VkDevice                                             device, const  VkAccelerationStructureCreateInfoKHR *         pCreateInfo, const  VkAllocationCallbacks *        pAllocator, VkAccelerationStructureKHR *                         pAccelerationStructure);
+vkfw_vkCreateAccelerationStructureKHR (VkDevice                                             device, const  VkAccelerationStructureCreateInfoKHR *         pCreateInfo, const  VkAllocationCallbacks *        pAllocator, VkAccelerationStructureKHR *                         pAccelerationStructure);
+#define vkCreateAccelerationStructureKHR vkfw_vkCreateAccelerationStructureKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyAccelerationStructureKHR (VkDevice   device, VkAccelerationStructureKHR   accelerationStructure, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyAccelerationStructureKHR (VkDevice   device, VkAccelerationStructureKHR   accelerationStructure, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyAccelerationStructureKHR vkfw_vkDestroyAccelerationStructureKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetAccelerationStructureBuildSizesKHR (VkDevice                                              device, VkAccelerationStructureBuildTypeKHR                   buildType, const  VkAccelerationStructureBuildGeometryInfoKHR *   pBuildInfo, const  uint32_t *   pMaxPrimitiveCounts, VkAccelerationStructureBuildSizesInfoKHR *            pSizeInfo);
+vkfw_vkGetAccelerationStructureBuildSizesKHR (VkDevice                                              device, VkAccelerationStructureBuildTypeKHR                   buildType, const  VkAccelerationStructureBuildGeometryInfoKHR *   pBuildInfo, const  uint32_t *   pMaxPrimitiveCounts, VkAccelerationStructureBuildSizesInfoKHR *            pSizeInfo);
+#define vkGetAccelerationStructureBuildSizesKHR vkfw_vkGetAccelerationStructureBuildSizesKHR
 VKFWAPI VKAPI_ATTR VkDeviceAddress VKAPI_CALL
-vkGetAccelerationStructureDeviceAddressKHR (VkDevice   device, const  VkAccelerationStructureDeviceAddressInfoKHR *  pInfo);
+vkfw_vkGetAccelerationStructureDeviceAddressKHR (VkDevice   device, const  VkAccelerationStructureDeviceAddressInfoKHR *  pInfo);
+#define vkGetAccelerationStructureDeviceAddressKHR vkfw_vkGetAccelerationStructureDeviceAddressKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetDeviceAccelerationStructureCompatibilityKHR (VkDevice   device, const  VkAccelerationStructureVersionInfoKHR *  pVersionInfo, VkAccelerationStructureCompatibilityKHR *  pCompatibility);
+vkfw_vkGetDeviceAccelerationStructureCompatibilityKHR (VkDevice   device, const  VkAccelerationStructureVersionInfoKHR *  pVersionInfo, VkAccelerationStructureCompatibilityKHR *  pCompatibility);
+#define vkGetDeviceAccelerationStructureCompatibilityKHR vkfw_vkGetDeviceAccelerationStructureCompatibilityKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkWriteAccelerationStructuresPropertiesKHR (VkDevice   device, uint32_t   accelerationStructureCount, const  VkAccelerationStructureKHR *  pAccelerationStructures, VkQueryType    queryType, size_t         dataSize, void *  pData, size_t   stride);
+vkfw_vkWriteAccelerationStructuresPropertiesKHR (VkDevice   device, uint32_t   accelerationStructureCount, const  VkAccelerationStructureKHR *  pAccelerationStructures, VkQueryType    queryType, size_t         dataSize, void *  pData, size_t   stride);
+#define vkWriteAccelerationStructuresPropertiesKHR vkfw_vkWriteAccelerationStructuresPropertiesKHR
 #endif /* defined(VK_KHR_acceleration_structure) */
 #if defined(VK_KHR_android_surface)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateAndroidSurfaceKHR (VkInstance   instance, const  VkAndroidSurfaceCreateInfoKHR *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+vkfw_vkCreateAndroidSurfaceKHR (VkInstance   instance, const  VkAndroidSurfaceCreateInfoKHR *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+#define vkCreateAndroidSurfaceKHR vkfw_vkCreateAndroidSurfaceKHR
 #endif /* defined(VK_KHR_android_surface) */
 #if defined(VK_KHR_bind_memory2)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkBindBufferMemory2KHR (VkDevice   device, uint32_t   bindInfoCount, const  VkBindBufferMemoryInfo *  pBindInfos);
+vkfw_vkBindBufferMemory2KHR (VkDevice   device, uint32_t   bindInfoCount, const  VkBindBufferMemoryInfo *  pBindInfos);
+#define vkBindBufferMemory2KHR vkfw_vkBindBufferMemory2KHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkBindImageMemory2KHR (VkDevice   device, uint32_t   bindInfoCount, const  VkBindImageMemoryInfo *  pBindInfos);
+vkfw_vkBindImageMemory2KHR (VkDevice   device, uint32_t   bindInfoCount, const  VkBindImageMemoryInfo *  pBindInfos);
+#define vkBindImageMemory2KHR vkfw_vkBindImageMemory2KHR
 #endif /* defined(VK_KHR_bind_memory2) */
 #if defined(VK_KHR_buffer_device_address)
 VKFWAPI VKAPI_ATTR VkDeviceAddress VKAPI_CALL
-vkGetBufferDeviceAddressKHR (VkDevice   device, const  VkBufferDeviceAddressInfo *  pInfo);
+vkfw_vkGetBufferDeviceAddressKHR (VkDevice   device, const  VkBufferDeviceAddressInfo *  pInfo);
+#define vkGetBufferDeviceAddressKHR vkfw_vkGetBufferDeviceAddressKHR
 VKFWAPI VKAPI_ATTR uint64_t VKAPI_CALL
-vkGetBufferOpaqueCaptureAddressKHR (VkDevice   device, const  VkBufferDeviceAddressInfo *  pInfo);
+vkfw_vkGetBufferOpaqueCaptureAddressKHR (VkDevice   device, const  VkBufferDeviceAddressInfo *  pInfo);
+#define vkGetBufferOpaqueCaptureAddressKHR vkfw_vkGetBufferOpaqueCaptureAddressKHR
 VKFWAPI VKAPI_ATTR uint64_t VKAPI_CALL
-vkGetDeviceMemoryOpaqueCaptureAddressKHR (VkDevice   device, const  VkDeviceMemoryOpaqueCaptureAddressInfo *  pInfo);
+vkfw_vkGetDeviceMemoryOpaqueCaptureAddressKHR (VkDevice   device, const  VkDeviceMemoryOpaqueCaptureAddressInfo *  pInfo);
+#define vkGetDeviceMemoryOpaqueCaptureAddressKHR vkfw_vkGetDeviceMemoryOpaqueCaptureAddressKHR
 #endif /* defined(VK_KHR_buffer_device_address) */
 #if defined(VK_KHR_calibrated_timestamps)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetCalibratedTimestampsKHR (VkDevice   device, uint32_t   timestampCount, const  VkCalibratedTimestampInfoKHR *  pTimestampInfos, uint64_t *  pTimestamps, uint64_t *  pMaxDeviation);
+vkfw_vkGetCalibratedTimestampsKHR (VkDevice   device, uint32_t   timestampCount, const  VkCalibratedTimestampInfoKHR *  pTimestampInfos, uint64_t *  pTimestamps, uint64_t *  pMaxDeviation);
+#define vkGetCalibratedTimestampsKHR vkfw_vkGetCalibratedTimestampsKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceCalibrateableTimeDomainsKHR (VkPhysicalDevice   physicalDevice, uint32_t *  pTimeDomainCount, VkTimeDomainKHR *  pTimeDomains);
+vkfw_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR (VkPhysicalDevice   physicalDevice, uint32_t *  pTimeDomainCount, VkTimeDomainKHR *  pTimeDomains);
+#define vkGetPhysicalDeviceCalibrateableTimeDomainsKHR vkfw_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR
 #endif /* defined(VK_KHR_calibrated_timestamps) */
 #if defined(VK_KHR_cooperative_matrix)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR (VkPhysicalDevice   physicalDevice, uint32_t *  pPropertyCount, VkCooperativeMatrixPropertiesKHR *  pProperties);
+vkfw_vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR (VkPhysicalDevice   physicalDevice, uint32_t *  pPropertyCount, VkCooperativeMatrixPropertiesKHR *  pProperties);
+#define vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR vkfw_vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR
 #endif /* defined(VK_KHR_cooperative_matrix) */
 #if defined(VK_KHR_copy_commands2)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBlitImage2KHR (VkCommandBuffer   commandBuffer, const  VkBlitImageInfo2 *  pBlitImageInfo);
+vkfw_vkCmdBlitImage2KHR (VkCommandBuffer   commandBuffer, const  VkBlitImageInfo2 *  pBlitImageInfo);
+#define vkCmdBlitImage2KHR vkfw_vkCmdBlitImage2KHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdCopyBuffer2KHR (VkCommandBuffer   commandBuffer, const  VkCopyBufferInfo2 *  pCopyBufferInfo);
+vkfw_vkCmdCopyBuffer2KHR (VkCommandBuffer   commandBuffer, const  VkCopyBufferInfo2 *  pCopyBufferInfo);
+#define vkCmdCopyBuffer2KHR vkfw_vkCmdCopyBuffer2KHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdCopyBufferToImage2KHR (VkCommandBuffer   commandBuffer, const  VkCopyBufferToImageInfo2 *  pCopyBufferToImageInfo);
+vkfw_vkCmdCopyBufferToImage2KHR (VkCommandBuffer   commandBuffer, const  VkCopyBufferToImageInfo2 *  pCopyBufferToImageInfo);
+#define vkCmdCopyBufferToImage2KHR vkfw_vkCmdCopyBufferToImage2KHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdCopyImage2KHR (VkCommandBuffer   commandBuffer, const  VkCopyImageInfo2 *  pCopyImageInfo);
+vkfw_vkCmdCopyImage2KHR (VkCommandBuffer   commandBuffer, const  VkCopyImageInfo2 *  pCopyImageInfo);
+#define vkCmdCopyImage2KHR vkfw_vkCmdCopyImage2KHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdCopyImageToBuffer2KHR (VkCommandBuffer   commandBuffer, const  VkCopyImageToBufferInfo2 *  pCopyImageToBufferInfo);
+vkfw_vkCmdCopyImageToBuffer2KHR (VkCommandBuffer   commandBuffer, const  VkCopyImageToBufferInfo2 *  pCopyImageToBufferInfo);
+#define vkCmdCopyImageToBuffer2KHR vkfw_vkCmdCopyImageToBuffer2KHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdResolveImage2KHR (VkCommandBuffer   commandBuffer, const  VkResolveImageInfo2 *  pResolveImageInfo);
+vkfw_vkCmdResolveImage2KHR (VkCommandBuffer   commandBuffer, const  VkResolveImageInfo2 *  pResolveImageInfo);
+#define vkCmdResolveImage2KHR vkfw_vkCmdResolveImage2KHR
 #endif /* defined(VK_KHR_copy_commands2) */
 #if defined(VK_KHR_create_renderpass2)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBeginRenderPass2KHR (VkCommandBuffer   commandBuffer, const  VkRenderPassBeginInfo *       pRenderPassBegin, const  VkSubpassBeginInfo *       pSubpassBeginInfo);
+vkfw_vkCmdBeginRenderPass2KHR (VkCommandBuffer   commandBuffer, const  VkRenderPassBeginInfo *       pRenderPassBegin, const  VkSubpassBeginInfo *       pSubpassBeginInfo);
+#define vkCmdBeginRenderPass2KHR vkfw_vkCmdBeginRenderPass2KHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdEndRenderPass2KHR (VkCommandBuffer   commandBuffer, const  VkSubpassEndInfo *         pSubpassEndInfo);
+vkfw_vkCmdEndRenderPass2KHR (VkCommandBuffer   commandBuffer, const  VkSubpassEndInfo *         pSubpassEndInfo);
+#define vkCmdEndRenderPass2KHR vkfw_vkCmdEndRenderPass2KHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdNextSubpass2KHR (VkCommandBuffer   commandBuffer, const  VkSubpassBeginInfo *       pSubpassBeginInfo, const  VkSubpassEndInfo *         pSubpassEndInfo);
+vkfw_vkCmdNextSubpass2KHR (VkCommandBuffer   commandBuffer, const  VkSubpassBeginInfo *       pSubpassBeginInfo, const  VkSubpassEndInfo *         pSubpassEndInfo);
+#define vkCmdNextSubpass2KHR vkfw_vkCmdNextSubpass2KHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateRenderPass2KHR (VkDevice   device, const  VkRenderPassCreateInfo2 *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkRenderPass *  pRenderPass);
+vkfw_vkCreateRenderPass2KHR (VkDevice   device, const  VkRenderPassCreateInfo2 *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkRenderPass *  pRenderPass);
+#define vkCreateRenderPass2KHR vkfw_vkCreateRenderPass2KHR
 #endif /* defined(VK_KHR_create_renderpass2) */
 #if defined(VK_KHR_deferred_host_operations)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateDeferredOperationKHR (VkDevice   device, const  VkAllocationCallbacks *  pAllocator, VkDeferredOperationKHR *  pDeferredOperation);
+vkfw_vkCreateDeferredOperationKHR (VkDevice   device, const  VkAllocationCallbacks *  pAllocator, VkDeferredOperationKHR *  pDeferredOperation);
+#define vkCreateDeferredOperationKHR vkfw_vkCreateDeferredOperationKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkDeferredOperationJoinKHR (VkDevice   device, VkDeferredOperationKHR   operation);
+vkfw_vkDeferredOperationJoinKHR (VkDevice   device, VkDeferredOperationKHR   operation);
+#define vkDeferredOperationJoinKHR vkfw_vkDeferredOperationJoinKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyDeferredOperationKHR (VkDevice   device, VkDeferredOperationKHR   operation, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyDeferredOperationKHR (VkDevice   device, VkDeferredOperationKHR   operation, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyDeferredOperationKHR vkfw_vkDestroyDeferredOperationKHR
 VKFWAPI VKAPI_ATTR uint32_t VKAPI_CALL
-vkGetDeferredOperationMaxConcurrencyKHR (VkDevice   device, VkDeferredOperationKHR   operation);
+vkfw_vkGetDeferredOperationMaxConcurrencyKHR (VkDevice   device, VkDeferredOperationKHR   operation);
+#define vkGetDeferredOperationMaxConcurrencyKHR vkfw_vkGetDeferredOperationMaxConcurrencyKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetDeferredOperationResultKHR (VkDevice   device, VkDeferredOperationKHR   operation);
+vkfw_vkGetDeferredOperationResultKHR (VkDevice   device, VkDeferredOperationKHR   operation);
+#define vkGetDeferredOperationResultKHR vkfw_vkGetDeferredOperationResultKHR
 #endif /* defined(VK_KHR_deferred_host_operations) */
 #if defined(VK_KHR_descriptor_update_template)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateDescriptorUpdateTemplateKHR (VkDevice   device, const  VkDescriptorUpdateTemplateCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkDescriptorUpdateTemplate *  pDescriptorUpdateTemplate);
+vkfw_vkCreateDescriptorUpdateTemplateKHR (VkDevice   device, const  VkDescriptorUpdateTemplateCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkDescriptorUpdateTemplate *  pDescriptorUpdateTemplate);
+#define vkCreateDescriptorUpdateTemplateKHR vkfw_vkCreateDescriptorUpdateTemplateKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyDescriptorUpdateTemplateKHR (VkDevice   device, VkDescriptorUpdateTemplate   descriptorUpdateTemplate, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyDescriptorUpdateTemplateKHR (VkDevice   device, VkDescriptorUpdateTemplate   descriptorUpdateTemplate, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyDescriptorUpdateTemplateKHR vkfw_vkDestroyDescriptorUpdateTemplateKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkUpdateDescriptorSetWithTemplateKHR (VkDevice   device, VkDescriptorSet   descriptorSet, VkDescriptorUpdateTemplate   descriptorUpdateTemplate, const  void *  pData);
+vkfw_vkUpdateDescriptorSetWithTemplateKHR (VkDevice   device, VkDescriptorSet   descriptorSet, VkDescriptorUpdateTemplate   descriptorUpdateTemplate, const  void *  pData);
+#define vkUpdateDescriptorSetWithTemplateKHR vkfw_vkUpdateDescriptorSetWithTemplateKHR
 #endif /* defined(VK_KHR_descriptor_update_template) */
 #if defined(VK_KHR_device_group)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDispatchBaseKHR (VkCommandBuffer   commandBuffer, uint32_t   baseGroupX, uint32_t   baseGroupY, uint32_t   baseGroupZ, uint32_t   groupCountX, uint32_t   groupCountY, uint32_t   groupCountZ);
+vkfw_vkCmdDispatchBaseKHR (VkCommandBuffer   commandBuffer, uint32_t   baseGroupX, uint32_t   baseGroupY, uint32_t   baseGroupZ, uint32_t   groupCountX, uint32_t   groupCountY, uint32_t   groupCountZ);
+#define vkCmdDispatchBaseKHR vkfw_vkCmdDispatchBaseKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetDeviceMaskKHR (VkCommandBuffer   commandBuffer, uint32_t   deviceMask);
+vkfw_vkCmdSetDeviceMaskKHR (VkCommandBuffer   commandBuffer, uint32_t   deviceMask);
+#define vkCmdSetDeviceMaskKHR vkfw_vkCmdSetDeviceMaskKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetDeviceGroupPeerMemoryFeaturesKHR (VkDevice   device, uint32_t   heapIndex, uint32_t   localDeviceIndex, uint32_t   remoteDeviceIndex, VkPeerMemoryFeatureFlags *  pPeerMemoryFeatures);
+vkfw_vkGetDeviceGroupPeerMemoryFeaturesKHR (VkDevice   device, uint32_t   heapIndex, uint32_t   localDeviceIndex, uint32_t   remoteDeviceIndex, VkPeerMemoryFeatureFlags *  pPeerMemoryFeatures);
+#define vkGetDeviceGroupPeerMemoryFeaturesKHR vkfw_vkGetDeviceGroupPeerMemoryFeaturesKHR
 #endif /* defined(VK_KHR_device_group) */
 #if defined(VK_KHR_device_group_creation)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkEnumeratePhysicalDeviceGroupsKHR (VkInstance   instance, uint32_t *  pPhysicalDeviceGroupCount, VkPhysicalDeviceGroupProperties *  pPhysicalDeviceGroupProperties);
+vkfw_vkEnumeratePhysicalDeviceGroupsKHR (VkInstance   instance, uint32_t *  pPhysicalDeviceGroupCount, VkPhysicalDeviceGroupProperties *  pPhysicalDeviceGroupProperties);
+#define vkEnumeratePhysicalDeviceGroupsKHR vkfw_vkEnumeratePhysicalDeviceGroupsKHR
 #endif /* defined(VK_KHR_device_group_creation) */
 #if defined(VK_KHR_display)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateDisplayModeKHR (VkPhysicalDevice   physicalDevice, VkDisplayKHR   display, const  VkDisplayModeCreateInfoKHR *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkDisplayModeKHR *  pMode);
+vkfw_vkCreateDisplayModeKHR (VkPhysicalDevice   physicalDevice, VkDisplayKHR   display, const  VkDisplayModeCreateInfoKHR *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkDisplayModeKHR *  pMode);
+#define vkCreateDisplayModeKHR vkfw_vkCreateDisplayModeKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateDisplayPlaneSurfaceKHR (VkInstance   instance, const  VkDisplaySurfaceCreateInfoKHR *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+vkfw_vkCreateDisplayPlaneSurfaceKHR (VkInstance   instance, const  VkDisplaySurfaceCreateInfoKHR *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+#define vkCreateDisplayPlaneSurfaceKHR vkfw_vkCreateDisplayPlaneSurfaceKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetDisplayModePropertiesKHR (VkPhysicalDevice   physicalDevice, VkDisplayKHR   display, uint32_t *  pPropertyCount, VkDisplayModePropertiesKHR *  pProperties);
+vkfw_vkGetDisplayModePropertiesKHR (VkPhysicalDevice   physicalDevice, VkDisplayKHR   display, uint32_t *  pPropertyCount, VkDisplayModePropertiesKHR *  pProperties);
+#define vkGetDisplayModePropertiesKHR vkfw_vkGetDisplayModePropertiesKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetDisplayPlaneCapabilitiesKHR (VkPhysicalDevice   physicalDevice, VkDisplayModeKHR   mode, uint32_t   planeIndex, VkDisplayPlaneCapabilitiesKHR *  pCapabilities);
+vkfw_vkGetDisplayPlaneCapabilitiesKHR (VkPhysicalDevice   physicalDevice, VkDisplayModeKHR   mode, uint32_t   planeIndex, VkDisplayPlaneCapabilitiesKHR *  pCapabilities);
+#define vkGetDisplayPlaneCapabilitiesKHR vkfw_vkGetDisplayPlaneCapabilitiesKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetDisplayPlaneSupportedDisplaysKHR (VkPhysicalDevice   physicalDevice, uint32_t   planeIndex, uint32_t *  pDisplayCount, VkDisplayKHR *  pDisplays);
+vkfw_vkGetDisplayPlaneSupportedDisplaysKHR (VkPhysicalDevice   physicalDevice, uint32_t   planeIndex, uint32_t *  pDisplayCount, VkDisplayKHR *  pDisplays);
+#define vkGetDisplayPlaneSupportedDisplaysKHR vkfw_vkGetDisplayPlaneSupportedDisplaysKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceDisplayPlanePropertiesKHR (VkPhysicalDevice   physicalDevice, uint32_t *  pPropertyCount, VkDisplayPlanePropertiesKHR *  pProperties);
+vkfw_vkGetPhysicalDeviceDisplayPlanePropertiesKHR (VkPhysicalDevice   physicalDevice, uint32_t *  pPropertyCount, VkDisplayPlanePropertiesKHR *  pProperties);
+#define vkGetPhysicalDeviceDisplayPlanePropertiesKHR vkfw_vkGetPhysicalDeviceDisplayPlanePropertiesKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceDisplayPropertiesKHR (VkPhysicalDevice   physicalDevice, uint32_t *  pPropertyCount, VkDisplayPropertiesKHR *  pProperties);
+vkfw_vkGetPhysicalDeviceDisplayPropertiesKHR (VkPhysicalDevice   physicalDevice, uint32_t *  pPropertyCount, VkDisplayPropertiesKHR *  pProperties);
+#define vkGetPhysicalDeviceDisplayPropertiesKHR vkfw_vkGetPhysicalDeviceDisplayPropertiesKHR
 #endif /* defined(VK_KHR_display) */
 #if defined(VK_KHR_display_swapchain)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateSharedSwapchainsKHR (VkDevice   device, uint32_t   swapchainCount, const  VkSwapchainCreateInfoKHR *  pCreateInfos, const  VkAllocationCallbacks *  pAllocator, VkSwapchainKHR *  pSwapchains);
+vkfw_vkCreateSharedSwapchainsKHR (VkDevice   device, uint32_t   swapchainCount, const  VkSwapchainCreateInfoKHR *  pCreateInfos, const  VkAllocationCallbacks *  pAllocator, VkSwapchainKHR *  pSwapchains);
+#define vkCreateSharedSwapchainsKHR vkfw_vkCreateSharedSwapchainsKHR
 #endif /* defined(VK_KHR_display_swapchain) */
 #if defined(VK_KHR_draw_indirect_count)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDrawIndexedIndirectCountKHR (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, VkBuffer   countBuffer, VkDeviceSize   countBufferOffset, uint32_t   maxDrawCount, uint32_t   stride);
+vkfw_vkCmdDrawIndexedIndirectCountKHR (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, VkBuffer   countBuffer, VkDeviceSize   countBufferOffset, uint32_t   maxDrawCount, uint32_t   stride);
+#define vkCmdDrawIndexedIndirectCountKHR vkfw_vkCmdDrawIndexedIndirectCountKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDrawIndirectCountKHR (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, VkBuffer   countBuffer, VkDeviceSize   countBufferOffset, uint32_t   maxDrawCount, uint32_t   stride);
+vkfw_vkCmdDrawIndirectCountKHR (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, VkBuffer   countBuffer, VkDeviceSize   countBufferOffset, uint32_t   maxDrawCount, uint32_t   stride);
+#define vkCmdDrawIndirectCountKHR vkfw_vkCmdDrawIndirectCountKHR
 #endif /* defined(VK_KHR_draw_indirect_count) */
 #if defined(VK_KHR_dynamic_rendering)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBeginRenderingKHR (VkCommandBuffer                     commandBuffer, const  VkRenderingInfo *                               pRenderingInfo);
+vkfw_vkCmdBeginRenderingKHR (VkCommandBuffer                     commandBuffer, const  VkRenderingInfo *                               pRenderingInfo);
+#define vkCmdBeginRenderingKHR vkfw_vkCmdBeginRenderingKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdEndRenderingKHR (VkCommandBuffer                     commandBuffer);
+vkfw_vkCmdEndRenderingKHR (VkCommandBuffer                     commandBuffer);
+#define vkCmdEndRenderingKHR vkfw_vkCmdEndRenderingKHR
 #endif /* defined(VK_KHR_dynamic_rendering) */
 #if defined(VK_KHR_dynamic_rendering_local_read)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetRenderingAttachmentLocationsKHR (VkCommandBuffer   commandBuffer, const  VkRenderingAttachmentLocationInfoKHR *  pLocationInfo);
+vkfw_vkCmdSetRenderingAttachmentLocationsKHR (VkCommandBuffer   commandBuffer, const  VkRenderingAttachmentLocationInfoKHR *  pLocationInfo);
+#define vkCmdSetRenderingAttachmentLocationsKHR vkfw_vkCmdSetRenderingAttachmentLocationsKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetRenderingInputAttachmentIndicesKHR (VkCommandBuffer   commandBuffer, const  VkRenderingInputAttachmentIndexInfoKHR *  pLocationInfo);
+vkfw_vkCmdSetRenderingInputAttachmentIndicesKHR (VkCommandBuffer   commandBuffer, const  VkRenderingInputAttachmentIndexInfoKHR *  pLocationInfo);
+#define vkCmdSetRenderingInputAttachmentIndicesKHR vkfw_vkCmdSetRenderingInputAttachmentIndicesKHR
 #endif /* defined(VK_KHR_dynamic_rendering_local_read) */
 #if defined(VK_KHR_external_fence_capabilities)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPhysicalDeviceExternalFencePropertiesKHR (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceExternalFenceInfo *  pExternalFenceInfo, VkExternalFenceProperties *  pExternalFenceProperties);
+vkfw_vkGetPhysicalDeviceExternalFencePropertiesKHR (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceExternalFenceInfo *  pExternalFenceInfo, VkExternalFenceProperties *  pExternalFenceProperties);
+#define vkGetPhysicalDeviceExternalFencePropertiesKHR vkfw_vkGetPhysicalDeviceExternalFencePropertiesKHR
 #endif /* defined(VK_KHR_external_fence_capabilities) */
 #if defined(VK_KHR_external_fence_fd)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetFenceFdKHR (VkDevice   device, const  VkFenceGetFdInfoKHR *  pGetFdInfo, int *  pFd);
+vkfw_vkGetFenceFdKHR (VkDevice   device, const  VkFenceGetFdInfoKHR *  pGetFdInfo, int *  pFd);
+#define vkGetFenceFdKHR vkfw_vkGetFenceFdKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkImportFenceFdKHR (VkDevice   device, const  VkImportFenceFdInfoKHR *  pImportFenceFdInfo);
+vkfw_vkImportFenceFdKHR (VkDevice   device, const  VkImportFenceFdInfoKHR *  pImportFenceFdInfo);
+#define vkImportFenceFdKHR vkfw_vkImportFenceFdKHR
 #endif /* defined(VK_KHR_external_fence_fd) */
 #if defined(VK_KHR_external_fence_win32)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetFenceWin32HandleKHR (VkDevice   device, const  VkFenceGetWin32HandleInfoKHR *  pGetWin32HandleInfo, HANDLE *  pHandle);
+vkfw_vkGetFenceWin32HandleKHR (VkDevice   device, const  VkFenceGetWin32HandleInfoKHR *  pGetWin32HandleInfo, HANDLE *  pHandle);
+#define vkGetFenceWin32HandleKHR vkfw_vkGetFenceWin32HandleKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkImportFenceWin32HandleKHR (VkDevice   device, const  VkImportFenceWin32HandleInfoKHR *  pImportFenceWin32HandleInfo);
+vkfw_vkImportFenceWin32HandleKHR (VkDevice   device, const  VkImportFenceWin32HandleInfoKHR *  pImportFenceWin32HandleInfo);
+#define vkImportFenceWin32HandleKHR vkfw_vkImportFenceWin32HandleKHR
 #endif /* defined(VK_KHR_external_fence_win32) */
 #if defined(VK_KHR_external_memory_capabilities)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPhysicalDeviceExternalBufferPropertiesKHR (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceExternalBufferInfo *  pExternalBufferInfo, VkExternalBufferProperties *  pExternalBufferProperties);
+vkfw_vkGetPhysicalDeviceExternalBufferPropertiesKHR (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceExternalBufferInfo *  pExternalBufferInfo, VkExternalBufferProperties *  pExternalBufferProperties);
+#define vkGetPhysicalDeviceExternalBufferPropertiesKHR vkfw_vkGetPhysicalDeviceExternalBufferPropertiesKHR
 #endif /* defined(VK_KHR_external_memory_capabilities) */
 #if defined(VK_KHR_external_memory_fd)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetMemoryFdKHR (VkDevice   device, const  VkMemoryGetFdInfoKHR *  pGetFdInfo, int *  pFd);
+vkfw_vkGetMemoryFdKHR (VkDevice   device, const  VkMemoryGetFdInfoKHR *  pGetFdInfo, int *  pFd);
+#define vkGetMemoryFdKHR vkfw_vkGetMemoryFdKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetMemoryFdPropertiesKHR (VkDevice   device, VkExternalMemoryHandleTypeFlagBits   handleType, int   fd, VkMemoryFdPropertiesKHR *  pMemoryFdProperties);
+vkfw_vkGetMemoryFdPropertiesKHR (VkDevice   device, VkExternalMemoryHandleTypeFlagBits   handleType, int   fd, VkMemoryFdPropertiesKHR *  pMemoryFdProperties);
+#define vkGetMemoryFdPropertiesKHR vkfw_vkGetMemoryFdPropertiesKHR
 #endif /* defined(VK_KHR_external_memory_fd) */
 #if defined(VK_KHR_external_memory_win32)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetMemoryWin32HandleKHR (VkDevice   device, const  VkMemoryGetWin32HandleInfoKHR *  pGetWin32HandleInfo, HANDLE *  pHandle);
+vkfw_vkGetMemoryWin32HandleKHR (VkDevice   device, const  VkMemoryGetWin32HandleInfoKHR *  pGetWin32HandleInfo, HANDLE *  pHandle);
+#define vkGetMemoryWin32HandleKHR vkfw_vkGetMemoryWin32HandleKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetMemoryWin32HandlePropertiesKHR (VkDevice   device, VkExternalMemoryHandleTypeFlagBits   handleType, HANDLE   handle, VkMemoryWin32HandlePropertiesKHR *  pMemoryWin32HandleProperties);
+vkfw_vkGetMemoryWin32HandlePropertiesKHR (VkDevice   device, VkExternalMemoryHandleTypeFlagBits   handleType, HANDLE   handle, VkMemoryWin32HandlePropertiesKHR *  pMemoryWin32HandleProperties);
+#define vkGetMemoryWin32HandlePropertiesKHR vkfw_vkGetMemoryWin32HandlePropertiesKHR
 #endif /* defined(VK_KHR_external_memory_win32) */
 #if defined(VK_KHR_external_semaphore_capabilities)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPhysicalDeviceExternalSemaphorePropertiesKHR (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceExternalSemaphoreInfo *  pExternalSemaphoreInfo, VkExternalSemaphoreProperties *  pExternalSemaphoreProperties);
+vkfw_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceExternalSemaphoreInfo *  pExternalSemaphoreInfo, VkExternalSemaphoreProperties *  pExternalSemaphoreProperties);
+#define vkGetPhysicalDeviceExternalSemaphorePropertiesKHR vkfw_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR
 #endif /* defined(VK_KHR_external_semaphore_capabilities) */
 #if defined(VK_KHR_external_semaphore_fd)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetSemaphoreFdKHR (VkDevice   device, const  VkSemaphoreGetFdInfoKHR *  pGetFdInfo, int *  pFd);
+vkfw_vkGetSemaphoreFdKHR (VkDevice   device, const  VkSemaphoreGetFdInfoKHR *  pGetFdInfo, int *  pFd);
+#define vkGetSemaphoreFdKHR vkfw_vkGetSemaphoreFdKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkImportSemaphoreFdKHR (VkDevice   device, const  VkImportSemaphoreFdInfoKHR *  pImportSemaphoreFdInfo);
+vkfw_vkImportSemaphoreFdKHR (VkDevice   device, const  VkImportSemaphoreFdInfoKHR *  pImportSemaphoreFdInfo);
+#define vkImportSemaphoreFdKHR vkfw_vkImportSemaphoreFdKHR
 #endif /* defined(VK_KHR_external_semaphore_fd) */
 #if defined(VK_KHR_external_semaphore_win32)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetSemaphoreWin32HandleKHR (VkDevice   device, const  VkSemaphoreGetWin32HandleInfoKHR *  pGetWin32HandleInfo, HANDLE *  pHandle);
+vkfw_vkGetSemaphoreWin32HandleKHR (VkDevice   device, const  VkSemaphoreGetWin32HandleInfoKHR *  pGetWin32HandleInfo, HANDLE *  pHandle);
+#define vkGetSemaphoreWin32HandleKHR vkfw_vkGetSemaphoreWin32HandleKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkImportSemaphoreWin32HandleKHR (VkDevice   device, const  VkImportSemaphoreWin32HandleInfoKHR *  pImportSemaphoreWin32HandleInfo);
+vkfw_vkImportSemaphoreWin32HandleKHR (VkDevice   device, const  VkImportSemaphoreWin32HandleInfoKHR *  pImportSemaphoreWin32HandleInfo);
+#define vkImportSemaphoreWin32HandleKHR vkfw_vkImportSemaphoreWin32HandleKHR
 #endif /* defined(VK_KHR_external_semaphore_win32) */
 #if defined(VK_KHR_fragment_shading_rate)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetFragmentShadingRateKHR (VkCommandBuffer             commandBuffer, const  VkExtent2D *                            pFragmentSize, const  VkFragmentShadingRateCombinerOpKHR      combinerOps [2]);
+vkfw_vkCmdSetFragmentShadingRateKHR (VkCommandBuffer             commandBuffer, const  VkExtent2D *                            pFragmentSize, const  VkFragmentShadingRateCombinerOpKHR      combinerOps [2]);
+#define vkCmdSetFragmentShadingRateKHR vkfw_vkCmdSetFragmentShadingRateKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceFragmentShadingRatesKHR (VkPhysicalDevice   physicalDevice, uint32_t *  pFragmentShadingRateCount, VkPhysicalDeviceFragmentShadingRateKHR *  pFragmentShadingRates);
+vkfw_vkGetPhysicalDeviceFragmentShadingRatesKHR (VkPhysicalDevice   physicalDevice, uint32_t *  pFragmentShadingRateCount, VkPhysicalDeviceFragmentShadingRateKHR *  pFragmentShadingRates);
+#define vkGetPhysicalDeviceFragmentShadingRatesKHR vkfw_vkGetPhysicalDeviceFragmentShadingRatesKHR
 #endif /* defined(VK_KHR_fragment_shading_rate) */
 #if defined(VK_KHR_get_display_properties2)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetDisplayModeProperties2KHR (VkPhysicalDevice   physicalDevice, VkDisplayKHR   display, uint32_t *  pPropertyCount, VkDisplayModeProperties2KHR *  pProperties);
+vkfw_vkGetDisplayModeProperties2KHR (VkPhysicalDevice   physicalDevice, VkDisplayKHR   display, uint32_t *  pPropertyCount, VkDisplayModeProperties2KHR *  pProperties);
+#define vkGetDisplayModeProperties2KHR vkfw_vkGetDisplayModeProperties2KHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetDisplayPlaneCapabilities2KHR (VkPhysicalDevice   physicalDevice, const  VkDisplayPlaneInfo2KHR *  pDisplayPlaneInfo, VkDisplayPlaneCapabilities2KHR *  pCapabilities);
+vkfw_vkGetDisplayPlaneCapabilities2KHR (VkPhysicalDevice   physicalDevice, const  VkDisplayPlaneInfo2KHR *  pDisplayPlaneInfo, VkDisplayPlaneCapabilities2KHR *  pCapabilities);
+#define vkGetDisplayPlaneCapabilities2KHR vkfw_vkGetDisplayPlaneCapabilities2KHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceDisplayPlaneProperties2KHR (VkPhysicalDevice   physicalDevice, uint32_t *  pPropertyCount, VkDisplayPlaneProperties2KHR *  pProperties);
+vkfw_vkGetPhysicalDeviceDisplayPlaneProperties2KHR (VkPhysicalDevice   physicalDevice, uint32_t *  pPropertyCount, VkDisplayPlaneProperties2KHR *  pProperties);
+#define vkGetPhysicalDeviceDisplayPlaneProperties2KHR vkfw_vkGetPhysicalDeviceDisplayPlaneProperties2KHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceDisplayProperties2KHR (VkPhysicalDevice   physicalDevice, uint32_t *  pPropertyCount, VkDisplayProperties2KHR *  pProperties);
+vkfw_vkGetPhysicalDeviceDisplayProperties2KHR (VkPhysicalDevice   physicalDevice, uint32_t *  pPropertyCount, VkDisplayProperties2KHR *  pProperties);
+#define vkGetPhysicalDeviceDisplayProperties2KHR vkfw_vkGetPhysicalDeviceDisplayProperties2KHR
 #endif /* defined(VK_KHR_get_display_properties2) */
 #if defined(VK_KHR_get_memory_requirements2)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetBufferMemoryRequirements2KHR (VkDevice   device, const  VkBufferMemoryRequirementsInfo2 *  pInfo, VkMemoryRequirements2 *  pMemoryRequirements);
+vkfw_vkGetBufferMemoryRequirements2KHR (VkDevice   device, const  VkBufferMemoryRequirementsInfo2 *  pInfo, VkMemoryRequirements2 *  pMemoryRequirements);
+#define vkGetBufferMemoryRequirements2KHR vkfw_vkGetBufferMemoryRequirements2KHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetImageMemoryRequirements2KHR (VkDevice   device, const  VkImageMemoryRequirementsInfo2 *  pInfo, VkMemoryRequirements2 *  pMemoryRequirements);
+vkfw_vkGetImageMemoryRequirements2KHR (VkDevice   device, const  VkImageMemoryRequirementsInfo2 *  pInfo, VkMemoryRequirements2 *  pMemoryRequirements);
+#define vkGetImageMemoryRequirements2KHR vkfw_vkGetImageMemoryRequirements2KHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetImageSparseMemoryRequirements2KHR (VkDevice   device, const  VkImageSparseMemoryRequirementsInfo2 *  pInfo, uint32_t *  pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements2 *  pSparseMemoryRequirements);
+vkfw_vkGetImageSparseMemoryRequirements2KHR (VkDevice   device, const  VkImageSparseMemoryRequirementsInfo2 *  pInfo, uint32_t *  pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements2 *  pSparseMemoryRequirements);
+#define vkGetImageSparseMemoryRequirements2KHR vkfw_vkGetImageSparseMemoryRequirements2KHR
 #endif /* defined(VK_KHR_get_memory_requirements2) */
 #if defined(VK_KHR_get_physical_device_properties2)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPhysicalDeviceFeatures2KHR (VkPhysicalDevice   physicalDevice, VkPhysicalDeviceFeatures2 *  pFeatures);
+vkfw_vkGetPhysicalDeviceFeatures2KHR (VkPhysicalDevice   physicalDevice, VkPhysicalDeviceFeatures2 *  pFeatures);
+#define vkGetPhysicalDeviceFeatures2KHR vkfw_vkGetPhysicalDeviceFeatures2KHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPhysicalDeviceFormatProperties2KHR (VkPhysicalDevice   physicalDevice, VkFormat   format, VkFormatProperties2 *  pFormatProperties);
+vkfw_vkGetPhysicalDeviceFormatProperties2KHR (VkPhysicalDevice   physicalDevice, VkFormat   format, VkFormatProperties2 *  pFormatProperties);
+#define vkGetPhysicalDeviceFormatProperties2KHR vkfw_vkGetPhysicalDeviceFormatProperties2KHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceImageFormatProperties2KHR (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceImageFormatInfo2 *  pImageFormatInfo, VkImageFormatProperties2 *  pImageFormatProperties);
+vkfw_vkGetPhysicalDeviceImageFormatProperties2KHR (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceImageFormatInfo2 *  pImageFormatInfo, VkImageFormatProperties2 *  pImageFormatProperties);
+#define vkGetPhysicalDeviceImageFormatProperties2KHR vkfw_vkGetPhysicalDeviceImageFormatProperties2KHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPhysicalDeviceMemoryProperties2KHR (VkPhysicalDevice   physicalDevice, VkPhysicalDeviceMemoryProperties2 *  pMemoryProperties);
+vkfw_vkGetPhysicalDeviceMemoryProperties2KHR (VkPhysicalDevice   physicalDevice, VkPhysicalDeviceMemoryProperties2 *  pMemoryProperties);
+#define vkGetPhysicalDeviceMemoryProperties2KHR vkfw_vkGetPhysicalDeviceMemoryProperties2KHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPhysicalDeviceProperties2KHR (VkPhysicalDevice   physicalDevice, VkPhysicalDeviceProperties2 *  pProperties);
+vkfw_vkGetPhysicalDeviceProperties2KHR (VkPhysicalDevice   physicalDevice, VkPhysicalDeviceProperties2 *  pProperties);
+#define vkGetPhysicalDeviceProperties2KHR vkfw_vkGetPhysicalDeviceProperties2KHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPhysicalDeviceQueueFamilyProperties2KHR (VkPhysicalDevice   physicalDevice, uint32_t *  pQueueFamilyPropertyCount, VkQueueFamilyProperties2 *  pQueueFamilyProperties);
+vkfw_vkGetPhysicalDeviceQueueFamilyProperties2KHR (VkPhysicalDevice   physicalDevice, uint32_t *  pQueueFamilyPropertyCount, VkQueueFamilyProperties2 *  pQueueFamilyProperties);
+#define vkGetPhysicalDeviceQueueFamilyProperties2KHR vkfw_vkGetPhysicalDeviceQueueFamilyProperties2KHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPhysicalDeviceSparseImageFormatProperties2KHR (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceSparseImageFormatInfo2 *  pFormatInfo, uint32_t *  pPropertyCount, VkSparseImageFormatProperties2 *  pProperties);
+vkfw_vkGetPhysicalDeviceSparseImageFormatProperties2KHR (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceSparseImageFormatInfo2 *  pFormatInfo, uint32_t *  pPropertyCount, VkSparseImageFormatProperties2 *  pProperties);
+#define vkGetPhysicalDeviceSparseImageFormatProperties2KHR vkfw_vkGetPhysicalDeviceSparseImageFormatProperties2KHR
 #endif /* defined(VK_KHR_get_physical_device_properties2) */
 #if defined(VK_KHR_get_surface_capabilities2)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceSurfaceCapabilities2KHR (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceSurfaceInfo2KHR *  pSurfaceInfo, VkSurfaceCapabilities2KHR *  pSurfaceCapabilities);
+vkfw_vkGetPhysicalDeviceSurfaceCapabilities2KHR (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceSurfaceInfo2KHR *  pSurfaceInfo, VkSurfaceCapabilities2KHR *  pSurfaceCapabilities);
+#define vkGetPhysicalDeviceSurfaceCapabilities2KHR vkfw_vkGetPhysicalDeviceSurfaceCapabilities2KHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceSurfaceFormats2KHR (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceSurfaceInfo2KHR *  pSurfaceInfo, uint32_t *  pSurfaceFormatCount, VkSurfaceFormat2KHR *  pSurfaceFormats);
+vkfw_vkGetPhysicalDeviceSurfaceFormats2KHR (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceSurfaceInfo2KHR *  pSurfaceInfo, uint32_t *  pSurfaceFormatCount, VkSurfaceFormat2KHR *  pSurfaceFormats);
+#define vkGetPhysicalDeviceSurfaceFormats2KHR vkfw_vkGetPhysicalDeviceSurfaceFormats2KHR
 #endif /* defined(VK_KHR_get_surface_capabilities2) */
 #if defined(VK_KHR_line_rasterization)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetLineStippleKHR (VkCommandBuffer   commandBuffer, uint32_t   lineStippleFactor, uint16_t   lineStipplePattern);
+vkfw_vkCmdSetLineStippleKHR (VkCommandBuffer   commandBuffer, uint32_t   lineStippleFactor, uint16_t   lineStipplePattern);
+#define vkCmdSetLineStippleKHR vkfw_vkCmdSetLineStippleKHR
 #endif /* defined(VK_KHR_line_rasterization) */
 #if defined(VK_KHR_maintenance1)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkTrimCommandPoolKHR (VkDevice   device, VkCommandPool   commandPool, VkCommandPoolTrimFlags   flags);
+vkfw_vkTrimCommandPoolKHR (VkDevice   device, VkCommandPool   commandPool, VkCommandPoolTrimFlags   flags);
+#define vkTrimCommandPoolKHR vkfw_vkTrimCommandPoolKHR
 #endif /* defined(VK_KHR_maintenance1) */
 #if defined(VK_KHR_maintenance3)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetDescriptorSetLayoutSupportKHR (VkDevice   device, const  VkDescriptorSetLayoutCreateInfo *  pCreateInfo, VkDescriptorSetLayoutSupport *  pSupport);
+vkfw_vkGetDescriptorSetLayoutSupportKHR (VkDevice   device, const  VkDescriptorSetLayoutCreateInfo *  pCreateInfo, VkDescriptorSetLayoutSupport *  pSupport);
+#define vkGetDescriptorSetLayoutSupportKHR vkfw_vkGetDescriptorSetLayoutSupportKHR
 #endif /* defined(VK_KHR_maintenance3) */
 #if defined(VK_KHR_maintenance4)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetDeviceBufferMemoryRequirementsKHR (VkDevice   device, const  VkDeviceBufferMemoryRequirements *  pInfo, VkMemoryRequirements2 *  pMemoryRequirements);
+vkfw_vkGetDeviceBufferMemoryRequirementsKHR (VkDevice   device, const  VkDeviceBufferMemoryRequirements *  pInfo, VkMemoryRequirements2 *  pMemoryRequirements);
+#define vkGetDeviceBufferMemoryRequirementsKHR vkfw_vkGetDeviceBufferMemoryRequirementsKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetDeviceImageMemoryRequirementsKHR (VkDevice   device, const  VkDeviceImageMemoryRequirements *  pInfo, VkMemoryRequirements2 *  pMemoryRequirements);
+vkfw_vkGetDeviceImageMemoryRequirementsKHR (VkDevice   device, const  VkDeviceImageMemoryRequirements *  pInfo, VkMemoryRequirements2 *  pMemoryRequirements);
+#define vkGetDeviceImageMemoryRequirementsKHR vkfw_vkGetDeviceImageMemoryRequirementsKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetDeviceImageSparseMemoryRequirementsKHR (VkDevice   device, const  VkDeviceImageMemoryRequirements *  pInfo, uint32_t *  pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements2 *  pSparseMemoryRequirements);
+vkfw_vkGetDeviceImageSparseMemoryRequirementsKHR (VkDevice   device, const  VkDeviceImageMemoryRequirements *  pInfo, uint32_t *  pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements2 *  pSparseMemoryRequirements);
+#define vkGetDeviceImageSparseMemoryRequirementsKHR vkfw_vkGetDeviceImageSparseMemoryRequirementsKHR
 #endif /* defined(VK_KHR_maintenance4) */
 #if defined(VK_KHR_maintenance5)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBindIndexBuffer2KHR (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, VkDeviceSize   size, VkIndexType   indexType);
+vkfw_vkCmdBindIndexBuffer2KHR (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, VkDeviceSize   size, VkIndexType   indexType);
+#define vkCmdBindIndexBuffer2KHR vkfw_vkCmdBindIndexBuffer2KHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetDeviceImageSubresourceLayoutKHR (VkDevice   device, const  VkDeviceImageSubresourceInfoKHR *  pInfo, VkSubresourceLayout2KHR *  pLayout);
+vkfw_vkGetDeviceImageSubresourceLayoutKHR (VkDevice   device, const  VkDeviceImageSubresourceInfoKHR *  pInfo, VkSubresourceLayout2KHR *  pLayout);
+#define vkGetDeviceImageSubresourceLayoutKHR vkfw_vkGetDeviceImageSubresourceLayoutKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetImageSubresourceLayout2KHR (VkDevice   device, VkImage   image, const  VkImageSubresource2KHR *  pSubresource, VkSubresourceLayout2KHR *  pLayout);
+vkfw_vkGetImageSubresourceLayout2KHR (VkDevice   device, VkImage   image, const  VkImageSubresource2KHR *  pSubresource, VkSubresourceLayout2KHR *  pLayout);
+#define vkGetImageSubresourceLayout2KHR vkfw_vkGetImageSubresourceLayout2KHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetRenderingAreaGranularityKHR (VkDevice   device, const  VkRenderingAreaInfoKHR *  pRenderingAreaInfo, VkExtent2D *  pGranularity);
+vkfw_vkGetRenderingAreaGranularityKHR (VkDevice   device, const  VkRenderingAreaInfoKHR *  pRenderingAreaInfo, VkExtent2D *  pGranularity);
+#define vkGetRenderingAreaGranularityKHR vkfw_vkGetRenderingAreaGranularityKHR
 #endif /* defined(VK_KHR_maintenance5) */
 #if defined(VK_KHR_maintenance6)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBindDescriptorSets2KHR (VkCommandBuffer   commandBuffer, const  VkBindDescriptorSetsInfoKHR *  pBindDescriptorSetsInfo);
+vkfw_vkCmdBindDescriptorSets2KHR (VkCommandBuffer   commandBuffer, const  VkBindDescriptorSetsInfoKHR *  pBindDescriptorSetsInfo);
+#define vkCmdBindDescriptorSets2KHR vkfw_vkCmdBindDescriptorSets2KHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdPushConstants2KHR (VkCommandBuffer   commandBuffer, const  VkPushConstantsInfoKHR *  pPushConstantsInfo);
+vkfw_vkCmdPushConstants2KHR (VkCommandBuffer   commandBuffer, const  VkPushConstantsInfoKHR *  pPushConstantsInfo);
+#define vkCmdPushConstants2KHR vkfw_vkCmdPushConstants2KHR
 #endif /* defined(VK_KHR_maintenance6) */
 #if defined(VK_KHR_maintenance6) && defined(VK_KHR_push_descriptor)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdPushDescriptorSet2KHR (VkCommandBuffer   commandBuffer, const  VkPushDescriptorSetInfoKHR *  pPushDescriptorSetInfo);
+vkfw_vkCmdPushDescriptorSet2KHR (VkCommandBuffer   commandBuffer, const  VkPushDescriptorSetInfoKHR *  pPushDescriptorSetInfo);
+#define vkCmdPushDescriptorSet2KHR vkfw_vkCmdPushDescriptorSet2KHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdPushDescriptorSetWithTemplate2KHR (VkCommandBuffer   commandBuffer, const  VkPushDescriptorSetWithTemplateInfoKHR *  pPushDescriptorSetWithTemplateInfo);
+vkfw_vkCmdPushDescriptorSetWithTemplate2KHR (VkCommandBuffer   commandBuffer, const  VkPushDescriptorSetWithTemplateInfoKHR *  pPushDescriptorSetWithTemplateInfo);
+#define vkCmdPushDescriptorSetWithTemplate2KHR vkfw_vkCmdPushDescriptorSetWithTemplate2KHR
 #endif /* defined(VK_KHR_maintenance6) && defined(VK_KHR_push_descriptor) */
 #if defined(VK_KHR_maintenance6) && defined(VK_EXT_descriptor_buffer)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBindDescriptorBufferEmbeddedSamplers2EXT (VkCommandBuffer   commandBuffer, const  VkBindDescriptorBufferEmbeddedSamplersInfoEXT *  pBindDescriptorBufferEmbeddedSamplersInfo);
+vkfw_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT (VkCommandBuffer   commandBuffer, const  VkBindDescriptorBufferEmbeddedSamplersInfoEXT *  pBindDescriptorBufferEmbeddedSamplersInfo);
+#define vkCmdBindDescriptorBufferEmbeddedSamplers2EXT vkfw_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetDescriptorBufferOffsets2EXT (VkCommandBuffer   commandBuffer, const  VkSetDescriptorBufferOffsetsInfoEXT *  pSetDescriptorBufferOffsetsInfo);
+vkfw_vkCmdSetDescriptorBufferOffsets2EXT (VkCommandBuffer   commandBuffer, const  VkSetDescriptorBufferOffsetsInfoEXT *  pSetDescriptorBufferOffsetsInfo);
+#define vkCmdSetDescriptorBufferOffsets2EXT vkfw_vkCmdSetDescriptorBufferOffsets2EXT
 #endif /* defined(VK_KHR_maintenance6) && defined(VK_EXT_descriptor_buffer) */
 #if defined(VK_KHR_map_memory2)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkMapMemory2KHR (VkDevice   device, const  VkMemoryMapInfoKHR *  pMemoryMapInfo, void **  ppData);
+vkfw_vkMapMemory2KHR (VkDevice   device, const  VkMemoryMapInfoKHR *  pMemoryMapInfo, void **  ppData);
+#define vkMapMemory2KHR vkfw_vkMapMemory2KHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkUnmapMemory2KHR (VkDevice   device, const  VkMemoryUnmapInfoKHR *  pMemoryUnmapInfo);
+vkfw_vkUnmapMemory2KHR (VkDevice   device, const  VkMemoryUnmapInfoKHR *  pMemoryUnmapInfo);
+#define vkUnmapMemory2KHR vkfw_vkUnmapMemory2KHR
 #endif /* defined(VK_KHR_map_memory2) */
 #if defined(VK_KHR_performance_query)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkAcquireProfilingLockKHR (VkDevice   device, const  VkAcquireProfilingLockInfoKHR *  pInfo);
+vkfw_vkAcquireProfilingLockKHR (VkDevice   device, const  VkAcquireProfilingLockInfoKHR *  pInfo);
+#define vkAcquireProfilingLockKHR vkfw_vkAcquireProfilingLockKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR (VkPhysicalDevice   physicalDevice, uint32_t   queueFamilyIndex, uint32_t *  pCounterCount, VkPerformanceCounterKHR *  pCounters, VkPerformanceCounterDescriptionKHR *  pCounterDescriptions);
+vkfw_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR (VkPhysicalDevice   physicalDevice, uint32_t   queueFamilyIndex, uint32_t *  pCounterCount, VkPerformanceCounterKHR *  pCounters, VkPerformanceCounterDescriptionKHR *  pCounterDescriptions);
+#define vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR vkfw_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR (VkPhysicalDevice   physicalDevice, const  VkQueryPoolPerformanceCreateInfoKHR *  pPerformanceQueryCreateInfo, uint32_t *  pNumPasses);
+vkfw_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR (VkPhysicalDevice   physicalDevice, const  VkQueryPoolPerformanceCreateInfoKHR *  pPerformanceQueryCreateInfo, uint32_t *  pNumPasses);
+#define vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR vkfw_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkReleaseProfilingLockKHR (VkDevice   device);
+vkfw_vkReleaseProfilingLockKHR (VkDevice   device);
+#define vkReleaseProfilingLockKHR vkfw_vkReleaseProfilingLockKHR
 #endif /* defined(VK_KHR_performance_query) */
 #if defined(VK_KHR_pipeline_executable_properties)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPipelineExecutableInternalRepresentationsKHR (VkDevice                          device, const  VkPipelineExecutableInfoKHR *   pExecutableInfo, uint32_t *  pInternalRepresentationCount, VkPipelineExecutableInternalRepresentationKHR *  pInternalRepresentations);
+vkfw_vkGetPipelineExecutableInternalRepresentationsKHR (VkDevice                          device, const  VkPipelineExecutableInfoKHR *   pExecutableInfo, uint32_t *  pInternalRepresentationCount, VkPipelineExecutableInternalRepresentationKHR *  pInternalRepresentations);
+#define vkGetPipelineExecutableInternalRepresentationsKHR vkfw_vkGetPipelineExecutableInternalRepresentationsKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPipelineExecutablePropertiesKHR (VkDevice                          device, const  VkPipelineInfoKHR *         pPipelineInfo, uint32_t *  pExecutableCount, VkPipelineExecutablePropertiesKHR *  pProperties);
+vkfw_vkGetPipelineExecutablePropertiesKHR (VkDevice                          device, const  VkPipelineInfoKHR *         pPipelineInfo, uint32_t *  pExecutableCount, VkPipelineExecutablePropertiesKHR *  pProperties);
+#define vkGetPipelineExecutablePropertiesKHR vkfw_vkGetPipelineExecutablePropertiesKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPipelineExecutableStatisticsKHR (VkDevice                          device, const  VkPipelineExecutableInfoKHR *   pExecutableInfo, uint32_t *  pStatisticCount, VkPipelineExecutableStatisticKHR *  pStatistics);
+vkfw_vkGetPipelineExecutableStatisticsKHR (VkDevice                          device, const  VkPipelineExecutableInfoKHR *   pExecutableInfo, uint32_t *  pStatisticCount, VkPipelineExecutableStatisticKHR *  pStatistics);
+#define vkGetPipelineExecutableStatisticsKHR vkfw_vkGetPipelineExecutableStatisticsKHR
 #endif /* defined(VK_KHR_pipeline_executable_properties) */
 #if defined(VK_KHR_present_wait)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkWaitForPresentKHR (VkDevice   device, VkSwapchainKHR   swapchain, uint64_t   presentId, uint64_t   timeout);
+vkfw_vkWaitForPresentKHR (VkDevice   device, VkSwapchainKHR   swapchain, uint64_t   presentId, uint64_t   timeout);
+#define vkWaitForPresentKHR vkfw_vkWaitForPresentKHR
 #endif /* defined(VK_KHR_present_wait) */
 #if defined(VK_KHR_push_descriptor)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdPushDescriptorSetKHR (VkCommandBuffer   commandBuffer, VkPipelineBindPoint   pipelineBindPoint, VkPipelineLayout   layout, uint32_t   set, uint32_t   descriptorWriteCount, const  VkWriteDescriptorSet *  pDescriptorWrites);
+vkfw_vkCmdPushDescriptorSetKHR (VkCommandBuffer   commandBuffer, VkPipelineBindPoint   pipelineBindPoint, VkPipelineLayout   layout, uint32_t   set, uint32_t   descriptorWriteCount, const  VkWriteDescriptorSet *  pDescriptorWrites);
+#define vkCmdPushDescriptorSetKHR vkfw_vkCmdPushDescriptorSetKHR
 #endif /* defined(VK_KHR_push_descriptor) */
 #if defined(VK_KHR_ray_tracing_maintenance1) && defined(VK_KHR_ray_tracing_pipeline)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdTraceRaysIndirect2KHR (VkCommandBuffer   commandBuffer, VkDeviceAddress   indirectDeviceAddress);
+vkfw_vkCmdTraceRaysIndirect2KHR (VkCommandBuffer   commandBuffer, VkDeviceAddress   indirectDeviceAddress);
+#define vkCmdTraceRaysIndirect2KHR vkfw_vkCmdTraceRaysIndirect2KHR
 #endif /* defined(VK_KHR_ray_tracing_maintenance1) && defined(VK_KHR_ray_tracing_pipeline) */
 #if defined(VK_KHR_ray_tracing_pipeline)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetRayTracingPipelineStackSizeKHR (VkCommandBuffer   commandBuffer, uint32_t   pipelineStackSize);
+vkfw_vkCmdSetRayTracingPipelineStackSizeKHR (VkCommandBuffer   commandBuffer, uint32_t   pipelineStackSize);
+#define vkCmdSetRayTracingPipelineStackSizeKHR vkfw_vkCmdSetRayTracingPipelineStackSizeKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdTraceRaysIndirectKHR (VkCommandBuffer   commandBuffer, const  VkStridedDeviceAddressRegionKHR *  pRaygenShaderBindingTable, const  VkStridedDeviceAddressRegionKHR *  pMissShaderBindingTable, const  VkStridedDeviceAddressRegionKHR *  pHitShaderBindingTable, const  VkStridedDeviceAddressRegionKHR *  pCallableShaderBindingTable, VkDeviceAddress   indirectDeviceAddress);
+vkfw_vkCmdTraceRaysIndirectKHR (VkCommandBuffer   commandBuffer, const  VkStridedDeviceAddressRegionKHR *  pRaygenShaderBindingTable, const  VkStridedDeviceAddressRegionKHR *  pMissShaderBindingTable, const  VkStridedDeviceAddressRegionKHR *  pHitShaderBindingTable, const  VkStridedDeviceAddressRegionKHR *  pCallableShaderBindingTable, VkDeviceAddress   indirectDeviceAddress);
+#define vkCmdTraceRaysIndirectKHR vkfw_vkCmdTraceRaysIndirectKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdTraceRaysKHR (VkCommandBuffer   commandBuffer, const  VkStridedDeviceAddressRegionKHR *  pRaygenShaderBindingTable, const  VkStridedDeviceAddressRegionKHR *  pMissShaderBindingTable, const  VkStridedDeviceAddressRegionKHR *  pHitShaderBindingTable, const  VkStridedDeviceAddressRegionKHR *  pCallableShaderBindingTable, uint32_t   width, uint32_t   height, uint32_t   depth);
+vkfw_vkCmdTraceRaysKHR (VkCommandBuffer   commandBuffer, const  VkStridedDeviceAddressRegionKHR *  pRaygenShaderBindingTable, const  VkStridedDeviceAddressRegionKHR *  pMissShaderBindingTable, const  VkStridedDeviceAddressRegionKHR *  pHitShaderBindingTable, const  VkStridedDeviceAddressRegionKHR *  pCallableShaderBindingTable, uint32_t   width, uint32_t   height, uint32_t   depth);
+#define vkCmdTraceRaysKHR vkfw_vkCmdTraceRaysKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateRayTracingPipelinesKHR (VkDevice   device, VkDeferredOperationKHR   deferredOperation, VkPipelineCache   pipelineCache, uint32_t   createInfoCount, const  VkRayTracingPipelineCreateInfoKHR *  pCreateInfos, const  VkAllocationCallbacks *  pAllocator, VkPipeline *  pPipelines);
+vkfw_vkCreateRayTracingPipelinesKHR (VkDevice   device, VkDeferredOperationKHR   deferredOperation, VkPipelineCache   pipelineCache, uint32_t   createInfoCount, const  VkRayTracingPipelineCreateInfoKHR *  pCreateInfos, const  VkAllocationCallbacks *  pAllocator, VkPipeline *  pPipelines);
+#define vkCreateRayTracingPipelinesKHR vkfw_vkCreateRayTracingPipelinesKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetRayTracingCaptureReplayShaderGroupHandlesKHR (VkDevice   device, VkPipeline   pipeline, uint32_t   firstGroup, uint32_t   groupCount, size_t   dataSize, void *  pData);
+vkfw_vkGetRayTracingCaptureReplayShaderGroupHandlesKHR (VkDevice   device, VkPipeline   pipeline, uint32_t   firstGroup, uint32_t   groupCount, size_t   dataSize, void *  pData);
+#define vkGetRayTracingCaptureReplayShaderGroupHandlesKHR vkfw_vkGetRayTracingCaptureReplayShaderGroupHandlesKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetRayTracingShaderGroupHandlesKHR (VkDevice   device, VkPipeline   pipeline, uint32_t   firstGroup, uint32_t   groupCount, size_t   dataSize, void *  pData);
+vkfw_vkGetRayTracingShaderGroupHandlesKHR (VkDevice   device, VkPipeline   pipeline, uint32_t   firstGroup, uint32_t   groupCount, size_t   dataSize, void *  pData);
+#define vkGetRayTracingShaderGroupHandlesKHR vkfw_vkGetRayTracingShaderGroupHandlesKHR
 VKFWAPI VKAPI_ATTR VkDeviceSize VKAPI_CALL
-vkGetRayTracingShaderGroupStackSizeKHR (VkDevice   device, VkPipeline   pipeline, uint32_t   group, VkShaderGroupShaderKHR   groupShader);
+vkfw_vkGetRayTracingShaderGroupStackSizeKHR (VkDevice   device, VkPipeline   pipeline, uint32_t   group, VkShaderGroupShaderKHR   groupShader);
+#define vkGetRayTracingShaderGroupStackSizeKHR vkfw_vkGetRayTracingShaderGroupStackSizeKHR
 #endif /* defined(VK_KHR_ray_tracing_pipeline) */
 #if defined(VK_KHR_sampler_ycbcr_conversion)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateSamplerYcbcrConversionKHR (VkDevice   device, const  VkSamplerYcbcrConversionCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSamplerYcbcrConversion *  pYcbcrConversion);
+vkfw_vkCreateSamplerYcbcrConversionKHR (VkDevice   device, const  VkSamplerYcbcrConversionCreateInfo *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSamplerYcbcrConversion *  pYcbcrConversion);
+#define vkCreateSamplerYcbcrConversionKHR vkfw_vkCreateSamplerYcbcrConversionKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroySamplerYcbcrConversionKHR (VkDevice   device, VkSamplerYcbcrConversion   ycbcrConversion, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroySamplerYcbcrConversionKHR (VkDevice   device, VkSamplerYcbcrConversion   ycbcrConversion, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroySamplerYcbcrConversionKHR vkfw_vkDestroySamplerYcbcrConversionKHR
 #endif /* defined(VK_KHR_sampler_ycbcr_conversion) */
 #if defined(VK_KHR_shared_presentable_image)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetSwapchainStatusKHR (VkDevice   device, VkSwapchainKHR   swapchain);
+vkfw_vkGetSwapchainStatusKHR (VkDevice   device, VkSwapchainKHR   swapchain);
+#define vkGetSwapchainStatusKHR vkfw_vkGetSwapchainStatusKHR
 #endif /* defined(VK_KHR_shared_presentable_image) */
 #if defined(VK_KHR_surface)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroySurfaceKHR (VkInstance   instance, VkSurfaceKHR   surface, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroySurfaceKHR (VkInstance   instance, VkSurfaceKHR   surface, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroySurfaceKHR vkfw_vkDestroySurfaceKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceSurfaceCapabilitiesKHR (VkPhysicalDevice   physicalDevice, VkSurfaceKHR   surface, VkSurfaceCapabilitiesKHR *  pSurfaceCapabilities);
+vkfw_vkGetPhysicalDeviceSurfaceCapabilitiesKHR (VkPhysicalDevice   physicalDevice, VkSurfaceKHR   surface, VkSurfaceCapabilitiesKHR *  pSurfaceCapabilities);
+#define vkGetPhysicalDeviceSurfaceCapabilitiesKHR vkfw_vkGetPhysicalDeviceSurfaceCapabilitiesKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceSurfaceFormatsKHR (VkPhysicalDevice   physicalDevice, VkSurfaceKHR   surface, uint32_t *  pSurfaceFormatCount, VkSurfaceFormatKHR *  pSurfaceFormats);
+vkfw_vkGetPhysicalDeviceSurfaceFormatsKHR (VkPhysicalDevice   physicalDevice, VkSurfaceKHR   surface, uint32_t *  pSurfaceFormatCount, VkSurfaceFormatKHR *  pSurfaceFormats);
+#define vkGetPhysicalDeviceSurfaceFormatsKHR vkfw_vkGetPhysicalDeviceSurfaceFormatsKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceSurfacePresentModesKHR (VkPhysicalDevice   physicalDevice, VkSurfaceKHR   surface, uint32_t *  pPresentModeCount, VkPresentModeKHR *  pPresentModes);
+vkfw_vkGetPhysicalDeviceSurfacePresentModesKHR (VkPhysicalDevice   physicalDevice, VkSurfaceKHR   surface, uint32_t *  pPresentModeCount, VkPresentModeKHR *  pPresentModes);
+#define vkGetPhysicalDeviceSurfacePresentModesKHR vkfw_vkGetPhysicalDeviceSurfacePresentModesKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceSurfaceSupportKHR (VkPhysicalDevice   physicalDevice, uint32_t   queueFamilyIndex, VkSurfaceKHR   surface, VkBool32 *  pSupported);
+vkfw_vkGetPhysicalDeviceSurfaceSupportKHR (VkPhysicalDevice   physicalDevice, uint32_t   queueFamilyIndex, VkSurfaceKHR   surface, VkBool32 *  pSupported);
+#define vkGetPhysicalDeviceSurfaceSupportKHR vkfw_vkGetPhysicalDeviceSurfaceSupportKHR
 #endif /* defined(VK_KHR_surface) */
 #if defined(VK_KHR_swapchain)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkAcquireNextImageKHR (VkDevice   device, VkSwapchainKHR   swapchain, uint64_t   timeout, VkSemaphore   semaphore, VkFence   fence, uint32_t *  pImageIndex);
+vkfw_vkAcquireNextImageKHR (VkDevice   device, VkSwapchainKHR   swapchain, uint64_t   timeout, VkSemaphore   semaphore, VkFence   fence, uint32_t *  pImageIndex);
+#define vkAcquireNextImageKHR vkfw_vkAcquireNextImageKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateSwapchainKHR (VkDevice   device, const  VkSwapchainCreateInfoKHR *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSwapchainKHR *  pSwapchain);
+vkfw_vkCreateSwapchainKHR (VkDevice   device, const  VkSwapchainCreateInfoKHR *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSwapchainKHR *  pSwapchain);
+#define vkCreateSwapchainKHR vkfw_vkCreateSwapchainKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroySwapchainKHR (VkDevice   device, VkSwapchainKHR   swapchain, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroySwapchainKHR (VkDevice   device, VkSwapchainKHR   swapchain, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroySwapchainKHR vkfw_vkDestroySwapchainKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetSwapchainImagesKHR (VkDevice   device, VkSwapchainKHR   swapchain, uint32_t *  pSwapchainImageCount, VkImage *  pSwapchainImages);
+vkfw_vkGetSwapchainImagesKHR (VkDevice   device, VkSwapchainKHR   swapchain, uint32_t *  pSwapchainImageCount, VkImage *  pSwapchainImages);
+#define vkGetSwapchainImagesKHR vkfw_vkGetSwapchainImagesKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkQueuePresentKHR (VkQueue   queue, const  VkPresentInfoKHR *  pPresentInfo);
+vkfw_vkQueuePresentKHR (VkQueue   queue, const  VkPresentInfoKHR *  pPresentInfo);
+#define vkQueuePresentKHR vkfw_vkQueuePresentKHR
 #endif /* defined(VK_KHR_swapchain) */
 #if defined(VK_KHR_synchronization2)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdPipelineBarrier2KHR (VkCommandBuffer                     commandBuffer, const  VkDependencyInfo *                              pDependencyInfo);
+vkfw_vkCmdPipelineBarrier2KHR (VkCommandBuffer                     commandBuffer, const  VkDependencyInfo *                              pDependencyInfo);
+#define vkCmdPipelineBarrier2KHR vkfw_vkCmdPipelineBarrier2KHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdResetEvent2KHR (VkCommandBuffer                     commandBuffer, VkEvent                                               event, VkPipelineStageFlags2                 stageMask);
+vkfw_vkCmdResetEvent2KHR (VkCommandBuffer                     commandBuffer, VkEvent                                               event, VkPipelineStageFlags2                 stageMask);
+#define vkCmdResetEvent2KHR vkfw_vkCmdResetEvent2KHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetEvent2KHR (VkCommandBuffer                     commandBuffer, VkEvent                                               event, const  VkDependencyInfo *                              pDependencyInfo);
+vkfw_vkCmdSetEvent2KHR (VkCommandBuffer                     commandBuffer, VkEvent                                               event, const  VkDependencyInfo *                              pDependencyInfo);
+#define vkCmdSetEvent2KHR vkfw_vkCmdSetEvent2KHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdWaitEvents2KHR (VkCommandBuffer                     commandBuffer, uint32_t                                              eventCount, const  VkEvent *                      pEvents, const  VkDependencyInfo *             pDependencyInfos);
+vkfw_vkCmdWaitEvents2KHR (VkCommandBuffer                     commandBuffer, uint32_t                                              eventCount, const  VkEvent *                      pEvents, const  VkDependencyInfo *             pDependencyInfos);
+#define vkCmdWaitEvents2KHR vkfw_vkCmdWaitEvents2KHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdWriteTimestamp2KHR (VkCommandBuffer                     commandBuffer, VkPipelineStageFlags2                 stage, VkQueryPool                                           queryPool, uint32_t                                              query);
+vkfw_vkCmdWriteTimestamp2KHR (VkCommandBuffer                     commandBuffer, VkPipelineStageFlags2                 stage, VkQueryPool                                           queryPool, uint32_t                                              query);
+#define vkCmdWriteTimestamp2KHR vkfw_vkCmdWriteTimestamp2KHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkQueueSubmit2KHR (VkQueue                             queue, uint32_t                              submitCount, const  VkSubmitInfo2 *               pSubmits, VkFence             fence);
+vkfw_vkQueueSubmit2KHR (VkQueue                             queue, uint32_t                              submitCount, const  VkSubmitInfo2 *               pSubmits, VkFence             fence);
+#define vkQueueSubmit2KHR vkfw_vkQueueSubmit2KHR
 #endif /* defined(VK_KHR_synchronization2) */
 #if defined(VK_KHR_synchronization2) && defined(VK_AMD_buffer_marker)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdWriteBufferMarker2AMD (VkCommandBuffer                     commandBuffer, VkPipelineStageFlags2                 stage, VkBuffer                                              dstBuffer, VkDeviceSize                                          dstOffset, uint32_t                                              marker);
+vkfw_vkCmdWriteBufferMarker2AMD (VkCommandBuffer                     commandBuffer, VkPipelineStageFlags2                 stage, VkBuffer                                              dstBuffer, VkDeviceSize                                          dstOffset, uint32_t                                              marker);
+#define vkCmdWriteBufferMarker2AMD vkfw_vkCmdWriteBufferMarker2AMD
 #endif /* defined(VK_KHR_synchronization2) && defined(VK_AMD_buffer_marker) */
 #if defined(VK_KHR_synchronization2) && defined(VK_NV_device_diagnostic_checkpoints)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetQueueCheckpointData2NV (VkQueue   queue, uint32_t *  pCheckpointDataCount, VkCheckpointData2NV *  pCheckpointData);
+vkfw_vkGetQueueCheckpointData2NV (VkQueue   queue, uint32_t *  pCheckpointDataCount, VkCheckpointData2NV *  pCheckpointData);
+#define vkGetQueueCheckpointData2NV vkfw_vkGetQueueCheckpointData2NV
 #endif /* defined(VK_KHR_synchronization2) && defined(VK_NV_device_diagnostic_checkpoints) */
 #if defined(VK_KHR_timeline_semaphore)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetSemaphoreCounterValueKHR (VkDevice   device, VkSemaphore   semaphore, uint64_t *  pValue);
+vkfw_vkGetSemaphoreCounterValueKHR (VkDevice   device, VkSemaphore   semaphore, uint64_t *  pValue);
+#define vkGetSemaphoreCounterValueKHR vkfw_vkGetSemaphoreCounterValueKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkSignalSemaphoreKHR (VkDevice   device, const  VkSemaphoreSignalInfo *  pSignalInfo);
+vkfw_vkSignalSemaphoreKHR (VkDevice   device, const  VkSemaphoreSignalInfo *  pSignalInfo);
+#define vkSignalSemaphoreKHR vkfw_vkSignalSemaphoreKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkWaitSemaphoresKHR (VkDevice   device, const  VkSemaphoreWaitInfo *  pWaitInfo, uint64_t   timeout);
+vkfw_vkWaitSemaphoresKHR (VkDevice   device, const  VkSemaphoreWaitInfo *  pWaitInfo, uint64_t   timeout);
+#define vkWaitSemaphoresKHR vkfw_vkWaitSemaphoresKHR
 #endif /* defined(VK_KHR_timeline_semaphore) */
 #if defined(VK_KHR_video_decode_queue)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDecodeVideoKHR (VkCommandBuffer   commandBuffer, const  VkVideoDecodeInfoKHR *  pDecodeInfo);
+vkfw_vkCmdDecodeVideoKHR (VkCommandBuffer   commandBuffer, const  VkVideoDecodeInfoKHR *  pDecodeInfo);
+#define vkCmdDecodeVideoKHR vkfw_vkCmdDecodeVideoKHR
 #endif /* defined(VK_KHR_video_decode_queue) */
 #if defined(VK_KHR_video_encode_queue)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdEncodeVideoKHR (VkCommandBuffer   commandBuffer, const  VkVideoEncodeInfoKHR *  pEncodeInfo);
+vkfw_vkCmdEncodeVideoKHR (VkCommandBuffer   commandBuffer, const  VkVideoEncodeInfoKHR *  pEncodeInfo);
+#define vkCmdEncodeVideoKHR vkfw_vkCmdEncodeVideoKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetEncodedVideoSessionParametersKHR (VkDevice   device, const  VkVideoEncodeSessionParametersGetInfoKHR *  pVideoSessionParametersInfo, VkVideoEncodeSessionParametersFeedbackInfoKHR *  pFeedbackInfo, size_t *  pDataSize, void *  pData);
+vkfw_vkGetEncodedVideoSessionParametersKHR (VkDevice   device, const  VkVideoEncodeSessionParametersGetInfoKHR *  pVideoSessionParametersInfo, VkVideoEncodeSessionParametersFeedbackInfoKHR *  pFeedbackInfo, size_t *  pDataSize, void *  pData);
+#define vkGetEncodedVideoSessionParametersKHR vkfw_vkGetEncodedVideoSessionParametersKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR *  pQualityLevelInfo, VkVideoEncodeQualityLevelPropertiesKHR *  pQualityLevelProperties);
+vkfw_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR *  pQualityLevelInfo, VkVideoEncodeQualityLevelPropertiesKHR *  pQualityLevelProperties);
+#define vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR vkfw_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR
 #endif /* defined(VK_KHR_video_encode_queue) */
 #if defined(VK_KHR_video_queue)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkBindVideoSessionMemoryKHR (VkDevice   device, VkVideoSessionKHR   videoSession, uint32_t   bindSessionMemoryInfoCount, const  VkBindVideoSessionMemoryInfoKHR *  pBindSessionMemoryInfos);
+vkfw_vkBindVideoSessionMemoryKHR (VkDevice   device, VkVideoSessionKHR   videoSession, uint32_t   bindSessionMemoryInfoCount, const  VkBindVideoSessionMemoryInfoKHR *  pBindSessionMemoryInfos);
+#define vkBindVideoSessionMemoryKHR vkfw_vkBindVideoSessionMemoryKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBeginVideoCodingKHR (VkCommandBuffer   commandBuffer, const  VkVideoBeginCodingInfoKHR *  pBeginInfo);
+vkfw_vkCmdBeginVideoCodingKHR (VkCommandBuffer   commandBuffer, const  VkVideoBeginCodingInfoKHR *  pBeginInfo);
+#define vkCmdBeginVideoCodingKHR vkfw_vkCmdBeginVideoCodingKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdControlVideoCodingKHR (VkCommandBuffer   commandBuffer, const  VkVideoCodingControlInfoKHR *  pCodingControlInfo);
+vkfw_vkCmdControlVideoCodingKHR (VkCommandBuffer   commandBuffer, const  VkVideoCodingControlInfoKHR *  pCodingControlInfo);
+#define vkCmdControlVideoCodingKHR vkfw_vkCmdControlVideoCodingKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdEndVideoCodingKHR (VkCommandBuffer   commandBuffer, const  VkVideoEndCodingInfoKHR *  pEndCodingInfo);
+vkfw_vkCmdEndVideoCodingKHR (VkCommandBuffer   commandBuffer, const  VkVideoEndCodingInfoKHR *  pEndCodingInfo);
+#define vkCmdEndVideoCodingKHR vkfw_vkCmdEndVideoCodingKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateVideoSessionKHR (VkDevice   device, const  VkVideoSessionCreateInfoKHR *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkVideoSessionKHR *  pVideoSession);
+vkfw_vkCreateVideoSessionKHR (VkDevice   device, const  VkVideoSessionCreateInfoKHR *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkVideoSessionKHR *  pVideoSession);
+#define vkCreateVideoSessionKHR vkfw_vkCreateVideoSessionKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateVideoSessionParametersKHR (VkDevice   device, const  VkVideoSessionParametersCreateInfoKHR *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkVideoSessionParametersKHR *  pVideoSessionParameters);
+vkfw_vkCreateVideoSessionParametersKHR (VkDevice   device, const  VkVideoSessionParametersCreateInfoKHR *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkVideoSessionParametersKHR *  pVideoSessionParameters);
+#define vkCreateVideoSessionParametersKHR vkfw_vkCreateVideoSessionParametersKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyVideoSessionKHR (VkDevice   device, VkVideoSessionKHR   videoSession, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyVideoSessionKHR (VkDevice   device, VkVideoSessionKHR   videoSession, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyVideoSessionKHR vkfw_vkDestroyVideoSessionKHR
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyVideoSessionParametersKHR (VkDevice   device, VkVideoSessionParametersKHR   videoSessionParameters, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyVideoSessionParametersKHR (VkDevice   device, VkVideoSessionParametersKHR   videoSessionParameters, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyVideoSessionParametersKHR vkfw_vkDestroyVideoSessionParametersKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceVideoCapabilitiesKHR (VkPhysicalDevice   physicalDevice, const  VkVideoProfileInfoKHR *  pVideoProfile, VkVideoCapabilitiesKHR *  pCapabilities);
+vkfw_vkGetPhysicalDeviceVideoCapabilitiesKHR (VkPhysicalDevice   physicalDevice, const  VkVideoProfileInfoKHR *  pVideoProfile, VkVideoCapabilitiesKHR *  pCapabilities);
+#define vkGetPhysicalDeviceVideoCapabilitiesKHR vkfw_vkGetPhysicalDeviceVideoCapabilitiesKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceVideoFormatPropertiesKHR (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceVideoFormatInfoKHR *  pVideoFormatInfo, uint32_t *  pVideoFormatPropertyCount, VkVideoFormatPropertiesKHR *  pVideoFormatProperties);
+vkfw_vkGetPhysicalDeviceVideoFormatPropertiesKHR (VkPhysicalDevice   physicalDevice, const  VkPhysicalDeviceVideoFormatInfoKHR *  pVideoFormatInfo, uint32_t *  pVideoFormatPropertyCount, VkVideoFormatPropertiesKHR *  pVideoFormatProperties);
+#define vkGetPhysicalDeviceVideoFormatPropertiesKHR vkfw_vkGetPhysicalDeviceVideoFormatPropertiesKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetVideoSessionMemoryRequirementsKHR (VkDevice   device, VkVideoSessionKHR   videoSession, uint32_t *  pMemoryRequirementsCount, VkVideoSessionMemoryRequirementsKHR *  pMemoryRequirements);
+vkfw_vkGetVideoSessionMemoryRequirementsKHR (VkDevice   device, VkVideoSessionKHR   videoSession, uint32_t *  pMemoryRequirementsCount, VkVideoSessionMemoryRequirementsKHR *  pMemoryRequirements);
+#define vkGetVideoSessionMemoryRequirementsKHR vkfw_vkGetVideoSessionMemoryRequirementsKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkUpdateVideoSessionParametersKHR (VkDevice   device, VkVideoSessionParametersKHR   videoSessionParameters, const  VkVideoSessionParametersUpdateInfoKHR *  pUpdateInfo);
+vkfw_vkUpdateVideoSessionParametersKHR (VkDevice   device, VkVideoSessionParametersKHR   videoSessionParameters, const  VkVideoSessionParametersUpdateInfoKHR *  pUpdateInfo);
+#define vkUpdateVideoSessionParametersKHR vkfw_vkUpdateVideoSessionParametersKHR
 #endif /* defined(VK_KHR_video_queue) */
 #if defined(VK_KHR_wayland_surface)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateWaylandSurfaceKHR (VkInstance   instance, const  VkWaylandSurfaceCreateInfoKHR *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+vkfw_vkCreateWaylandSurfaceKHR (VkInstance   instance, const  VkWaylandSurfaceCreateInfoKHR *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+#define vkCreateWaylandSurfaceKHR vkfw_vkCreateWaylandSurfaceKHR
 VKFWAPI VKAPI_ATTR VkBool32 VKAPI_CALL
-vkGetPhysicalDeviceWaylandPresentationSupportKHR (VkPhysicalDevice   physicalDevice, uint32_t   queueFamilyIndex, struct  wl_display *  display);
+vkfw_vkGetPhysicalDeviceWaylandPresentationSupportKHR (VkPhysicalDevice   physicalDevice, uint32_t   queueFamilyIndex, struct  wl_display *  display);
+#define vkGetPhysicalDeviceWaylandPresentationSupportKHR vkfw_vkGetPhysicalDeviceWaylandPresentationSupportKHR
 #endif /* defined(VK_KHR_wayland_surface) */
 #if defined(VK_KHR_win32_surface)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateWin32SurfaceKHR (VkInstance   instance, const  VkWin32SurfaceCreateInfoKHR *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+vkfw_vkCreateWin32SurfaceKHR (VkInstance   instance, const  VkWin32SurfaceCreateInfoKHR *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+#define vkCreateWin32SurfaceKHR vkfw_vkCreateWin32SurfaceKHR
 VKFWAPI VKAPI_ATTR VkBool32 VKAPI_CALL
-vkGetPhysicalDeviceWin32PresentationSupportKHR (VkPhysicalDevice   physicalDevice, uint32_t   queueFamilyIndex);
+vkfw_vkGetPhysicalDeviceWin32PresentationSupportKHR (VkPhysicalDevice   physicalDevice, uint32_t   queueFamilyIndex);
+#define vkGetPhysicalDeviceWin32PresentationSupportKHR vkfw_vkGetPhysicalDeviceWin32PresentationSupportKHR
 #endif /* defined(VK_KHR_win32_surface) */
 #if defined(VK_KHR_xcb_surface)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateXcbSurfaceKHR (VkInstance   instance, const  VkXcbSurfaceCreateInfoKHR *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+vkfw_vkCreateXcbSurfaceKHR (VkInstance   instance, const  VkXcbSurfaceCreateInfoKHR *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+#define vkCreateXcbSurfaceKHR vkfw_vkCreateXcbSurfaceKHR
 VKFWAPI VKAPI_ATTR VkBool32 VKAPI_CALL
-vkGetPhysicalDeviceXcbPresentationSupportKHR (VkPhysicalDevice   physicalDevice, uint32_t   queueFamilyIndex, xcb_connection_t *  connection, xcb_visualid_t   visual_id);
+vkfw_vkGetPhysicalDeviceXcbPresentationSupportKHR (VkPhysicalDevice   physicalDevice, uint32_t   queueFamilyIndex, xcb_connection_t *  connection, xcb_visualid_t   visual_id);
+#define vkGetPhysicalDeviceXcbPresentationSupportKHR vkfw_vkGetPhysicalDeviceXcbPresentationSupportKHR
 #endif /* defined(VK_KHR_xcb_surface) */
 #if defined(VK_KHR_xlib_surface)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateXlibSurfaceKHR (VkInstance   instance, const  VkXlibSurfaceCreateInfoKHR *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+vkfw_vkCreateXlibSurfaceKHR (VkInstance   instance, const  VkXlibSurfaceCreateInfoKHR *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+#define vkCreateXlibSurfaceKHR vkfw_vkCreateXlibSurfaceKHR
 VKFWAPI VKAPI_ATTR VkBool32 VKAPI_CALL
-vkGetPhysicalDeviceXlibPresentationSupportKHR (VkPhysicalDevice   physicalDevice, uint32_t   queueFamilyIndex, Display *  dpy, VisualID   visualID);
+vkfw_vkGetPhysicalDeviceXlibPresentationSupportKHR (VkPhysicalDevice   physicalDevice, uint32_t   queueFamilyIndex, Display *  dpy, VisualID   visualID);
+#define vkGetPhysicalDeviceXlibPresentationSupportKHR vkfw_vkGetPhysicalDeviceXlibPresentationSupportKHR
 #endif /* defined(VK_KHR_xlib_surface) */
 #if defined(VK_MVK_ios_surface)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateIOSSurfaceMVK (VkInstance   instance, const  VkIOSSurfaceCreateInfoMVK *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+vkfw_vkCreateIOSSurfaceMVK (VkInstance   instance, const  VkIOSSurfaceCreateInfoMVK *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+#define vkCreateIOSSurfaceMVK vkfw_vkCreateIOSSurfaceMVK
 #endif /* defined(VK_MVK_ios_surface) */
 #if defined(VK_MVK_macos_surface)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateMacOSSurfaceMVK (VkInstance   instance, const  VkMacOSSurfaceCreateInfoMVK *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+vkfw_vkCreateMacOSSurfaceMVK (VkInstance   instance, const  VkMacOSSurfaceCreateInfoMVK *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+#define vkCreateMacOSSurfaceMVK vkfw_vkCreateMacOSSurfaceMVK
 #endif /* defined(VK_MVK_macos_surface) */
 #if defined(VK_NN_vi_surface)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateViSurfaceNN (VkInstance   instance, const  VkViSurfaceCreateInfoNN *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+vkfw_vkCreateViSurfaceNN (VkInstance   instance, const  VkViSurfaceCreateInfoNN *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+#define vkCreateViSurfaceNN vkfw_vkCreateViSurfaceNN
 #endif /* defined(VK_NN_vi_surface) */
 #if defined(VK_NVX_binary_import)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdCuLaunchKernelNVX (VkCommandBuffer   commandBuffer, const  VkCuLaunchInfoNVX *  pLaunchInfo);
+vkfw_vkCmdCuLaunchKernelNVX (VkCommandBuffer   commandBuffer, const  VkCuLaunchInfoNVX *  pLaunchInfo);
+#define vkCmdCuLaunchKernelNVX vkfw_vkCmdCuLaunchKernelNVX
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateCuFunctionNVX (VkDevice   device, const  VkCuFunctionCreateInfoNVX *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkCuFunctionNVX *  pFunction);
+vkfw_vkCreateCuFunctionNVX (VkDevice   device, const  VkCuFunctionCreateInfoNVX *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkCuFunctionNVX *  pFunction);
+#define vkCreateCuFunctionNVX vkfw_vkCreateCuFunctionNVX
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateCuModuleNVX (VkDevice   device, const  VkCuModuleCreateInfoNVX *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkCuModuleNVX *  pModule);
+vkfw_vkCreateCuModuleNVX (VkDevice   device, const  VkCuModuleCreateInfoNVX *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkCuModuleNVX *  pModule);
+#define vkCreateCuModuleNVX vkfw_vkCreateCuModuleNVX
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyCuFunctionNVX (VkDevice   device, VkCuFunctionNVX   function, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyCuFunctionNVX (VkDevice   device, VkCuFunctionNVX   function, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyCuFunctionNVX vkfw_vkDestroyCuFunctionNVX
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyCuModuleNVX (VkDevice   device, VkCuModuleNVX   module, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyCuModuleNVX (VkDevice   device, VkCuModuleNVX   module, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyCuModuleNVX vkfw_vkDestroyCuModuleNVX
 #endif /* defined(VK_NVX_binary_import) */
 #if defined(VK_NVX_image_view_handle)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetImageViewAddressNVX (VkDevice   device, VkImageView   imageView, VkImageViewAddressPropertiesNVX *  pProperties);
+vkfw_vkGetImageViewAddressNVX (VkDevice   device, VkImageView   imageView, VkImageViewAddressPropertiesNVX *  pProperties);
+#define vkGetImageViewAddressNVX vkfw_vkGetImageViewAddressNVX
 VKFWAPI VKAPI_ATTR uint32_t VKAPI_CALL
-vkGetImageViewHandleNVX (VkDevice   device, const  VkImageViewHandleInfoNVX *  pInfo);
+vkfw_vkGetImageViewHandleNVX (VkDevice   device, const  VkImageViewHandleInfoNVX *  pInfo);
+#define vkGetImageViewHandleNVX vkfw_vkGetImageViewHandleNVX
 #endif /* defined(VK_NVX_image_view_handle) */
 #if defined(VK_NV_acquire_winrt_display)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkAcquireWinrtDisplayNV (VkPhysicalDevice   physicalDevice, VkDisplayKHR   display);
+vkfw_vkAcquireWinrtDisplayNV (VkPhysicalDevice   physicalDevice, VkDisplayKHR   display);
+#define vkAcquireWinrtDisplayNV vkfw_vkAcquireWinrtDisplayNV
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetWinrtDisplayNV (VkPhysicalDevice   physicalDevice, uint32_t   deviceRelativeId, VkDisplayKHR *  pDisplay);
+vkfw_vkGetWinrtDisplayNV (VkPhysicalDevice   physicalDevice, uint32_t   deviceRelativeId, VkDisplayKHR *  pDisplay);
+#define vkGetWinrtDisplayNV vkfw_vkGetWinrtDisplayNV
 #endif /* defined(VK_NV_acquire_winrt_display) */
 #if defined(VK_NV_clip_space_w_scaling)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetViewportWScalingNV (VkCommandBuffer   commandBuffer, uint32_t   firstViewport, uint32_t   viewportCount, const  VkViewportWScalingNV *  pViewportWScalings);
+vkfw_vkCmdSetViewportWScalingNV (VkCommandBuffer   commandBuffer, uint32_t   firstViewport, uint32_t   viewportCount, const  VkViewportWScalingNV *  pViewportWScalings);
+#define vkCmdSetViewportWScalingNV vkfw_vkCmdSetViewportWScalingNV
 #endif /* defined(VK_NV_clip_space_w_scaling) */
 #if defined(VK_NV_cooperative_matrix)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceCooperativeMatrixPropertiesNV (VkPhysicalDevice   physicalDevice, uint32_t *  pPropertyCount, VkCooperativeMatrixPropertiesNV *  pProperties);
+vkfw_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV (VkPhysicalDevice   physicalDevice, uint32_t *  pPropertyCount, VkCooperativeMatrixPropertiesNV *  pProperties);
+#define vkGetPhysicalDeviceCooperativeMatrixPropertiesNV vkfw_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV
 #endif /* defined(VK_NV_cooperative_matrix) */
 #if defined(VK_NV_copy_memory_indirect)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdCopyMemoryIndirectNV (VkCommandBuffer   commandBuffer, VkDeviceAddress   copyBufferAddress, uint32_t   copyCount, uint32_t   stride);
+vkfw_vkCmdCopyMemoryIndirectNV (VkCommandBuffer   commandBuffer, VkDeviceAddress   copyBufferAddress, uint32_t   copyCount, uint32_t   stride);
+#define vkCmdCopyMemoryIndirectNV vkfw_vkCmdCopyMemoryIndirectNV
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdCopyMemoryToImageIndirectNV (VkCommandBuffer   commandBuffer, VkDeviceAddress   copyBufferAddress, uint32_t   copyCount, uint32_t   stride, VkImage   dstImage, VkImageLayout   dstImageLayout, const  VkImageSubresourceLayers *  pImageSubresources);
+vkfw_vkCmdCopyMemoryToImageIndirectNV (VkCommandBuffer   commandBuffer, VkDeviceAddress   copyBufferAddress, uint32_t   copyCount, uint32_t   stride, VkImage   dstImage, VkImageLayout   dstImageLayout, const  VkImageSubresourceLayers *  pImageSubresources);
+#define vkCmdCopyMemoryToImageIndirectNV vkfw_vkCmdCopyMemoryToImageIndirectNV
 #endif /* defined(VK_NV_copy_memory_indirect) */
 #if defined(VK_NV_coverage_reduction_mode)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV (VkPhysicalDevice   physicalDevice, uint32_t *  pCombinationCount, VkFramebufferMixedSamplesCombinationNV *  pCombinations);
+vkfw_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV (VkPhysicalDevice   physicalDevice, uint32_t *  pCombinationCount, VkFramebufferMixedSamplesCombinationNV *  pCombinations);
+#define vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV vkfw_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV
 #endif /* defined(VK_NV_coverage_reduction_mode) */
 #if defined(VK_NV_cuda_kernel_launch)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdCudaLaunchKernelNV (VkCommandBuffer   commandBuffer, const  VkCudaLaunchInfoNV *  pLaunchInfo);
+vkfw_vkCmdCudaLaunchKernelNV (VkCommandBuffer   commandBuffer, const  VkCudaLaunchInfoNV *  pLaunchInfo);
+#define vkCmdCudaLaunchKernelNV vkfw_vkCmdCudaLaunchKernelNV
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateCudaFunctionNV (VkDevice   device, const  VkCudaFunctionCreateInfoNV *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkCudaFunctionNV *  pFunction);
+vkfw_vkCreateCudaFunctionNV (VkDevice   device, const  VkCudaFunctionCreateInfoNV *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkCudaFunctionNV *  pFunction);
+#define vkCreateCudaFunctionNV vkfw_vkCreateCudaFunctionNV
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateCudaModuleNV (VkDevice   device, const  VkCudaModuleCreateInfoNV *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkCudaModuleNV *  pModule);
+vkfw_vkCreateCudaModuleNV (VkDevice   device, const  VkCudaModuleCreateInfoNV *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkCudaModuleNV *  pModule);
+#define vkCreateCudaModuleNV vkfw_vkCreateCudaModuleNV
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyCudaFunctionNV (VkDevice   device, VkCudaFunctionNV   function, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyCudaFunctionNV (VkDevice   device, VkCudaFunctionNV   function, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyCudaFunctionNV vkfw_vkDestroyCudaFunctionNV
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyCudaModuleNV (VkDevice   device, VkCudaModuleNV   module, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyCudaModuleNV (VkDevice   device, VkCudaModuleNV   module, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyCudaModuleNV vkfw_vkDestroyCudaModuleNV
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetCudaModuleCacheNV (VkDevice   device, VkCudaModuleNV   module, size_t *  pCacheSize, void *  pCacheData);
+vkfw_vkGetCudaModuleCacheNV (VkDevice   device, VkCudaModuleNV   module, size_t *  pCacheSize, void *  pCacheData);
+#define vkGetCudaModuleCacheNV vkfw_vkGetCudaModuleCacheNV
 #endif /* defined(VK_NV_cuda_kernel_launch) */
 #if defined(VK_NV_device_diagnostic_checkpoints)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetCheckpointNV (VkCommandBuffer   commandBuffer, const  void *  pCheckpointMarker);
+vkfw_vkCmdSetCheckpointNV (VkCommandBuffer   commandBuffer, const  void *  pCheckpointMarker);
+#define vkCmdSetCheckpointNV vkfw_vkCmdSetCheckpointNV
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetQueueCheckpointDataNV (VkQueue   queue, uint32_t *  pCheckpointDataCount, VkCheckpointDataNV *  pCheckpointData);
+vkfw_vkGetQueueCheckpointDataNV (VkQueue   queue, uint32_t *  pCheckpointDataCount, VkCheckpointDataNV *  pCheckpointData);
+#define vkGetQueueCheckpointDataNV vkfw_vkGetQueueCheckpointDataNV
 #endif /* defined(VK_NV_device_diagnostic_checkpoints) */
 #if defined(VK_NV_device_generated_commands)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBindPipelineShaderGroupNV (VkCommandBuffer   commandBuffer, VkPipelineBindPoint   pipelineBindPoint, VkPipeline   pipeline, uint32_t   groupIndex);
+vkfw_vkCmdBindPipelineShaderGroupNV (VkCommandBuffer   commandBuffer, VkPipelineBindPoint   pipelineBindPoint, VkPipeline   pipeline, uint32_t   groupIndex);
+#define vkCmdBindPipelineShaderGroupNV vkfw_vkCmdBindPipelineShaderGroupNV
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdExecuteGeneratedCommandsNV (VkCommandBuffer   commandBuffer, VkBool32   isPreprocessed, const  VkGeneratedCommandsInfoNV *  pGeneratedCommandsInfo);
+vkfw_vkCmdExecuteGeneratedCommandsNV (VkCommandBuffer   commandBuffer, VkBool32   isPreprocessed, const  VkGeneratedCommandsInfoNV *  pGeneratedCommandsInfo);
+#define vkCmdExecuteGeneratedCommandsNV vkfw_vkCmdExecuteGeneratedCommandsNV
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdPreprocessGeneratedCommandsNV (VkCommandBuffer   commandBuffer, const  VkGeneratedCommandsInfoNV *  pGeneratedCommandsInfo);
+vkfw_vkCmdPreprocessGeneratedCommandsNV (VkCommandBuffer   commandBuffer, const  VkGeneratedCommandsInfoNV *  pGeneratedCommandsInfo);
+#define vkCmdPreprocessGeneratedCommandsNV vkfw_vkCmdPreprocessGeneratedCommandsNV
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateIndirectCommandsLayoutNV (VkDevice   device, const  VkIndirectCommandsLayoutCreateInfoNV *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkIndirectCommandsLayoutNV *  pIndirectCommandsLayout);
+vkfw_vkCreateIndirectCommandsLayoutNV (VkDevice   device, const  VkIndirectCommandsLayoutCreateInfoNV *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkIndirectCommandsLayoutNV *  pIndirectCommandsLayout);
+#define vkCreateIndirectCommandsLayoutNV vkfw_vkCreateIndirectCommandsLayoutNV
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyIndirectCommandsLayoutNV (VkDevice   device, VkIndirectCommandsLayoutNV   indirectCommandsLayout, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyIndirectCommandsLayoutNV (VkDevice   device, VkIndirectCommandsLayoutNV   indirectCommandsLayout, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyIndirectCommandsLayoutNV vkfw_vkDestroyIndirectCommandsLayoutNV
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetGeneratedCommandsMemoryRequirementsNV (VkDevice   device, const  VkGeneratedCommandsMemoryRequirementsInfoNV *  pInfo, VkMemoryRequirements2 *  pMemoryRequirements);
+vkfw_vkGetGeneratedCommandsMemoryRequirementsNV (VkDevice   device, const  VkGeneratedCommandsMemoryRequirementsInfoNV *  pInfo, VkMemoryRequirements2 *  pMemoryRequirements);
+#define vkGetGeneratedCommandsMemoryRequirementsNV vkfw_vkGetGeneratedCommandsMemoryRequirementsNV
 #endif /* defined(VK_NV_device_generated_commands) */
 #if defined(VK_NV_device_generated_commands_compute)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdUpdatePipelineIndirectBufferNV (VkCommandBuffer   commandBuffer, VkPipelineBindPoint             pipelineBindPoint, VkPipeline                      pipeline);
+vkfw_vkCmdUpdatePipelineIndirectBufferNV (VkCommandBuffer   commandBuffer, VkPipelineBindPoint             pipelineBindPoint, VkPipeline                      pipeline);
+#define vkCmdUpdatePipelineIndirectBufferNV vkfw_vkCmdUpdatePipelineIndirectBufferNV
 VKFWAPI VKAPI_ATTR VkDeviceAddress VKAPI_CALL
-vkGetPipelineIndirectDeviceAddressNV (VkDevice   device, const  VkPipelineIndirectDeviceAddressInfoNV *  pInfo);
+vkfw_vkGetPipelineIndirectDeviceAddressNV (VkDevice   device, const  VkPipelineIndirectDeviceAddressInfoNV *  pInfo);
+#define vkGetPipelineIndirectDeviceAddressNV vkfw_vkGetPipelineIndirectDeviceAddressNV
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetPipelineIndirectMemoryRequirementsNV (VkDevice   device, const  VkComputePipelineCreateInfo *  pCreateInfo, VkMemoryRequirements2 *  pMemoryRequirements);
+vkfw_vkGetPipelineIndirectMemoryRequirementsNV (VkDevice   device, const  VkComputePipelineCreateInfo *  pCreateInfo, VkMemoryRequirements2 *  pMemoryRequirements);
+#define vkGetPipelineIndirectMemoryRequirementsNV vkfw_vkGetPipelineIndirectMemoryRequirementsNV
 #endif /* defined(VK_NV_device_generated_commands_compute) */
 #if defined(VK_NV_external_memory_capabilities)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceExternalImageFormatPropertiesNV (VkPhysicalDevice   physicalDevice, VkFormat   format, VkImageType   type, VkImageTiling   tiling, VkImageUsageFlags   usage, VkImageCreateFlags   flags, VkExternalMemoryHandleTypeFlagsNV   externalHandleType, VkExternalImageFormatPropertiesNV *  pExternalImageFormatProperties);
+vkfw_vkGetPhysicalDeviceExternalImageFormatPropertiesNV (VkPhysicalDevice   physicalDevice, VkFormat   format, VkImageType   type, VkImageTiling   tiling, VkImageUsageFlags   usage, VkImageCreateFlags   flags, VkExternalMemoryHandleTypeFlagsNV   externalHandleType, VkExternalImageFormatPropertiesNV *  pExternalImageFormatProperties);
+#define vkGetPhysicalDeviceExternalImageFormatPropertiesNV vkfw_vkGetPhysicalDeviceExternalImageFormatPropertiesNV
 #endif /* defined(VK_NV_external_memory_capabilities) */
 #if defined(VK_NV_external_memory_rdma)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetMemoryRemoteAddressNV (VkDevice   device, const  VkMemoryGetRemoteAddressInfoNV *  pMemoryGetRemoteAddressInfo, VkRemoteAddressNV *  pAddress);
+vkfw_vkGetMemoryRemoteAddressNV (VkDevice   device, const  VkMemoryGetRemoteAddressInfoNV *  pMemoryGetRemoteAddressInfo, VkRemoteAddressNV *  pAddress);
+#define vkGetMemoryRemoteAddressNV vkfw_vkGetMemoryRemoteAddressNV
 #endif /* defined(VK_NV_external_memory_rdma) */
 #if defined(VK_NV_external_memory_win32)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetMemoryWin32HandleNV (VkDevice   device, VkDeviceMemory   memory, VkExternalMemoryHandleTypeFlagsNV   handleType, HANDLE *  pHandle);
+vkfw_vkGetMemoryWin32HandleNV (VkDevice   device, VkDeviceMemory   memory, VkExternalMemoryHandleTypeFlagsNV   handleType, HANDLE *  pHandle);
+#define vkGetMemoryWin32HandleNV vkfw_vkGetMemoryWin32HandleNV
 #endif /* defined(VK_NV_external_memory_win32) */
 #if defined(VK_NV_fragment_shading_rate_enums)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetFragmentShadingRateEnumNV (VkCommandBuffer             commandBuffer, VkFragmentShadingRateNV                       shadingRate, const  VkFragmentShadingRateCombinerOpKHR      combinerOps [2]);
+vkfw_vkCmdSetFragmentShadingRateEnumNV (VkCommandBuffer             commandBuffer, VkFragmentShadingRateNV                       shadingRate, const  VkFragmentShadingRateCombinerOpKHR      combinerOps [2]);
+#define vkCmdSetFragmentShadingRateEnumNV vkfw_vkCmdSetFragmentShadingRateEnumNV
 #endif /* defined(VK_NV_fragment_shading_rate_enums) */
 #if defined(VK_NV_low_latency2)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetLatencyTimingsNV (VkDevice   device, VkSwapchainKHR   swapchain, VkGetLatencyMarkerInfoNV *  pLatencyMarkerInfo);
+vkfw_vkGetLatencyTimingsNV (VkDevice   device, VkSwapchainKHR   swapchain, VkGetLatencyMarkerInfoNV *  pLatencyMarkerInfo);
+#define vkGetLatencyTimingsNV vkfw_vkGetLatencyTimingsNV
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkLatencySleepNV (VkDevice   device, VkSwapchainKHR   swapchain, const  VkLatencySleepInfoNV *  pSleepInfo);
+vkfw_vkLatencySleepNV (VkDevice   device, VkSwapchainKHR   swapchain, const  VkLatencySleepInfoNV *  pSleepInfo);
+#define vkLatencySleepNV vkfw_vkLatencySleepNV
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkQueueNotifyOutOfBandNV (VkQueue   queue, const  VkOutOfBandQueueTypeInfoNV *  pQueueTypeInfo);
+vkfw_vkQueueNotifyOutOfBandNV (VkQueue   queue, const  VkOutOfBandQueueTypeInfoNV *  pQueueTypeInfo);
+#define vkQueueNotifyOutOfBandNV vkfw_vkQueueNotifyOutOfBandNV
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkSetLatencyMarkerNV (VkDevice   device, VkSwapchainKHR   swapchain, const  VkSetLatencyMarkerInfoNV *  pLatencyMarkerInfo);
+vkfw_vkSetLatencyMarkerNV (VkDevice   device, VkSwapchainKHR   swapchain, const  VkSetLatencyMarkerInfoNV *  pLatencyMarkerInfo);
+#define vkSetLatencyMarkerNV vkfw_vkSetLatencyMarkerNV
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkSetLatencySleepModeNV (VkDevice   device, VkSwapchainKHR   swapchain, const  VkLatencySleepModeInfoNV *  pSleepModeInfo);
+vkfw_vkSetLatencySleepModeNV (VkDevice   device, VkSwapchainKHR   swapchain, const  VkLatencySleepModeInfoNV *  pSleepModeInfo);
+#define vkSetLatencySleepModeNV vkfw_vkSetLatencySleepModeNV
 #endif /* defined(VK_NV_low_latency2) */
 #if defined(VK_NV_memory_decompression)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDecompressMemoryIndirectCountNV (VkCommandBuffer   commandBuffer, VkDeviceAddress   indirectCommandsAddress, VkDeviceAddress   indirectCommandsCountAddress, uint32_t   stride);
+vkfw_vkCmdDecompressMemoryIndirectCountNV (VkCommandBuffer   commandBuffer, VkDeviceAddress   indirectCommandsAddress, VkDeviceAddress   indirectCommandsCountAddress, uint32_t   stride);
+#define vkCmdDecompressMemoryIndirectCountNV vkfw_vkCmdDecompressMemoryIndirectCountNV
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDecompressMemoryNV (VkCommandBuffer   commandBuffer, uint32_t   decompressRegionCount, const  VkDecompressMemoryRegionNV *  pDecompressMemoryRegions);
+vkfw_vkCmdDecompressMemoryNV (VkCommandBuffer   commandBuffer, uint32_t   decompressRegionCount, const  VkDecompressMemoryRegionNV *  pDecompressMemoryRegions);
+#define vkCmdDecompressMemoryNV vkfw_vkCmdDecompressMemoryNV
 #endif /* defined(VK_NV_memory_decompression) */
 #if defined(VK_NV_mesh_shader)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDrawMeshTasksIndirectCountNV (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, VkBuffer   countBuffer, VkDeviceSize   countBufferOffset, uint32_t   maxDrawCount, uint32_t   stride);
+vkfw_vkCmdDrawMeshTasksIndirectCountNV (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, VkBuffer   countBuffer, VkDeviceSize   countBufferOffset, uint32_t   maxDrawCount, uint32_t   stride);
+#define vkCmdDrawMeshTasksIndirectCountNV vkfw_vkCmdDrawMeshTasksIndirectCountNV
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDrawMeshTasksIndirectNV (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, uint32_t   drawCount, uint32_t   stride);
+vkfw_vkCmdDrawMeshTasksIndirectNV (VkCommandBuffer   commandBuffer, VkBuffer   buffer, VkDeviceSize   offset, uint32_t   drawCount, uint32_t   stride);
+#define vkCmdDrawMeshTasksIndirectNV vkfw_vkCmdDrawMeshTasksIndirectNV
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdDrawMeshTasksNV (VkCommandBuffer   commandBuffer, uint32_t   taskCount, uint32_t   firstTask);
+vkfw_vkCmdDrawMeshTasksNV (VkCommandBuffer   commandBuffer, uint32_t   taskCount, uint32_t   firstTask);
+#define vkCmdDrawMeshTasksNV vkfw_vkCmdDrawMeshTasksNV
 #endif /* defined(VK_NV_mesh_shader) */
 #if defined(VK_NV_optical_flow)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkBindOpticalFlowSessionImageNV (VkDevice   device, VkOpticalFlowSessionNV   session, VkOpticalFlowSessionBindingPointNV   bindingPoint, VkImageView   view, VkImageLayout   layout);
+vkfw_vkBindOpticalFlowSessionImageNV (VkDevice   device, VkOpticalFlowSessionNV   session, VkOpticalFlowSessionBindingPointNV   bindingPoint, VkImageView   view, VkImageLayout   layout);
+#define vkBindOpticalFlowSessionImageNV vkfw_vkBindOpticalFlowSessionImageNV
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdOpticalFlowExecuteNV (VkCommandBuffer   commandBuffer, VkOpticalFlowSessionNV   session, const  VkOpticalFlowExecuteInfoNV *  pExecuteInfo);
+vkfw_vkCmdOpticalFlowExecuteNV (VkCommandBuffer   commandBuffer, VkOpticalFlowSessionNV   session, const  VkOpticalFlowExecuteInfoNV *  pExecuteInfo);
+#define vkCmdOpticalFlowExecuteNV vkfw_vkCmdOpticalFlowExecuteNV
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateOpticalFlowSessionNV (VkDevice   device, const  VkOpticalFlowSessionCreateInfoNV *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkOpticalFlowSessionNV *  pSession);
+vkfw_vkCreateOpticalFlowSessionNV (VkDevice   device, const  VkOpticalFlowSessionCreateInfoNV *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkOpticalFlowSessionNV *  pSession);
+#define vkCreateOpticalFlowSessionNV vkfw_vkCreateOpticalFlowSessionNV
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyOpticalFlowSessionNV (VkDevice   device, VkOpticalFlowSessionNV   session, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyOpticalFlowSessionNV (VkDevice   device, VkOpticalFlowSessionNV   session, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyOpticalFlowSessionNV vkfw_vkDestroyOpticalFlowSessionNV
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDeviceOpticalFlowImageFormatsNV (VkPhysicalDevice   physicalDevice, const  VkOpticalFlowImageFormatInfoNV *  pOpticalFlowImageFormatInfo, uint32_t *  pFormatCount, VkOpticalFlowImageFormatPropertiesNV *  pImageFormatProperties);
+vkfw_vkGetPhysicalDeviceOpticalFlowImageFormatsNV (VkPhysicalDevice   physicalDevice, const  VkOpticalFlowImageFormatInfoNV *  pOpticalFlowImageFormatInfo, uint32_t *  pFormatCount, VkOpticalFlowImageFormatPropertiesNV *  pImageFormatProperties);
+#define vkGetPhysicalDeviceOpticalFlowImageFormatsNV vkfw_vkGetPhysicalDeviceOpticalFlowImageFormatsNV
 #endif /* defined(VK_NV_optical_flow) */
 #if defined(VK_NV_ray_tracing)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkBindAccelerationStructureMemoryNV (VkDevice   device, uint32_t   bindInfoCount, const  VkBindAccelerationStructureMemoryInfoNV *  pBindInfos);
+vkfw_vkBindAccelerationStructureMemoryNV (VkDevice   device, uint32_t   bindInfoCount, const  VkBindAccelerationStructureMemoryInfoNV *  pBindInfos);
+#define vkBindAccelerationStructureMemoryNV vkfw_vkBindAccelerationStructureMemoryNV
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBuildAccelerationStructureNV (VkCommandBuffer   commandBuffer, const  VkAccelerationStructureInfoNV *  pInfo, VkBuffer   instanceData, VkDeviceSize   instanceOffset, VkBool32   update, VkAccelerationStructureNV   dst, VkAccelerationStructureNV   src, VkBuffer   scratch, VkDeviceSize   scratchOffset);
+vkfw_vkCmdBuildAccelerationStructureNV (VkCommandBuffer   commandBuffer, const  VkAccelerationStructureInfoNV *  pInfo, VkBuffer   instanceData, VkDeviceSize   instanceOffset, VkBool32   update, VkAccelerationStructureNV   dst, VkAccelerationStructureNV   src, VkBuffer   scratch, VkDeviceSize   scratchOffset);
+#define vkCmdBuildAccelerationStructureNV vkfw_vkCmdBuildAccelerationStructureNV
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdCopyAccelerationStructureNV (VkCommandBuffer   commandBuffer, VkAccelerationStructureNV   dst, VkAccelerationStructureNV   src, VkCopyAccelerationStructureModeKHR   mode);
+vkfw_vkCmdCopyAccelerationStructureNV (VkCommandBuffer   commandBuffer, VkAccelerationStructureNV   dst, VkAccelerationStructureNV   src, VkCopyAccelerationStructureModeKHR   mode);
+#define vkCmdCopyAccelerationStructureNV vkfw_vkCmdCopyAccelerationStructureNV
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdTraceRaysNV (VkCommandBuffer   commandBuffer, VkBuffer   raygenShaderBindingTableBuffer, VkDeviceSize   raygenShaderBindingOffset, VkBuffer   missShaderBindingTableBuffer, VkDeviceSize   missShaderBindingOffset, VkDeviceSize   missShaderBindingStride, VkBuffer   hitShaderBindingTableBuffer, VkDeviceSize   hitShaderBindingOffset, VkDeviceSize   hitShaderBindingStride, VkBuffer   callableShaderBindingTableBuffer, VkDeviceSize   callableShaderBindingOffset, VkDeviceSize   callableShaderBindingStride, uint32_t   width, uint32_t   height, uint32_t   depth);
+vkfw_vkCmdTraceRaysNV (VkCommandBuffer   commandBuffer, VkBuffer   raygenShaderBindingTableBuffer, VkDeviceSize   raygenShaderBindingOffset, VkBuffer   missShaderBindingTableBuffer, VkDeviceSize   missShaderBindingOffset, VkDeviceSize   missShaderBindingStride, VkBuffer   hitShaderBindingTableBuffer, VkDeviceSize   hitShaderBindingOffset, VkDeviceSize   hitShaderBindingStride, VkBuffer   callableShaderBindingTableBuffer, VkDeviceSize   callableShaderBindingOffset, VkDeviceSize   callableShaderBindingStride, uint32_t   width, uint32_t   height, uint32_t   depth);
+#define vkCmdTraceRaysNV vkfw_vkCmdTraceRaysNV
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdWriteAccelerationStructuresPropertiesNV (VkCommandBuffer   commandBuffer, uint32_t   accelerationStructureCount, const  VkAccelerationStructureNV *  pAccelerationStructures, VkQueryType   queryType, VkQueryPool   queryPool, uint32_t   firstQuery);
+vkfw_vkCmdWriteAccelerationStructuresPropertiesNV (VkCommandBuffer   commandBuffer, uint32_t   accelerationStructureCount, const  VkAccelerationStructureNV *  pAccelerationStructures, VkQueryType   queryType, VkQueryPool   queryPool, uint32_t   firstQuery);
+#define vkCmdWriteAccelerationStructuresPropertiesNV vkfw_vkCmdWriteAccelerationStructuresPropertiesNV
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCompileDeferredNV (VkDevice   device, VkPipeline   pipeline, uint32_t   shader);
+vkfw_vkCompileDeferredNV (VkDevice   device, VkPipeline   pipeline, uint32_t   shader);
+#define vkCompileDeferredNV vkfw_vkCompileDeferredNV
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateAccelerationStructureNV (VkDevice   device, const  VkAccelerationStructureCreateInfoNV *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkAccelerationStructureNV *  pAccelerationStructure);
+vkfw_vkCreateAccelerationStructureNV (VkDevice   device, const  VkAccelerationStructureCreateInfoNV *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkAccelerationStructureNV *  pAccelerationStructure);
+#define vkCreateAccelerationStructureNV vkfw_vkCreateAccelerationStructureNV
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateRayTracingPipelinesNV (VkDevice   device, VkPipelineCache   pipelineCache, uint32_t   createInfoCount, const  VkRayTracingPipelineCreateInfoNV *  pCreateInfos, const  VkAllocationCallbacks *  pAllocator, VkPipeline *  pPipelines);
+vkfw_vkCreateRayTracingPipelinesNV (VkDevice   device, VkPipelineCache   pipelineCache, uint32_t   createInfoCount, const  VkRayTracingPipelineCreateInfoNV *  pCreateInfos, const  VkAllocationCallbacks *  pAllocator, VkPipeline *  pPipelines);
+#define vkCreateRayTracingPipelinesNV vkfw_vkCreateRayTracingPipelinesNV
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkDestroyAccelerationStructureNV (VkDevice   device, VkAccelerationStructureNV   accelerationStructure, const  VkAllocationCallbacks *  pAllocator);
+vkfw_vkDestroyAccelerationStructureNV (VkDevice   device, VkAccelerationStructureNV   accelerationStructure, const  VkAllocationCallbacks *  pAllocator);
+#define vkDestroyAccelerationStructureNV vkfw_vkDestroyAccelerationStructureNV
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetAccelerationStructureHandleNV (VkDevice   device, VkAccelerationStructureNV   accelerationStructure, size_t   dataSize, void *  pData);
+vkfw_vkGetAccelerationStructureHandleNV (VkDevice   device, VkAccelerationStructureNV   accelerationStructure, size_t   dataSize, void *  pData);
+#define vkGetAccelerationStructureHandleNV vkfw_vkGetAccelerationStructureHandleNV
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetAccelerationStructureMemoryRequirementsNV (VkDevice   device, const  VkAccelerationStructureMemoryRequirementsInfoNV *  pInfo, VkMemoryRequirements2KHR *  pMemoryRequirements);
+vkfw_vkGetAccelerationStructureMemoryRequirementsNV (VkDevice   device, const  VkAccelerationStructureMemoryRequirementsInfoNV *  pInfo, VkMemoryRequirements2KHR *  pMemoryRequirements);
+#define vkGetAccelerationStructureMemoryRequirementsNV vkfw_vkGetAccelerationStructureMemoryRequirementsNV
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetRayTracingShaderGroupHandlesNV (VkDevice   device, VkPipeline   pipeline, uint32_t   firstGroup, uint32_t   groupCount, size_t   dataSize, void *  pData);
+vkfw_vkGetRayTracingShaderGroupHandlesNV (VkDevice   device, VkPipeline   pipeline, uint32_t   firstGroup, uint32_t   groupCount, size_t   dataSize, void *  pData);
+#define vkGetRayTracingShaderGroupHandlesNV vkfw_vkGetRayTracingShaderGroupHandlesNV
 #endif /* defined(VK_NV_ray_tracing) */
 #if defined(VK_NV_scissor_exclusive) && VK_NV_SCISSOR_EXCLUSIVE_SPEC_VERSION >= 2
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetExclusiveScissorEnableNV (VkCommandBuffer   commandBuffer, uint32_t   firstExclusiveScissor, uint32_t   exclusiveScissorCount, const  VkBool32 *  pExclusiveScissorEnables);
+vkfw_vkCmdSetExclusiveScissorEnableNV (VkCommandBuffer   commandBuffer, uint32_t   firstExclusiveScissor, uint32_t   exclusiveScissorCount, const  VkBool32 *  pExclusiveScissorEnables);
+#define vkCmdSetExclusiveScissorEnableNV vkfw_vkCmdSetExclusiveScissorEnableNV
 #endif /* defined(VK_NV_scissor_exclusive) && VK_NV_SCISSOR_EXCLUSIVE_SPEC_VERSION >= 2 */
 #if defined(VK_NV_scissor_exclusive)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetExclusiveScissorNV (VkCommandBuffer   commandBuffer, uint32_t   firstExclusiveScissor, uint32_t   exclusiveScissorCount, const  VkRect2D *  pExclusiveScissors);
+vkfw_vkCmdSetExclusiveScissorNV (VkCommandBuffer   commandBuffer, uint32_t   firstExclusiveScissor, uint32_t   exclusiveScissorCount, const  VkRect2D *  pExclusiveScissors);
+#define vkCmdSetExclusiveScissorNV vkfw_vkCmdSetExclusiveScissorNV
 #endif /* defined(VK_NV_scissor_exclusive) */
 #if defined(VK_NV_shading_rate_image)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBindShadingRateImageNV (VkCommandBuffer   commandBuffer, VkImageView   imageView, VkImageLayout   imageLayout);
+vkfw_vkCmdBindShadingRateImageNV (VkCommandBuffer   commandBuffer, VkImageView   imageView, VkImageLayout   imageLayout);
+#define vkCmdBindShadingRateImageNV vkfw_vkCmdBindShadingRateImageNV
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetCoarseSampleOrderNV (VkCommandBuffer   commandBuffer, VkCoarseSampleOrderTypeNV   sampleOrderType, uint32_t   customSampleOrderCount, const  VkCoarseSampleOrderCustomNV *  pCustomSampleOrders);
+vkfw_vkCmdSetCoarseSampleOrderNV (VkCommandBuffer   commandBuffer, VkCoarseSampleOrderTypeNV   sampleOrderType, uint32_t   customSampleOrderCount, const  VkCoarseSampleOrderCustomNV *  pCustomSampleOrders);
+#define vkCmdSetCoarseSampleOrderNV vkfw_vkCmdSetCoarseSampleOrderNV
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetViewportShadingRatePaletteNV (VkCommandBuffer   commandBuffer, uint32_t   firstViewport, uint32_t   viewportCount, const  VkShadingRatePaletteNV *  pShadingRatePalettes);
+vkfw_vkCmdSetViewportShadingRatePaletteNV (VkCommandBuffer   commandBuffer, uint32_t   firstViewport, uint32_t   viewportCount, const  VkShadingRatePaletteNV *  pShadingRatePalettes);
+#define vkCmdSetViewportShadingRatePaletteNV vkfw_vkCmdSetViewportShadingRatePaletteNV
 #endif /* defined(VK_NV_shading_rate_image) */
 #if defined(VK_QCOM_tile_properties)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetDynamicRenderingTilePropertiesQCOM (VkDevice   device, const  VkRenderingInfo *  pRenderingInfo, VkTilePropertiesQCOM *  pProperties);
+vkfw_vkGetDynamicRenderingTilePropertiesQCOM (VkDevice   device, const  VkRenderingInfo *  pRenderingInfo, VkTilePropertiesQCOM *  pProperties);
+#define vkGetDynamicRenderingTilePropertiesQCOM vkfw_vkGetDynamicRenderingTilePropertiesQCOM
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetFramebufferTilePropertiesQCOM (VkDevice   device, VkFramebuffer   framebuffer, uint32_t *  pPropertiesCount, VkTilePropertiesQCOM *  pProperties);
+vkfw_vkGetFramebufferTilePropertiesQCOM (VkDevice   device, VkFramebuffer   framebuffer, uint32_t *  pPropertiesCount, VkTilePropertiesQCOM *  pProperties);
+#define vkGetFramebufferTilePropertiesQCOM vkfw_vkGetFramebufferTilePropertiesQCOM
 #endif /* defined(VK_QCOM_tile_properties) */
 #if defined(VK_QNX_external_memory_screen_buffer)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetScreenBufferPropertiesQNX (VkDevice   device, const struct  _screen_buffer *  buffer, VkScreenBufferPropertiesQNX *  pProperties);
+vkfw_vkGetScreenBufferPropertiesQNX (VkDevice   device, const struct  _screen_buffer *  buffer, VkScreenBufferPropertiesQNX *  pProperties);
+#define vkGetScreenBufferPropertiesQNX vkfw_vkGetScreenBufferPropertiesQNX
 #endif /* defined(VK_QNX_external_memory_screen_buffer) */
 #if defined(VK_QNX_screen_surface)
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkCreateScreenSurfaceQNX (VkInstance   instance, const  VkScreenSurfaceCreateInfoQNX *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+vkfw_vkCreateScreenSurfaceQNX (VkInstance   instance, const  VkScreenSurfaceCreateInfoQNX *  pCreateInfo, const  VkAllocationCallbacks *  pAllocator, VkSurfaceKHR *  pSurface);
+#define vkCreateScreenSurfaceQNX vkfw_vkCreateScreenSurfaceQNX
 VKFWAPI VKAPI_ATTR VkBool32 VKAPI_CALL
-vkGetPhysicalDeviceScreenPresentationSupportQNX (VkPhysicalDevice   physicalDevice, uint32_t   queueFamilyIndex, struct  _screen_window *  window);
+vkfw_vkGetPhysicalDeviceScreenPresentationSupportQNX (VkPhysicalDevice   physicalDevice, uint32_t   queueFamilyIndex, struct  _screen_window *  window);
+#define vkGetPhysicalDeviceScreenPresentationSupportQNX vkfw_vkGetPhysicalDeviceScreenPresentationSupportQNX
 #endif /* defined(VK_QNX_screen_surface) */
 #if defined(VK_VALVE_descriptor_set_host_mapping)
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetDescriptorSetHostMappingVALVE (VkDevice   device, VkDescriptorSet   descriptorSet, void **  ppData);
+vkfw_vkGetDescriptorSetHostMappingVALVE (VkDevice   device, VkDescriptorSet   descriptorSet, void **  ppData);
+#define vkGetDescriptorSetHostMappingVALVE vkfw_vkGetDescriptorSetHostMappingVALVE
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetDescriptorSetLayoutHostMappingInfoVALVE (VkDevice   device, const  VkDescriptorSetBindingReferenceVALVE *  pBindingReference, VkDescriptorSetLayoutHostMappingInfoVALVE *  pHostMapping);
+vkfw_vkGetDescriptorSetLayoutHostMappingInfoVALVE (VkDevice   device, const  VkDescriptorSetBindingReferenceVALVE *  pBindingReference, VkDescriptorSetLayoutHostMappingInfoVALVE *  pHostMapping);
+#define vkGetDescriptorSetLayoutHostMappingInfoVALVE vkfw_vkGetDescriptorSetLayoutHostMappingInfoVALVE
 #endif /* defined(VK_VALVE_descriptor_set_host_mapping) */
 #if (defined(VK_EXT_extended_dynamic_state)) || (defined(VK_EXT_shader_object))
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdBindVertexBuffers2EXT (VkCommandBuffer   commandBuffer, uint32_t   firstBinding, uint32_t   bindingCount, const  VkBuffer *  pBuffers, const  VkDeviceSize *  pOffsets, const  VkDeviceSize *  pSizes, const  VkDeviceSize *  pStrides);
+vkfw_vkCmdBindVertexBuffers2EXT (VkCommandBuffer   commandBuffer, uint32_t   firstBinding, uint32_t   bindingCount, const  VkBuffer *  pBuffers, const  VkDeviceSize *  pOffsets, const  VkDeviceSize *  pSizes, const  VkDeviceSize *  pStrides);
+#define vkCmdBindVertexBuffers2EXT vkfw_vkCmdBindVertexBuffers2EXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetCullModeEXT (VkCommandBuffer   commandBuffer, VkCullModeFlags   cullMode);
+vkfw_vkCmdSetCullModeEXT (VkCommandBuffer   commandBuffer, VkCullModeFlags   cullMode);
+#define vkCmdSetCullModeEXT vkfw_vkCmdSetCullModeEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetDepthBoundsTestEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   depthBoundsTestEnable);
+vkfw_vkCmdSetDepthBoundsTestEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   depthBoundsTestEnable);
+#define vkCmdSetDepthBoundsTestEnableEXT vkfw_vkCmdSetDepthBoundsTestEnableEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetDepthCompareOpEXT (VkCommandBuffer   commandBuffer, VkCompareOp   depthCompareOp);
+vkfw_vkCmdSetDepthCompareOpEXT (VkCommandBuffer   commandBuffer, VkCompareOp   depthCompareOp);
+#define vkCmdSetDepthCompareOpEXT vkfw_vkCmdSetDepthCompareOpEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetDepthTestEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   depthTestEnable);
+vkfw_vkCmdSetDepthTestEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   depthTestEnable);
+#define vkCmdSetDepthTestEnableEXT vkfw_vkCmdSetDepthTestEnableEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetDepthWriteEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   depthWriteEnable);
+vkfw_vkCmdSetDepthWriteEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   depthWriteEnable);
+#define vkCmdSetDepthWriteEnableEXT vkfw_vkCmdSetDepthWriteEnableEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetFrontFaceEXT (VkCommandBuffer   commandBuffer, VkFrontFace   frontFace);
+vkfw_vkCmdSetFrontFaceEXT (VkCommandBuffer   commandBuffer, VkFrontFace   frontFace);
+#define vkCmdSetFrontFaceEXT vkfw_vkCmdSetFrontFaceEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetPrimitiveTopologyEXT (VkCommandBuffer   commandBuffer, VkPrimitiveTopology   primitiveTopology);
+vkfw_vkCmdSetPrimitiveTopologyEXT (VkCommandBuffer   commandBuffer, VkPrimitiveTopology   primitiveTopology);
+#define vkCmdSetPrimitiveTopologyEXT vkfw_vkCmdSetPrimitiveTopologyEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetScissorWithCountEXT (VkCommandBuffer   commandBuffer, uint32_t   scissorCount, const  VkRect2D *  pScissors);
+vkfw_vkCmdSetScissorWithCountEXT (VkCommandBuffer   commandBuffer, uint32_t   scissorCount, const  VkRect2D *  pScissors);
+#define vkCmdSetScissorWithCountEXT vkfw_vkCmdSetScissorWithCountEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetStencilOpEXT (VkCommandBuffer   commandBuffer, VkStencilFaceFlags   faceMask, VkStencilOp   failOp, VkStencilOp   passOp, VkStencilOp   depthFailOp, VkCompareOp   compareOp);
+vkfw_vkCmdSetStencilOpEXT (VkCommandBuffer   commandBuffer, VkStencilFaceFlags   faceMask, VkStencilOp   failOp, VkStencilOp   passOp, VkStencilOp   depthFailOp, VkCompareOp   compareOp);
+#define vkCmdSetStencilOpEXT vkfw_vkCmdSetStencilOpEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetStencilTestEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   stencilTestEnable);
+vkfw_vkCmdSetStencilTestEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   stencilTestEnable);
+#define vkCmdSetStencilTestEnableEXT vkfw_vkCmdSetStencilTestEnableEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetViewportWithCountEXT (VkCommandBuffer   commandBuffer, uint32_t   viewportCount, const  VkViewport *  pViewports);
+vkfw_vkCmdSetViewportWithCountEXT (VkCommandBuffer   commandBuffer, uint32_t   viewportCount, const  VkViewport *  pViewports);
+#define vkCmdSetViewportWithCountEXT vkfw_vkCmdSetViewportWithCountEXT
 #endif /* (defined(VK_EXT_extended_dynamic_state)) || (defined(VK_EXT_shader_object)) */
 #if (defined(VK_EXT_extended_dynamic_state2)) || (defined(VK_EXT_shader_object))
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetDepthBiasEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   depthBiasEnable);
+vkfw_vkCmdSetDepthBiasEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   depthBiasEnable);
+#define vkCmdSetDepthBiasEnableEXT vkfw_vkCmdSetDepthBiasEnableEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetLogicOpEXT (VkCommandBuffer   commandBuffer, VkLogicOp   logicOp);
+vkfw_vkCmdSetLogicOpEXT (VkCommandBuffer   commandBuffer, VkLogicOp   logicOp);
+#define vkCmdSetLogicOpEXT vkfw_vkCmdSetLogicOpEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetPatchControlPointsEXT (VkCommandBuffer   commandBuffer, uint32_t   patchControlPoints);
+vkfw_vkCmdSetPatchControlPointsEXT (VkCommandBuffer   commandBuffer, uint32_t   patchControlPoints);
+#define vkCmdSetPatchControlPointsEXT vkfw_vkCmdSetPatchControlPointsEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetPrimitiveRestartEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   primitiveRestartEnable);
+vkfw_vkCmdSetPrimitiveRestartEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   primitiveRestartEnable);
+#define vkCmdSetPrimitiveRestartEnableEXT vkfw_vkCmdSetPrimitiveRestartEnableEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetRasterizerDiscardEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   rasterizerDiscardEnable);
+vkfw_vkCmdSetRasterizerDiscardEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   rasterizerDiscardEnable);
+#define vkCmdSetRasterizerDiscardEnableEXT vkfw_vkCmdSetRasterizerDiscardEnableEXT
 #endif /* (defined(VK_EXT_extended_dynamic_state2)) || (defined(VK_EXT_shader_object)) */
 #if (defined(VK_EXT_extended_dynamic_state3)) || (defined(VK_EXT_shader_object))
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetAlphaToCoverageEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   alphaToCoverageEnable);
+vkfw_vkCmdSetAlphaToCoverageEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   alphaToCoverageEnable);
+#define vkCmdSetAlphaToCoverageEnableEXT vkfw_vkCmdSetAlphaToCoverageEnableEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetAlphaToOneEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   alphaToOneEnable);
+vkfw_vkCmdSetAlphaToOneEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   alphaToOneEnable);
+#define vkCmdSetAlphaToOneEnableEXT vkfw_vkCmdSetAlphaToOneEnableEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetColorBlendEnableEXT (VkCommandBuffer   commandBuffer, uint32_t   firstAttachment, uint32_t   attachmentCount, const  VkBool32 *  pColorBlendEnables);
+vkfw_vkCmdSetColorBlendEnableEXT (VkCommandBuffer   commandBuffer, uint32_t   firstAttachment, uint32_t   attachmentCount, const  VkBool32 *  pColorBlendEnables);
+#define vkCmdSetColorBlendEnableEXT vkfw_vkCmdSetColorBlendEnableEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetColorBlendEquationEXT (VkCommandBuffer   commandBuffer, uint32_t   firstAttachment, uint32_t   attachmentCount, const  VkColorBlendEquationEXT *  pColorBlendEquations);
+vkfw_vkCmdSetColorBlendEquationEXT (VkCommandBuffer   commandBuffer, uint32_t   firstAttachment, uint32_t   attachmentCount, const  VkColorBlendEquationEXT *  pColorBlendEquations);
+#define vkCmdSetColorBlendEquationEXT vkfw_vkCmdSetColorBlendEquationEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetColorWriteMaskEXT (VkCommandBuffer   commandBuffer, uint32_t   firstAttachment, uint32_t   attachmentCount, const  VkColorComponentFlags *  pColorWriteMasks);
+vkfw_vkCmdSetColorWriteMaskEXT (VkCommandBuffer   commandBuffer, uint32_t   firstAttachment, uint32_t   attachmentCount, const  VkColorComponentFlags *  pColorWriteMasks);
+#define vkCmdSetColorWriteMaskEXT vkfw_vkCmdSetColorWriteMaskEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetDepthClampEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   depthClampEnable);
+vkfw_vkCmdSetDepthClampEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   depthClampEnable);
+#define vkCmdSetDepthClampEnableEXT vkfw_vkCmdSetDepthClampEnableEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetLogicOpEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   logicOpEnable);
+vkfw_vkCmdSetLogicOpEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   logicOpEnable);
+#define vkCmdSetLogicOpEnableEXT vkfw_vkCmdSetLogicOpEnableEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetPolygonModeEXT (VkCommandBuffer   commandBuffer, VkPolygonMode   polygonMode);
+vkfw_vkCmdSetPolygonModeEXT (VkCommandBuffer   commandBuffer, VkPolygonMode   polygonMode);
+#define vkCmdSetPolygonModeEXT vkfw_vkCmdSetPolygonModeEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetRasterizationSamplesEXT (VkCommandBuffer   commandBuffer, VkSampleCountFlagBits    rasterizationSamples);
+vkfw_vkCmdSetRasterizationSamplesEXT (VkCommandBuffer   commandBuffer, VkSampleCountFlagBits    rasterizationSamples);
+#define vkCmdSetRasterizationSamplesEXT vkfw_vkCmdSetRasterizationSamplesEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetSampleMaskEXT (VkCommandBuffer   commandBuffer, VkSampleCountFlagBits    samples, const  VkSampleMask *     pSampleMask);
+vkfw_vkCmdSetSampleMaskEXT (VkCommandBuffer   commandBuffer, VkSampleCountFlagBits    samples, const  VkSampleMask *     pSampleMask);
+#define vkCmdSetSampleMaskEXT vkfw_vkCmdSetSampleMaskEXT
 #endif /* (defined(VK_EXT_extended_dynamic_state3)) || (defined(VK_EXT_shader_object)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && (defined(VK_KHR_maintenance2) || defined(VK_VERSION_1_1))) || (defined(VK_EXT_shader_object))
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetTessellationDomainOriginEXT (VkCommandBuffer   commandBuffer, VkTessellationDomainOrigin   domainOrigin);
+vkfw_vkCmdSetTessellationDomainOriginEXT (VkCommandBuffer   commandBuffer, VkTessellationDomainOrigin   domainOrigin);
+#define vkCmdSetTessellationDomainOriginEXT vkfw_vkCmdSetTessellationDomainOriginEXT
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && (defined(VK_KHR_maintenance2) || defined(VK_VERSION_1_1))) || (defined(VK_EXT_shader_object)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_transform_feedback)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_transform_feedback))
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetRasterizationStreamEXT (VkCommandBuffer   commandBuffer, uint32_t   rasterizationStream);
+vkfw_vkCmdSetRasterizationStreamEXT (VkCommandBuffer   commandBuffer, uint32_t   rasterizationStream);
+#define vkCmdSetRasterizationStreamEXT vkfw_vkCmdSetRasterizationStreamEXT
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_transform_feedback)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_transform_feedback)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_conservative_rasterization)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_conservative_rasterization))
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetConservativeRasterizationModeEXT (VkCommandBuffer   commandBuffer, VkConservativeRasterizationModeEXT   conservativeRasterizationMode);
+vkfw_vkCmdSetConservativeRasterizationModeEXT (VkCommandBuffer   commandBuffer, VkConservativeRasterizationModeEXT   conservativeRasterizationMode);
+#define vkCmdSetConservativeRasterizationModeEXT vkfw_vkCmdSetConservativeRasterizationModeEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetExtraPrimitiveOverestimationSizeEXT (VkCommandBuffer   commandBuffer, float   extraPrimitiveOverestimationSize);
+vkfw_vkCmdSetExtraPrimitiveOverestimationSizeEXT (VkCommandBuffer   commandBuffer, float   extraPrimitiveOverestimationSize);
+#define vkCmdSetExtraPrimitiveOverestimationSizeEXT vkfw_vkCmdSetExtraPrimitiveOverestimationSizeEXT
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_conservative_rasterization)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_conservative_rasterization)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_depth_clip_enable)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_depth_clip_enable))
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetDepthClipEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   depthClipEnable);
+vkfw_vkCmdSetDepthClipEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   depthClipEnable);
+#define vkCmdSetDepthClipEnableEXT vkfw_vkCmdSetDepthClipEnableEXT
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_depth_clip_enable)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_depth_clip_enable)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_sample_locations)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_sample_locations))
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetSampleLocationsEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   sampleLocationsEnable);
+vkfw_vkCmdSetSampleLocationsEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   sampleLocationsEnable);
+#define vkCmdSetSampleLocationsEnableEXT vkfw_vkCmdSetSampleLocationsEnableEXT
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_sample_locations)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_sample_locations)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_blend_operation_advanced)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_blend_operation_advanced))
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetColorBlendAdvancedEXT (VkCommandBuffer   commandBuffer, uint32_t   firstAttachment, uint32_t   attachmentCount, const  VkColorBlendAdvancedEXT *  pColorBlendAdvanced);
+vkfw_vkCmdSetColorBlendAdvancedEXT (VkCommandBuffer   commandBuffer, uint32_t   firstAttachment, uint32_t   attachmentCount, const  VkColorBlendAdvancedEXT *  pColorBlendAdvanced);
+#define vkCmdSetColorBlendAdvancedEXT vkfw_vkCmdSetColorBlendAdvancedEXT
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_blend_operation_advanced)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_blend_operation_advanced)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_provoking_vertex)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_provoking_vertex))
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetProvokingVertexModeEXT (VkCommandBuffer   commandBuffer, VkProvokingVertexModeEXT   provokingVertexMode);
+vkfw_vkCmdSetProvokingVertexModeEXT (VkCommandBuffer   commandBuffer, VkProvokingVertexModeEXT   provokingVertexMode);
+#define vkCmdSetProvokingVertexModeEXT vkfw_vkCmdSetProvokingVertexModeEXT
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_provoking_vertex)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_provoking_vertex)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_line_rasterization)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_line_rasterization))
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetLineRasterizationModeEXT (VkCommandBuffer   commandBuffer, VkLineRasterizationModeEXT   lineRasterizationMode);
+vkfw_vkCmdSetLineRasterizationModeEXT (VkCommandBuffer   commandBuffer, VkLineRasterizationModeEXT   lineRasterizationMode);
+#define vkCmdSetLineRasterizationModeEXT vkfw_vkCmdSetLineRasterizationModeEXT
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetLineStippleEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   stippledLineEnable);
+vkfw_vkCmdSetLineStippleEnableEXT (VkCommandBuffer   commandBuffer, VkBool32   stippledLineEnable);
+#define vkCmdSetLineStippleEnableEXT vkfw_vkCmdSetLineStippleEnableEXT
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_line_rasterization)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_line_rasterization)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_depth_clip_control)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_depth_clip_control))
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetDepthClipNegativeOneToOneEXT (VkCommandBuffer   commandBuffer, VkBool32   negativeOneToOne);
+vkfw_vkCmdSetDepthClipNegativeOneToOneEXT (VkCommandBuffer   commandBuffer, VkBool32   negativeOneToOne);
+#define vkCmdSetDepthClipNegativeOneToOneEXT vkfw_vkCmdSetDepthClipNegativeOneToOneEXT
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_depth_clip_control)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_depth_clip_control)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_clip_space_w_scaling)) || (defined(VK_EXT_shader_object) && defined(VK_NV_clip_space_w_scaling))
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetViewportWScalingEnableNV (VkCommandBuffer   commandBuffer, VkBool32   viewportWScalingEnable);
+vkfw_vkCmdSetViewportWScalingEnableNV (VkCommandBuffer   commandBuffer, VkBool32   viewportWScalingEnable);
+#define vkCmdSetViewportWScalingEnableNV vkfw_vkCmdSetViewportWScalingEnableNV
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_clip_space_w_scaling)) || (defined(VK_EXT_shader_object) && defined(VK_NV_clip_space_w_scaling)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_viewport_swizzle)) || (defined(VK_EXT_shader_object) && defined(VK_NV_viewport_swizzle))
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetViewportSwizzleNV (VkCommandBuffer   commandBuffer, uint32_t   firstViewport, uint32_t   viewportCount, const  VkViewportSwizzleNV *  pViewportSwizzles);
+vkfw_vkCmdSetViewportSwizzleNV (VkCommandBuffer   commandBuffer, uint32_t   firstViewport, uint32_t   viewportCount, const  VkViewportSwizzleNV *  pViewportSwizzles);
+#define vkCmdSetViewportSwizzleNV vkfw_vkCmdSetViewportSwizzleNV
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_viewport_swizzle)) || (defined(VK_EXT_shader_object) && defined(VK_NV_viewport_swizzle)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_fragment_coverage_to_color)) || (defined(VK_EXT_shader_object) && defined(VK_NV_fragment_coverage_to_color))
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetCoverageToColorEnableNV (VkCommandBuffer   commandBuffer, VkBool32   coverageToColorEnable);
+vkfw_vkCmdSetCoverageToColorEnableNV (VkCommandBuffer   commandBuffer, VkBool32   coverageToColorEnable);
+#define vkCmdSetCoverageToColorEnableNV vkfw_vkCmdSetCoverageToColorEnableNV
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetCoverageToColorLocationNV (VkCommandBuffer   commandBuffer, uint32_t   coverageToColorLocation);
+vkfw_vkCmdSetCoverageToColorLocationNV (VkCommandBuffer   commandBuffer, uint32_t   coverageToColorLocation);
+#define vkCmdSetCoverageToColorLocationNV vkfw_vkCmdSetCoverageToColorLocationNV
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_fragment_coverage_to_color)) || (defined(VK_EXT_shader_object) && defined(VK_NV_fragment_coverage_to_color)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_framebuffer_mixed_samples)) || (defined(VK_EXT_shader_object) && defined(VK_NV_framebuffer_mixed_samples))
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetCoverageModulationModeNV (VkCommandBuffer   commandBuffer, VkCoverageModulationModeNV   coverageModulationMode);
+vkfw_vkCmdSetCoverageModulationModeNV (VkCommandBuffer   commandBuffer, VkCoverageModulationModeNV   coverageModulationMode);
+#define vkCmdSetCoverageModulationModeNV vkfw_vkCmdSetCoverageModulationModeNV
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetCoverageModulationTableEnableNV (VkCommandBuffer   commandBuffer, VkBool32   coverageModulationTableEnable);
+vkfw_vkCmdSetCoverageModulationTableEnableNV (VkCommandBuffer   commandBuffer, VkBool32   coverageModulationTableEnable);
+#define vkCmdSetCoverageModulationTableEnableNV vkfw_vkCmdSetCoverageModulationTableEnableNV
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetCoverageModulationTableNV (VkCommandBuffer   commandBuffer, uint32_t   coverageModulationTableCount, const  float *  pCoverageModulationTable);
+vkfw_vkCmdSetCoverageModulationTableNV (VkCommandBuffer   commandBuffer, uint32_t   coverageModulationTableCount, const  float *  pCoverageModulationTable);
+#define vkCmdSetCoverageModulationTableNV vkfw_vkCmdSetCoverageModulationTableNV
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_framebuffer_mixed_samples)) || (defined(VK_EXT_shader_object) && defined(VK_NV_framebuffer_mixed_samples)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_shading_rate_image)) || (defined(VK_EXT_shader_object) && defined(VK_NV_shading_rate_image))
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetShadingRateImageEnableNV (VkCommandBuffer   commandBuffer, VkBool32   shadingRateImageEnable);
+vkfw_vkCmdSetShadingRateImageEnableNV (VkCommandBuffer   commandBuffer, VkBool32   shadingRateImageEnable);
+#define vkCmdSetShadingRateImageEnableNV vkfw_vkCmdSetShadingRateImageEnableNV
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_shading_rate_image)) || (defined(VK_EXT_shader_object) && defined(VK_NV_shading_rate_image)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_representative_fragment_test)) || (defined(VK_EXT_shader_object) && defined(VK_NV_representative_fragment_test))
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetRepresentativeFragmentTestEnableNV (VkCommandBuffer   commandBuffer, VkBool32   representativeFragmentTestEnable);
+vkfw_vkCmdSetRepresentativeFragmentTestEnableNV (VkCommandBuffer   commandBuffer, VkBool32   representativeFragmentTestEnable);
+#define vkCmdSetRepresentativeFragmentTestEnableNV vkfw_vkCmdSetRepresentativeFragmentTestEnableNV
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_representative_fragment_test)) || (defined(VK_EXT_shader_object) && defined(VK_NV_representative_fragment_test)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_coverage_reduction_mode)) || (defined(VK_EXT_shader_object) && defined(VK_NV_coverage_reduction_mode))
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetCoverageReductionModeNV (VkCommandBuffer   commandBuffer, VkCoverageReductionModeNV   coverageReductionMode);
+vkfw_vkCmdSetCoverageReductionModeNV (VkCommandBuffer   commandBuffer, VkCoverageReductionModeNV   coverageReductionMode);
+#define vkCmdSetCoverageReductionModeNV vkfw_vkCmdSetCoverageReductionModeNV
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_coverage_reduction_mode)) || (defined(VK_EXT_shader_object) && defined(VK_NV_coverage_reduction_mode)) */
 #if (defined(VK_EXT_full_screen_exclusive) && defined(VK_KHR_device_group)) || (defined(VK_EXT_full_screen_exclusive) && defined(VK_VERSION_1_1))
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetDeviceGroupSurfacePresentModes2EXT (VkDevice   device, const  VkPhysicalDeviceSurfaceInfo2KHR *  pSurfaceInfo, VkDeviceGroupPresentModeFlagsKHR *  pModes);
+vkfw_vkGetDeviceGroupSurfacePresentModes2EXT (VkDevice   device, const  VkPhysicalDeviceSurfaceInfo2KHR *  pSurfaceInfo, VkDeviceGroupPresentModeFlagsKHR *  pModes);
+#define vkGetDeviceGroupSurfacePresentModes2EXT vkfw_vkGetDeviceGroupSurfacePresentModes2EXT
 #endif /* (defined(VK_EXT_full_screen_exclusive) && defined(VK_KHR_device_group)) || (defined(VK_EXT_full_screen_exclusive) && defined(VK_VERSION_1_1)) */
 #if (defined(VK_EXT_host_image_copy)) || (defined(VK_EXT_image_compression_control))
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkGetImageSubresourceLayout2EXT (VkDevice   device, VkImage   image, const  VkImageSubresource2KHR *  pSubresource, VkSubresourceLayout2KHR *  pLayout);
+vkfw_vkGetImageSubresourceLayout2EXT (VkDevice   device, VkImage   image, const  VkImageSubresource2KHR *  pSubresource, VkSubresourceLayout2KHR *  pLayout);
+#define vkGetImageSubresourceLayout2EXT vkfw_vkGetImageSubresourceLayout2EXT
 #endif /* (defined(VK_EXT_host_image_copy)) || (defined(VK_EXT_image_compression_control)) */
 #if (defined(VK_EXT_shader_object)) || (defined(VK_EXT_vertex_input_dynamic_state))
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdSetVertexInputEXT (VkCommandBuffer   commandBuffer, uint32_t   vertexBindingDescriptionCount, const  VkVertexInputBindingDescription2EXT *  pVertexBindingDescriptions, uint32_t   vertexAttributeDescriptionCount, const  VkVertexInputAttributeDescription2EXT *  pVertexAttributeDescriptions);
+vkfw_vkCmdSetVertexInputEXT (VkCommandBuffer   commandBuffer, uint32_t   vertexBindingDescriptionCount, const  VkVertexInputBindingDescription2EXT *  pVertexBindingDescriptions, uint32_t   vertexAttributeDescriptionCount, const  VkVertexInputAttributeDescription2EXT *  pVertexAttributeDescriptions);
+#define vkCmdSetVertexInputEXT vkfw_vkCmdSetVertexInputEXT
 #endif /* (defined(VK_EXT_shader_object)) || (defined(VK_EXT_vertex_input_dynamic_state)) */
 #if (defined(VK_KHR_descriptor_update_template) && defined(VK_KHR_push_descriptor)) || (defined(VK_KHR_push_descriptor) && defined(VK_VERSION_1_1)) || (defined(VK_KHR_push_descriptor) && defined(VK_KHR_descriptor_update_template))
 VKFWAPI VKAPI_ATTR void VKAPI_CALL
-vkCmdPushDescriptorSetWithTemplateKHR (VkCommandBuffer   commandBuffer, VkDescriptorUpdateTemplate   descriptorUpdateTemplate, VkPipelineLayout   layout, uint32_t   set, const  void *  pData);
+vkfw_vkCmdPushDescriptorSetWithTemplateKHR (VkCommandBuffer   commandBuffer, VkDescriptorUpdateTemplate   descriptorUpdateTemplate, VkPipelineLayout   layout, uint32_t   set, const  void *  pData);
+#define vkCmdPushDescriptorSetWithTemplateKHR vkfw_vkCmdPushDescriptorSetWithTemplateKHR
 #endif /* (defined(VK_KHR_descriptor_update_template) && defined(VK_KHR_push_descriptor)) || (defined(VK_KHR_push_descriptor) && defined(VK_VERSION_1_1)) || (defined(VK_KHR_push_descriptor) && defined(VK_KHR_descriptor_update_template)) */
 #if (defined(VK_KHR_device_group) && defined(VK_KHR_surface)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1))
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetDeviceGroupPresentCapabilitiesKHR (VkDevice   device, VkDeviceGroupPresentCapabilitiesKHR *  pDeviceGroupPresentCapabilities);
+vkfw_vkGetDeviceGroupPresentCapabilitiesKHR (VkDevice   device, VkDeviceGroupPresentCapabilitiesKHR *  pDeviceGroupPresentCapabilities);
+#define vkGetDeviceGroupPresentCapabilitiesKHR vkfw_vkGetDeviceGroupPresentCapabilitiesKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetDeviceGroupSurfacePresentModesKHR (VkDevice   device, VkSurfaceKHR   surface, VkDeviceGroupPresentModeFlagsKHR *  pModes);
+vkfw_vkGetDeviceGroupSurfacePresentModesKHR (VkDevice   device, VkSurfaceKHR   surface, VkDeviceGroupPresentModeFlagsKHR *  pModes);
+#define vkGetDeviceGroupSurfacePresentModesKHR vkfw_vkGetDeviceGroupSurfacePresentModesKHR
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkGetPhysicalDevicePresentRectanglesKHR (VkPhysicalDevice   physicalDevice, VkSurfaceKHR   surface, uint32_t *  pRectCount, VkRect2D *  pRects);
+vkfw_vkGetPhysicalDevicePresentRectanglesKHR (VkPhysicalDevice   physicalDevice, VkSurfaceKHR   surface, uint32_t *  pRectCount, VkRect2D *  pRects);
+#define vkGetPhysicalDevicePresentRectanglesKHR vkfw_vkGetPhysicalDevicePresentRectanglesKHR
 #endif /* (defined(VK_KHR_device_group) && defined(VK_KHR_surface)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1)) */
 #if (defined(VK_KHR_device_group) && defined(VK_KHR_swapchain)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1))
 VKFWAPI VKAPI_ATTR VkResult VKAPI_CALL
-vkAcquireNextImage2KHR (VkDevice   device, const  VkAcquireNextImageInfoKHR *  pAcquireInfo, uint32_t *  pImageIndex);
+vkfw_vkAcquireNextImage2KHR (VkDevice   device, const  VkAcquireNextImageInfoKHR *  pAcquireInfo, uint32_t *  pImageIndex);
+#define vkAcquireNextImage2KHR vkfw_vkAcquireNextImage2KHR
 #endif /* (defined(VK_KHR_device_group) && defined(VK_KHR_swapchain)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1)) */
 /* VKFW_GEN_PROTOTYPES_H */

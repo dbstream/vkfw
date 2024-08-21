@@ -162,8 +162,8 @@ def main (argv):
 			if name == 'vkGetDeviceProcAddr':
 				typ = 'VkInstance'		
 
-			decl = 'VKFWAPI VKAPI_ATTR ' + proto + ' VKAPI_CALL\n' + name + ' (' + ', '.join ([' '.join (param.itertext ()) for param in params]) + ')'
-			blocks['PROTOTYPES_H'] += decl + ';' + '\n'
+			decl = 'VKFWAPI VKAPI_ATTR ' + proto + ' VKAPI_CALL\nvkfw_' + name + ' (' + ', '.join ([' '.join (param.itertext ()) for param in params]) + ')'
+			blocks['PROTOTYPES_H'] += decl + ';\n#define ' + name + ' vkfw_' + name + '\n'
 			blocks['PROTOTYPES_C'] += 'extern "C"\n' + decl + '\n{\n\t' + ('return ' if proto != 'void' else '') + 'pfn_' + name + ' (' + ', '.join(param_names) + ');\n}\n'
 
 			blocks['PFNS'] += 'PFN_' + name + ' pfn_' + name + ';\n'
