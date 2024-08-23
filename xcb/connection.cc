@@ -25,34 +25,9 @@ unload_xcb_funcs (void)
 	vkfwCurrentPlatform->unloadModule (libxcb_handle);
 }
 
-/**
- *   Whatever you do, keep this list in sync with #include "xcb.h", you
- *   fool, you moron.
- *
- * ~david
- */
-
-PFNxcb_connect xcb_connect;
-PFNxcb_disconnect xcb_disconnect;
-PFNxcb_get_setup xcb_get_setup;
-PFNxcb_setup_roots_iterator xcb_setup_roots_iterator;
-PFNxcb_screen_next xcb_screen_next;
-PFNxcb_generate_id xcb_generate_id;
-PFNxcb_request_check xcb_request_check;
-PFNxcb_create_window xcb_create_window;
-PFNxcb_destroy_window xcb_destroy_window;
-PFNxcb_map_window xcb_map_window;
-PFNxcb_unmap_window xcb_unmap_window;
-PFNxcb_wait_for_event xcb_wait_for_event;
-PFNxcb_poll_for_event xcb_poll_for_event;
-PFNxcb_poll_for_queued_event xcb_poll_for_queued_event;
-PFNxcb_get_file_descriptor xcb_get_file_descriptor;
-PFNxcb_flush xcb_flush;
-PFNxcb_connection_has_error xcb_connection_has_error;
-PFNxcb_change_property xcb_change_property;
-PFNxcb_intern_atom xcb_intern_atom;
-PFNxcb_intern_atom_reply xcb_intern_atom_reply;
-PFNxcb_send_event xcb_send_event;
+#define VKFW_XCB_DEFINE_FUNC(name) PFN##name name;
+VKFW_XCB_ALL_FUNCS(VKFW_XCB_DEFINE_FUNC)
+#undef VKFW_XCB_DEFINE_FUNC
 
 static bool
 load_xcb_funcs (void)
@@ -65,32 +40,12 @@ load_xcb_funcs (void)
 
 	bool failed = false;
 
-#define L(sym)										\
+#define VKFW_XCB_LOAD_FUNC(sym)								\
 	sym = (PFN##sym) vkfwCurrentPlatform->lookupSymbol(libxcb_handle, #sym);	\
 	if (!sym)									\
 		failed = true;
-	L(xcb_connect)
-	L(xcb_disconnect)
-	L(xcb_get_setup)
-	L(xcb_setup_roots_iterator)
-	L(xcb_screen_next)
-	L(xcb_generate_id)
-	L(xcb_request_check)
-	L(xcb_create_window)
-	L(xcb_destroy_window)
-	L(xcb_map_window)
-	L(xcb_unmap_window)
-	L(xcb_wait_for_event)
-	L(xcb_poll_for_event)
-	L(xcb_poll_for_queued_event)
-	L(xcb_get_file_descriptor)
-	L(xcb_flush)
-	L(xcb_connection_has_error)
-	L(xcb_change_property)
-	L(xcb_intern_atom)
-	L(xcb_intern_atom_reply)
-	L(xcb_send_event)
-#undef L
+	VKFW_XCB_ALL_FUNCS(VKFW_XCB_LOAD_FUNC)
+#undef VKFW_XCB_LOAD_FUNC
 
 	if (failed) {
 		vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Xcb backend failed to load some symbols\n");
@@ -182,12 +137,14 @@ vkfwXcbOpen (void)
 		s->white_pixel,
 		s->black_pixel);
 
+	vkfwXcbInitKeyboard ();
 	return VK_SUCCESS;
 }
 
 static void
 vkfwXcbClose (void)
 {
+	vkfwXcbTerminateKeyboard ();
 	xcb_disconnect (vkfw_xcb_connection);
 	unload_xcb_funcs ();
 }
