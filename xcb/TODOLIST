@@ -2,8 +2,7 @@
 TODOLIST for XCB support in VKFW
 ================================
 
-  - [!] Make use of the XKB extension where available
-        (vkfwXcbTranslateKeycode and vkfwXcbTranslateKey)
-        Consider sharing xkbcommon code with the Wayland backend.
   - [ ] Test for compatibility with other window managers than what is on my
         machine.
+  - ( ) Separate out xkbcommon code into its own unit so that it can be shared
+        with a future Wayland backend.

@@ -1,0 +1,34 @@
+===========================
+How the f@%& does XKB work?
+===========================
+
+This question is surprisingly difficult to answer, and documentation is scarce.
+
+XKB the protocol
+================
+
+XKB is an extension to the X11 protocol that allows client applications to
+query information about the keyboard layout. A keyboard layout from the protocol
+is a name referencing a configuration file which is stored somewhere on the host
+machine.
+
+XKB the library
+===============
+
+There are two libraries for working with XKB:
+  - xcb-xkb, as part of xcb
+  - xkbcommon
+
+xcb-xkb provides the low-level protocol API. It is probably used internally by
+the xkbcommon-x11 module. Client applications usually do not use it much, other
+than for selecting device events.
+
+Parsing XKB layouts would be very difficult if it were not for the xkbcommon
+library, which abstracts some of the details into three main objects:
+
+  - xkb_keymap, which represents a keyboard layout. This is used to figure out
+    which key should be VKFW_KEY_W, etc.
+  - xkb_state, which keeps track of modifier state. This is used to translate
+    keycodes into keysyms.
+  - xkb_compose_state, which keeps track of multi-character sequences. This in
+    conjunction with xkb_state is used for text input.
