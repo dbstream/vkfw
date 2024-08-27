@@ -12,7 +12,7 @@
  * including VKFW/vkfw.h
  */
 
-#define VKFW_VERSION_MAJOR 1
+#define VKFW_VERSION_MAJOR 2
 #define VKFW_VERSION_MINOR 0
 #define VKFW_VERSION_PATCH 0
 
@@ -185,7 +185,19 @@ typedef struct VKFWwindow_T VKFWwindow;
 #define VKFW_KEY_NUMPAD_7 307
 #define VKFW_KEY_NUMPAD_8 308
 #define VKFW_KEY_NUMPAD_9 309
-#define VKFW_MAX_KEYS 310
+#define VKFW_KEY_ARROW_LEFT 310
+#define VKFW_KEY_ARROW_RIGHT 311
+#define VKFW_KEY_ARROW_UP 312
+#define VKFW_KEY_ARROW_DOWN 313
+#define VKFW_KEY_NUMPAD_COMMA 314
+#define VKFW_MAX_KEYS 512
+
+#define VKFW_MODIFIER_CTRL 1U
+#define VKFW_MODIFIER_SHIFT 2U
+#define VKFW_MODIFIER_LEFT_ALT 4U
+#define VKFW_MODIFIER_RIGHT_ALT 8U
+#define VKFW_MODIFIER_CAPS_LOCK 16U
+#define VKFW_MODIFIER_NUM_LOCK 32U
 
 #define VKFW_EVENT_NONE 0
 #define VKFW_EVENT_NULL 1
@@ -199,6 +211,7 @@ typedef struct VKFWwindow_T VKFWwindow;
 #define VKFW_EVENT_SCROLL 9
 #define VKFW_EVENT_KEY_PRESSED 10
 #define VKFW_EVENT_KEY_RELEASED 11
+#define VKFW_EVENT_TEXT_INPUT 12
 
 /**
  * VKFW event structure. Adding or removing fields in this struct is an
@@ -228,7 +241,7 @@ struct VKFWevent_T {
 		 *
 		 * VKFW_EVENT_BUTTON_PRESSED, VKFW_EVENT_BUTTON_RELEASED,
 		 * VKFW_EVENT_KEY_PRESSED, VKFW_EVENT_KEY_RELEASED,
-		 * VKFW_EVENT_SCROLL:
+		 * VKFW_EVENT_SCROLL, VKFW_EVENT_TEXT_INPUT:
 		 *   Pointer location of input.
 		 */
 		struct {
@@ -261,6 +274,14 @@ struct VKFWevent_T {
 		};
 
 		/**
+		 * VKFW_EVENT_TEXT_INPUT:
+		 *   Unicode codepoint of input. This can be backspace, delete,
+		 *   or other control codes, which should be handled by the
+		 *   application.
+		 */
+		uint32_t codepoint;
+
+		/**
 		 * VKFW_EVENT_SCROLL:
 		 *   Direction and distance of scrolling. Note that not all mice
 		 *   support horizontal scrolling.
@@ -272,6 +293,14 @@ struct VKFWevent_T {
 			int scroll_direction, scroll_value;
 		};
 	};
+
+	/**
+	 * VKFW_EVENT_BUTTON_PRESSED, VKFW_EVENT_BUTTON_RELEASED,
+	 * VKFW_EVENT_KEY_PRESSED, VKFW_EVENT_KEY_RELEASED,
+	 * VKFW_EVENT_TEXT_INPUT, VKFW_EVENT_SCROLL:
+	 *   A bitmask of active modifiers when the event occured.
+	 */
+	unsigned int modifiers;
 };
 
 	/* Initialization */
@@ -455,6 +484,40 @@ vkfwTranslateKeycode (int keycode);
  */
 VKFWAPI int
 vkfwTranslateKey (int key);
+
+/**
+ * Note on text input:
+ *   A game may have a keybind for opening the chat, for example 'T'. Now, when
+ *   the user presses 'T', first the VKFW_EVENT_KEY_PRESSED event will be sent,
+ *   then the VKFW_EVENT_TEXT_INPUT event will be sent. This will cause the
+ *   letter 't' to be entered immediately upon the chat dialog opening.
+ *
+ *   To avoid this undesirable behavior, VKFW_EVENT_TEXT_INPUT events are only
+ *   generated in between calls to the functions vkfwEnableTextInput and
+ *   vkfwDisableTextInput When the application has opened up the text dialog,
+ *   it should call vkfwEnableTextInput to enable the generation of
+ *   VKFW_EVENT_TEXT_INPUT. After the text dialog is closed, the application
+ *   should call vkfwDisableTextInput.
+ *
+ *   The default state for text input is disabled.
+ *
+ *   If the application wishes to support pasting text using a shortcut, for
+ *   example C-v, the correct behavior is to call vkfwDisableTextInput followed
+ *   by calling vkfwEnableTextInput immediately. This is necessary as otherwise
+ *   VKFW can generate text input for the key combination.
+ */
+
+/**
+ * Enable the generation of VKFW_EVENT_TEXT_INPUT events.
+ */
+VKFWAPI void
+vkfwEnableTextInput (VKFWwindow *window);
+
+/**
+ * Disable the generation of VKFW_EVENT_TEXT_INPUT events.
+ */
+VKFWAPI void
+vkfwDisableTextInput (VKFWwindow *window);
 
 	/* Events */
 

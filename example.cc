@@ -693,13 +693,47 @@ draw (void)
 		return result;
 }
 
+/**
+ * Quick and dirty UTF-8 encoding for printing codepoints.
+ */
+static bool
+encode_utf8 (char *buf, uint32_t codepoint)
+{
+	for (int i = 0; i < 5; i++)
+		buf[i] = 0;
+
+	if (codepoint < 0x80) {
+		buf[0] = codepoint;
+	} else if (codepoint < 0x800) {
+		buf[0] = (codepoint >> 6) | 0xc0;
+		buf[1] = (codepoint & 0x3f) | 0x80;
+	} else if (codepoint < 0x10000) {
+		buf[0] = (codepoint >> 12) | 0xe0;
+		buf[1] = ((codepoint >> 6) & 0x3f) | 0x80;
+		buf[2] = (codepoint & 0x3f) | 0x80;
+	} else if (codepoint < 0x110000) {
+		buf[0] = (codepoint >> 18) | 0xf0;
+		buf[1] = ((codepoint >> 12) & 0x3f) | 0x80;
+		buf[2] = ((codepoint >> 6) & 0x3f) | 0x80;
+		buf[3] = (codepoint & 0x3f) | 0x80;
+	} else
+		return false;
+
+	return true;
+}
+
 int
 main (void)
 {
 	VkResult result;
 	VKFWevent e;
+	char buf[5];
 
-	setup_everything ();
+	if (!setup_everything ())
+		return 1;
+
+	vkfwEnableTextInput (window);
+
 	for (;;) {
 		result = vkfwGetNextEvent (&e);
 		if (result != VK_SUCCESS) {
@@ -725,6 +759,26 @@ main (void)
 			return 0;
 		case VKFW_EVENT_WINDOW_RESIZE_NOTIFY:
 			swapchain_dirty = true;
+			break;
+		case VKFW_EVENT_KEY_PRESSED:
+			if (e.key > 0 && e.key <= 255)
+				printf ("key %d was pressed ('%c')\n", e.keycode, (char) e.key);
+			else
+				printf ("key %d was pressed (%d)\n", e.keycode, e.key);
+			break;
+		case VKFW_EVENT_KEY_RELEASED:
+			if (e.key > 0 && e.key < 255)
+				printf ("key %d was released ('%c')\n", e.keycode, (char) e.key);
+			else
+				printf ("key %d was released (%d)\n", e.keycode, e.key);
+			break;
+		case VKFW_EVENT_TEXT_INPUT:
+			if (e.codepoint < 0x20 || (e.codepoint >= 0x7f && e.codepoint < 0xa0))
+				printf ("text input U+%04X\n", e.codepoint);
+			else if (encode_utf8 (buf, e.codepoint))
+				printf ("text input '%s'\n", buf);
+			else
+				printf ("text input U+%04X (encoding failed)\n", e.codepoint);
 			break;
 		default:
 			vkfwUnhandledEvent (&e);

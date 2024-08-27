@@ -2,6 +2,7 @@
  * VKFW initialization.
  * Copyright (C) 2024  dbstream
  */
+#include <VKFW/event.h>
 #include <VKFW/logging.h>
 #include <VKFW/platform.h>
 #include <VKFW/vkfw.h>
@@ -229,6 +230,8 @@ vkfwTerminate (void)
 		vkfwShutdownDevice ();
 	if (vkfwLoadedInstance)
 		vkfwShutdownInstance ();
+
+	vkfwCleanupEvents ();
 
 	if (vkfwCurrentWindowBackend->close_connection)
 		vkfwCurrentWindowBackend->close_connection ();

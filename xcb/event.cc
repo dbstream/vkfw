@@ -10,8 +10,27 @@
 #include <stdlib.h>
 #include <errno.h>
 #include "event.h"
+#include "keyboard.h"
 #include "window.h"
 #include "xcb.h"
+
+static void
+set_modifiers (VKFWevent *e, uint16_t state)
+{
+	e->modifiers = 0;
+	if (state & XCB_MOD_MASK_CONTROL)
+		e->modifiers |= VKFW_MODIFIER_CTRL;
+	if (state & XCB_MOD_MASK_SHIFT)
+		e->modifiers |= VKFW_MODIFIER_SHIFT;
+	if (state & XCB_MOD_MASK_LOCK)
+		e->modifiers |= VKFW_MODIFIER_CAPS_LOCK;
+	if (state & XCB_MOD_MASK_1)
+		e->modifiers |= VKFW_MODIFIER_LEFT_ALT;
+	if (state & XCB_MOD_MASK_2)
+		e->modifiers |= VKFW_MODIFIER_NUM_LOCK;
+	if (state & XCB_MOD_MASK_3)
+		e->modifiers |= VKFW_MODIFIER_RIGHT_ALT;
+}
 
 static void
 handle_key_press (VKFWevent *e, xcb_key_press_event_t *xe)
@@ -21,9 +40,12 @@ handle_key_press (VKFWevent *e, xcb_key_press_event_t *xe)
 		return;
 
 	e->type = VKFW_EVENT_KEY_PRESSED;
+	e->window = (VKFWwindow *) window;
 	e->x = xe->event_x;
 	e->y = xe->event_y;
 	e->keycode = xe->detail;
+	set_modifiers (e, xe->state);
+	vkfwXcbXkbKeyPress (e, xe);
 }
 
 static void
@@ -34,9 +56,12 @@ handle_key_release (VKFWevent *e, xcb_key_release_event_t *xe)
 		return;
 
 	e->type = VKFW_EVENT_KEY_RELEASED;
+	e->window = (VKFWwindow *) window;
 	e->x = xe->event_x;
 	e->y = xe->event_y;
 	e->keycode = xe->detail;
+	set_modifiers (e, xe->state);
+	vkfwXcbXkbKeyRelease (e, xe);
 }
 
 /**
@@ -54,6 +79,7 @@ handle_button_press (VKFWevent *e, xcb_button_press_event_t *xe)
 	e->window = (VKFWwindow *) window;
 	e->x = xe->event_x;
 	e->y = xe->event_y;
+	set_modifiers (e, xe->state);
 
 	if (xe->detail >= 4 && xe->detail <= 7) {
 		e->type = VKFW_EVENT_SCROLL;
@@ -89,6 +115,7 @@ handle_button_release (VKFWevent *e, xcb_button_release_event_t *xe)
 	e->window = (VKFWwindow *) window;
 	e->x = xe->event_x;
 	e->y = xe->event_y;
+	set_modifiers (e, xe->state);
 
 	switch (xe->detail) {
 	case 1:
@@ -116,6 +143,7 @@ handle_motion_notify (VKFWevent *e, xcb_motion_notify_event_t *xe)
 	e->window = (VKFWwindow *) window;
 	e->x = xe->event_x;
 	e->y = xe->event_y;
+	set_modifiers (e, xe->state);
 }
 
 static void
@@ -239,12 +267,19 @@ handle_generic_event (VKFWevent *e, xcb_ge_generic_event_t *xe)
 	(void) xe;
 }
 
+struct vkfw_xkb_generic_event {
+	uint8_t response_type;
+	uint8_t xkbType;
+};
+
 static void
 handle_event (VKFWevent *e, xcb_generic_event_t *xe)
 {
 	e->type = VKFW_EVENT_NULL;
 
-	switch (xe->response_type & 0x7f) {
+	uint8_t t = xe->response_type & 0x7f;
+
+	switch (t) {
 	case XCB_KEY_PRESS:
 		handle_key_press (e, (xcb_key_press_event_t *) xe);
 		break;
@@ -282,7 +317,21 @@ handle_event (VKFWevent *e, xcb_generic_event_t *xe)
 		handle_generic_event (e, (xcb_ge_generic_event_t *) xe);
 		break;
 	default:
-		vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Xcb: unhandled event type %u\n", xe->response_type);
+		if (vkfw_has_xkb && t == vkfw_xkb_event_base) {
+			uint8_t type = ((vkfw_xkb_generic_event *) xe)->xkbType;
+			switch (type) {
+			case XCB_XKB_NEW_KEYBOARD_NOTIFY:
+				vkfwXcbXkbNewKeyboardNotify ((xcb_xkb_new_keyboard_notify_event_t *) xe);
+				break;
+			case XCB_XKB_MAP_NOTIFY:
+				vkfwXcbXkbMapNotify ((xcb_xkb_map_notify_event_t *) xe);
+				break;
+			case XCB_XKB_STATE_NOTIFY:
+				vkfwXcbXkbStateNotify ((xcb_xkb_state_notify_event_t *) xe);
+				break;
+			}
+		} else
+			vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Xcb: unhandled event type %u\n", xe->response_type);
 	}
 
 	free (xe);

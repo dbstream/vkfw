@@ -7,6 +7,24 @@
 #include <VKFW/window_api.h>
 #include <stdlib.h>
 
+void
+vkfwRefWindow (VKFWwindow *window)
+{
+	window->internal_refcnt++;
+}
+
+void
+vkfwUnrefWindow (VKFWwindow *window)
+{
+	if (--window->internal_refcnt)
+		return;
+
+	if (vkfwCurrentWindowBackend->free_window)
+		vkfwCurrentWindowBackend->free_window (window);
+	else
+		free (window);
+}
+
 extern "C"
 VKFWAPI VkResult
 vkfwCreateWindow (VKFWwindow **handle, VkExtent2D size)
@@ -20,13 +38,12 @@ vkfwCreateWindow (VKFWwindow **handle, VkExtent2D size)
 	if (!w)
 		return VK_ERROR_OUT_OF_HOST_MEMORY;
 
+	w->internal_refcnt = 1;
+	w->flags = 0;
 	w->extent = size;
 	VkResult result = vkfwCurrentWindowBackend->create_window (w);
 	if (result != VK_SUCCESS) {
-		if (vkfwCurrentWindowBackend->free_window)
-			vkfwCurrentWindowBackend->free_window (w);
-		else
-			free (w);
+		vkfwUnrefWindow (w);
 		return result;
 	}
 
@@ -38,11 +55,9 @@ extern "C"
 VKFWAPI void
 vkfwDestroyWindow (VKFWwindow *handle)
 {
+	handle->flags |= VKFW_WINDOW_DELETED;
 	vkfwCurrentWindowBackend->destroy_window (handle);
-	if (vkfwCurrentWindowBackend->free_window)
-		vkfwCurrentWindowBackend->free_window (handle);
-	else
-		free (handle);
+	vkfwUnrefWindow (handle);
 }
 
 extern "C"

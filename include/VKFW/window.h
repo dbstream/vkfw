@@ -14,6 +14,17 @@
 struct VKFWwindow_T {
 	void *user;
 	VkExtent2D extent;
+	unsigned int internal_refcnt;
+	unsigned int flags;
 };
+
+#define VKFW_WINDOW_DELETED 1U
+#define VKFW_WINDOW_TEXT_INPUT_ENABLED 2U
+
+void
+vkfwRefWindow (VKFWwindow *window);
+
+void
+vkfwUnrefWindow (VKFWwindow *window);
 
 #endif /* VKFW_WINDOW_H */
