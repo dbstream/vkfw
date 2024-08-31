@@ -728,6 +728,7 @@ main (void)
 	VkResult result;
 	VKFWevent e;
 	char buf[5];
+	unsigned int pointer_mode = 0;
 
 	if (!setup_everything ())
 		return 1;
@@ -761,16 +762,24 @@ main (void)
 			swapchain_dirty = true;
 			break;
 		case VKFW_EVENT_KEY_PRESSED:
-			if (e.key > 0 && e.key <= 255)
-				printf ("key %d was pressed ('%c')\n", e.keycode, (char) e.key);
-			else
-				printf ("key %d was pressed (%d)\n", e.keycode, e.key);
-			break;
-		case VKFW_EVENT_KEY_RELEASED:
-			if (e.key > 0 && e.key < 255)
-				printf ("key %d was released ('%c')\n", e.keycode, (char) e.key);
-			else
-				printf ("key %d was released (%d)\n", e.keycode, e.key);
+			switch (e.key) {
+			case VKFW_KEY_H:
+				pointer_mode ^= VKFW_POINTER_HIDDEN;
+				vkfwSetPointerMode (window, pointer_mode);
+				break;
+			case VKFW_KEY_C:
+				pointer_mode ^= VKFW_POINTER_CONFINED;
+				vkfwSetPointerMode (window, pointer_mode);
+				break;
+			case VKFW_KEY_G:
+				pointer_mode ^= VKFW_POINTER_GRABBED;
+				vkfwSetPointerMode (window, pointer_mode);
+				break;
+			case VKFW_KEY_R:
+				pointer_mode ^= VKFW_POINTER_RELATIVE;
+				vkfwSetPointerMode (window, pointer_mode);
+				break;
+			}
 			break;
 		case VKFW_EVENT_TEXT_INPUT:
 			if (e.codepoint < 0x20 || (e.codepoint >= 0x7f && e.codepoint < 0xa0))
@@ -779,6 +788,12 @@ main (void)
 				printf ("text input '%s'\n", buf);
 			else
 				printf ("text input U+%04X (encoding failed)\n", e.codepoint);
+			break;
+		case VKFW_EVENT_POINTER_MOTION:
+			printf ("pointer moved to (%d, %d)\n", e.x, e.y);
+			break;
+		case VKFW_EVENT_RELATIVE_POINTER_MOTION:
+			printf ("pointer moved relative (%+d, %+d)\n", e.x, e.y);
 			break;
 		default:
 			vkfwUnhandledEvent (&e);

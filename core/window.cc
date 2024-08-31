@@ -40,6 +40,7 @@ vkfwCreateWindow (VKFWwindow **handle, VkExtent2D size)
 
 	w->internal_refcnt = 1;
 	w->flags = 0;
+	w->pointer_flags = 0;
 	w->extent = size;
 	VkResult result = vkfwCurrentWindowBackend->create_window (w);
 	if (result != VK_SUCCESS) {
@@ -117,4 +118,13 @@ vkfwHideWindow (VKFWwindow *handle)
 	if (vkfwCurrentWindowBackend->hide_window)
 		return vkfwCurrentWindowBackend->hide_window (handle);
 	return VK_SUCCESS;
+}
+
+extern "C"
+VKFWAPI void
+vkfwSetPointerMode (VKFWwindow *handle, unsigned int mode)
+{
+	handle->pointer_flags = mode;
+	if (vkfwCurrentWindowBackend->update_pointer_mode)
+		vkfwCurrentWindowBackend->update_pointer_mode (handle);
 }

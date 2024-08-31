@@ -54,6 +54,8 @@ struct VKFWwindowbackend_T {
 
 	int (*translate_keycode) (int);
 	int (*translate_key) (int);
+
+	void (*update_pointer_mode) (VKFWwindow *);
 };
 
 extern VKFWwindowbackend *vkfwCurrentWindowBackend;

@@ -139,11 +139,39 @@ handle_motion_notify (VKFWevent *e, xcb_motion_notify_event_t *xe)
 	if (!window)
 		return;
 
+	/** don't generate VKFW_POINTER_MOTION events for xcb_warp_pointer */
+	if (window->warp_x == xe->event_x && window->warp_y == xe->event_y) {
+		window->warp_x = -1;
+		window->warp_y = -1;
+		window->last_x = xe->event_x;
+		window->last_y = xe->event_y;
+		return;
+	}
+
 	e->type = VKFW_EVENT_POINTER_MOTION;
 	e->window = (VKFWwindow *) window;
 	e->x = xe->event_x;
 	e->y = xe->event_y;
 	set_modifiers (e, xe->state);
+
+	if (window->pointer_mode & VKFW_POINTER_RELATIVE) {
+		e->type = VKFW_EVENT_RELATIVE_POINTER_MOTION;
+		e->x -= window->last_x;
+		e->y -= window->last_y;
+
+		/** realign the mouse */
+		if (window->warp_x == -1 && window->warp_y == -1 && (e->x || e->y)) {
+			window->warp_x = window->window.extent.width / 2;
+			window->warp_y = window->window.extent.height / 2;
+			xcb_warp_pointer (vkfw_xcb_connection, window->wid,
+				window->wid, 0, 0, window->window.extent.width,
+				window->window.extent.height, window->warp_x,
+				window->warp_y);
+		}
+	}
+
+	window->last_x = xe->event_x;
+	window->last_y = xe->event_y;
 }
 
 static void
@@ -155,6 +183,17 @@ handle_focus_in (VKFWevent *e, xcb_focus_in_event_t *xe)
 
 	e->type = VKFW_EVENT_WINDOW_GAINED_FOCUS;
 	e->window = (VKFWwindow *) window;
+	vkfw_xcb_focus_window = window;
+
+	if (window->pointer_mode & (VKFW_POINTER_GRABBED)) {
+		xcb_window_t confine_window = XCB_WINDOW_NONE;
+		if (window->pointer_mode & (VKFW_POINTER_CONFINED))
+			confine_window = window->wid;
+
+		xcb_grab_pointer_unchecked (vkfw_xcb_connection, 1, window->wid,
+			0, XCB_GRAB_MODE_ASYNC, XCB_GRAB_MODE_ASYNC,
+			confine_window, XCB_CURSOR_NONE, XCB_CURRENT_TIME);
+	}
 }
 
 static void
@@ -166,6 +205,13 @@ handle_focus_out (VKFWevent *e, xcb_focus_out_event_t *xe)
 
 	e->type = VKFW_EVENT_WINDOW_LOST_FOCUS;
 	e->window = (VKFWwindow *) window;
+
+	/**
+	 * FOCUS_OUT should never be reordered with FOCUS_IN on the same X11
+	 * connection, but in case they are anyways, perform this check.
+	 */
+	if (vkfw_xcb_focus_window == window)
+		vkfw_xcb_focus_window = nullptr;
 }
 
 static void
@@ -221,11 +267,11 @@ handle_wm_protocols_message (VKFWevent *e, xcb_client_message_event_t *xe)
 		 * to the root window with event->window set to the root window.
 		 */
 		xe->window = vkfw_xcb_default_screen->root;
-		xcb_void_cookie_t cookie = xcb_send_event (vkfw_xcb_connection, 0,
+		xcb_void_cookie_t cookie = xcb_send_event_checked (vkfw_xcb_connection, 0,
 			vkfw_xcb_default_screen->root,
 			XCB_EVENT_MASK_SUBSTRUCTURE_NOTIFY
 			| XCB_EVENT_MASK_SUBSTRUCTURE_REDIRECT, (const char *) xe);
-		if (xcb_request_check (vkfw_xcb_connection, cookie))
+		if (vkfwXcbCheck (cookie))
 			vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Xcb: got an error when responding to _NET_WM_PING\n");
 	} else if (msg == vkfw_WM_DELETE_WINDOW) {
 		/**

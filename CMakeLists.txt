@@ -48,7 +48,6 @@ if (VKFW_WANT_XCB)
 		"xcb/connection.cc"
 		"xcb/event.cc"
 		"xcb/keyboard.cc"
-		"xcb/validate.cc"
 		"xcb/window.cc"
 	)
 endif ()

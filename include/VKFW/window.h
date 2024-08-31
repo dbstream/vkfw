@@ -16,6 +16,7 @@ struct VKFWwindow_T {
 	VkExtent2D extent;
 	unsigned int internal_refcnt;
 	unsigned int flags;
+	unsigned int pointer_flags;
 };
 
 #define VKFW_WINDOW_DELETED 1U

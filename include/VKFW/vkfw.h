@@ -13,7 +13,7 @@
  */
 
 #define VKFW_VERSION_MAJOR 2
-#define VKFW_VERSION_MINOR 0
+#define VKFW_VERSION_MINOR 1
 #define VKFW_VERSION_PATCH 0
 
 #define VKFW_VERSION VK_MAKE_API_VERSION(0, VKFW_VERSION_MAJOR, VKFW_VERSION_MINOR, VKFW_VERSION_PATCH)
@@ -82,6 +82,15 @@ typedef struct VKFWwindow_T VKFWwindow;
 
 #define VKFW_SCROLL_VERTICAL 0
 #define VKFW_SCROLL_HORIZONTAL 1
+
+/**
+ * Pointer mode configuration bits. See vkfwSetPointerMode.
+ */
+#define VKFW_POINTER_NORMAL 0U
+#define VKFW_POINTER_HIDDEN 1U
+#define VKFW_POINTER_CONFINED 2U
+#define VKFW_POINTER_GRABBED 4U
+#define VKFW_POINTER_RELATIVE 8U
 
 /**
  * Notes on VKFW_KEY_*:
@@ -212,6 +221,7 @@ typedef struct VKFWwindow_T VKFWwindow;
 #define VKFW_EVENT_KEY_PRESSED 10
 #define VKFW_EVENT_KEY_RELEASED 11
 #define VKFW_EVENT_TEXT_INPUT 12
+#define VKFW_EVENT_RELATIVE_POINTER_MOTION 13
 
 /**
  * VKFW event structure. Adding or removing fields in this struct is an
@@ -243,6 +253,9 @@ struct VKFWevent_T {
 		 * VKFW_EVENT_KEY_PRESSED, VKFW_EVENT_KEY_RELEASED,
 		 * VKFW_EVENT_SCROLL, VKFW_EVENT_TEXT_INPUT:
 		 *   Pointer location of input.
+		 *
+		 * VKFW_EVENT_RELATIVE_POINTER_MOTION:
+		 *   Change in pointer position.
 		 */
 		struct {
 			int x, y;
@@ -466,6 +479,19 @@ vkfwHideWindow (VKFWwindow *handle);
  */
 VKFWAPI VkExtent2D
 vkfwGetFramebufferExtent (VKFWwindow *handle);
+
+/**
+ * Set the pointer mode for a window.
+ * 'mode' is a bitmask of VKFW_POINTER_*, which have the following effects:
+ *   VKFW_POINTER_HIDDEN     cursor will not be rendered
+ *   VKFW_POINTER_CONFINED   cursor cannot leave window
+ *   VKFW_POINTER_GRABBED    cursor events will be received even if the pointer
+ *                           leaves the window
+ *   VKFW_POINTER_RELATIVE   VKFW_EVENT_RELATIVE_POINTER_MOTION will be
+ *                           generated instead of VKFW_EVENT_POINTER_MOTION
+ */
+VKFWAPI void
+vkfwSetPointerMode (VKFWwindow *handle, unsigned int mode);
 
 	/* Input */
 

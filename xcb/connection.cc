@@ -17,6 +17,29 @@
 #include "window.h"
 #include "xcb.h"
 
+bool
+vkfwXcbCheck (xcb_void_cookie_t cookie)
+{
+	xcb_generic_error_t *e = xcb_request_check (vkfw_xcb_connection, cookie);
+
+	if (!e)
+		return false;
+
+	vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Xcb: error %u (conn_error=%d)\n",
+		e->error_code, xcb_connection_has_error (vkfw_xcb_connection));
+
+	vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Xcb: ... major=%u minor=%u\n",
+		e->major_code, e->minor_code);
+
+	if (e->error_code == XCB_VALUE) {
+		xcb_value_error_t *ve = (xcb_value_error_t *) e;
+		vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Xcb: ... bad value=%u\n", ve->bad_value);
+	}
+
+	free (e);
+	return true;
+}
+
 static void *libxcb_handle;
 
 static void
@@ -59,6 +82,45 @@ load_xcb_funcs (void)
 xcb_connection_t *vkfw_xcb_connection;
 xcb_screen_t *vkfw_xcb_default_screen;
 
+xcb_cursor_t vkfw_xcb_cursors[2];
+
+static void
+destroy_cursors (void)
+{
+	xcb_free_cursor (vkfw_xcb_connection, vkfw_xcb_cursors[1]);
+}
+
+static bool
+create_cursors (void)
+{
+	vkfw_xcb_cursors[0] = XCB_CURSOR_NONE;
+
+	xcb_pixmap_t pixmap = xcb_generate_id (vkfw_xcb_connection);
+	if (pixmap == -1)
+		return false;
+
+	xcb_void_cookie_t cookie = xcb_create_pixmap_checked (vkfw_xcb_connection,
+		1, pixmap, vkfw_xcb_default_screen->root, 16, 16);
+	if (vkfwXcbCheck (cookie))
+		return false;
+
+	vkfw_xcb_cursors[1] = xcb_generate_id (vkfw_xcb_connection);
+	if (vkfw_xcb_cursors[1] == -1) {
+		xcb_free_pixmap (vkfw_xcb_connection, pixmap);
+		return false;
+	}
+
+	cookie = xcb_create_cursor_checked (vkfw_xcb_connection, vkfw_xcb_cursors[1],
+		pixmap, pixmap, 0, 0, 0, 0, 0, 0, 0, 0);
+	if (vkfwXcbCheck (cookie)) {
+		xcb_free_pixmap (vkfw_xcb_connection, pixmap);
+		return false;
+	}
+
+	xcb_free_pixmap (vkfw_xcb_connection, pixmap);
+	return true;
+}
+
 #define VKFW_DECLARE_ATOM(name) xcb_atom_t vkfw_##name;
 VKFW_XCB_ALL_ATOMS(VKFW_DECLARE_ATOM)
 #undef VKFW_DECLARE_ATOM
@@ -78,8 +140,10 @@ VKFW_XCB_ALL_ATOMS(VKFW_INTERN_ATOM)
 
 #define VKFW_INTERN_ATOM(name)						\
 	r = xcb_intern_atom_reply (vkfw_xcb_connection, c_##name, &e);	\
-	if (e)								\
+	if (e) {							\
 		failed = true;						\
+		free (e);						\
+	}								\
 	if (r) {							\
 		vkfw_##name = r->atom;					\
 		free (r);						\
@@ -137,6 +201,13 @@ vkfwXcbOpen (void)
 		s->white_pixel,
 		s->black_pixel);
 
+	if (!create_cursors ()) {
+		vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Xcb backend failed to create cursors\n");
+		xcb_disconnect (vkfw_xcb_connection);
+		unload_xcb_funcs ();
+		return VK_ERROR_INITIALIZATION_FAILED;
+	}
+
 	vkfwXcbInitKeyboard ();
 	return VK_SUCCESS;
 }
@@ -145,6 +216,7 @@ static void
 vkfwXcbClose (void)
 {
 	vkfwXcbTerminateKeyboard ();
+	destroy_cursors ();
 	xcb_disconnect (vkfw_xcb_connection);
 	unload_xcb_funcs ();
 }
@@ -187,5 +259,6 @@ VKFWwindowbackend vkfwBackendXcb = {
 	.set_title = vkfwXcbSetWindowTitle,
 	.get_event = vkfwXcbGetEvent,
 	.translate_keycode = vkfwXcbTranslateKeycode,
-	.translate_key = vkfwXcbTranslateKey
+	.translate_key = vkfwXcbTranslateKey,
+	.update_pointer_mode = vkfwXcbUpdatePointerMode
 };

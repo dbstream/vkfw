@@ -124,10 +124,9 @@ select_events (int32_t devid)
 		.stateDetails = state
 	};
 
-	xcb_void_cookie_t cookie = xcb_xkb_select_events_aux (vkfw_xcb_connection,
+	xcb_xkb_select_events_aux (vkfw_xcb_connection,
 		devid, events, 0, 0, map, map, &details);
 
-	xcb_request_check (vkfw_xcb_connection, cookie);
 	return true;
 }
 
