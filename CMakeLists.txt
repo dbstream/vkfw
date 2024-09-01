@@ -13,6 +13,9 @@ set (CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_library (vkfw)
 
+find_package (Vulkan)
+target_include_directories (vkfw PUBLIC ${Vulkan_INCLUDE_DIRS})
+
 target_compile_definitions (vkfw PRIVATE -DVKFW_BUILDING)
 
 if (BUILD_SHARED_LIBS)
@@ -41,6 +44,16 @@ if (UNIX)
 		"unix/platform.cc"
 	)
 endif ()
+if (WIN32)
+	target_compile_definitions (vkfw PRIVATE -DVKFW_USE_WIN32)
+	target_sources (vkfw PRIVATE
+		"win32/backend.cc"
+		"win32/event.cc"
+		"win32/platform.cc"
+		"win32/utils.cc"
+		"win32/window.cc"
+	)
+endif ()
 
 if (VKFW_WANT_XCB)
 	target_compile_definitions (vkfw PRIVATE -DVKFW_USE_XCB)
@@ -56,7 +69,12 @@ add_executable (example)
 
 # Make sure users of VKFW can compile without any warnings.
 if (MSVC)
-	target_compile_options (example PRIVATE /W4 /WX)
+	# FIXME: VKFWevent contains unnamed anonymous unions and
+	# structs. This is perfectly fine on GCC, but breaks MSVC.
+	#
+	# Mitigate this by compiling with /W3. I'm not sure if this
+	# fixes the problem.
+	target_compile_options (example PRIVATE /W3 /WX)
 else ()
 	target_compile_options (example PRIVATE -Wall -Wextra -Werror)
 endif ()

@@ -6,6 +6,9 @@
 #ifdef VKFW_USE_XCB
 #define VK_USE_PLATFORM_XCB_KHR 1
 #endif
+#ifdef VKFW_USE_WIN32
+#define VK_USE_PLATFORM_WIN32_KHR 1
+#endif
 #include <VKFW/vkfw.h>
 
 /* VKFW_GEN_PFNS */

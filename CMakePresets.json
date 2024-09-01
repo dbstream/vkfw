@@ -1,0 +1,27 @@
+{
+	"version": 6,
+	"cmakeMinimumRequired": {
+		"major": 3,
+		"minor": 30,
+		"patch": 0
+	},
+	"configurePresets": [
+		{
+			"name": "native",
+			"description": "Native compilation.",
+			"binaryDir": "${sourceDir}/build/native",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "RelWithDebInfo"
+			}
+		},
+		{
+			"name": "mingw64",
+			"description": "Cross-compile for Win32 using mingw64",
+			"binaryDir": "${sourceDir}/build/mingw64",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "RelWithDebInfo"
+			},
+			"toolchainFile": "${sourceDir}/x86_64-w64-mingw32.cmake"
+		}
+	]
+}
