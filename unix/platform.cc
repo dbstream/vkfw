@@ -51,6 +51,7 @@ loadVulkanUnix (void **vulkan_loader)
 		vkfwPrintf (VKFW_LOG_PLATFORM, "VKFW: initPlatformUnix failed: %s does not contain vkGetInstanceProcAddr\n",
 			libvulkan_path);
 		unloadModuleUnix (libvulkan_handle);
+		libvulkan_handle = nullptr;
 	}
 
 	return VK_SUCCESS;

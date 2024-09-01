@@ -224,16 +224,17 @@ vkfwXcbClose (void)
 static VkResult
 vkfwXcbRequestExtensions (void)
 {
-	VkResult result = VK_SUCCESS;
-	VkResult result2;
-#define R(name)							\
-	result2 = vkfwRequestInstanceExtension (name, true);	\
-	if (result2 < result || (result2 && !result))		\
-		result = result2;
-	R (VK_KHR_SURFACE_EXTENSION_NAME);
-	R (VK_KHR_XCB_SURFACE_EXTENSION_NAME);
-#undef R
-	return result;
+	VkResult result;
+
+	result = vkfwRequestInstanceExtension (VK_KHR_SURFACE_EXTENSION_NAME, true);
+	if (result != VK_SUCCESS)
+		return result;
+
+	result = vkfwRequestInstanceExtension (VK_KHR_XCB_SURFACE_EXTENSION_NAME, true);
+	if (result != VK_SUCCESS)
+		return result;
+
+	return VK_SUCCESS;
 }
 
 static VkResult
