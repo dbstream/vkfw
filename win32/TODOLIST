@@ -1,0 +1,6 @@
+==================================
+TODOLIST for Win32 support in VKFW
+==================================
+
+- [!] Handle WM events.
+- [!] Ensure VKFW and example code compiles with MSVC.
