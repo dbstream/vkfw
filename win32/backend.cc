@@ -24,8 +24,6 @@ vkfwWin32RequestInstanceExtensions (void)
 	if (result != VK_SUCCESS)
 		return result;
 
-	vkfwPrintf (VKFW_LOG_BACKEND, "a\n");
-
 	return VK_SUCCESS;
 }
 
@@ -33,9 +31,7 @@ static VkResult
 vkfwWin32QueryPresentSupport (VkPhysicalDevice device, uint32_t queue,
 	VkBool32 *out)
 {
-	vkfwPrintf (VKFW_LOG_BACKEND, "before queryPresentSupport\n");
 	*out = vkGetPhysicalDeviceWin32PresentationSupportKHR (device, queue);
-	vkfwPrintf (VKFW_LOG_BACKEND, "after queryPresentSupport\n");
 	return VK_SUCCESS;
 }
 
@@ -69,11 +65,17 @@ vkfwWin32OpenConnection (void)
 	vkfwBackendWin32.show_window = vkfwWin32ShowWindow;
 	vkfwBackendWin32.hide_window = vkfwWin32HideWindow;
 	vkfwBackendWin32.set_title = vkfwWin32SetWindowTitle;
+	vkfwBackendWin32.get_event = vkfwWin32GetEvent;
 
 	WNDCLASSW wc = {};
 	wc.lpfnWndProc = vkfwWin32WndProc;
 	wc.hInstance = vkfwHInstance;
 	wc.lpszClassName = L"VKFW window";
+	wc.cbWndExtra = sizeof (VKFWwin32window *);
+
+	/** FIXME: does this need error handling? can we use LoadCursorW? */
+	wc.hCursor = LoadCursor (nullptr, IDC_ARROW);
+
 	if (!RegisterClassW (&wc))
 		return VK_ERROR_INITIALIZATION_FAILED;
 

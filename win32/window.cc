@@ -25,10 +25,10 @@ vkfwWin32CreateWindow (VKFWwindow *handle)
 	VKFWwin32window *w = (VKFWwin32window *) handle;
 
 	w->hwnd = CreateWindowExW (
-		WS_EX_APPWINDOW,
+		0,
 		L"VKFW window",
 		L"<unnamed>",
-		WS_OVERLAPPED,
+		WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT,
 		CW_USEDEFAULT,
 		handle->extent.width,
@@ -36,7 +36,7 @@ vkfwWin32CreateWindow (VKFWwindow *handle)
 		nullptr,
 		nullptr,
 		vkfwHInstance,
-		handle
+		w
 	);
 
 	if (!w->hwnd)
