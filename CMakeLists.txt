@@ -65,20 +65,23 @@ if (VKFW_WANT_XCB)
 	)
 endif ()
 
-add_executable (example)
+if (PROJECT_IS_TOP_LEVEL)
+	add_executable (example)
 
-# Make sure users of VKFW can compile without any warnings.
-if (MSVC)
-	# FIXME: VKFWevent contains unnamed anonymous unions and
-	# structs. This is perfectly fine on GCC, but breaks MSVC.
-	#
-	# Mitigate this by compiling with /W3. I'm not sure if this
-	# fixes the problem.
-	target_compile_options (example PRIVATE /W3 /WX)
-else ()
-	target_compile_options (example PRIVATE -Wall -Wextra -Werror)
+	# Make sure users of VKFW can compile without any warnings.
+	if (MSVC)
+		# FIXME: VKFWevent contains unnamed anonymous unions and
+		# structs. This is perfectly fine on GCC, but breaks MSVC.
+		#
+		# Mitigate this by compiling with /W3. I'm not sure if this
+		# fixes the problem.
+		target_compile_options (example PRIVATE /W3 /WX)
+	else ()
+		target_compile_options (example PRIVATE -Wall -Wextra -Werror)
+	endif ()
+
+	target_link_libraries (example vkfw)
+
+	target_sources (example PRIVATE "example.cc")
 endif ()
 
-target_link_libraries (example vkfw)
-
-target_sources (example PRIVATE "example.cc")
