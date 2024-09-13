@@ -1,0 +1,3 @@
+# Force the use of LF line endings.
+
+* text=auto eol=lf

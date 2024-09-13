@@ -39,6 +39,7 @@ static void
 vkfwWin32CloseConnection (void)
 {
 	UnregisterClassW (L"VKFW window", vkfwHInstance);
+	vkfwWin32TerminateEvents ();
 }
 
 /**
@@ -76,8 +77,14 @@ vkfwWin32OpenConnection (void)
 	/** FIXME: does this need error handling? can we use LoadCursorW? */
 	wc.hCursor = LoadCursor (nullptr, IDC_ARROW);
 
-	if (!RegisterClassW (&wc))
+	VkResult result = vkfwWin32InitEvents ();
+	if (result != VK_SUCCESS)
+		return result;
+
+	if (!RegisterClassW (&wc)) {
+		vkfwWin32TerminateEvents ();
 		return VK_ERROR_INITIALIZATION_FAILED;
+	}
 
 	return VK_SUCCESS;
 }

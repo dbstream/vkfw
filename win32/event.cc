@@ -10,185 +10,155 @@
 #include "win32.h"
 #include "window.h"
 
-static bool are_we_alive = true;
-
-struct queued_message {
-	VKFWwin32window *w;
-	UINT msg;
-	WPARAM wparam;
-	LPARAM lparam;
-};
-
-static size_t queue_size = 0;
-static size_t queue_offset = 0;
-static VKFWvector<queued_message> message_queue;
-
 /**
- * Enqueue a message onto the internal message queue.
+ *   WndProc, smooth resizing, and reentrancy.
+ *
+ * We run PeekMessageW etc. in a Win32 fiber (similar to an application-managed
+ * thread) so we can "far-return" to the caller of vkfwGetEvent when we receive
+ * window events we care about. Otherwise, the modal loop in DefWindowProcW will
+ * block.
+ *
+ * Our WndProc can be called in a multitude of contexts:
+ * - from the PeekMessageW loop executing in fiber context.
+ * - recursively from DefWindowProcW.
+ * - by CreateWindowExW.
+ * - by the Vulkan or D3D12 implementation.
+ * It needs to be able to handle all of these cases.
  */
-static void
-message_enqueue (VKFWwin32window *w, UINT msg, WPARAM wparam, LPARAM lparam)
+
+static LPVOID main_fiber;
+static LPVOID event_fiber;
+
+static VKFWevent *current_event;
+static int current_mode;
+static uint64_t current_timeout;
+static VkResult current_result;
+
+static void WINAPI
+event_loop (LPVOID fiber_parameter)
 {
-	vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Win32: message_enqueue(0x%x)\n", msg);
-	if (!are_we_alive)
-		return;
+	(void) fiber_parameter;
 
-	if (w->window.flags & VKFW_WINDOW_DELETED)
-		return;
+	BOOL b;
+	MSG msg;
 
-	if (queue_size == message_queue.size ()) {
-		size_t old_size = queue_size;
-		size_t new_size = queue_size ? 2 * queue_size : 16;
-		if (!message_queue.resize (new_size)) {
-			vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Win32: OOM in message_enqueue\n");
-			are_we_alive = false;
-			return;
+	for (;; SwitchToFiber (main_fiber)) {
+		if ((b = PeekMessageW (&msg, nullptr, 0, 0, PM_REMOVE)) < 0) {
+			current_result = VK_ERROR_UNKNOWN;
+			continue;
 		}
 
-		for (size_t i = 0; i < queue_offset; i++)
-			message_queue[old_size + i] = message_queue[i];
-	}
+		if (b) {
+			DispatchMessageW (&msg);
+			if (current_event->type == VKFW_EVENT_NONE)
+				current_event->type = VKFW_EVENT_NULL;
+			continue;
+		}
 
-	vkfwRefWindow ((VKFWwindow *) w);
-	message_queue[(queue_offset + queue_size) % message_queue.size ()] = {
-		w, msg, wparam, lparam
-	};
-	queue_size++;
+		if (!current_timeout)
+			continue;
+
+		if (current_mode == VKFW_EVENT_MODE_DEADLINE) {
+			uint64_t now = vkfwGetTime ();
+			if (now >= current_timeout)
+				continue;
+			current_timeout -= now;
+		}
+
+		current_timeout = (current_timeout + 999) / 1000;
+
+		MsgWaitForMultipleObjects (0, nullptr, TRUE, current_timeout, QS_ALLINPUT);
+		if ((b = PeekMessageW (&msg, nullptr, 0, 0, PM_REMOVE)) < 0) {
+			current_result = VK_ERROR_UNKNOWN;
+			continue;
+		}
+
+		if (b) {
+			DispatchMessageW (&msg);
+			if (current_event->type = VKFW_EVENT_NONE)
+				current_event->type = VKFW_EVENT_NULL;
+		}
+	}
 }
 
-static queued_message
-message_dequeue (void)
+VkResult
+vkfwWin32InitEvents (void)
 {
-	queued_message m = message_queue[queue_offset];
-	if (++queue_offset == message_queue.size ())
-		queue_offset = 0;
-	queue_size--;
-	return m;
+	main_fiber = ConvertThreadToFiberEx (nullptr, FIBER_FLAG_FLOAT_SWITCH);
+	if (!main_fiber)
+		return VK_ERROR_OUT_OF_HOST_MEMORY;
+
+	event_fiber = CreateFiberEx (0, 0, FIBER_FLAG_FLOAT_SWITCH, event_loop, nullptr);
+	if (!event_fiber)
+		return VK_ERROR_OUT_OF_HOST_MEMORY;
+
+	return VK_SUCCESS;
+}
+
+void
+vkfwWin32TerminateEvents (void)
+{
+	DeleteFiber (event_fiber);
 }
 
 LRESULT CALLBACK
 vkfwWin32WndProc (HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 {
-	VKFWwin32window *w = (VKFWwin32window *) GetWindowLongPtr (hwnd, 0);
-	if (!w) {
+	if (GetCurrentFiber () == main_fiber) {
 		if (msg == WM_CREATE) {
 			vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Win32: WM_CREATE()\n");
 			LPCREATESTRUCTW ci = (LPCREATESTRUCTW) lparam;
 
-			vkfwRefWindow ((VKFWwindow *) ci->lpCreateParams);
 			SetWindowLongPtr (hwnd, 0, (LONG_PTR) ci->lpCreateParams);
 			return 0;
 		}
 
-		/**
-		 * Some unknown message was received prior to WM_CREATE. We
-		 * better let DefWindowProcW handle it.
-		 */
+		if (msg == WM_DESTROY) {
+			vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Win32: WM_DESTROY()\n");
+			SetWindowLongPtr (hwnd, 0, (LONG_PTR) nullptr);
+			return 0;
+		}
+
 		return DefWindowProcW (hwnd, msg, wparam, lparam);
 	}
+
+	VKFWwin32window *w = (VKFWwin32window *) GetWindowLongPtr (hwnd, 0);
+	if (!w) {
+		/**
+		 * SetWindowLongPtr is called on the main fiber at WM_CREATE
+		 * time. Our WndProc being called on the event fiber without
+		 * our VKFWwin32window pointer should never happen.
+		 */
+		vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Win32: WndProc was called on the event fiber, but GetWindowLongPtr returned nullptr\n");
+		return DefWindowProcW (hwnd, msg, wparam, lparam);
+	}
+
+	current_event->window = (VKFWwindow *) w;
 
 	switch (msg) {
-	case WM_DESTROY:
-		vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Win32: WM_DESTROY()\n");
-		SetWindowLongPtr (hwnd, 0, (LONG_PTR) nullptr);
-		vkfwUnrefWindow ((VKFWwindow *) w);
-		return 0;
 	case WM_CLOSE:
-		message_enqueue (w, msg, wparam, lparam);
+		current_event->type = VKFW_EVENT_WINDOW_CLOSE_REQUEST;
+		SwitchToFiber (main_fiber);
+		return 0;
+	case WM_SIZE:
+		current_event->type = VKFW_EVENT_WINDOW_RESIZE_NOTIFY;
+		current_event->extent.width = LOWORD (lparam);
+		current_event->extent.height = HIWORD (lparam);
+		SwitchToFiber (main_fiber);
 		return 0;
 	default:
-		vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Win32: unknown message=0x%x\n", msg);
 		return DefWindowProcW (hwnd, msg, wparam, lparam);
 	}
-}
-
-static VkResult
-pump_events (int mode, uint64_t timeout)
-{
-	MSG msg;
-	BOOL b;
-
-	if (!are_we_alive)
-		return VK_ERROR_DEVICE_LOST;
-
-	if (timeout == UINT64_MAX) {
-		if ((b = GetMessageW (&msg, nullptr, 0, 0)) <=0) {
-			/** We received a WM_QUIT or an error occured. */
-			are_we_alive = false;
-			return VK_ERROR_DEVICE_LOST;
-		}
-
-		DispatchMessageW (&msg);
-		return are_we_alive ? VK_SUCCESS : VK_ERROR_DEVICE_LOST;
-	}
-
-	if ((b = PeekMessageW (&msg, nullptr, 0, 0, PM_REMOVE))) {
-		if (b < 0) {
-			are_we_alive = false;
-			return VK_ERROR_DEVICE_LOST;
-		}
-
-		DispatchMessageW (&msg);
-		return are_we_alive ? VK_SUCCESS : VK_ERROR_DEVICE_LOST;
-	}
-
-	if (mode == VKFW_EVENT_MODE_DEADLINE) {
-		uint64_t now = vkfwGetTime ();
-		if (timeout > now)
-			timeout -= now;
-		else
-			timeout = 0;
-	}
-
-	timeout = (timeout + 999) / 1000;
-	if (!timeout)
-		return VK_SUCCESS;
-
-	MsgWaitForMultipleObjects (0, nullptr, 0, timeout, QS_ALLINPUT);
-	if ((b = PeekMessageW (&msg, nullptr, 0, 0, PM_REMOVE))) {
-		if (b < 0) {
-			are_we_alive = false;
-			return VK_ERROR_DEVICE_LOST;
-		}
-
-		DispatchMessageW (&msg);
-		return are_we_alive ? VK_SUCCESS : VK_ERROR_DEVICE_LOST;
-	}
-
-	return VK_SUCCESS;
 }
 
 VkResult
 vkfwWin32GetEvent (VKFWevent *e, int mode, uint64_t timeout)
 {
-	VkResult result;
-	queued_message msg;
+	current_result = VK_SUCCESS;
+	current_event = e;
+	current_mode = mode;
+	current_timeout = timeout;
 
-	if (!are_we_alive)
-		return VK_ERROR_DEVICE_LOST;
-
-	if (!queue_size) {
-		result = pump_events (mode, timeout);
-		if (result != VK_SUCCESS)
-			return result;
-	}
-
-	if (!queue_size)
-		return VK_SUCCESS;
-
-	e->type = VKFW_EVENT_NULL;
-	msg = message_dequeue ();
-	if (msg.w->window.flags & VKFW_WINDOW_DELETED) {
-		vkfwUnrefWindow ((VKFWwindow *) msg.w);
-		return VK_SUCCESS;
-	}
-
-	vkfwUnrefWindow ((VKFWwindow *) msg.w);
-	e->window = (VKFWwindow *) msg.w;
-
-	if (msg.msg == WM_CLOSE) {
-		e->type = VKFW_EVENT_WINDOW_CLOSE_REQUEST;
-	}
-
-	return VK_SUCCESS;
+	SwitchToFiber (event_fiber);
+	return current_result;
 }

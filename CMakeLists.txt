@@ -2,7 +2,7 @@
 
 # As of writing this line of code, I have CMake 3.30 installed on my machine. To
 # avoid any potential problems, simply require CMake 3.30.
-cmake_minimum_required (VERSION 3.30)
+cmake_minimum_required (VERSION 3.25)
 
 # VKFW intentionally has a C-like API, but is written in C++.
 project (vkfw LANGUAGES CXX)

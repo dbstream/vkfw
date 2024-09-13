@@ -474,13 +474,11 @@ create_swapchain (void)
 	view_ci.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
 	view_ci.viewType = VK_IMAGE_VIEW_TYPE_2D;
 	view_ci.format = swapchain_format;
-	view_ci.subresourceRange = {
-		.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT,
-		.baseMipLevel = 0,
-		.levelCount = 1,
-		.baseArrayLayer = 0,
-		.layerCount = 1
-	};
+	view_ci.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+	view_ci.subresourceRange.baseMipLevel = 0;
+	view_ci.subresourceRange.levelCount = 1;
+	view_ci.subresourceRange.baseArrayLayer = 0;
+	view_ci.subresourceRange.layerCount = 1;
 
 	for (uint32_t i = 0; i < count; i++) {
 		view_ci.image = new_images[i];
@@ -616,11 +614,11 @@ draw (void)
 	if (result != VK_SUCCESS)
 		return result;
 
-	VkClearValue cv = {
-		.color = {
-			.float32 = { 0.0f, 0.0f, 0.0f, 1.0f }
-		}
-	};
+	VkClearValue cv {};
+	cv.color.float32[0] = 0.0f;
+	cv.color.float32[1] = 0.0f;
+	cv.color.float32[2] = 0.0f;
+	cv.color.float32[3] = 1.0f;
 
 	VkRenderPassBeginInfo rp_begin_info {};
 	rp_begin_info.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
