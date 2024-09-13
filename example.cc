@@ -743,7 +743,20 @@ main (void)
 		switch (e.type) {
 		case VKFW_EVENT_WINDOW_RESIZE_NOTIFY:
 			swapchain_dirty = true;
+			/**
+			 * Redraw immediately only on Windows. On Linux, where
+			 * resizing is not a modal loop, this is not needed. But
+			 * Windows requires it for smooth resizing.
+			 *
+			 * Future versions of VKFW will inject VKFW_EVENT_NONE
+			 * into the modal loop, effectively mimicing the correct
+			 * Linux behavior.
+			 */
+#ifdef _WIN32
 			[[fallthrough]];
+#else
+			break;
+#endif
 		case VKFW_EVENT_NONE:
 			if (swapchain_dirty)
 				if (!create_swapchain ()) {
