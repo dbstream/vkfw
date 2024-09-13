@@ -741,6 +741,9 @@ main (void)
 		}
 
 		switch (e.type) {
+		case VKFW_EVENT_WINDOW_RESIZE_NOTIFY:
+			swapchain_dirty = true;
+			[[fallthrough]];
 		case VKFW_EVENT_NONE:
 			if (swapchain_dirty)
 				if (!create_swapchain ()) {
@@ -756,9 +759,6 @@ main (void)
 		case VKFW_EVENT_WINDOW_CLOSE_REQUEST:
 			teardown_everything ();
 			return 0;
-		case VKFW_EVENT_WINDOW_RESIZE_NOTIFY:
-			swapchain_dirty = true;
-			break;
 		case VKFW_EVENT_KEY_PRESSED:
 			switch (e.key) {
 			case VKFW_KEY_H:
