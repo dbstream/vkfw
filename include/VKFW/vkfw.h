@@ -13,7 +13,7 @@
  */
 
 #define VKFW_VERSION_MAJOR 2
-#define VKFW_VERSION_MINOR 2
+#define VKFW_VERSION_MINOR 3
 #define VKFW_VERSION_PATCH 0
 
 #define VKFW_VERSION VK_MAKE_API_VERSION(0, VKFW_VERSION_MAJOR, VKFW_VERSION_MINOR, VKFW_VERSION_PATCH)
@@ -399,6 +399,20 @@ vkfwCreateInstance (VkInstance *out, const VkInstanceCreateInfo *ci,
 VKFWAPI VkResult
 vkfwCreateDevice (VkDevice *out, VkPhysicalDevice physical_device,
 	const VkDeviceCreateInfo *ci);
+
+/**
+ * Check if the instance extension is enabled.
+ * note: only valid to call after vkfwCreateInstance.
+ */
+VKFWAPI bool
+vkfwHasInstanceExtension (const char *extension_name);
+
+/**
+ * Check if the device extension is enabled.
+ * note: only valid to call after vkfwCreateDevice.
+ */
+VKFWAPI bool
+vkfwHasDeviceExtension (const char *extension_name);
 
 /**
  * Select and create the Vulkan device based on what VKFW deems most suitable.

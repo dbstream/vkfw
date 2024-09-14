@@ -379,6 +379,26 @@ vkfwShutdownDevice (void)
 }
 
 extern "C"
+VKFWAPI bool
+vkfwHasInstanceExtension (const char *extension_name)
+{
+	for (const char *extension : enabled_instance_extensions)
+		if (!strcmp (extension, extension_name))
+			return true;
+	return false;
+}
+
+extern "C"
+VKFWAPI bool
+vkfwHasDeviceExtension (const char *extension_name)
+{
+	for (const char *extension : enabled_device_extensions)
+		if (!strcmp (extension, extension_name))
+			return true;
+	return false;
+}
+
+extern "C"
 VKFWAPI VkResult
 vkfwGetPhysicalDevicePresentSupport (VkPhysicalDevice device, uint32_t queue,
 	VkBool32 *out)
