@@ -20,10 +20,8 @@ API
 Backends
 ==========
 
-  - [!] Implement Win32 backend (I will probably work on this from my school
-        computer lmao)
-  - ( ) Implement Wayland backend (this is presumably more painful than the
-        Win32 API, which is why it is low priority)
+  - [x] Implement Win32 backend (WIP in this repository)
+  - [x] Implement Wayland backend (WIP in this repository)
 
 Examples
 ==========

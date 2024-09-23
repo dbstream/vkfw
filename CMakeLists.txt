@@ -5,7 +5,8 @@
 cmake_minimum_required (VERSION 3.25)
 
 # VKFW intentionally has a C-like API, but is written in C++.
-project (vkfw LANGUAGES CXX)
+# Enable C anyways, as it is used to compile Wayland protocol code.
+project (vkfw LANGUAGES C CXX)
 
 # Use C++17, as in my experience, C++20 and newer can cause linter issues.
 set (CMAKE_CXX_STANDARD 17)
@@ -35,10 +36,12 @@ target_sources (vkfw PRIVATE
 	"core/window.cc"
 )
 
+set (VKFW_WANT_WAYLAND OFF)
 set (VKFW_WANT_XCB OFF)
 
 # Platform-specific sources.
 if (UNIX)
+	set (VKFW_WANT_WAYLAND ON)
 	set (VKFW_WANT_XCB ON)
 	target_sources (vkfw PRIVATE
 		"unix/platform.cc"
@@ -52,6 +55,16 @@ if (WIN32)
 		"win32/platform.cc"
 		"win32/utils.cc"
 		"win32/window.cc"
+	)
+endif ()
+
+if (VKFW_WANT_WAYLAND)
+	target_compile_definitions (vkfw PRIVATE -DVKFW_USE_WAYLAND)
+	target_sources (vkfw PRIVATE
+		"wayland/connection.cc"
+		"wayland/wayland-protocol.c"
+		"wayland/window.cc"
+		"wayland/xdg-shell-protocol.c"
 	)
 endif ()
 

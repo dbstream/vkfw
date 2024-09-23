@@ -67,13 +67,20 @@ terminatePlatformUnix (void)
 	}
 }
 
+extern VKFWwindowbackend vkfwBackendWayland;
 extern VKFWwindowbackend vkfwBackendXcb;
 
 static VKFWwindowbackend *
 initBackendUnix (void)
 {
+	/**
+	 * NB: while in early development of the Wayland backend, prefer X11.
+	 * Wayland can be forced by unsetting DISPLAY.
+	 */
 	if (vkfwBackendXcb.open_connection () == VK_SUCCESS)
 		return &vkfwBackendXcb;
+	if (vkfwBackendWayland.open_connection () == VK_SUCCESS)
+		return &vkfwBackendWayland;
 	return nullptr;
 }
 
