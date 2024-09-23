@@ -75,7 +75,7 @@ event_loop (LPVOID fiber_parameter)
 
 		if (b) {
 			DispatchMessageW (&msg);
-			if (current_event->type = VKFW_EVENT_NONE)
+			if (current_event->type == VKFW_EVENT_NONE)
 				current_event->type = VKFW_EVENT_NULL;
 		}
 	}
