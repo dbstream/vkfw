@@ -11,10 +11,6 @@
 
 #include <VKFW/vkfw.h>
 
-#define VKFW_EVENT_MODE_POLL 0
-#define VKFW_EVENT_MODE_TIMEOUT 1
-#define VKFW_EVENT_MODE_DEADLINE 2
-
 struct VKFWwindowbackend_T {
 	VkResult (*open_connection) (void);
 	void (*close_connection) (void);
@@ -56,6 +52,18 @@ struct VKFWwindowbackend_T {
 	int (*translate_key) (int);
 
 	void (*update_pointer_mode) (VKFWwindow *);
+
+	/**
+	 * Generic handler for dispatching events. This will be used if
+	 * supported by the backend. Otherwise fall back to get_event.
+	 *
+	 * Call vkfwSendEventToApplication with any events.
+	 *
+	 * The second argument is one of VKFW_EVENT_MODE_POLL,
+	 * VKFW_EVENT_MODE_TIMEOUT and VKFW_EVENT_MODE_DEADLINE. The third
+	 * argument is optionally a timeout.
+	 */
+	VkResult (*dispatch_events) (int, uint64_t);
 };
 
 extern VKFWwindowbackend *vkfwCurrentWindowBackend;

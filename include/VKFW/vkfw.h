@@ -12,8 +12,8 @@
  * including VKFW/vkfw.h
  */
 
-#define VKFW_VERSION_MAJOR 2
-#define VKFW_VERSION_MINOR 3
+#define VKFW_VERSION_MAJOR 3
+#define VKFW_VERSION_MINOR 0
 #define VKFW_VERSION_PATCH 0
 
 #define VKFW_VERSION VK_MAKE_API_VERSION(0, VKFW_VERSION_MAJOR, VKFW_VERSION_MINOR, VKFW_VERSION_PATCH)
@@ -52,6 +52,8 @@ typedef struct VKFWevent_T VKFWevent;
 typedef struct VKFWwindow_T VKFWwindow;
 
 /**
+ * NOTE: This is an old comment that is only relevant to library internals.
+ *
  * note that there is a difference between EVENT_NONE and EVENT_NULL; whereas
  * EVENT_NULL indicates that an empty event was delivered from the platform,
  * EVENT_NONE indicates that no event at all was delivered.
@@ -68,6 +70,16 @@ typedef struct VKFWwindow_T VKFWwindow;
  *		vkfwWaitNextEventUntil (&e, next_frame);
  *	}
  */
+
+/**
+ * These are the available waiting modes for vkfwDispatchEvent.
+ * VKFW_EVENT_MODE_POLL: don't wait
+ * VKFW_EVENT_MODE_TIMEOUT: allow blocking, timeout is microseconds from now
+ * VKFW_EVENT_MODE_DEADLINE: allow blocking, timeout is an absolute value
+ */
+#define VKFW_EVENT_MODE_POLL 0
+#define VKFW_EVENT_MODE_TIMEOUT 1
+#define VKFW_EVENT_MODE_DEADLINE 2
 
 /**
  * VKFW time is in microseconds. These macros make time values more readable.
@@ -568,31 +580,31 @@ vkfwDisableTextInput (VKFWwindow *window);
 VKFWAPI void
 vkfwUnhandledEvent (VKFWevent *e);
 
-/**
- * Poll for pending events. Returns VKFW_EVENT_* in *e if an event was delivered
- * to the application, otherwise VKFW_EVENT_NULL for no event.
- */
-VKFWAPI VkResult
-vkfwGetNextEvent (VKFWevent *e);
+typedef void (*VKFWeventhandler) (VKFWevent *, void *);
 
 /**
- * Wait for an event to be delivered to the application. timeout is an optional
- * timeout in microseconds, or UINT64_MAX for no timeout.
+ * Set an application event handler. This returns the old event handler.
+ *
+ * NOTE: The event handler can be called when the application calls
+ * vkfwDispatchEvents, but because of platform specifics, it can also be called
+ * any time the user calls an external function that interacts with the window
+ * system (including other VKFW functions and Vulkan WSI functions).
  */
-VKFWAPI VkResult
-vkfwWaitNextEvent (VKFWevent *e, uint64_t timeout);
+VKFWAPI VKFWeventhandler
+vkfwSetEventHandler (VKFWeventhandler handler, void *user);
 
 /**
- * Wait for an event to be delivered to the application. deadline is an optional
- * deadline in microseconds, or UINT64_MAX for no deadline.
+ * Dispatch events.
+ *
+ * mode is one of VKFW_EVENT_MODE_POLL, VKFW_EVENT_MODE_TIMEOUT, and
+ * VKFW_EVENT_MODE_DEADLINE. timeout is an optional timeout.
  */
 VKFWAPI VkResult
-vkfwWaitNextEventUntil (VKFWevent *e, uint64_t deadline);
+vkfwDispatchEvents (int mode, uint64_t timeout);
 
 /**
- * Query a platform timer (ideally the same timer used by WaitNextEvent and
- * WaitNextEventUntil). Return value is in microseconds. The platform timer is
- * expected to be monotonic.
+ * Query a platform timer. Return value is in microseconds. The platform timer
+ * is expected to be monotonic.
  */
 VKFWAPI uint64_t
 vkfwGetTime (void);

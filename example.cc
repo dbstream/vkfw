@@ -50,6 +50,9 @@ static const VkColorSpaceKHR swapchain_colorspace = VK_COLOR_SPACE_SRGB_NONLINEA
 
 static const VkPresentModeKHR swapchain_present_mode = VK_PRESENT_MODE_FIFO_KHR;
 
+static void
+event_handler (VKFWevent *event, void *user);
+
 static bool
 setup (void)
 {
@@ -61,6 +64,8 @@ setup (void)
 
 	if (vkfwInit () != VK_SUCCESS)
 		return false;
+
+	vkfwSetEventHandler (event_handler, nullptr);
 
 	result = vkfwRequestInstanceExtension ("VK_KHR_surface", true);
 	if (result != VK_SUCCESS)
@@ -720,29 +725,26 @@ encode_utf8 (char *buf, uint32_t codepoint)
 	return true;
 }
 
-int
-main (void)
+static bool should_quit;
+static int exit_code;
+
+static unsigned int pointer_mode;
+
+static void
+event_handler (VKFWevent *e, void *user)
 {
-	VkResult result;
-	VKFWevent e;
+	(void) user;
+
 	char buf[5];
-	unsigned int pointer_mode = 0;
 
-	if (!setup_everything ())
-		return 1;
+	if (should_quit) {
+		vkfwUnhandledEvent (e);
+		return;
+	}
 
-	vkfwEnableTextInput (window);
-
-	for (;;) {
-		result = vkfwGetNextEvent (&e);
-		if (result != VK_SUCCESS) {
-			teardown_everything ();
-			return 1;
-		}
-
-		switch (e.type) {
-		case VKFW_EVENT_WINDOW_RESIZE_NOTIFY:
-			swapchain_dirty = true;
+	switch (e->type) {
+	case VKFW_EVENT_WINDOW_RESIZE_NOTIFY:
+		swapchain_dirty = true;
 			/**
 			 * Redraw immediately only on Windows. On Linux, where
 			 * resizing is not a modal loop, this is not needed. But
@@ -753,62 +755,94 @@ main (void)
 			 * Linux behavior.
 			 */
 #ifdef _WIN32
-			[[fallthrough]];
-#else
-			break;
+		if (!create_swapchain ()) {
+			should_quit = 1;
+			exit_code = 1;
+			return;
+		}
+
+		if (draw () != VK_SUCCESS) {
+			should_quit = 1;
+			exit_code = 1;
+			return;
+		}
 #endif
-		case VKFW_EVENT_NONE:
-			if (swapchain_dirty)
-				if (!create_swapchain ()) {
-					teardown_everything ();
-					return 1;
-				}
-			result = draw ();
-			if (result != VK_SUCCESS && result != VK_ERROR_OUT_OF_DATE_KHR) {
+		return;
+	case VKFW_EVENT_WINDOW_CLOSE_REQUEST:
+		should_quit = 1;
+		return;
+	case VKFW_EVENT_KEY_PRESSED:
+		switch (e->key) {
+		case VKFW_KEY_H:
+			pointer_mode ^= VKFW_POINTER_HIDDEN;
+			vkfwSetPointerMode (window, pointer_mode);
+			return;
+		case VKFW_KEY_C:
+			pointer_mode ^= VKFW_POINTER_CONFINED;
+			vkfwSetPointerMode (window, pointer_mode);
+			return;
+		case VKFW_KEY_G:
+			pointer_mode ^= VKFW_POINTER_GRABBED;
+			vkfwSetPointerMode (window, pointer_mode);
+			return;
+		case VKFW_KEY_R:
+			pointer_mode ^= VKFW_POINTER_RELATIVE;
+			vkfwSetPointerMode (window, pointer_mode);
+			return;
+		}
+		return;
+	case VKFW_EVENT_TEXT_INPUT:
+		if (e->codepoint < 0x20 || (e->codepoint >= 0x7f && e->codepoint < 0xa0))
+			printf ("text input U+%04X\n", e->codepoint);
+		else if (encode_utf8 (buf, e->codepoint))
+			printf ("text input '%s'\n", buf);
+		else
+			printf ("text input U+%04X (encoding failed)\n", e->codepoint);
+		return;
+	case VKFW_EVENT_POINTER_MOTION:
+		printf ("pointer moved to (%d, %d)\n", e->x, e->y);
+		return;
+	case VKFW_EVENT_RELATIVE_POINTER_MOTION:
+		printf ("pointer moved relative (%+d, %+d)\n", e->x, e->y);
+		return;
+	default:
+		vkfwUnhandledEvent (e);
+		return;
+	}
+}
+
+int
+main (void)
+{
+	VkResult result;
+
+	if (!setup_everything ())
+		return 1;
+
+	vkfwEnableTextInput (window);
+
+	for (;;) {
+		result = vkfwDispatchEvents (VKFW_EVENT_MODE_POLL, 0);
+		if (result != VK_SUCCESS) {
+			teardown_everything ();
+			return 1;
+		}
+
+		if (should_quit) {
+			teardown_everything ();
+			return exit_code;
+		}
+
+		if (swapchain_dirty)
+			if (!create_swapchain ()) {
 				teardown_everything ();
 				return 1;
 			}
-			break;
-		case VKFW_EVENT_WINDOW_CLOSE_REQUEST:
+
+		result = draw ();
+		if (result != VK_SUCCESS) {
 			teardown_everything ();
-			return 0;
-		case VKFW_EVENT_KEY_PRESSED:
-			switch (e.key) {
-			case VKFW_KEY_H:
-				pointer_mode ^= VKFW_POINTER_HIDDEN;
-				vkfwSetPointerMode (window, pointer_mode);
-				break;
-			case VKFW_KEY_C:
-				pointer_mode ^= VKFW_POINTER_CONFINED;
-				vkfwSetPointerMode (window, pointer_mode);
-				break;
-			case VKFW_KEY_G:
-				pointer_mode ^= VKFW_POINTER_GRABBED;
-				vkfwSetPointerMode (window, pointer_mode);
-				break;
-			case VKFW_KEY_R:
-				pointer_mode ^= VKFW_POINTER_RELATIVE;
-				vkfwSetPointerMode (window, pointer_mode);
-				break;
-			}
-			break;
-		case VKFW_EVENT_TEXT_INPUT:
-			if (e.codepoint < 0x20 || (e.codepoint >= 0x7f && e.codepoint < 0xa0))
-				printf ("text input U+%04X\n", e.codepoint);
-			else if (encode_utf8 (buf, e.codepoint))
-				printf ("text input '%s'\n", buf);
-			else
-				printf ("text input U+%04X (encoding failed)\n", e.codepoint);
-			break;
-		case VKFW_EVENT_POINTER_MOTION:
-			printf ("pointer moved to (%d, %d)\n", e.x, e.y);
-			break;
-		case VKFW_EVENT_RELATIVE_POINTER_MOTION:
-			printf ("pointer moved relative (%+d, %+d)\n", e.x, e.y);
-			break;
-		default:
-			vkfwUnhandledEvent (&e);
-			break;
+			return 1;
 		}
 	}
 }

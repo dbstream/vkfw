@@ -1,0 +1,67 @@
+==============
+Event handling
+==============
+
+Originally, a goal of the library was to support an event handling model in
+which clients perform one function call and get one event. Clients should be
+able to handle events without any callbacks.
+
+Example application code:
+
+	for (;;) {
+		vkfwGetNextEvent (&e);
+		switch (e.type) {
+		case VKFW_EVENT_NONE:
+			draw ();
+			break;
+		case VKFW_EVENT_WINDOW_RESIZE_NOTIFY:
+			resize_swapchain ();
+			draw ();
+			break;
+		case VKFW_EVENT_WINDOW_CLOSE_REQUEST:
+			return;
+		default:
+			vkfwUnhandledEvent (&e);
+			break;
+		}
+	}
+
+This event model works great on X11, because with libxcb, you call
+xcb_poll_for_event and it will return a single event to you. X11/libxcb is the
+ideal platform.
+
+This event model is even workable on Win32, with slight hacks. By making use of
+the fiber primitive of the Win32 API, we can implement vkfwWin32GetEvent as a
+coroutine; see win32/event.cc for details.
+
+But Wayland? No, obviously not.
+
+libwayland requires us to call wl_display_dispatch or some other non-trivially
+named function, but it dispatches as many events from the queue as it can at
+once. This behavior is incompatible with the VKFW event model.
+
+Example application code for the new event model looks like this:
+
+	static void
+	application_callback (VKFWevent *e, void *user)
+	{
+		switch (e->type) {
+		case VKFW_EVENT_WINDOW_RESIZE_NOTIFY:
+			resize_swapchain ();
+			draw ();
+			break;
+		case VKFW_EVENT_WINDOW_CLOSE_REQUEST:
+			gShouldQuit = true;
+			break;
+		default:
+			vkfwUnhandledEvent (&e);
+			break;
+		}
+	}
+
+	for (;;) {
+		vkfwDispatchEvents (VKFW_DISPATCH_POLL, 0, application_callback, nullptr);
+		if (gShouldQuit)
+			return;
+		draw ();
+	}

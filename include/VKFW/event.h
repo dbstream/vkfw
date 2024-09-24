@@ -18,4 +18,7 @@ void
 vkfwQueueTextInputEvent (VKFWwindow *window, uint32_t codepoint,
 	int x, int y, unsigned int mods);
 
+void
+vkfwSendEventToApplication (VKFWevent *e);
+
 #endif /* VKFW_EVENT_H */
