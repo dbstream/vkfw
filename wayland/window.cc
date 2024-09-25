@@ -16,17 +16,17 @@ handle_xdg_surface_configure (void *window, xdg_surface *surface,
 	VKFWwlwindow *w = (VKFWwlwindow *) window;
 
 	if (w->configured_width > 0 && w->configured_height > 0) {
+		xdg_surface_set_window_geometry (surface, 0, 0,
+			w->configured_width, w->configured_height);
+
 		VKFWevent e {};
 		e.type = VKFW_EVENT_WINDOW_RESIZE_NOTIFY;
 		e.window = (VKFWwindow *) w;
 		e.extent.width = w->configured_width;
 		e.extent.height = w->configured_height;
-
-		xdg_surface_set_window_geometry (surface, 0, 0,
-			w->configured_width, w->configured_height);
-		xdg_surface_ack_configure (surface, serial);
 		vkfwSendEventToApplication (&e);
 	}
+	xdg_surface_ack_configure (surface, serial);
 }
 
 static const struct xdg_surface_listener xdg_surface_listener = {
@@ -41,8 +41,8 @@ handle_toplevel_configure (void *window, xdg_toplevel *toplevel,
 	(void) states;
 
 	VKFWwlwindow *w = (VKFWwlwindow *) window;
-	w->configured_width = width;
-	w->configured_height = height;
+	if (width)	w->configured_width = width;
+	if (height)	w->configured_height = height;
 }
 
 static void
@@ -129,6 +129,8 @@ vkfwWlShowWindow (VKFWwindow *window)
 		return VK_ERROR_UNKNOWN;
 
 	xdg_toplevel_add_listener (w->toplevel, &toplevel_listener, w);
+	wl_surface_commit (w->surface);
+	wl_display_roundtrip (vkfwWlDisplay);
 	return VK_SUCCESS;
 }
 

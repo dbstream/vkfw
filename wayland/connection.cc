@@ -163,9 +163,9 @@ vkfwWlOpen (void)
 	}
 
 	vkfwWlCompositor = (wl_compositor *) wl_registry_bind (vkfwWlRegistry,
-		vkfwWlCompositorId, &wl_compositor_interface, 6);
+		vkfwWlCompositorId, &wl_compositor_interface, 5);
 	vkfwXdgWmBase = (xdg_wm_base *) wl_registry_bind (vkfwWlRegistry,
-		vkfwXdgWmBaseId, &xdg_wm_base_interface, 6);
+		vkfwXdgWmBaseId, &xdg_wm_base_interface, 5);
 
 	if (!vkfwWlCompositor || !vkfwXdgWmBase)  {
 		vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: failed to create required objects\n");
