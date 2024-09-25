@@ -7,6 +7,7 @@
 #include <VKFW/platform.h>
 #include <VKFW/vkfw.h>
 #include <VKFW/window_api.h>
+#include "event.h"
 #include "wayland.h"
 #include "window.h"
 
@@ -63,6 +64,17 @@ vkfwWlQueryPresentSupport (VkPhysicalDevice device, uint32_t queue, VkBool32 *re
 }
 
 static uint32_t vkfwWlCompositorId, vkfwXdgWmBaseId;
+
+static void
+handle_wm_base_ping (void *data, xdg_wm_base *wm_base, uint32_t serial)
+{
+	(void) data;
+	xdg_wm_base_pong (wm_base, serial);
+}
+
+static const struct xdg_wm_base_listener wm_base_listener = {
+	.ping = handle_wm_base_ping
+};
 
 static void
 handle_registry_global (void *data, wl_registry *registry,
@@ -167,6 +179,7 @@ vkfwWlOpen (void)
 		return VK_ERROR_INITIALIZATION_FAILED;
 	}
 
+	xdg_wm_base_add_listener (vkfwXdgWmBase, &wm_base_listener, nullptr);
 	if (wl_display_roundtrip (vkfwWlDisplay) == -1) {
 		vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: wl_display_roundtrip failed\n");
 		xdg_wm_base_destroy (vkfwXdgWmBase);
@@ -188,7 +201,10 @@ VKFWwindowbackend vkfwBackendWayland = {
 	.create_window = vkfwWlCreateWindow,
 	.destroy_window = vkfwWlDestroyWindow,
 	.create_surface = vkfwWlCreateSurface,
-	.query_present_support = vkfwWlQueryPresentSupport
+	.query_present_support = vkfwWlQueryPresentSupport,
+	.show_window = vkfwWlShowWindow,
+	.hide_window = vkfwWlHideWindow,
+	.dispatch_events = vkfwWlDispatchEvents
 };
 
 #define VKFW_WL_DEFINE_FUNC(name) PFN##name name;

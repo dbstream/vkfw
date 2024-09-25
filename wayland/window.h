@@ -12,6 +12,8 @@ struct VKFWwlwindow_T {
 	wl_surface *surface;
 	xdg_surface *xdg;
 	xdg_toplevel *toplevel;
+
+	int32_t configured_width, configured_height;
 };
 
 VkResult
@@ -19,3 +21,9 @@ vkfwWlCreateWindow (VKFWwindow *window);
 
 void
 vkfwWlDestroyWindow (VKFWwindow *window);
+
+VkResult
+vkfwWlShowWindow (VKFWwindow *window);
+
+VkResult
+vkfwWlHideWindow (VKFWwindow *window);

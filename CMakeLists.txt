@@ -62,6 +62,7 @@ if (VKFW_WANT_WAYLAND)
 	target_compile_definitions (vkfw PRIVATE -DVKFW_USE_WAYLAND)
 	target_sources (vkfw PRIVATE
 		"wayland/connection.cc"
+		"wayland/event.cc"
 		"wayland/wayland-protocol.c"
 		"wayland/window.cc"
 		"wayland/xdg-shell-protocol.c"
