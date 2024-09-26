@@ -14,6 +14,12 @@ struct VKFWwlwindow_T {
 	xdg_toplevel *toplevel;
 
 	int32_t configured_width, configured_height;
+
+	bool want_csd;
+	bool has_csd;
+	wl_surface *frame_surface;
+	wl_subsurface *frame_subsurface;
+	wp_viewport *frame_viewport;
 };
 
 VkResult

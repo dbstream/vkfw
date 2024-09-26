@@ -9,6 +9,74 @@
 #include "wayland.h"
 #include "window.h"
 
+enum {
+	CSD_TOP = 5,
+	CSD_BOTTOM = 5,
+	CSD_LEFT = 5,
+	CSD_RIGHT = 5,
+	MIN_WIDTH = 20,
+	MIN_HEIGHT = 20
+};
+
+static void
+create_csd (VKFWwlwindow *w)
+{
+	if (w->has_csd)
+		return;
+
+	vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: creating CSD for window\n");
+
+	w->frame_surface = wl_compositor_create_surface (vkfwWlCompositor);
+	if (!w->frame_surface) {
+		vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: CSD: wl_compositor_create_surface failed\n");
+		return;
+	}
+
+	w->frame_subsurface = wl_subcompositor_get_subsurface (
+		vkfwWlSubcompositor, w->frame_surface, w->surface);
+	if (!w->frame_subsurface) {
+		vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: CSD: wl_subcompositor_get_surface failed\n");
+		wl_surface_destroy (w->frame_surface);
+		return;
+	}
+
+	w->frame_viewport = wp_viewporter_get_viewport (vkfwWpViewporter, w->frame_surface);
+	if (!w->frame_viewport) {
+		vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: CSD: wp_viewporter_get_viewport failed\n");
+		wl_subsurface_destroy (w->frame_subsurface);
+		wl_surface_destroy (w->frame_surface);
+	}
+
+	wl_subsurface_place_below (w->frame_subsurface, w->surface);
+	wl_subsurface_set_position (w->frame_subsurface, -CSD_LEFT, -CSD_TOP);
+	wl_surface_attach (w->frame_surface, vkfwWlFrameBuffer, 0, 0);
+	w->has_csd = true;
+}
+
+static void
+destroy_csd (VKFWwlwindow *w)
+{
+	if (!w->has_csd)
+		return;
+
+	wp_viewport_destroy (w->frame_viewport);
+	wl_subsurface_destroy (w->frame_subsurface);
+	wl_surface_destroy (w->frame_surface);
+	w->has_csd = false;
+}
+
+static void
+configure_csd (VKFWwlwindow *w)
+{
+	if (!w->has_csd)
+		return;
+
+	wp_viewport_set_destination (w->frame_viewport,
+		w->configured_width + CSD_LEFT + CSD_RIGHT,
+		w->configured_height + CSD_TOP + CSD_BOTTOM);
+	wl_surface_commit (w->frame_surface);
+}
+
 static void
 handle_xdg_surface_configure (void *window, xdg_surface *surface,
 	uint32_t serial)
@@ -16,8 +84,15 @@ handle_xdg_surface_configure (void *window, xdg_surface *surface,
 	VKFWwlwindow *w = (VKFWwlwindow *) window;
 
 	if (w->configured_width > 0 && w->configured_height > 0) {
+		if (MIN_WIDTH > w->configured_width)
+			w->configured_width = MIN_WIDTH;
+		if (MIN_HEIGHT > w->configured_height)
+			w->configured_height = MIN_HEIGHT;
+
 		xdg_surface_set_window_geometry (surface, 0, 0,
 			w->configured_width, w->configured_height);
+
+		configure_csd (w);
 
 		VKFWevent e {};
 		e.type = VKFW_EVENT_WINDOW_RESIZE_NOTIFY;
@@ -25,6 +100,9 @@ handle_xdg_surface_configure (void *window, xdg_surface *surface,
 		e.extent.width = w->configured_width;
 		e.extent.height = w->configured_height;
 		vkfwSendEventToApplication (&e);
+
+		w->configured_width = 0;
+		w->configured_height = 0;
 	}
 	xdg_surface_ack_configure (surface, serial);
 }
@@ -90,6 +168,8 @@ vkfwWlCreateWindow (VKFWwindow *window)
 	w->toplevel = nullptr;
 	w->configured_width = window->extent.width;
 	w->configured_height = window->extent.height;
+	w->want_csd = vkfwWlSupportCSD;
+	w->has_csd = false;
 
 	w->surface = wl_compositor_create_surface (vkfwWlCompositor);
 	if (!w->surface)
@@ -110,6 +190,7 @@ vkfwWlDestroyWindow (VKFWwindow *window)
 {
 	VKFWwlwindow *w = (VKFWwlwindow *) window;
 
+	destroy_csd (w);
 	if (w->toplevel)
 		xdg_toplevel_destroy (w->toplevel);
 	xdg_surface_destroy (w->xdg);
@@ -130,7 +211,12 @@ vkfwWlShowWindow (VKFWwindow *window)
 
 	xdg_toplevel_add_listener (w->toplevel, &toplevel_listener, w);
 	wl_surface_commit (w->surface);
+
+	if (w->want_csd)
+		create_csd (w);
+
 	wl_display_roundtrip (vkfwWlDisplay);
+
 	return VK_SUCCESS;
 }
 
@@ -139,6 +225,7 @@ vkfwWlHideWindow (VKFWwindow *window)
 {
 	VKFWwlwindow *w = (VKFWwlwindow *) window;
 
+	destroy_csd (w);
 	if (w->toplevel) {
 		xdg_toplevel_destroy (w->toplevel);
 		w->toplevel = nullptr;

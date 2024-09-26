@@ -63,6 +63,7 @@ if (VKFW_WANT_WAYLAND)
 	target_sources (vkfw PRIVATE
 		"wayland/connection.cc"
 		"wayland/event.cc"
+		"wayland/viewporter-protocol.c"
 		"wayland/wayland-protocol.c"
 		"wayland/window.cc"
 		"wayland/xdg-shell-protocol.c"
