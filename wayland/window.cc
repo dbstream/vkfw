@@ -83,6 +83,11 @@ handle_xdg_surface_configure (void *window, xdg_surface *surface,
 {
 	VKFWwlwindow *w = (VKFWwlwindow *) window;
 
+	if (w->want_csd)
+		create_csd (w);
+	else
+		destroy_csd (w);
+
 	if (w->configured_width > 0 && w->configured_height > 0) {
 		if (MIN_WIDTH > w->configured_width)
 			w->configured_width = MIN_WIDTH;
@@ -100,9 +105,6 @@ handle_xdg_surface_configure (void *window, xdg_surface *surface,
 		e.extent.width = w->configured_width;
 		e.extent.height = w->configured_height;
 		vkfwSendEventToApplication (&e);
-
-		w->configured_width = 0;
-		w->configured_height = 0;
 	}
 	xdg_surface_ack_configure (surface, serial);
 }
@@ -126,6 +128,8 @@ handle_toplevel_configure (void *window, xdg_toplevel *toplevel,
 static void
 handle_toplevel_close (void *window, xdg_toplevel *toplevel)
 {
+	(void) toplevel;
+
 	VKFWwlwindow *w = (VKFWwlwindow *) window;
 
 	VKFWevent e {};
@@ -160,6 +164,22 @@ static const struct xdg_toplevel_listener toplevel_listener = {
 	.wm_capabilities = handle_toplevel_wm_capabilities
 };
 
+static void
+handle_toplevel_decoration_v1_configure (void *window, zxdg_toplevel_decoration_v1 *deco,
+	uint32_t mode)
+{
+	(void) deco;
+
+	VKFWwlwindow *w = (VKFWwlwindow *) window;
+
+	w->want_csd = vkfwWlSupportCSD &&
+		(mode == ZXDG_TOPLEVEL_DECORATION_V1_MODE_CLIENT_SIDE);
+}
+
+static const struct zxdg_toplevel_decoration_v1_listener toplevel_decoration_v1_listener = {
+	.configure = handle_toplevel_decoration_v1_configure
+};
+
 VkResult
 vkfwWlCreateWindow (VKFWwindow *window)
 {
@@ -170,6 +190,7 @@ vkfwWlCreateWindow (VKFWwindow *window)
 	w->configured_height = window->extent.height;
 	w->want_csd = vkfwWlSupportCSD;
 	w->has_csd = false;
+	w->decoration_v1 = nullptr;
 
 	w->surface = wl_compositor_create_surface (vkfwWlCompositor);
 	if (!w->surface)
@@ -191,6 +212,8 @@ vkfwWlDestroyWindow (VKFWwindow *window)
 	VKFWwlwindow *w = (VKFWwlwindow *) window;
 
 	destroy_csd (w);
+	if (w->decoration_v1)
+		zxdg_toplevel_decoration_v1_destroy (w->decoration_v1);
 	if (w->toplevel)
 		xdg_toplevel_destroy (w->toplevel);
 	xdg_surface_destroy (w->xdg);
@@ -212,8 +235,15 @@ vkfwWlShowWindow (VKFWwindow *window)
 	xdg_toplevel_add_listener (w->toplevel, &toplevel_listener, w);
 	wl_surface_commit (w->surface);
 
-	if (w->want_csd)
-		create_csd (w);
+	if (vkfwZxdgDecorationManagerV1)
+		w->decoration_v1 = zxdg_decoration_manager_v1_get_toplevel_decoration (
+			vkfwZxdgDecorationManagerV1, w->toplevel);
+	if (w->decoration_v1) {
+		zxdg_toplevel_decoration_v1_add_listener (w->decoration_v1,
+			&toplevel_decoration_v1_listener, w);
+		zxdg_toplevel_decoration_v1_set_mode (w->decoration_v1,
+			ZXDG_TOPLEVEL_DECORATION_V1_MODE_SERVER_SIDE);
+	}
 
 	wl_display_roundtrip (vkfwWlDisplay);
 
@@ -226,6 +256,11 @@ vkfwWlHideWindow (VKFWwindow *window)
 	VKFWwlwindow *w = (VKFWwlwindow *) window;
 
 	destroy_csd (w);
+	if (w->decoration_v1) {
+		zxdg_toplevel_decoration_v1_destroy (w->decoration_v1);
+		w->decoration_v1 = nullptr;
+		w->want_csd = vkfwWlSupportCSD;
+	}
 	if (w->toplevel) {
 		xdg_toplevel_destroy (w->toplevel);
 		w->toplevel = nullptr;

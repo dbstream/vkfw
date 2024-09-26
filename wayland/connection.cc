@@ -24,6 +24,7 @@ wl_subcompositor *vkfwWlSubcompositor;
 wl_shm *vkfwWlShm;
 wp_viewporter *vkfwWpViewporter;
 xdg_wm_base *vkfwXdgWmBase;
+zxdg_decoration_manager_v1 *vkfwZxdgDecorationManagerV1;
 
 bool vkfwWlSupportCSD;
 
@@ -76,6 +77,7 @@ static uint32_t vkfwWlSubcompositorId;
 static uint32_t vkfwWlShmId;
 static uint32_t vkfwWpViewporterId;
 static uint32_t vkfwXdgWmBaseId;
+static uint32_t vkfwZxdgDecorationManagerV1Id;
 
 static void
 handle_wm_base_ping (void *data, xdg_wm_base *wm_base, uint32_t serial)
@@ -107,6 +109,8 @@ handle_registry_global (void *data, wl_registry *registry,
 		vkfwWpViewporterId = name;
 	else if (!strcmp (interface, "xdg_wm_base"))
 		vkfwXdgWmBaseId = name;
+	else if (!strcmp (interface, "zxdg_decoration_manager_v1"))
+		vkfwZxdgDecorationManagerV1Id = name;
 }
 
 static void
@@ -177,6 +181,8 @@ vkfwWlClose (void)
 		wl_shm_destroy (vkfwWlShm);
 	if (vkfwWlSubcompositor)
 		wl_subcompositor_destroy (vkfwWlSubcompositor);
+	if (vkfwZxdgDecorationManagerV1)
+		zxdg_decoration_manager_v1_destroy (vkfwZxdgDecorationManagerV1);
 	xdg_wm_base_destroy (vkfwXdgWmBase);
 	wl_compositor_destroy (vkfwWlCompositor);
 	wl_registry_destroy (vkfwWlRegistry);
@@ -222,6 +228,7 @@ vkfwWlOpen (void)
 	vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: wl_shm=%u\n", vkfwWlShmId);
 	vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: wp_viewporter=%u\n", vkfwWpViewporterId);
 	vkfwPrintf (VKFW_LOG_BACKEND, "VKWF: Wayland: xdg_wm_base=%u\n", vkfwXdgWmBaseId);
+	vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: zxdg_decoration_manager_v1=%u\n", vkfwZxdgDecorationManagerV1Id);
 
 	if (!vkfwWlCompositorId || !vkfwXdgWmBaseId) {
 		vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: required protocols are not supported\n");
@@ -247,6 +254,14 @@ vkfwWlOpen (void)
 		unload_wayland_funcs ();
 		return VK_ERROR_INITIALIZATION_FAILED;
 	}
+
+	if (vkfwZxdgDecorationManagerV1Id) {
+		vkfwZxdgDecorationManagerV1 = (zxdg_decoration_manager_v1 *) wl_registry_bind (
+			vkfwWlRegistry, vkfwZxdgDecorationManagerV1Id, &zxdg_decoration_manager_v1_interface, 1);
+		if (!vkfwZxdgDecorationManagerV1)
+			vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: failed to create decoration manager; only CSD can be used\n");
+	} else
+		vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: zxdg_decoration_manager_v1 is unavailable; only CSD can be used\n");
 
 	if (vkfwWlSubcompositorId) {
 		vkfwWlSubcompositor = (wl_subcompositor *) wl_registry_bind (
@@ -281,6 +296,8 @@ vkfwWlOpen (void)
 			wl_shm_destroy (vkfwWlShm);
 		if (vkfwWlSubcompositor)
 			wl_subcompositor_destroy (vkfwWlSubcompositor);
+		if (vkfwZxdgDecorationManagerV1)
+			zxdg_decoration_manager_v1_destroy (vkfwZxdgDecorationManagerV1);
 		xdg_wm_base_destroy (vkfwXdgWmBase);
 		wl_compositor_destroy (vkfwWlCompositor);
 		wl_registry_destroy (vkfwWlRegistry);
@@ -296,6 +313,9 @@ vkfwWlOpen (void)
 		else
 			vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: failed to setup resources for client-side decoration\n");
 	}
+
+	if (vkfwZxdgDecorationManagerV1)
+		vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: zxdg_decoration_manager_v1 is supported\n");
 
 	return VK_SUCCESS;
 }

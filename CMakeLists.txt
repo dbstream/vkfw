@@ -67,6 +67,7 @@ if (VKFW_WANT_WAYLAND)
 		"wayland/wayland-protocol.c"
 		"wayland/window.cc"
 		"wayland/xdg-shell-protocol.c"
+		"wayland/zxdg-decoration-v1-protocol.c"
 	)
 endif ()
 

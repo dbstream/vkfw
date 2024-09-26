@@ -15,6 +15,8 @@ struct VKFWwlwindow_T {
 
 	int32_t configured_width, configured_height;
 
+	zxdg_toplevel_decoration_v1 *decoration_v1;
+
 	bool want_csd;
 	bool has_csd;
 	wl_surface *frame_surface;
