@@ -58,7 +58,7 @@ vkfwWlCreateSurface (VKFWwindow *window, VkSurfaceKHR *surface)
 	VkWaylandSurfaceCreateInfoKHR surface_ci {};
 	surface_ci.sType = VK_STRUCTURE_TYPE_WAYLAND_SURFACE_CREATE_INFO_KHR;
 	surface_ci.display = vkfwWlDisplay;
-	surface_ci.surface = w->surface;
+	surface_ci.surface = w->content_surface;
 
 	return vkCreateWaylandSurfaceKHR (vkfwLoadedInstance, &surface_ci,
 		nullptr, surface);

@@ -9,19 +9,23 @@ typedef struct VKFWwlwindow_T VKFWwlwindow;
 
 struct VKFWwlwindow_T {
 	VKFWwindow window;
-	wl_surface *surface;
-	xdg_surface *xdg;
-	xdg_toplevel *toplevel;
+	wl_surface *content_surface;
+	wl_subsurface *content_subsurface;
+
+	struct xdg_surface *xdg_surface;
+	struct xdg_toplevel *xdg_toplevel;
+
+	wl_surface *frame_surface;
+	wp_viewport *frame_viewport;
 
 	int32_t configured_width, configured_height;
 
 	zxdg_toplevel_decoration_v1 *decoration_v1;
 
-	bool want_csd;
+	bool visible;
+	bool use_csd;
 	bool has_csd;
-	wl_surface *frame_surface;
-	wl_subsurface *frame_subsurface;
-	wp_viewport *frame_viewport;
+	bool has_csd_buffer_attached;
 };
 
 VkResult

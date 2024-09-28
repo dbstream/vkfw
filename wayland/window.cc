@@ -15,67 +15,11 @@ enum {
 	CSD_LEFT = 5,
 	CSD_RIGHT = 5,
 	MIN_WIDTH = 20,
-	MIN_HEIGHT = 20
+	MIN_HEIGHT = 20,
+
+	CSD_WIDTH = CSD_LEFT + CSD_RIGHT,
+	CSD_HEIGHT = CSD_TOP + CSD_BOTTOM
 };
-
-static void
-create_csd (VKFWwlwindow *w)
-{
-	if (w->has_csd)
-		return;
-
-	vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: creating CSD for window\n");
-
-	w->frame_surface = wl_compositor_create_surface (vkfwWlCompositor);
-	if (!w->frame_surface) {
-		vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: CSD: wl_compositor_create_surface failed\n");
-		return;
-	}
-
-	w->frame_subsurface = wl_subcompositor_get_subsurface (
-		vkfwWlSubcompositor, w->frame_surface, w->surface);
-	if (!w->frame_subsurface) {
-		vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: CSD: wl_subcompositor_get_surface failed\n");
-		wl_surface_destroy (w->frame_surface);
-		return;
-	}
-
-	w->frame_viewport = wp_viewporter_get_viewport (vkfwWpViewporter, w->frame_surface);
-	if (!w->frame_viewport) {
-		vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: CSD: wp_viewporter_get_viewport failed\n");
-		wl_subsurface_destroy (w->frame_subsurface);
-		wl_surface_destroy (w->frame_surface);
-	}
-
-	wl_subsurface_place_below (w->frame_subsurface, w->surface);
-	wl_subsurface_set_position (w->frame_subsurface, -CSD_LEFT, -CSD_TOP);
-	wl_surface_attach (w->frame_surface, vkfwWlFrameBuffer, 0, 0);
-	w->has_csd = true;
-}
-
-static void
-destroy_csd (VKFWwlwindow *w)
-{
-	if (!w->has_csd)
-		return;
-
-	wp_viewport_destroy (w->frame_viewport);
-	wl_subsurface_destroy (w->frame_subsurface);
-	wl_surface_destroy (w->frame_surface);
-	w->has_csd = false;
-}
-
-static void
-configure_csd (VKFWwlwindow *w)
-{
-	if (!w->has_csd)
-		return;
-
-	wp_viewport_set_destination (w->frame_viewport,
-		w->configured_width + CSD_LEFT + CSD_RIGHT,
-		w->configured_height + CSD_TOP + CSD_BOTTOM);
-	wl_surface_commit (w->frame_surface);
-}
 
 static void
 handle_xdg_surface_configure (void *window, xdg_surface *surface,
@@ -83,30 +27,49 @@ handle_xdg_surface_configure (void *window, xdg_surface *surface,
 {
 	VKFWwlwindow *w = (VKFWwlwindow *) window;
 
-	if (w->want_csd)
-		create_csd (w);
-	else
-		destroy_csd (w);
+	if (MIN_WIDTH > w->configured_width)
+		w->configured_width = MIN_WIDTH;
+	if (MIN_HEIGHT > w->configured_height)
+		w->configured_height = MIN_HEIGHT;
 
-	if (w->configured_width > 0 && w->configured_height > 0) {
-		if (MIN_WIDTH > w->configured_width)
-			w->configured_width = MIN_WIDTH;
-		if (MIN_HEIGHT > w->configured_height)
-			w->configured_height = MIN_HEIGHT;
+	xdg_surface_set_window_geometry (surface, 0, 0,
+		w->configured_width, w->configured_height);
 
-		xdg_surface_set_window_geometry (surface, 0, 0,
+	if (vkfwWlSupportCSD) {
+		wp_viewport_set_destination (w->frame_viewport,
 			w->configured_width, w->configured_height);
 
-		configure_csd (w);
-
-		VKFWevent e {};
-		e.type = VKFW_EVENT_WINDOW_RESIZE_NOTIFY;
-		e.window = (VKFWwindow *) w;
-		e.extent.width = w->configured_width;
-		e.extent.height = w->configured_height;
-		vkfwSendEventToApplication (&e);
+		if (!w->has_csd_buffer_attached) {
+			wl_surface_attach (w->frame_surface, vkfwWlFrameBuffer, 0, 0);
+			w->has_csd_buffer_attached = true;
+		}
 	}
+
+	if (w->use_csd && !w->has_csd) {
+		wl_subsurface_set_position (w->content_subsurface, CSD_LEFT, CSD_TOP);
+		w->has_csd = true;
+	} else if (!w->use_csd && w->has_csd) {
+		wl_subsurface_set_position (w->content_subsurface, 0, 0);
+		w->has_csd = false;
+	}
+
+	VKFWevent e {};
+	e.type = VKFW_EVENT_WINDOW_RESIZE_NOTIFY;
+	e.window = (VKFWwindow *) w;
+	e.extent.width = w->configured_width;
+	e.extent.height = w->configured_height;
+
+	if (w->has_csd) {
+		e.extent.width -= CSD_WIDTH;
+		e.extent.height -= CSD_HEIGHT;
+	}
+
+	vkfwSendEventToApplication (&e);
+
 	xdg_surface_ack_configure (surface, serial);
+	wl_surface_commit (w->content_surface);
+	if (vkfwWlSupportCSD)
+		wl_surface_commit (w->frame_surface);
 }
 
 static const struct xdg_surface_listener xdg_surface_listener = {
@@ -172,8 +135,7 @@ handle_toplevel_decoration_v1_configure (void *window, zxdg_toplevel_decoration_
 
 	VKFWwlwindow *w = (VKFWwlwindow *) window;
 
-	w->want_csd = vkfwWlSupportCSD &&
-		(mode == ZXDG_TOPLEVEL_DECORATION_V1_MODE_CLIENT_SIDE);
+	w->use_csd = vkfwWlSupportCSD && (mode == ZXDG_TOPLEVEL_DECORATION_V1_MODE_CLIENT_SIDE);
 }
 
 static const struct zxdg_toplevel_decoration_v1_listener toplevel_decoration_v1_listener = {
@@ -185,24 +147,65 @@ vkfwWlCreateWindow (VKFWwindow *window)
 {
 	VKFWwlwindow *w = (VKFWwlwindow *) window;
 
-	w->toplevel = nullptr;
-	w->configured_width = window->extent.width;
-	w->configured_height = window->extent.height;
-	w->want_csd = vkfwWlSupportCSD;
-	w->has_csd = false;
+	w->content_surface = nullptr;
+	w->content_subsurface = nullptr;
+	w->xdg_surface = nullptr;
+	w->frame_surface = nullptr;
+	w->xdg_toplevel = nullptr;
 	w->decoration_v1 = nullptr;
 
-	w->surface = wl_compositor_create_surface (vkfwWlCompositor);
-	if (!w->surface)
+	w->configured_width = window->extent.width;
+	w->configured_height = window->extent.height;
+	w->visible = false;
+	w->use_csd = vkfwWlSupportCSD;
+	w->has_csd = false;
+	w->has_csd_buffer_attached = false;
+
+	w->content_surface = wl_compositor_create_surface (vkfwWlCompositor);
+	if (!w->content_surface)
 		return VK_ERROR_INITIALIZATION_FAILED;
 
-	w->xdg = xdg_wm_base_get_xdg_surface (vkfwXdgWmBase, w->surface);
-	if (!w->xdg) {
-		wl_surface_destroy (w->surface);
+	if (vkfwWlSupportCSD) {
+		w->frame_surface = wl_compositor_create_surface (vkfwWlCompositor);
+		if (!w->frame_surface) {
+			wl_surface_destroy (w->content_surface);
+			return VK_ERROR_INITIALIZATION_FAILED;
+		}
+
+		w->xdg_surface = xdg_wm_base_get_xdg_surface (vkfwXdgWmBase,
+			w->frame_surface);
+	} else
+		w->xdg_surface = xdg_wm_base_get_xdg_surface (vkfwXdgWmBase,
+			w->content_surface);
+
+	if (!w->xdg_surface) {
+		if (vkfwWlSupportCSD)
+			wl_surface_destroy (w->frame_surface);
+		wl_surface_destroy (w->content_surface);
 		return VK_ERROR_INITIALIZATION_FAILED;
 	}
 
-	xdg_surface_add_listener (w->xdg, &xdg_surface_listener, w);
+	if (vkfwWlSupportCSD) {
+		w->content_subsurface = wl_subcompositor_get_subsurface (vkfwWlSubcompositor,
+			w->content_surface, w->frame_surface);
+		if (!w->content_subsurface) {
+			xdg_surface_destroy (w->xdg_surface);
+			wl_surface_destroy (w->frame_surface);
+			wl_surface_destroy (w->content_surface);
+			return VK_ERROR_INITIALIZATION_FAILED;
+		}
+
+		wl_subsurface_place_above (w->content_subsurface, w->frame_surface);
+
+		/**
+		 * We have no way of intercepting surface commits by the
+		 * application. Therefore, we must desync the content
+		 * subsurface.
+		 */
+		wl_subsurface_set_desync (w->content_subsurface);
+	}
+
+	xdg_surface_add_listener (w->xdg_surface, &xdg_surface_listener, w);
 	return VK_SUCCESS;
 }
 
@@ -211,13 +214,25 @@ vkfwWlDestroyWindow (VKFWwindow *window)
 {
 	VKFWwlwindow *w = (VKFWwlwindow *) window;
 
-	destroy_csd (w);
-	if (w->decoration_v1)
-		zxdg_toplevel_decoration_v1_destroy (w->decoration_v1);
-	if (w->toplevel)
-		xdg_toplevel_destroy (w->toplevel);
-	xdg_surface_destroy (w->xdg);
-	wl_surface_destroy (w->surface);
+	if (w->xdg_toplevel) {
+		if (w->decoration_v1)
+			zxdg_toplevel_decoration_v1_destroy (w->decoration_v1);
+
+		if (vkfwWlSupportCSD)
+			wp_viewport_destroy (w->frame_viewport);
+
+		xdg_toplevel_destroy (w->xdg_toplevel);
+	}
+
+	xdg_surface_destroy (w->xdg_surface);
+
+	if (vkfwWlSupportCSD) {
+		wl_subsurface_destroy (w->content_subsurface);
+		wl_surface_destroy (w->frame_surface);
+	}
+
+	wl_surface_destroy (w->content_surface);
+	wl_display_flush (vkfwWlDisplay);
 }
 
 VkResult
@@ -225,28 +240,52 @@ vkfwWlShowWindow (VKFWwindow *window)
 {
 	VKFWwlwindow *w = (VKFWwlwindow *) window;
 
-	if (w->toplevel)
+	if (w->visible)
 		return VK_SUCCESS;
 
-	w->toplevel = xdg_surface_get_toplevel (w->xdg);
-	if (!w->toplevel)
-		return VK_ERROR_UNKNOWN;
+	w->use_csd = vkfwWlSupportCSD;
 
-	xdg_toplevel_add_listener (w->toplevel, &toplevel_listener, w);
-	wl_surface_commit (w->surface);
+	w->xdg_toplevel = xdg_surface_get_toplevel (w->xdg_surface);
+	if (!w->xdg_toplevel)
+		return VK_ERROR_INITIALIZATION_FAILED;
 
-	if (vkfwZxdgDecorationManagerV1)
+	xdg_toplevel_add_listener (w->xdg_toplevel, &toplevel_listener, w);
+
+	if (vkfwWlSupportCSD) {
+		w->frame_viewport = wp_viewporter_get_viewport (vkfwWpViewporter,
+			w->frame_surface);
+		if (!w->frame_viewport) {
+			xdg_toplevel_destroy (w->xdg_toplevel);
+			w->xdg_toplevel = nullptr;
+			return VK_ERROR_INITIALIZATION_FAILED;
+		}
+	}
+
+	if (vkfwZxdgDecorationManagerV1) {
 		w->decoration_v1 = zxdg_decoration_manager_v1_get_toplevel_decoration (
-			vkfwZxdgDecorationManagerV1, w->toplevel);
-	if (w->decoration_v1) {
+			vkfwZxdgDecorationManagerV1, w->xdg_toplevel);
+		if (!w->decoration_v1) {
+			if (vkfwWlSupportCSD) {
+				wp_viewport_destroy (w->frame_viewport);
+				w->frame_viewport = nullptr;
+			}
+			xdg_toplevel_destroy (w->xdg_toplevel);
+			w->xdg_toplevel = nullptr;
+			return VK_ERROR_INITIALIZATION_FAILED;
+		}
+
 		zxdg_toplevel_decoration_v1_add_listener (w->decoration_v1,
 			&toplevel_decoration_v1_listener, w);
+
 		zxdg_toplevel_decoration_v1_set_mode (w->decoration_v1,
 			ZXDG_TOPLEVEL_DECORATION_V1_MODE_SERVER_SIDE);
 	}
 
+	w->visible = true;
+	wl_surface_commit (w->content_surface);
+	if (vkfwWlSupportCSD)
+			wl_surface_commit (w->frame_surface);
 	wl_display_roundtrip (vkfwWlDisplay);
-
 	return VK_SUCCESS;
 }
 
@@ -255,16 +294,35 @@ vkfwWlHideWindow (VKFWwindow *window)
 {
 	VKFWwlwindow *w = (VKFWwlwindow *) window;
 
-	destroy_csd (w);
+	if (!w->visible)
+		return VK_SUCCESS;
+
 	if (w->decoration_v1) {
 		zxdg_toplevel_decoration_v1_destroy (w->decoration_v1);
 		w->decoration_v1 = nullptr;
-		w->want_csd = vkfwWlSupportCSD;
-	}
-	if (w->toplevel) {
-		xdg_toplevel_destroy (w->toplevel);
-		w->toplevel = nullptr;
 	}
 
+	if (vkfwWlSupportCSD) {
+		wp_viewport_destroy (w->frame_viewport);
+		w->frame_viewport = nullptr;
+	}
+
+	xdg_toplevel_destroy (w->xdg_toplevel);
+	w->xdg_toplevel = nullptr;
+
+	if (vkfwWlSupportCSD) {
+		if (w->has_csd) {
+			wl_surface_attach (w->frame_surface, nullptr, 0, 0);
+			wl_subsurface_set_position (w->content_subsurface, 0, 0);
+			w->has_csd = false;
+			w->has_csd_buffer_attached = false;
+		}
+		wl_surface_commit (w->content_surface);
+		wl_surface_commit (w->frame_surface);
+	} else
+		wl_surface_commit (w->content_surface);
+
+	w->visible = false;
+	wl_display_flush (vkfwWlDisplay);
 	return VK_SUCCESS;
 }
