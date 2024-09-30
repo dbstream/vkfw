@@ -331,6 +331,7 @@ VKFWwindowbackend vkfwBackendWayland = {
 	.query_present_support = vkfwWlQueryPresentSupport,
 	.show_window = vkfwWlShowWindow,
 	.hide_window = vkfwWlHideWindow,
+	.set_title = vkfwWlSetWindowTitle,
 	.dispatch_events = vkfwWlDispatchEvents
 };
 

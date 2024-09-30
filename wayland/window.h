@@ -26,6 +26,8 @@ struct VKFWwlwindow_T {
 	bool use_csd;
 	bool has_csd;
 	bool has_csd_buffer_attached;
+
+	char *title;
 };
 
 VkResult
@@ -39,3 +41,6 @@ vkfwWlShowWindow (VKFWwindow *window);
 
 VkResult
 vkfwWlHideWindow (VKFWwindow *window);
+
+VkResult
+vkfwWlSetWindowTitle (VKFWwindow *window, const char *title);

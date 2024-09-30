@@ -9,6 +9,9 @@
 #include "wayland.h"
 #include "window.h"
 
+#include <stdlib.h>
+#include <string.h>
+
 enum {
 	CSD_TOP = 5,
 	CSD_BOTTOM = 5,
@@ -161,6 +164,8 @@ vkfwWlCreateWindow (VKFWwindow *window)
 	w->has_csd = false;
 	w->has_csd_buffer_attached = false;
 
+	w->title = nullptr;
+
 	w->content_surface = wl_compositor_create_surface (vkfwWlCompositor);
 	if (!w->content_surface)
 		return VK_ERROR_INITIALIZATION_FAILED;
@@ -233,6 +238,9 @@ vkfwWlDestroyWindow (VKFWwindow *window)
 
 	wl_surface_destroy (w->content_surface);
 	wl_display_flush (vkfwWlDisplay);
+
+	if (w->title)
+		free (w->title);
 }
 
 VkResult
@@ -281,6 +289,9 @@ vkfwWlShowWindow (VKFWwindow *window)
 			ZXDG_TOPLEVEL_DECORATION_V1_MODE_SERVER_SIDE);
 	}
 
+	if (w->title)
+		xdg_toplevel_set_title (w->xdg_toplevel, w->title);
+
 	w->visible = true;
 	wl_surface_commit (w->content_surface);
 	if (vkfwWlSupportCSD)
@@ -324,5 +335,27 @@ vkfwWlHideWindow (VKFWwindow *window)
 
 	w->visible = false;
 	wl_display_flush (vkfwWlDisplay);
+	return VK_SUCCESS;
+}
+
+VkResult
+vkfwWlSetWindowTitle (VKFWwindow *window, const char *title)
+{
+	VKFWwlwindow *w = (VKFWwlwindow *) window;
+
+	char *s = strdup (title);
+	if (!s)
+		return VK_ERROR_OUT_OF_HOST_MEMORY;
+
+	if (w->title)
+		free (w->title);
+	w->title = s;
+
+	if (w->xdg_toplevel) {
+		xdg_toplevel_set_title (w->xdg_toplevel, w->title);
+		if (vkfwWlSupportCSD && 0)
+			wl_surface_commit (w->frame_surface);
+	}
+
 	return VK_SUCCESS;
 }

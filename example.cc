@@ -730,6 +730,8 @@ static int exit_code;
 
 static unsigned int pointer_mode;
 
+static unsigned int fps_counter;
+
 static void
 event_handler (VKFWevent *e, void *user)
 {
@@ -766,6 +768,8 @@ event_handler (VKFWevent *e, void *user)
 			exit_code = 1;
 			return;
 		}
+
+		fps_counter++;
 #endif
 		return;
 	case VKFW_EVENT_WINDOW_CLOSE_REQUEST:
@@ -821,6 +825,8 @@ main (void)
 
 	vkfwEnableTextInput (window);
 
+	uint64_t t0 = vkfwGetTime ();
+
 	for (;;) {
 		result = vkfwDispatchEvents (VKFW_EVENT_MODE_POLL, 0);
 		if (result != VK_SUCCESS) {
@@ -843,6 +849,19 @@ main (void)
 		if (result != VK_SUCCESS) {
 			teardown_everything ();
 			return 1;
+		}
+
+		fps_counter++;
+		uint64_t t1 = vkfwGetTime ();
+
+		if (t1 - t0 > 1 * VKFW_SECONDS) {
+			double fps = (double) (fps_counter * VKFW_SECONDS) / (t1 - t0);
+			char new_title[32];
+			snprintf (new_title, 32, "VKFW example - %.2f", fps);
+			vkfwSetWindowTitle (window, new_title);
+
+			fps_counter = 0;
+			t0 = t1;
 		}
 	}
 }
