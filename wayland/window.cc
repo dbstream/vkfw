@@ -13,7 +13,7 @@
 #include <string.h>
 
 enum {
-	CSD_TOP = 5,
+	CSD_TOP = 25,
 	CSD_BOTTOM = 5,
 	CSD_LEFT = 5,
 	CSD_RIGHT = 5,
@@ -170,12 +170,16 @@ vkfwWlCreateWindow (VKFWwindow *window)
 	if (!w->content_surface)
 		return VK_ERROR_INITIALIZATION_FAILED;
 
+	wl_surface_set_user_data (w->content_surface, w);
+
 	if (vkfwWlSupportCSD) {
 		w->frame_surface = wl_compositor_create_surface (vkfwWlCompositor);
 		if (!w->frame_surface) {
 			wl_surface_destroy (w->content_surface);
 			return VK_ERROR_INITIALIZATION_FAILED;
 		}
+
+		wl_surface_set_user_data (w->frame_surface, w);
 
 		w->xdg_surface = xdg_wm_base_get_xdg_surface (vkfwXdgWmBase,
 			w->frame_surface);

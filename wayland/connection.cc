@@ -8,8 +8,11 @@
 #include <VKFW/vkfw.h>
 #include <VKFW/window_api.h>
 #include "event.h"
+#include "input.h"
 #include "wayland.h"
 #include "window.h"
+
+#include "default_cursor.cc"
 
 #include <stdlib.h>
 #include <string.h>
@@ -73,6 +76,7 @@ vkfwWlQueryPresentSupport (VkPhysicalDevice device, uint32_t queue, VkBool32 *re
 }
 
 static uint32_t vkfwWlCompositorId;
+static uint32_t vkfwWlSeatId;
 static uint32_t vkfwWlSubcompositorId;
 static uint32_t vkfwWlShmId;
 static uint32_t vkfwWpViewporterId;
@@ -101,6 +105,8 @@ handle_registry_global (void *data, wl_registry *registry,
 	vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: interface %s v%u <%u>\n", interface, version, name);
 	if (!strcmp (interface, "wl_compositor"))
 		vkfwWlCompositorId = name;
+	else if (!strcmp (interface, "wl_seat"))
+		vkfwWlSeatId = name;
 	else if (!strcmp (interface, "wl_subcompositor"))
 		vkfwWlSubcompositorId = name;
 	else if (!strcmp (interface, "wl_shm"))
@@ -131,27 +137,44 @@ static void
 unload_wayland_funcs (void);
 
 wl_buffer *vkfwWlFrameBuffer;
+wl_buffer *vkfwWlCursorBuffer;
 
-static const uint8_t csd_buffer_data[] = {
+static uint8_t csd_buffer_data[0x1000] = {
+	// offset 0x000: single pixel ARGB8888 buffer for window frame
 	0xcf, 0xcf, 0xc0, 0xff
+
+	// offset 0x040: 24x24 ARGB8888 buffer for cursor
 };
 
-static void
-setup_csd (void)
+static bool
+setup_shm (void)
 {
-	int fd = memfd_create ("vkfw_wayland_client_side_decorations", MFD_ALLOW_SEALING);
+	static_assert (default_cursor.width == 24);
+	static_assert (default_cursor.height == 24);
+	static_assert (default_cursor.bytes_per_pixel == 4);
+	for (int i = 0; i < 24 * 24; i++) {
+		size_t src = 4 * i;
+		size_t dst = 0x40 + src;
+
+		csd_buffer_data[dst + 0] = default_cursor.pixel_data[src + 0];
+		csd_buffer_data[dst + 1] = default_cursor.pixel_data[src + 1];
+		csd_buffer_data[dst + 2] = default_cursor.pixel_data[src + 2];
+		csd_buffer_data[dst + 3] = default_cursor.pixel_data[src + 3];
+	}
+
+	int fd = memfd_create ("vkfw_wayland_shm", MFD_ALLOW_SEALING);
 	if (fd == -1)
-		return;
+		return false;
 
 	if (ftruncate (fd, 0x1000) == -1) {
 		close (fd);
-		return;
+		return false;
 	}
 
 	void *addr = mmap (nullptr, 0x1000, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
 	if (addr == MAP_FAILED) {
 		close (fd);
-		return;
+		return false;
 	}
 
 	static_assert (sizeof (csd_buffer_data) <= 0x1000);
@@ -161,28 +184,35 @@ setup_csd (void)
 	wl_shm_pool *pool = wl_shm_create_pool (vkfwWlShm, fd, 0x1000);
 	close (fd);
 	if (!pool)
-		return;
+		return false;
 
 	vkfwWlFrameBuffer = wl_shm_pool_create_buffer (pool, 0,
 		VKFW_WL_FRAME_SOURCE_WIDTH, VKFW_WL_FRAME_SOURCE_HEIGHT, 4, WL_SHM_FORMAT_ARGB8888);
+	vkfwWlCursorBuffer = wl_shm_pool_create_buffer (pool, 0x40,
+		24, 24, 4 * 24, WL_SHM_FORMAT_ARGB8888);
 	wl_shm_pool_destroy (pool);
+	if (vkfwWlFrameBuffer && vkfwWlCursorBuffer)
+		return true;
 	if (vkfwWlFrameBuffer)
-		vkfwWlSupportCSD = true;
+		wl_buffer_destroy (vkfwWlFrameBuffer);
+	if (vkfwWlCursorBuffer)
+		wl_buffer_destroy (vkfwWlCursorBuffer);
+	return false;
 }
 
 static void
 vkfwWlClose (void)
 {
-	if (vkfwWlSupportCSD)
-		wl_buffer_destroy (vkfwWlFrameBuffer);
+	vkfwWlTerminateInput ();
+	wl_buffer_destroy (vkfwWlCursorBuffer);
+	wl_buffer_destroy (vkfwWlFrameBuffer);
 	if (vkfwWpViewporter)
 		wp_viewporter_destroy (vkfwWpViewporter);
-	if (vkfwWlShm)
-		wl_shm_destroy (vkfwWlShm);
 	if (vkfwWlSubcompositor)
 		wl_subcompositor_destroy (vkfwWlSubcompositor);
 	if (vkfwZxdgDecorationManagerV1)
 		zxdg_decoration_manager_v1_destroy (vkfwZxdgDecorationManagerV1);
+	wl_shm_destroy (vkfwWlShm);
 	xdg_wm_base_destroy (vkfwXdgWmBase);
 	wl_compositor_destroy (vkfwWlCompositor);
 	wl_registry_destroy (vkfwWlRegistry);
@@ -224,13 +254,14 @@ vkfwWlOpen (void)
 	}
 
 	vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: wl_compositor=%u\n", vkfwWlCompositorId);
+	vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: wl_seat=%u\n", vkfwWlSeatId);
 	vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: wl_subcompositor=%u\n", vkfwWlSubcompositorId);
 	vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: wl_shm=%u\n", vkfwWlShmId);
 	vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: wp_viewporter=%u\n", vkfwWpViewporterId);
 	vkfwPrintf (VKFW_LOG_BACKEND, "VKWF: Wayland: xdg_wm_base=%u\n", vkfwXdgWmBaseId);
 	vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: zxdg_decoration_manager_v1=%u\n", vkfwZxdgDecorationManagerV1Id);
 
-	if (!vkfwWlCompositorId || !vkfwXdgWmBaseId) {
+	if (!vkfwWlCompositorId || !vkfwXdgWmBaseId || !vkfwWlShmId) {
 		vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: required protocols are not supported\n");
 		wl_registry_destroy (vkfwWlRegistry);
 		wl_display_disconnect (vkfwWlDisplay);
@@ -306,16 +337,50 @@ vkfwWlOpen (void)
 		return VK_ERROR_INITIALIZATION_FAILED;
 	}
 
-	if (vkfwWlSubcompositor && vkfwWlShm && vkfwWpViewporter) {
-		setup_csd ();
+	if (!setup_shm ()) {
+		vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: failed to send buffers to the compositor\n");
 		if (vkfwWlSupportCSD)
-			vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: client-side decorations are supported\n");
-		else
-			vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: failed to setup resources for client-side decoration\n");
+			wl_buffer_destroy (vkfwWlFrameBuffer);
+		if (vkfwWpViewporter)
+			wp_viewporter_destroy (vkfwWpViewporter);
+		if (vkfwWlSubcompositor)
+			wl_subcompositor_destroy (vkfwWlSubcompositor);
+		if (vkfwZxdgDecorationManagerV1)
+			zxdg_decoration_manager_v1_destroy (vkfwZxdgDecorationManagerV1);
+		wl_shm_destroy (vkfwWlShm);
+		xdg_wm_base_destroy (vkfwXdgWmBase);
+		wl_compositor_destroy (vkfwWlCompositor);
+		wl_registry_destroy (vkfwWlRegistry);
+		wl_display_disconnect (vkfwWlDisplay);
+		unload_wayland_funcs ();
+	}
+
+	if (vkfwWlSubcompositor && vkfwWpViewporter) {
+		vkfwWlSupportCSD = true;
+		vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: client-side decorations are supported\n");
 	}
 
 	if (vkfwZxdgDecorationManagerV1)
 		vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: zxdg_decoration_manager_v1 is supported\n");
+
+	VkResult result = vkfwWlInitializeInput (vkfwWlSeatId);
+	if (result != VK_SUCCESS) {
+		if (vkfwWlSupportCSD)
+			wl_buffer_destroy (vkfwWlFrameBuffer);
+		if (vkfwWpViewporter)
+			wp_viewporter_destroy (vkfwWpViewporter);
+		if (vkfwWlSubcompositor)
+			wl_subcompositor_destroy (vkfwWlSubcompositor);
+		if (vkfwZxdgDecorationManagerV1)
+			zxdg_decoration_manager_v1_destroy (vkfwZxdgDecorationManagerV1);
+		wl_shm_destroy (vkfwWlShm);
+		xdg_wm_base_destroy (vkfwXdgWmBase);
+		wl_compositor_destroy (vkfwWlCompositor);
+		wl_registry_destroy (vkfwWlRegistry);
+		wl_display_disconnect (vkfwWlDisplay);
+		unload_wayland_funcs ();
+		return result;
+	}
 
 	return VK_SUCCESS;
 }
