@@ -8,11 +8,32 @@ that I'm working on (because I find it fun for some reason).
 Current state of the project
 ============================
 
-VKFW is very early in development and currently only has backends for Linux/X11
-that are partially implemented. See TODOLIST and xcb/TODOLIST for more details.
+VKFW is early in development. Currently, it supports X11, Wayland, and Win32, to
+varying levels of completeness. No other backends are planned.
 
 Don't expect any rapid progress on this project -- this is a hobbyist project of
 mine.
+
+NOTE: VKFW probably isn't for you. If you're developing a game or a
+general-purpose application, you probably want to use GLFW or SDL3 instead.
+
+X11
+----------
+
+X11 is a relatively complete backend. It has support for most things that games
+need. Keyboard and mouse input is fully supported.
+
+Wayland
+----------
+
+The Wayland backend is early in its development. Currently, windows can be
+created and destroyed, but input handling is relatively incomplete.
+
+Win32
+----------
+
+The Win32 backend is not being actively worked on right now. Window creation
+is supported, but input handling has not yet been worked on.
 
 Documentation
 =============
