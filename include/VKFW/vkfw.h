@@ -13,7 +13,7 @@
  */
 
 #define VKFW_VERSION_MAJOR 3
-#define VKFW_VERSION_MINOR 0
+#define VKFW_VERSION_MINOR 1
 #define VKFW_VERSION_PATCH 0
 
 #define VKFW_VERSION VK_MAKE_API_VERSION(0, VKFW_VERSION_MAJOR, VKFW_VERSION_MINOR, VKFW_VERSION_PATCH)
@@ -343,6 +343,54 @@ struct VKFWevent_T {
  */
 VKFWAPI void
 vkfwEnableDebugLogging (int source);
+
+#define VKFW_OPT_DONT_USE_ENV 1		/* Do not use getenv(VKFW_OPTIONS). */
+#define VKFW_OPT_PREFER_ENV 2		/* Prefer VKFW_OPTIONS over optstring. */
+
+/**
+ * Configure library options. optstring is an "option string", a string of
+ * library options separated by a semicolon (';'). flags is a bitmask of
+ * VKFW_OPT_* bits.
+ *
+ * The last values passed as arguments to this function will be used during
+ * library initialization. If this function is never called, nullptr and 0
+ * will be used. The memory pointed to by optstring must remain valid during
+ * vkfwInit, unless optstring is nullptr.
+ *
+ * Bits in flags:
+ *   VKFW_OPT_DONT_USE_ENV
+ *   Disable option loading from the environment. By default, VKFW uses
+ *   getenv ("VKFW_OPTIONS") to load options from the environment.
+ *
+ *   VKFW_OPT_PREFER_ENV
+ *   If VKFW_OPTIONS and optstring are in conflict (the same option is provided
+ *   twice), prefer the value in VKFW_OPTIONS.
+ *
+ * optstring format:
+ *   [optstring] := [empty] | [option] | [option] ';' [optstring]
+ *   [option] := [optname] | [optname] '=' [optarg] | '-' [optname]
+ *   [optname] := [a-zA-Z0-9_]+
+ *   [optarg] := [empty] | [a-zA-Z0-9_-]*
+ *   [empty] :=
+ * The syntax '[optname]' is equivalent with '[optname]=true'.
+ * '-[optname]' unsets an option.
+ * An optstring must be tightly packed (no whitespace). Behavior is unspecified
+ * but not undefined if an optstring does not match the specification.
+ *
+ * note: this function may be called prior to vkfwInit.
+ */
+VKFWAPI void
+vkfwSetOptions (const char *optstring, uint32_t flags);
+
+/**
+ * Find a library option by name. Returns nullptr if it is unset.
+ * vkfwInit must be called to populate the internal option array.
+ *
+ * This function is slow. Prefer to call it during initialization and cache
+ * returned values.
+ */
+VKFWAPI const char *
+vkfwGetLibraryOption (const char *optname);
 
 /**
  * Initialize VKFW and load the Vulkan loader. version is the VKFW header

@@ -5,8 +5,12 @@
 #include <VKFW/event.h>
 #include <VKFW/logging.h>
 #include <VKFW/platform.h>
+#include <VKFW/vector.h>
 #include <VKFW/vkfw.h>
 #include <VKFW/window_api.h>
+#include <cstdlib>
+#include <stdlib.h>
+#include <string.h>
 #include <mutex>
 
 #if defined (_WIN32)
@@ -47,6 +51,174 @@ VKFWAPI uint32_t
 vkfwGetVkInstanceVersion (void)
 {
 	return supported_api_version;
+}
+
+/**
+ * Options are parsed into a vector. The vector begins empty, and is populated
+ * in two stages:
+ * 1. parse the [optstring]s into a vector of [option]s. There are three
+ * optstrings: builtin_optstring, prog_optstring and VKFW_OPTIONS.
+ * builtin_optstring is always parsed first. The order in which prog_optstring
+ * and VKFW_OPTIONS are parsed depends on VKFW_OPT_PREFER_ENV.
+ * 2. parse the vector of [option]s into a vector of [optname]s and [optarg]s.
+ */
+
+struct vkfw_option {
+	char *optname;
+	const char *optarg;
+};
+
+static VKFWvector<vkfw_option> vkfw_options;
+
+static const char builtin_optstring[] = "enable_xcb;enable_wayland;enable_win32";
+
+static const char *prog_optstring;
+static uint32_t prog_optflags;
+
+static VkResult
+parse_options (void)
+{
+	const char *env_opts = nullptr;
+	if (!(prog_optflags & VKFW_OPT_DONT_USE_ENV))
+		env_opts = std::getenv ("VKFW_OPTIONS");
+
+	const char *optstrings[4];
+	size_t i = 0;
+
+	/**
+	 * Build a list of optstrings to parse. Optstrings that occur later in
+	 * the array have priority in case of an option conflict.
+	 */
+
+	optstrings[i++] = builtin_optstring;
+	if (prog_optflags & VKFW_OPT_PREFER_ENV) {
+		if (prog_optstring)	optstrings[i++] = prog_optstring;
+		if (env_opts)		optstrings[i++] = env_opts;
+	} else {
+		if (env_opts)		optstrings[i++] = env_opts;
+		if (prog_optstring)	optstrings[i++] = prog_optstring;
+	}
+
+	optstrings[i++] = nullptr;
+
+	i = 0;
+	for (const char **p = optstrings; *p; p++)
+		i += strlen (*p) + 1;
+
+	char *opts = (char *) malloc (i + 1);
+	if (!opts)
+		return VK_ERROR_OUT_OF_HOST_MEMORY;
+
+	opts[0] = 0;
+
+	for (const char **p = optstrings; *p; p++)
+		strcat (strcat (opts, ";"), *p);
+
+	char *opts_orig = opts;
+
+	// stage 1: tokenize the optstring into options.
+
+	vkfwPrintf (VKFW_LOG_CORE, "VKFW: optstring=\"%s\"\n", opts);
+
+	char *s = opts;
+	for (; *opts; opts = s) {
+		s = strchr (opts, ';');
+		if (!s)
+			for (s = opts; *s; s++);
+		else if (opts == s) {
+			s++;
+			continue;
+		}
+
+		if (*s)
+			*(s++) = 0;
+
+		bool insert = true;
+		if (*opts == '-') {
+			opts++;
+			insert = false;
+		}
+
+		if (!*opts)
+			continue;
+
+		for (i = 0; i < vkfw_options.size (); i++) {
+			char *a = opts;
+			char *b = vkfw_options[i].optname;
+
+			bool equiv = true;
+			for (;;) {
+				if (!*a || *a == '=') {
+					if (*b && *b != '=')
+						equiv = false;
+					break;
+				} else if (!*b || *b == '=' || *a != *b) {
+					equiv = false;
+					break;
+				}
+
+				a++;
+				b++;
+			}
+
+			if (equiv) {
+				if (insert) {
+					vkfw_options[i].optname = opts;
+					insert = false;
+				} else {
+					vkfw_options[i] = vkfw_options[vkfw_options.size () - 1];
+					vkfw_options.pop_back ();
+				}
+				break;
+			}
+		}
+
+		if (insert) {
+			vkfw_option opt {};
+			opt.optname = opts;
+			if (!vkfw_options.push_back (opt)) {
+				free (opts_orig);
+				vkfw_options.resize (0);
+				return VK_ERROR_OUT_OF_HOST_MEMORY;
+			}
+		}
+	}
+
+	// stage 2: parse option values from options
+
+	for (vkfw_option &o : vkfw_options) {
+		char *s = o.optname;
+		for (; *s && *s != '='; s++);
+		if (*s == '=') {
+			*(s++) = 0;
+			o.optarg = s;
+		} else
+			o.optarg = "true";
+	}
+
+	for (const vkfw_option &o : vkfw_options)
+		vkfwPrintf (VKFW_LOG_CORE, "VKFW: option \"%s\"=\"%s\"\n", o.optname, o.optarg);
+
+	return VK_SUCCESS;
+}
+
+extern "C"
+VKFWAPI void
+vkfwSetOptions (const char *optstring, uint32_t flags)
+{
+	prog_optstring = optstring;
+	prog_optflags = flags;
+}
+
+extern "C"
+VKFWAPI const char *
+vkfwGetLibraryOption (const char *optname)
+{
+	for (const vkfw_option &o : vkfw_options)
+		if (!strcmp (optname, o.optname))
+			return o.optarg;
+
+	return nullptr;
 }
 
 /**
@@ -130,6 +302,12 @@ vkfwInitVersion (uint32_t expected_version)
 
 	vkfwCurrentPlatform = &VKFW_PLATFORM_NAME;
 	VkResult result = VK_SUCCESS;
+
+	result = parse_options ();
+	if (result != VK_SUCCESS) {
+		vkfwCurrentPlatform = nullptr;
+		return result;
+	}
 
 	/**
 	 * VKFW consists of three parts: the core, the platform and the backend.
