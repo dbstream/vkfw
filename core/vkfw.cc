@@ -136,11 +136,6 @@ vkfwInitVersion (uint32_t expected_version)
 	 * Platform is responsible for loading Vulkan and backend is responsible
 	 * for window creation and events. initPlatform must happen before
 	 * initBackend.
-	 *
-	 * Load Vulkan after initializing the backend. On unix/xcb, strange
-	 * behaviors such as double frees can be caused if libvulkan.so.1 is
-	 * loaded before libxcb.so.1. I have no idea why this happens, but
-	 * initializing Xcb first seems to fix it.
 	 */
 
 	if (vkfwCurrentPlatform->initPlatform)
