@@ -339,6 +339,7 @@ struct VKFWevent_T {
 
 /**
  * Enable debug logging to stdout within VKFW.
+ * note: this function may be called prior to vkfwInit.
  */
 VKFWAPI void
 vkfwEnableDebugLogging (int source);
