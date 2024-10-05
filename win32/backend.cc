@@ -5,6 +5,7 @@
 #define VK_USE_PLATFORM_WIN32_KHR
 
 #include <VKFW/logging.h>
+#include <VKFW/options.h>
 #include <VKFW/vkfw.h>
 #include <VKFW/window_api.h>
 
@@ -56,6 +57,9 @@ extern VKFWwindowbackend vkfwBackendWin32;
 static VkResult
 vkfwWin32OpenConnection (void)
 {
+	if (!vkfwGetBool ("enable_win32"))
+		return VK_ERROR_INITIALIZATION_FAILED;
+
 	vkfwBackendWin32.close_connection = vkfwWin32CloseConnection;
 	vkfwBackendWin32.request_instance_extensions = vkfwWin32RequestInstanceExtensions;
 	vkfwBackendWin32.alloc_window = vkfwWin32AllocWindow;

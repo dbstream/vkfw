@@ -4,6 +4,7 @@
  */
 #define VK_USE_PLATFORM_XCB_KHR 1
 #include <VKFW/logging.h>
+#include <VKFW/options.h>
 #include <VKFW/platform.h>
 #include <VKFW/vkfw.h>
 #include <VKFW/window_api.h>
@@ -160,6 +161,9 @@ VKFW_XCB_ALL_ATOMS(VKFW_INTERN_ATOM)
 static VkResult
 vkfwXcbOpen (void)
 {
+	if (!vkfwGetBool ("enable_xcb"))
+		return VK_ERROR_INITIALIZATION_FAILED;
+
 	if (!load_xcb_funcs ())
 		return VK_ERROR_INITIALIZATION_FAILED;
 

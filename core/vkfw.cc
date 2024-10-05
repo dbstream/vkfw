@@ -4,6 +4,7 @@
  */
 #include <VKFW/event.h>
 #include <VKFW/logging.h>
+#include <VKFW/options.h>
 #include <VKFW/platform.h>
 #include <VKFW/vector.h>
 #include <VKFW/vkfw.h>
@@ -118,8 +119,6 @@ parse_options (void)
 
 	// stage 1: tokenize the optstring into options.
 
-	vkfwPrintf (VKFW_LOG_CORE, "VKFW: optstring=\"%s\"\n", opts);
-
 	char *s = opts;
 	for (; *opts; opts = s) {
 		s = strchr (opts, ';');
@@ -196,9 +195,6 @@ parse_options (void)
 			o.optarg = "true";
 	}
 
-	for (const vkfw_option &o : vkfw_options)
-		vkfwPrintf (VKFW_LOG_CORE, "VKFW: option \"%s\"=\"%s\"\n", o.optname, o.optarg);
-
 	return VK_SUCCESS;
 }
 
@@ -219,6 +215,16 @@ vkfwGetLibraryOption (const char *optname)
 			return o.optarg;
 
 	return nullptr;
+}
+
+bool
+vkfwGetBool (const char *name)
+{
+	const char *value = vkfwGetLibraryOption (name);
+	if (!value)
+		return false;
+
+	return !strcmp (value, "true") || !strcmp (value, "1");
 }
 
 /**

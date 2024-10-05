@@ -4,6 +4,7 @@
  */
 #define VK_USE_PLATFORM_WAYLAND_KHR 1
 #include <VKFW/logging.h>
+#include <VKFW/options.h>
 #include <VKFW/platform.h>
 #include <VKFW/vkfw.h>
 #include <VKFW/window_api.h>
@@ -226,6 +227,9 @@ load_wayland_funcs (void);
 static VkResult
 vkfwWlOpen (void)
 {
+	if (!vkfwGetBool ("enable_wayland"))
+		return VK_ERROR_INITIALIZATION_FAILED;
+
 	if (!load_wayland_funcs ())
 		return VK_ERROR_INITIALIZATION_FAILED;
 
@@ -286,7 +290,9 @@ vkfwWlOpen (void)
 		return VK_ERROR_INITIALIZATION_FAILED;
 	}
 
-	if (vkfwZxdgDecorationManagerV1Id) {
+	if (vkfwGetBool ("wl_disable_ssd"))
+		vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: zxdg_decoration_manager_v1 disabled by library options\n");
+	else if (vkfwZxdgDecorationManagerV1Id) {
 		vkfwZxdgDecorationManagerV1 = (zxdg_decoration_manager_v1 *) wl_registry_bind (
 			vkfwWlRegistry, vkfwZxdgDecorationManagerV1Id, &zxdg_decoration_manager_v1_interface, 1);
 		if (!vkfwZxdgDecorationManagerV1)

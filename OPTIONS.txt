@@ -1,0 +1,38 @@
+============================
+List of VKFW_OPTIONS options
+============================
+
+A list of configurable library options with descriptions, in no particular
+order.
+
+enable_xcb
+==========
+
+Enable usage of XCB as a window backend.
+
+Affected platforms: Unix
+Default: true
+
+enable_wayland
+==============
+
+Enable usage of Wayland as a window backend.
+
+Affected platforms: Unix
+Default: true
+
+enable_win32
+============
+
+Enable usage of Win32 as a window backend.
+
+Affected platforms: Win32
+Default: true
+
+wl_disable_ssd
+==============
+
+Do not request server-side decorations with zxdg_decoration_manager_v1.
+
+Affected platforms: Wayland
+Default: unset
