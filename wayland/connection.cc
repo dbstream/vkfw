@@ -13,6 +13,7 @@
 #include "wayland.h"
 #include "window.h"
 
+#include "csd_close_button.cc"
 #include "default_cursor.cc"
 
 #include <stdlib.h>
@@ -139,13 +140,34 @@ unload_wayland_funcs (void);
 
 wl_buffer *vkfwWlFrameBuffer;
 wl_buffer *vkfwWlCursorBuffer;
+wl_buffer *vkfwWlCloseButtonBuffer;
 
-static uint8_t csd_buffer_data[0x1000] = {
-	// offset 0x000: single pixel ARGB8888 buffer for window frame
+static constexpr size_t CSD_BUFFER_SIZE = 0x2000;
+
+static uint8_t csd_buffer_data[CSD_BUFFER_SIZE] = {
+	// offset 0x0000: single pixel ARGB8888 buffer for window frame
 	0xcf, 0xcf, 0xc0, 0xff
 
-	// offset 0x040: 24x24 ARGB8888 buffer for cursor
+	// offset 0x0040: 24x24 ARGB8888 buffer for cursor
+	// offset 0x0940: 15x15 ARGB8888 buffer for CSD close button
 };
+
+/**
+ * Copy pixels from an 8-bit RGBA image into a wayland ARGB8888 image.
+ */
+static void
+copy_rgba_to_argb (uint8_t *dst, const uint8_t *src, size_t num_pixels)
+{
+	for (; num_pixels; num_pixels--) {
+		dst[0] = src[2];
+		dst[1] = src[1];
+		dst[2] = src[0];
+		dst[3] = src[3];
+
+		dst += 4;
+		src += 4;
+	}
+}
 
 static bool
 setup_shm (void)
@@ -153,36 +175,32 @@ setup_shm (void)
 	static_assert (default_cursor.width == 24);
 	static_assert (default_cursor.height == 24);
 	static_assert (default_cursor.bytes_per_pixel == 4);
-	for (int i = 0; i < 24 * 24; i++) {
-		size_t src = 4 * i;
-		size_t dst = 0x40 + src;
+	copy_rgba_to_argb (&csd_buffer_data[0x40], default_cursor.pixel_data, 24 * 24);
 
-		csd_buffer_data[dst + 0] = default_cursor.pixel_data[src + 0];
-		csd_buffer_data[dst + 1] = default_cursor.pixel_data[src + 1];
-		csd_buffer_data[dst + 2] = default_cursor.pixel_data[src + 2];
-		csd_buffer_data[dst + 3] = default_cursor.pixel_data[src + 3];
-	}
+	static_assert (csd_close_button.width == 15);
+	static_assert (csd_close_button.height == 15);
+	static_assert (csd_close_button.bytes_per_pixel == 4);
+	copy_rgba_to_argb (&csd_buffer_data[0x940], csd_close_button.pixel_data, 15 * 15);
 
 	int fd = memfd_create ("vkfw_wayland_shm", MFD_ALLOW_SEALING);
 	if (fd == -1)
 		return false;
 
-	if (ftruncate (fd, 0x1000) == -1) {
+	if (ftruncate (fd, CSD_BUFFER_SIZE) == -1) {
 		close (fd);
 		return false;
 	}
 
-	void *addr = mmap (nullptr, 0x1000, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+	void *addr = mmap (nullptr, CSD_BUFFER_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
 	if (addr == MAP_FAILED) {
 		close (fd);
 		return false;
 	}
 
-	static_assert (sizeof (csd_buffer_data) <= 0x1000);
-	memcpy (addr, csd_buffer_data, sizeof (csd_buffer_data));
-	munmap (addr, 0x1000);
+	memcpy (addr, csd_buffer_data, CSD_BUFFER_SIZE);
+	munmap (addr, CSD_BUFFER_SIZE);
 
-	wl_shm_pool *pool = wl_shm_create_pool (vkfwWlShm, fd, 0x1000);
+	wl_shm_pool *pool = wl_shm_create_pool (vkfwWlShm, fd, CSD_BUFFER_SIZE);
 	close (fd);
 	if (!pool)
 		return false;
@@ -191,13 +209,17 @@ setup_shm (void)
 		VKFW_WL_FRAME_SOURCE_WIDTH, VKFW_WL_FRAME_SOURCE_HEIGHT, 4, WL_SHM_FORMAT_ARGB8888);
 	vkfwWlCursorBuffer = wl_shm_pool_create_buffer (pool, 0x40,
 		24, 24, 4 * 24, WL_SHM_FORMAT_ARGB8888);
+	vkfwWlCloseButtonBuffer = wl_shm_pool_create_buffer (pool, 0x940,
+		15, 15, 4 * 15, WL_SHM_FORMAT_ARGB8888);
 	wl_shm_pool_destroy (pool);
-	if (vkfwWlFrameBuffer && vkfwWlCursorBuffer)
+	if (vkfwWlFrameBuffer && vkfwWlCursorBuffer && vkfwWlCloseButtonBuffer)
 		return true;
 	if (vkfwWlFrameBuffer)
 		wl_buffer_destroy (vkfwWlFrameBuffer);
 	if (vkfwWlCursorBuffer)
 		wl_buffer_destroy (vkfwWlCursorBuffer);
+	if (vkfwWlCloseButtonBuffer)
+		wl_buffer_destroy (vkfwWlCloseButtonBuffer);
 	return false;
 }
 
@@ -205,6 +227,7 @@ static void
 vkfwWlClose (void)
 {
 	vkfwWlTerminateInput ();
+	wl_buffer_destroy (vkfwWlCloseButtonBuffer);
 	wl_buffer_destroy (vkfwWlCursorBuffer);
 	wl_buffer_destroy (vkfwWlFrameBuffer);
 	if (vkfwWpViewporter)

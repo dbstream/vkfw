@@ -26,5 +26,6 @@ static constexpr int VKFW_WL_FRAME_SOURCE_WIDTH = 1;
 static constexpr int VKFW_WL_FRAME_SOURCE_HEIGHT = 1;
 extern wl_buffer *vkfwWlFrameBuffer;
 extern wl_buffer *vkfwWlCursorBuffer;
+extern wl_buffer *vkfwWlCloseButtonBuffer;
 
 #endif /* VKFW_WAYLAND_H */

@@ -22,10 +22,14 @@ struct VKFWwlwindow_T {
 
 	zxdg_toplevel_decoration_v1 *decoration_v1;
 
+	wl_surface *close_button_surface;
+	wl_subsurface *close_button_subsurface;
+
 	bool visible;
 	bool use_csd;
 	bool has_csd;
 	bool has_csd_buffer_attached;
+	bool has_csd_decorations;
 
 	char *title;
 };

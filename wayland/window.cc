@@ -17,12 +17,41 @@ enum {
 	CSD_BOTTOM = 5,
 	CSD_LEFT = 5,
 	CSD_RIGHT = 5,
-	MIN_WIDTH = 20,
-	MIN_HEIGHT = 20,
-
 	CSD_WIDTH = CSD_LEFT + CSD_RIGHT,
-	CSD_HEIGHT = CSD_TOP + CSD_BOTTOM
+	CSD_HEIGHT = CSD_TOP + CSD_BOTTOM,
+	MIN_WIDTH = 30 + CSD_WIDTH,
+	MIN_HEIGHT = 30 + CSD_HEIGHT
 };
+
+static void
+create_csd_decorations (VKFWwlwindow *w)
+{
+	w->close_button_surface = wl_compositor_create_surface (vkfwWlCompositor);
+	if (!w->close_button_surface)
+		return;
+
+	wl_surface_set_user_data (w->close_button_surface, w);
+
+	w->close_button_subsurface = wl_subcompositor_get_subsurface (vkfwWlSubcompositor,
+		w->close_button_surface, w->frame_surface);
+	if (!w->close_button_subsurface) {
+		wl_surface_destroy (w->close_button_surface);
+		return;
+	}
+
+	wl_subsurface_place_above (w->close_button_subsurface, w->frame_surface);
+	wl_surface_attach (w->close_button_surface, vkfwWlCloseButtonBuffer, 0, 0);
+	w->has_csd_decorations = true;
+}
+
+static void
+destroy_csd_decorations (VKFWwlwindow *w)
+{
+	wl_subsurface_destroy (w->close_button_subsurface);
+	wl_surface_destroy (w->close_button_surface);
+	w->has_csd_decorations = false;
+	return;
+}
 
 static void
 handle_xdg_surface_configure (void *window, xdg_surface *surface,
@@ -54,6 +83,16 @@ handle_xdg_surface_configure (void *window, xdg_surface *surface,
 	} else if (!w->use_csd && w->has_csd) {
 		wl_subsurface_set_position (w->content_subsurface, 0, 0);
 		w->has_csd = false;
+	}
+
+	if (w->has_csd && !w->has_csd_decorations)
+		create_csd_decorations (w);
+	else if (!w->has_csd && w->has_csd_decorations)
+		destroy_csd_decorations (w);
+
+	if (w->has_csd_decorations) {
+		wl_subsurface_set_position (w->close_button_subsurface, w->configured_width - 25, 5);
+		wl_surface_commit (w->close_button_surface);
 	}
 
 	VKFWevent e {};
@@ -163,6 +202,7 @@ vkfwWlCreateWindow (VKFWwindow *window)
 	w->use_csd = vkfwWlSupportCSD;
 	w->has_csd = false;
 	w->has_csd_buffer_attached = false;
+	w->has_csd_decorations = false;
 
 	w->title = nullptr;
 
@@ -222,6 +262,9 @@ void
 vkfwWlDestroyWindow (VKFWwindow *window)
 {
 	VKFWwlwindow *w = (VKFWwlwindow *) window;
+
+	if (w->has_csd_decorations)
+		destroy_csd_decorations (w);
 
 	if (w->xdg_toplevel) {
 		if (w->decoration_v1)

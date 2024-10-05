@@ -158,6 +158,21 @@ handle_ptr_button (void *data, wl_pointer *dev, uint32_t serial,
 
 		return;
 	}
+
+	// Implement CSD close button.
+	if (ptr_focus_window->has_csd_decorations && ptr_focus == ptr_focus_window->close_button_surface) {
+		if (button != BTN_LEFT)
+			return;
+
+		if (state != WL_POINTER_BUTTON_STATE_RELEASED)
+			return;
+
+		VKFWevent e {};
+		e.type = VKFW_EVENT_WINDOW_CLOSE_REQUEST;
+		e.window = (VKFWwindow *) ptr_focus_window;
+		vkfwSendEventToApplication (&e);
+		return;
+	}
 }
 
 static void
