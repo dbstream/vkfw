@@ -303,6 +303,7 @@ handle_wl_seat_capabilites (void *data, wl_seat *seat, uint32_t cap)
 			kbd_dev = wl_seat_get_keyboard (seat);
 			if (kbd_dev)
 				wl_keyboard_add_listener (kbd_dev, &keyboard_listener, nullptr);
+			else
 				vkfwPrintf (VKFW_LOG_BACKEND, "VKFW: Wayland: failed to create keyboard device\n");
 		}
 	} else {
